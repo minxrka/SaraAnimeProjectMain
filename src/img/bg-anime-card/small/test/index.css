@@ -1,0 +1,8 @@
+.hui {
+  width: 100%;
+  min-width: 50px;
+  height: auto;
+  max-height: 350px;
+  min-height: 50px;
+  object-fit: fill;
+}

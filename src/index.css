@@ -1,0 +1,395 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-Bold.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Bold"), local("GothamPro-Bold"),
+      url("./fonts/GOTHAM PRO/GothamPro-Bold.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-Bold.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-Bold.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-Light.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Light"), local("GothamPro-Light"),
+      url("./fonts/GOTHAM PRO/GothamPro-Light.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-Light.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-Light.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-Italic.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Italic"),
+      local("GothamPro-Italic"),
+      url("./fonts/GOTHAM PRO/GothamPro-Italic.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-Italic.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-Italic.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro Narrow";
+    src: url("./fonts/GOTHAM PRO/GothamProNarrow-Bold.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Narrow Bold"),
+      local("GothamProNarrow-Bold"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Bold.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Bold.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Bold.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-Medium.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Medium"),
+      local("GothamPro-Medium"),
+      url("./fonts/GOTHAM PRO/GothamPro-Medium.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-Medium.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-Medium.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-BoldItalic.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Bold Italic"),
+      local("GothamPro-BoldItalic"),
+      url("./fonts/GOTHAM PRO/GothamPro-BoldItalic.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-BoldItalic.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-BoldItalic.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-BoldItalic.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-MediumItalic.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Medium Italic"),
+      local("GothamPro-MediumItalic"),
+      url("./fonts/GOTHAM PRO/GothamPro-MediumItalic.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-MediumItalic.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-MediumItalic.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-MediumItalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-BlackItalic.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Black Italic"),
+      local("GothamPro-BlackItalic"),
+      url("./fonts/GOTHAM PRO/GothamPro-BlackItalic.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-BlackItalic.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-BlackItalic.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-BlackItalic.ttf") format("truetype");
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro Narrow";
+    src: url("./fonts/GOTHAM PRO/GothamProNarrow-Medium.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Narrow Medium"),
+      local("GothamProNarrow-Medium"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Medium.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Medium.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Medium.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamProNarrow-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Gotham Pro";
+    src: url("./fonts/GOTHAM PRO/GothamPro-LightItalic.eot");
+    src: local("./fonts/GOTHAM PRO/Gotham Pro Light Italic"),
+      local("GothamPro-LightItalic"),
+      url("./fonts/GOTHAM PRO/GothamPro-LightItalic.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/GOTHAM PRO/GothamPro-LightItalic.woff2") format("woff2"),
+      url("./fonts/GOTHAM PRO/GothamPro-LightItalic.woff") format("woff"),
+      url("./fonts/GOTHAM PRO/GothamPro-LightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: "Bowler";
+    src: url("./fonts/BOWLER/BOWLER-Regular.woff2") format("woff2")
+      url("./fonts/BOWLER/BOWLER-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Akira";
+    src: url("./fonts/AKIRA/Akira_Expanded_Demo.eot?") format("eot"),
+      url("./fonts/AKIRA/Akira_Expanded_Demo.woff") format("woff"),
+      url("./fonts/AKIRA/Akira_Expanded_Demo.ttf") format("truetype"),
+      url("./fonts/AKIRA/Akira_Expanded_Demo.svg#AkiraExpanded-SuperBold")
+        format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+html {
+  height: 100%;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.textwrap {
+  text-wrap: balance;
+}
+
+body {
+  background-color: #52357d;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 7 СТАВИТЬСЯ ТРОЕТОЧИЕ ИСПОЛЬЗУТЕСЯ В СЛАЙДЕРЕ */
+.lineclamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 7 СТАВИТЬСЯ ТРОЕТОЧИЕ ИСПОЛЬЗУТЕСЯ В СЛАЙДЕРЕ */
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК ИЗОБРАЖЕНИЕ В БЛОКЕ ЗУМИТСЯ */
+.bgZoomEffect img {
+  width: 100%;
+  height: 100%;
+  transition: scale 400ms;
+}
+.bgZoomEffect:hover img {
+  scale: 120%;
+}
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК ИЗОБРАЖЕНИЕ В БЛОКЕ ЗУМИТСЯ */
+
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 3 СТАВИТЬСЯ ТРОЕТОЧИЕ */
+.lineclamptwo {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 3 СТАВИТЬСЯ ТРОЕТОЧИЕ */
+
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 2 СТАВИТЬСЯ ТРОЕТОЧИЕ */
+.lineclampone {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+/* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 2 СТАВИТЬСЯ ТРОЕТОЧИЕ */
+
+/* ЕСЛИ ОГРАНИЧЕНИЕ НЕ РАБОТАЕТ МОЖНО ЭТОТ СПОСОБ */
+/* .testing {
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+/* ЕСЛИ ОГРАНИЧЕНИЕ НЕ РАБОТАЕТ МОЖНО ЭТОТ СПОСОБ */
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК ИЗОБРАЖЕНИЕ В БЛОКЕ ЗАТЕМНЯЕТСЯ */
+.spanhovereffect:hover .anime {
+  opacity: 1;
+  transition: all 0.3s ease-in;
+}
+.spanbgeffect {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК ИЗОБРАЖЕНИЕ В БЛОКЕ ЗУМИТСЯ */
+
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК  SVG КАРТИНКА ЗУМИТСЯ */
+.bgZoomEffect .svgPlay {
+  width: 100%;
+  height: 100%;
+  transition: scale 400ms;
+}
+.bgZoomEffect:hover .svgPlay {
+  scale: 130%;
+}
+/* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК  SVG КАРТИНКА ЗУМИТСЯ */
+
+/* relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-[-1px] after:bg-[#ffffff] after:scale-0 hover:after:scale-100 after:transition-transform */
+/* ХОВЕР НА КНОПКУ ПРИ КОТОРОЙ ТЕКСТУ ЗАДАЕТСЯ ПОДЧЕРКИВАНИЕ */
+.textBtnShowMore {
+  position: relative;
+}
+.textBtnShowMore::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: -1px;
+  background-color: aliceblue;
+  scale: 0%;
+  transition: all 0.3s ease;
+}
+
+.hoverBtnShowMore:hover .textBtnShowMore::after {
+  scale: 100%;
+}
+/* ХОВЕР НА КНОПКУ ПРИ КОТОРОЙ ТЕКСТУ ЗАДАЕТСЯ ПОДЧЕРКИВАНИЕ */
+
+.objFit {
+  width: 100%;
+  min-width: 50px;
+  height: 350px;
+  min-height: 50px;
+  object-fit: cover;
+}
