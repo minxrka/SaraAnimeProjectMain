@@ -287,14 +287,15 @@ table {
   border-spacing: 0;
 }
 
-.textwrap {
-  text-wrap: balance;
-}
-
 body {
   background-color: #52357d;
   -webkit-transform: translate3d(0, 0, 0);
 }
+/* БАЛАНСИРОВАНИЕ ТЕКСТА */
+.textwrap {
+  text-wrap: balance;
+}
+/* БАЛАНСИРОВАНИЕ ТЕКСТА */
 
 /* ОГРАНИЧЕНИЕ СТРОК, ЕСЛИ БОЛЬШЕ 7 СТАВИТЬСЯ ТРОЕТОЧИЕ ИСПОЛЬЗУТЕСЯ В СЛАЙДЕРЕ */
 .lineclamp {
@@ -386,10 +387,123 @@ body {
 }
 /* ХОВЕР НА КНОПКУ ПРИ КОТОРОЙ ТЕКСТУ ЗАДАЕТСЯ ПОДЧЕРКИВАНИЕ */
 
+/* OBJECTFIT ИЗОБРАЖЕНИЯМ */
 .objFit {
   width: 100%;
-  min-width: 50px;
+  min-width: 150px;
   height: 350px;
-  min-height: 50px;
+  min-height: 100px;
   object-fit: cover;
+}
+/* OBJECTFIT ИЗОБРАЖЕНИЯМ */
+
+/* СТИЛИЗАЦИЯ СЛАЙДЕРА СКРОЛБАРА!!! */
+.swiper-scrollbar {
+  background-color: #3474dc !important;
+  height: 5px !important;
+}
+.swiper-scrollbar-drag {
+  background-color: #d6fe50 !important;
+}
+/* СТИЛИЗАЦИЯ СЛАЙДЕРА СКРОЛБАРА!!! */
+
+/* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
+.swiper-pagination-bullet {
+  background-color: #dfd2c9 !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+.swiper-pagination-bullet-active {
+  background-color: #2b60ca !important;
+}
+/* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
+
+/* СТИЛИЗАЦИЯ КНОПКИ FOLLOW FOOTER */
+.input-container {
+  position: relative;
+  display: flex;
+  height: 57px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 611px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.05);
+}
+.input-container input {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid rgb(176 190 197);
+  background-color: transparent;
+  padding: 0.625rem 70px 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  outline: none;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input-container input:focus {
+  border: 1px solid #d6fe50;
+}
+.invite-btn {
+  position: absolute;
+  width: 130px;
+  right: 4px;
+  top: 4px;
+  bottom: 4px;
+  z-index: 10;
+  border-radius: 15px;
+  background-color: #d6fe50;
+  color: #000000;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 14px;
+  padding-right: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  transition: 0.6s ease;
+}
+.invite-btn:hover {
+  border-radius: 15px;
+}
+.input-container input:placeholder-shown ~ .invite-btn {
+  pointer-events: none;
+  background-color: #b9d362;
+  opacity: 0.5;
+}
+/* СТИЛИЗАЦИЯ КНОПКИ FOLLOW FOOTER */
+
+/* СОЦИАЛЬНЫЕ СЕТИ ФУТЕРА */
+.social:hover .circlemain {
+  background-color: #d6fe50;
+}
+/* СОЦИАЛЬНЫЕ СЕТИ ФУТЕРА */
+
+/* ПРИ ОТКРЫТИЕ МОДАЛЬНОГО ОКНО НЕ БЫЛО СКРОЛА */
+.modalIsOpened {
+  height: 100vh;
+  overflow-y: hidden;
+}
+/* ПРИ ОТКРЫТИЕ МОДАЛЬНОГО ОКНО НЕ БЫЛО СКРОЛА */
+
+/* ТЕСТ СКРЫТИЕ МОДАЛЬНОГО ОКНА */
+/* @media screen and (min-width: 1124px) {
+  .test {
+    display: none;
+  }
+} */
+/* ТЕСТ СКРЫТИЕ МОДАЛЬНОГО ОКНА */
+
+.hoveringbg {
+  background: transparent;
+}
+.hoveringbg:hover {
+  background: rgba(214, 254, 80, 0.2);
 }

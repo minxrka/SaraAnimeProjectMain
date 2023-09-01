@@ -11,6 +11,7 @@ import {
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/scrollbar";
+import "swiper/css/pagination";
 
 export const Slider = () => {
   return (

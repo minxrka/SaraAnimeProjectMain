@@ -3,7 +3,8 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      test: { max: "1619px" },
+      xlbig: { max: "1715px" },
+      xbig: { max: "1619px" },
       big: { max: "1536px" },
       xxl: { max: "1380px" },
       xl: { max: "1280px" },
@@ -18,7 +19,7 @@ module.exports = {
         slide3: "url('../src/img/slider/slide3.png')",
         slide4: "url('../src/img/slider/slide4.png')",
         slide5: "url('../src/img/slider/slide5.png')",
-        bgmain: "url('../src/img/slider/bg1.png')",
+        heroGradient: " linear-gradient(270deg, #2B60CA 0%, #754BB6 100%)",
       },
       fontFamily: {
         GothamPro: ["Gotham Pro"],
