@@ -38,6 +38,11 @@ export const Header = () => {
     test.current.classList.toggle("flex");
   };
 
+  const Modal = () => {
+    // 👇️ Изменения в бади если модальное окно открыто
+    document.body.classList.toggle("modalIsOpened");
+  };
+
   return (
     <header className="xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-[#4990E8]">
       <nav className="items-center lg:hidden">
@@ -89,7 +94,7 @@ export const Header = () => {
             <a
               href="#"
               onClick={() => {
-                ModalScroll();
+                Modal();
                 Testingroom();
               }}
             >
@@ -123,8 +128,8 @@ export const Header = () => {
         className="fixed hidden top-0 left-0 right-0 bottom-0 justify-center items-center z-20"
         ref={test}
       >
-        <section className="max-w-[577px] h-[220px] border-solid border-2 border-cyberpunk rounded-[20px]">
-          <div className="gap-[18px] items-center flex px-[20px] py-[14px] justify-between relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-cyberpunk after:opacity-[0.60]">
+        <section className="bg-mainViolet w-[577px] h-[220px] border-solid border-2 border-cyberpunk rounded-[20px]">
+          <div className="mb-[10px] gap-[18px] items-center flex px-[20px] py-[14px] justify-between relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-cyberpunk after:opacity-[0.60]">
             <div>
               <svg
                 width="24"
@@ -160,7 +165,7 @@ export const Header = () => {
               </svg>
             </a>
           </div>
-          <div className="mt-[1px] flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
+          <div className="flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
             <div>
               <img
                 className="rounded-[5px] max-w-[65px] h-auto object-cover"

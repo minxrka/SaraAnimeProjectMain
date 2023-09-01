@@ -491,6 +491,10 @@ body {
   height: 100vh;
   overflow-y: hidden;
 }
+.modalIsOpened {
+  height: 100vh;
+  overflow-y: hidden;
+}
 /* ПРИ ОТКРЫТИЕ МОДАЛЬНОГО ОКНО НЕ БЫЛО СКРОЛА */
 
 /* ТЕСТ СКРЫТИЕ МОДАЛЬНОГО ОКНА */
