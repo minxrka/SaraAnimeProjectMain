@@ -1,12 +1,10 @@
 import "./App.css";
-import { ModalSearchWindow } from "./components/ModalSearchWindow/ModalSearchWindow";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
 import { Join } from "./components/join us/join";
 import { ItemAnime } from "./components/mainItems/mainItem";
 import { Slider } from "./components/slider/slider";
 import { SliderAnime } from "./components/sliderAnime/sliderAnime";
-import { useRef } from "react";
 
 function App() {
   return (

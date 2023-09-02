@@ -1,14 +1,24 @@
 import React from "react";
 import MainLogo from "../../img/logo/main-logo.svg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
-import { useRef } from "react";
-import { ModalSearchWindow } from "../ModalSearchWindow/ModalSearchWindow";
+import { useRef, useState } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
+import Modal from "@material-ui/core/Modal";
+import notFound from "../../img/other-content/unnamed.png";
 
 export const Header = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   const navRef = useRef();
   const Burger = useRef();
-  const test = useRef();
   const showNavBar = () => {
     navRef.current.classList.toggle("hidden");
     navRef.current.classList.toggle("flex");
@@ -31,16 +41,6 @@ export const Header = () => {
         document.body.classList.remove("modalIsOpened");
       }
     });
-  };
-
-  const Testingroom = () => {
-    test.current.classList.toggle("hidden");
-    test.current.classList.toggle("flex");
-  };
-
-  const Modal = () => {
-    // 👇️ Изменения в бади если модальное окно открыто
-    document.body.classList.toggle("modalIsOpened");
   };
 
   return (
@@ -91,13 +91,7 @@ export const Header = () => {
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[123px] big:gap-[50px] xl:gap-[35px]">
           <li className="px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors items-center cursor-pointer">
-            <a
-              href="#"
-              onClick={() => {
-                Modal();
-                Testingroom();
-              }}
-            >
+            <a href="#" onClick={handleOpen}>
               <svg
                 width="23"
                 height="23"
@@ -124,12 +118,9 @@ export const Header = () => {
         </ul>
       </nav>
 
-      <main
-        className="fixed hidden top-0 left-0 right-0 bottom-0 justify-center items-center z-20"
-        ref={test}
-      >
-        <section className="bg-mainViolet w-[577px] h-[220px] border-solid border-2 border-cyberpunk rounded-[20px]">
-          <div className="mb-[10px] gap-[18px] items-center flex px-[20px] py-[14px] justify-between relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-cyberpunk after:opacity-[0.60]">
+      <Modal onClose={handleClose} open={open} className="backdrop-blur-[5px]">
+        <section className="bg-mainViolet overflow-hidden max-w-[577px] max-h-[600px] border-solid border-2 border-cyberpunk rounded-[20px] mx-auto mt-[250px]">
+          <div className="gap-[18px] items-center flex px-[20px] py-[14px] justify-between relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-cyberpunk after:opacity-[0.60]">
             <div>
               <svg
                 width="24"
@@ -150,7 +141,7 @@ export const Header = () => {
               className="w-full h-[22px] bg-transparent text-white font-GothamPro text-[16px] font-light outline-none placeholder:text-white"
               placeholder="Поиск аниме..."
             />
-            <a href="">
+            <a href="#" onClick={handleClose}>
               <svg
                 width="24"
                 height="24"
@@ -165,7 +156,8 @@ export const Header = () => {
               </svg>
             </a>
           </div>
-          <div className="flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
+
+          {/*  <div className="mt-[1px] flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
             <div>
               <img
                 className="rounded-[5px] max-w-[65px] h-auto object-cover"
@@ -173,7 +165,7 @@ export const Header = () => {
                 alt=""
               />
             </div>
-            <div className="ml-[11px] flex flex-col justify-around">
+            <div className="ml-[11px] flex flex-col justify-around items-start">
               <p className="font-GothamPro text-[13px] text-whiteGray">
                 Завершен
               </p>
@@ -184,9 +176,18 @@ export const Header = () => {
                 2004 Осень
               </p>
             </div>
-          </div>
+          </div> */}
+
+          {/* <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
+            <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
+            <img
+              className="max-w-[100px] rounded-b-[120px] mt-[20px]"
+              src={notFound}
+              alt=""
+            />
+          </div> */}
         </section>
-      </main>
+      </Modal>
 
       {/* MOBILE */}
       <nav
@@ -254,7 +255,12 @@ export const Header = () => {
         <img src={MainLogo} alt="logo" />
       </a>
 
-      <a href="" class="hidden lg:flex items-center">
+      <a
+        href="#"
+        class="hidden lg:flex items-center"
+        onClick={handleOpen}
+        /* onClick={() => setVisible(!visible)} */
+      >
         <svg
           width="34"
           height="34"

@@ -73,7 +73,7 @@ export const ItemAnime = () => {
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
           <a href="">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
-              <img className="rounded-[20px] hui" src={Anime2} alt="" />
+              <img className="rounded-[20px]" src={Anime2} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
                 <span className="">
                   <svg
