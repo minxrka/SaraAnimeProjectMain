@@ -90,8 +90,11 @@ export const Header = () => {
 
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[123px] big:gap-[50px] xl:gap-[35px]">
-          <li className="px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors items-center cursor-pointer">
-            <a href="#" onClick={handleOpen}>
+          <li
+            className="px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors items-center cursor-pointer"
+            onClick={handleOpen}
+          >
+            <a href="#">
               <svg
                 width="23"
                 height="23"
