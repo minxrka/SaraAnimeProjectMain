@@ -1,7 +1,7 @@
 import React from "react";
 import MainLogo from "../../img/logo/main-logo.svg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
 import Modal from "@material-ui/core/Modal";
 import notFound from "../../img/other-content/unnamed.png";
@@ -122,7 +122,7 @@ export const Header = () => {
       </nav>
 
       <Modal onClose={handleClose} open={open} className="backdrop-blur-[5px]">
-        <section className="bg-mainViolet overflow-hidden max-w-[577px] max-h-[600px] border-solid border-2 border-cyberpunk rounded-[20px] mx-auto mt-[250px]">
+        <section className="bg-mainViolet overflow-auto max-w-[577px] max-h-[600px] border-solid border-2 border-cyberpunk rounded-[20px] mx-auto mt-[250px]">
           <div className="gap-[18px] items-center flex px-[20px] py-[14px] justify-between relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-cyberpunk after:opacity-[0.60]">
             <div>
               <svg
@@ -160,7 +160,9 @@ export const Header = () => {
             </a>
           </div>
 
-          {/*  <div className="mt-[1px] flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
+          <div className="h-[100px] w-full"></div>
+
+          {/* <div className="mt-[1px] flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
             <div>
               <img
                 className="rounded-[5px] max-w-[65px] h-auto object-cover"
