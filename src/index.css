@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  outline: none;
-}
-
 @layer base {
   @font-face {
     font-family: "Gotham Pro";
@@ -293,7 +289,6 @@ table {
 
 body {
   background-color: #52357d;
-  -webkit-transform: translate3d(0, 0, 0);
 }
 /* БАЛАНСИРОВАНИЕ ТЕКСТА */
 .textwrap {
@@ -514,4 +509,31 @@ body {
 }
 .hoveringbg:hover {
   background: rgba(214, 254, 80, 0.2);
+}
+
+.z-index-header {
+  z-index: 999;
+}
+
+/* СТИЛИЗАЦИЯ СКРОЛБАРА */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #3474dc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6fe50;
+  border-radius: 20px;
+}
+/* СТИЛИЗАЦИЯ СКРОЛБАРА */
+
+.ClosedModal:hover path {
+  fill: #d6fe50;
+}
+.ClosedModal:active {
+  border: 1px solid #d6fe50;
+  border-radius: 5px;
 }

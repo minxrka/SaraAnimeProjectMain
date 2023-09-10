@@ -8,17 +8,19 @@ import { SliderAnime } from "./components/sliderAnime/sliderAnime";
 
 function App() {
   return (
-    <div className="overflow-hidden">
+    <div className="main">
       <Header />
-      <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
-        <div className="sm:hidden">
-          <Slider />
+      <div className="overflow-hidden">
+        <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
+          <div className="sm:hidden">
+            <Slider />
+          </div>
+          <ItemAnime />
+          <Join />
+          <SliderAnime />
         </div>
-        <ItemAnime />
-        <Join />
-        <SliderAnime />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }
