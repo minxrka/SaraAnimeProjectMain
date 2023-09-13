@@ -106,6 +106,7 @@ export const HeaderLoggedUser = () => {
 
           <li>
             <a
+              to="/anime"
               href="#"
               className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
             >

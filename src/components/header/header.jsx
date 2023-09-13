@@ -5,6 +5,7 @@ import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
 import notFound from "../../img/other-content/unnamed.png";
 import Dialog from "@mui/material/Dialog";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   /* ОТКРЫТИЕ МОДАЛЬНОГО ОКНА */
@@ -95,21 +96,25 @@ export const Header = () => {
             </a>
           </li>
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Главная
-            </a>
+            <NavLink to="/reg">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Главная
+              </a>
+            </NavLink>
           </li>
 
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Аниме
-            </a>
+            <NavLink to="/anime">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Аниме
+              </a>
+            </NavLink>
           </li>
           <li>
             <a

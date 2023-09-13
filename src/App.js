@@ -1,26 +1,22 @@
 import "./App.css";
 import { Footer } from "./components/footer/footer";
 import { Header } from "./components/header/header";
-import { Join } from "./components/join us/join";
-import { ItemAnime } from "./components/mainItems/mainItem";
-import { Slider } from "./components/slider/slider";
-import { SliderAnime } from "./components/sliderAnime/sliderAnime";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotRegistred from "./pages/NotRegistredUsers/notregistredusers";
+import MainContentPageAnime from "./pages/MainPageContentAnime/mainpagecontentanime";
+import ScrollToTop from "./utils/scrollToTop";
 function App() {
   return (
-    <div className="main">
-      <Header />
-      <div className="overflow-hidden">
-        <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
-          <div className="sm:hidden">
-            <Slider />
-          </div>
-          <ItemAnime />
-          <Join />
-          <SliderAnime />
-        </div>
+    <div className="App">
+      <Router>
+        <ScrollToTop></ScrollToTop>
+        <Header />
+        <Routes>
+          <Route path="/reg" element={<NotRegistred />} />
+          <Route path="/anime" element={<MainContentPageAnime />} />
+        </Routes>
         <Footer />
-      </div>
+      </Router>
     </div>
   );
 }
