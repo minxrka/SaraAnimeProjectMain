@@ -537,3 +537,9 @@ body {
   border: 1px solid #d6fe50;
   border-radius: 5px;
 }
+
+/* BACKGROUND КНОПКИ СМОТРЕТЬ ЕЩЕ */
+.buttonShowMore:hover {
+  background: rgba(214, 254, 80, 0.15);
+}
+/* BACKGROUND КНОПКИ СМОТРЕТЬ ЕЩЕ */

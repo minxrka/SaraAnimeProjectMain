@@ -22,7 +22,7 @@ export const ItemAnime = () => {
           <p className="textBtnShowMore">Смотреть все</p>
         </a>
       </section>
-      <section className="flex justify-between flex-wrap mt-[30px] gap-[60px] md:justify-center">
+      <section className="flex justify-between flex-wrap mt-[30px] gap-[80px] lg:gap-[40px] md:justify-center">
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
           <a href="">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">

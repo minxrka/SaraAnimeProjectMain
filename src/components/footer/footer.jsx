@@ -70,7 +70,7 @@ export const Footer = () => {
             <p className="text-white font-GothamPro font-light text-[20px] textwrap">
               Только актуальные новости. Мы тоже не любим <br></br> спам :)
             </p>
-            <div class="input-container">
+            <form class="input-container">
               <input
                 required=""
                 placeholder="Email"
@@ -81,7 +81,7 @@ export const Footer = () => {
               <button class="invite-btn font-Akira" type="button">
                 follow!
               </button>
-            </div>
+            </form>
           </div>
         </section>
         <aside className="social flex max-w-[500px] mx-auto mt-[60px] gap-[57px] flex-wrap md:justify-center">
