@@ -543,3 +543,26 @@ body {
   background: rgba(214, 254, 80, 0.15);
 }
 /* BACKGROUND КНОПКИ СМОТРЕТЬ ЕЩЕ */
+
+.GradientWatchAnime {
+  background: linear-gradient(180deg, rgba(82, 53, 125, 0.85) 0%, #52357d 95%);
+}
+.bgbuttonSearchAnime {
+  background: rgba(73, 144, 232, 0.47);
+}
+.containerGrid {
+  display: grid;
+  /* Будет создано 3 колонки */
+  grid-template-columns: 300px auto;
+}
+
+/* .content {
+  min-height: 100vh;
+  position: relative;
+}
+.content .footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+} */

@@ -3,7 +3,7 @@ import MainLogo from "../../img/logo/main-logo.svg";
 
 export const Footer = () => {
   return (
-    <footer className="mt-[56px] sticky bg-darkViolet py-[50px]">
+    <footer className="mt-[56px] footer sticky bg-darkViolet py-[50px]">
       <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <section className="flex justify-between flex-wrap gap-[100px] lg:gap-[50px] md:gap-[20px]">
           <div className="flex flex-col max-w-[300px]">

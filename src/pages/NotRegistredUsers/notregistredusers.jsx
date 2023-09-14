@@ -5,7 +5,7 @@ import { ItemAnime } from "../../components/mainItems/mainItem";
 import { Slider } from "../../components/slider/slider";
 import { SliderAnime } from "../../components/sliderAnime/sliderAnime";
 
-function NotRegistred() {
+function Home() {
   return (
     <div className="main">
       <div className="overflow-hidden">
@@ -17,10 +17,9 @@ function NotRegistred() {
           <Join />
           <SliderAnime />
         </div>
-        <Footer />
       </div>
     </div>
   );
 }
 
-export default NotRegistred;
+export default Home;
