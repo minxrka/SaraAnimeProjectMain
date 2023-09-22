@@ -6,7 +6,7 @@ import arrow from "../../img/other-content/Arrow 1.png";
 
 export const SupportUs = () => {
   return (
-    <main>
+    <main className="max-w-[1500px] mx-auto">
       <section className="relative max-w-full h-auto bg-[#8198D9] rounded-[20px] mt-[50px] py-[32px] px-[25px] md:py-[20px] md:px-[10px]">
         <h1 className="text-[#232323] font-Bowler text-[120px] textwrap xlbig:text-[100px] xl:text-[80px] lg:text-[50px] md:text-[27px]">
           Спасибо, что ты с нами!

@@ -10,7 +10,7 @@ import Anime8 from "../../img/bg-anime-card/small/648af8dc77dc4457600755.jpg";
 
 export const ItemAnime = () => {
   return (
-    <main className="overflow-hidden px-[20px] py-[20px] border-solid border border-mainBlue mt-[39px] rounded-[20px]">
+    <main className="overflow-hidden px-[20px] py-[20px] border-solid border border-mainBlue mt-[39px] rounded-[20px] max-w-[1500px] mx-auto">
       <section className="flex justify-between items-center md:flex-col md:text-center gap-[8px]">
         <h1 className="text-white text-[40px] font-Bowler xl:text-[35px] lg:text-[30px] textwrap">
           Популярное в этом месяце

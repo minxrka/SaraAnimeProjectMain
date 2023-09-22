@@ -21,7 +21,7 @@ module.exports = {
         slide5: "url('../src/img/slider/slide5.png')",
         WatchAnimeBg:
           "url('../src/img/trailer-photo/kensin/64a70ec4d2ceb025626775.jpg')",
-        heroGradient: "linear-gradient(110deg, #4923B4 0%, #E878CF 100%)",
+        heroGradient: "linear-gradient(270deg, #2B60CA 0%, #754BB6 100%)",
         WatchGradient:
           "linear-gradient(180deg, rgba(82 53 125 0.85) 0%, #52357D 95%)",
       },

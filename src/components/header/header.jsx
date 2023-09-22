@@ -91,9 +91,11 @@ export const Header = () => {
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
           <li>
-            <a href="#">
-              <img src={MainLogo} alt="" />
-            </a>
+            <NavLink to="/">
+              <a href="#">
+                <img src={MainLogo} alt="" />
+              </a>
+            </NavLink>
           </li>
           <li>
             <NavLink to="/">
@@ -117,12 +119,14 @@ export const Header = () => {
             </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Случайное
-            </a>
+            <NavLink to="watch">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Случайное
+              </a>
+            </NavLink>
           </li>
           <li>
             <a

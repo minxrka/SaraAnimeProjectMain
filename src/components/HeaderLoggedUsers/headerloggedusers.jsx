@@ -7,6 +7,8 @@ import notFound from "../../img/other-content/unnamed.png";
 import Dialog from "@mui/material/Dialog";
 import ProfileUser from "../../img/other-content/bea04d644cd9b449f35265685fea3454.jpg";
 
+import { NavLink } from "react-router-dom";
+
 export const HeaderLoggedUser = () => {
   /* ОТКРЫТИЕ МОДАЛЬНОГО ОКНА */
   const [open, setOpen] = React.useState(false);
@@ -91,35 +93,42 @@ export const HeaderLoggedUser = () => {
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
           <li>
-            <a href="#">
-              <img src={MainLogo} alt="" />
-            </a>
+            <NavLink to="/">
+              <a href="#">
+                <img src={MainLogo} alt="" />
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Главная
-            </a>
+            <NavLink to="/">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Главная
+              </a>
+            </NavLink>
           </li>
 
           <li>
-            <a
-              to="/anime"
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Аниме
-            </a>
+            <NavLink to="/anime">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Аниме
+              </a>
+            </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Случайное
-            </a>
+            <NavLink to="watch">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Случайное
+              </a>
+            </NavLink>
           </li>
           <li>
             <a

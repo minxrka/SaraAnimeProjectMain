@@ -30,7 +30,7 @@ import Anime28 from "../../img/bg-anime-card/small/5fa133e876982290741352.jpg";
 
 export const ContentAnime = () => {
   return (
-    <div>
+    <div className="max-w-[1500px] mx-auto">
       <section className="items-center text-center mt-[50px] mb-[50px]">
         <h1 className="text-white text-[40px] font-GothamPro font-light xl:text-[35px] lg:text-[30px] textwrap">
           Аниме каталог
