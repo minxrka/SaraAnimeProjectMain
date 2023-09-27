@@ -38,6 +38,10 @@ module.exports = {
         darkViolet: "#332154",
         lightViolet: "#624194",
       },
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+        "pulse-slow": "pulse 3s linear infinite",
+      },
     },
   },
   plugins: [],

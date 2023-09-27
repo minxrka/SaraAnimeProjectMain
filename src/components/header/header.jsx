@@ -211,10 +211,10 @@ export const Header = () => {
             </button>
           </div>
           <section className="bg-mainViolet overflow-auto max-w-[577px] max-h-[600px]">
-            <div className="h-[100px] w-full"></div>
+            {/* <div className="h-[100px] w-full"></div> */}
 
-            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОСКЕ МОДАЛЬНОГО ОКНА */}
-            {/* <div className="cursor-pointer flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
+            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
+            <div className="cursor-pointer flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
               <div>
                 <img
                   className="rounded-[5px] max-w-[65px] h-auto object-cover"
@@ -233,7 +233,7 @@ export const Header = () => {
                   2004 Осень
                 </p>
               </div>
-            </div> */}
+            </div>
 
             {/* <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
               <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
@@ -242,9 +242,9 @@ export const Header = () => {
                 src={notFound}
                 alt=""
               />
-            </div> */}
+            </div> 
 
-            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОСКЕ МОДАЛЬНОГО ОКНА */}
+            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
           </section>
         </div>
       </Dialog>

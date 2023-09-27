@@ -10,7 +10,7 @@ import AnimePerson from "../../img/trailer-photo/kensin/Himura_Kenshin_default.j
 import AnimePerson2 from "../../img/trailer-photo/kensin/Kaoru_default.jpg";
 import AnimePerson3 from "../../img/trailer-photo/kensin/640px-Yahiko12.jpg";
 import AnimePerson4 from "../../img/trailer-photo/kensin/Sagara_Sanosuke_default.jpg";
-import { useRef, useState } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,19 +21,49 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 
+//////////////
+const useTruncatedElement = ({ ref }) => {
+  const [isTruncated, setIsTruncated] = useState(false);
+  const [isShowingMore, setIsShowingMore] = useState(false);
+
+  useLayoutEffect(() => {
+    const { offsetHeight, scrollHeight } = ref.current || {};
+
+    if (offsetHeight && scrollHeight && offsetHeight < scrollHeight) {
+      setIsTruncated(true);
+    } else {
+      setIsTruncated(false);
+    }
+  }, [ref]);
+
+  const toggleIsShowingMore = () => setIsShowingMore((prev) => !prev);
+
+  return {
+    isTruncated,
+    isShowingMore,
+    toggleIsShowingMore,
+  };
+};
+////////////////
+
 export const WatchAnime = () => {
+  const ref = React.useRef(null);
+  const { isTruncated, isShowingMore, toggleIsShowingMore } =
+    useTruncatedElement({
+      ref,
+    });
   return (
     <main>
-      <section className="content bg-WatchAnimeBg w-full h-full bg-cover bg-center">
+      <section className="bg-WatchAnimeBg w-full h-full bg-cover bg-center bg-no-repeat">
         <div className="GradientWatchAnime h-full w-full">
           <section className="px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
             {/* огр.контента */}
             <div className="max-w-[1300px] mx-auto">
               {/* огр.контента */}
-              <section className="containerGrid">
-                <aside className="flex flex-col gap-[15px] max-w-[300px] h-auto mt-[80px]">
+              <section className="containerGrid md:grid-cols-1">
+                <aside className="flex flex-col gap-[15px] max-w-[300px] h-auto mt-[80px] md:max-w-full md:h-full">
                   <img
-                    className="w-full object-cover rounded-[20px] h-[420px]"
+                    className="w-full object-cover rounded-[20px] h-[420px] md:h-[600px] sm:h-[500px]"
                     src={AnimePreview}
                     alt=""
                   />
@@ -75,7 +105,7 @@ export const WatchAnime = () => {
                     </div>
                   </button>
                 </aside>
-                <aside className="flex flex-col mt-[80px] ml-[44px]">
+                <aside className="flex flex-col mt-[80px] ml-[44px] md:ml-[0px]">
                   <div>
                     <h1 className="text-white font-GothamPro text-[36px] font-light">
                       Бродяга Кэнсин
@@ -108,7 +138,7 @@ export const WatchAnime = () => {
                   </section>
                   <section className="flex mt-[16px] gap-[54px]">
                     <div className="flex flex-col gap-[16px]">
-                      <h1 className="text-white font-GothamPro text-[16px]">
+                      <h1 className="text-white font-GothamPro text-[16px] lg:text-[15px]">
                         Кол-во серий
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px]">
@@ -136,7 +166,7 @@ export const WatchAnime = () => {
                         Озвучка
                       </h1>
                     </div>
-                    <div className="flex flex-col gap-[16px] mt-[1px]">
+                    <div className="flex flex-col gap-[16px] mt-[1px] lg:gap-[18px] md:gap-[16px] sm:gap-[18px]">
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
                         3 / 12
                       </h1>
@@ -182,12 +212,6 @@ export const WatchAnime = () => {
                         >
                           AniLibria
                         </a>
-                        <a
-                          href="#"
-                          className="bgbuttonSearchAnime rounded-[5px] px-[15px] py-[2px] border-solid border border-mainBlue text-white text-[16px] font-GothamPro font-extralight"
-                        >
-                          Ещё (5)
-                        </a>
                       </div>
                     </div>
                   </section>
@@ -195,7 +219,12 @@ export const WatchAnime = () => {
                     <h1 className="text-white font-GothamPro text-[16px]">
                       Описание
                     </h1>
-                    <p className="text-white lineclamp7 leading-6 font-GothamPro text-[16px] font-extralight text-justify mt-[16px]">
+                    <p
+                      ref={ref}
+                      className={`break-words text-white leading-6 font-GothamPro text-[16px] font-extralight text-justify mt-[16px] duration-300 transition-all ${
+                        !isShowingMore && "lineclamp7"
+                      }`}
+                    >
                       История странствующего мечника эпохи Мэйдзи по имени
                       Кэнсин – классика жанра аниме. Фанаты дождались
                       современной адаптации любимой истории в отличной
@@ -213,9 +242,12 @@ export const WatchAnime = () => {
                       новых смертей? Ведь щупальца прошлых кровопролитий не
                       хотят отпускать умелого ликвидатора.
                     </p>
-                    <button className="text-cyberpunk flex items-center gap-[5px] hover:text-[#C8EA57] transition-colors font-GothamPro text-[16px] border-b-[1px] border-cybe font-extralight">
-                      Читать далее
-                      <svg
+                    <button
+                      onClick={toggleIsShowingMore}
+                      className="text-cyberpunk hover:animate-pulse-slow flex items-center gap-[5px] hover:text-[#C8EA57] transition-colors font-GothamPro text-[16px] border-b-[1px] border-cyberpunk font-extralight"
+                    >
+                      {isShowingMore ? "Скрыть" : "Читать далее"}
+                      {/* <svg
                         width="12"
                         height="7"
                         viewBox="0 0 12 7"
@@ -229,6 +261,18 @@ export const WatchAnime = () => {
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
+                      </svg> */}
+                      <svg
+                        className=""
+                        xmlns="http://www.w3.org/2000/svg"
+                        x="0px"
+                        y="0px"
+                        fill="#D6FE50"
+                        width="20"
+                        height="30"
+                        viewBox="0 0 50 50"
+                      >
+                        <path d="M 33.25 2 C 32.667 2 31.36871 2.3341787 30.490234 3.7695312 C 29.611759 5.204884 29 7.5997204 29 11.927734 C 29 16.635937 30.289063 21.029297 30.289062 21.029297 L 30.554688 21.939453 L 31.476562 21.724609 C 31.476562 21.724609 34.113941 21.114486 36.949219 19.818359 C 38.787224 18.97859 40.737839 17.819982 42.283203 16.328125 C 43.828568 14.836268 45 12.951814 45 10.75 C 45 9.6302455 44.81028 8.2968922 44.128906 7.1269531 C 43.447532 5.9570141 42.132732 5 40.375 5 C 39.359509 5 38.576392 5.3864285 37.996094 5.7714844 C 37.729384 5.3667994 37.414802 4.901244 37.011719 4.4082031 C 36.100291 3.2933674 34.939048 2 33.25 2 z M 33.09375 3.9980469 C 33.156598 3.9932342 33.20825 4 33.25 4 C 33.660952 4 34.682819 4.7196639 35.462891 5.6738281 C 35.852927 6.1509103 36.195495 6.646372 36.445312 7.0332031 C 36.69513 7.4200343 36.819018 7.6407049 36.892578 7.7636719 L 37.630859 9 L 38.53125 7.875 C 38.53125 7.875 39.262821 7 40.375 7 C 41.492268 7 41.989968 7.4247515 42.402344 8.1328125 C 42.81472 8.8408735 43 9.8817545 43 10.75 C 43 12.240186 42.201167 13.629232 40.894531 14.890625 C 39.587896 16.152018 37.805182 17.226816 36.117188 17.998047 C 33.983508 18.973443 32.661766 19.266397 31.976562 19.443359 C 31.671347 18.251234 31 15.424722 31 11.927734 C 31 7.7967492 31.638241 5.7258974 32.197266 4.8125 C 32.616534 4.127452 32.905205 4.012485 33.09375 3.9980469 z M 11.851562 4 C 10.344192 4 8.9197164 4.350012 7.8144531 5.1816406 C 6.7091899 6.0132692 6 7.3702083 6 8.984375 C 6 9.9840801 6.3691784 10.710858 6.7851562 11.298828 C 6.3796266 11.552561 5.9215729 11.844851 5.4316406 12.240234 C 4.2917313 13.160159 3 14.458133 3 16.25 C 3 16.768404 3.2347759 18.152998 4.6601562 19.195312 C 6.0855366 20.237627 8.5296353 21 12.943359 21 C 18.112926 21 22.0625 19.699219 22.0625 19.699219 L 22.902344 19.423828 L 22.732422 18.558594 C 22.732422 18.558594 21.731625 13.355404 18.980469 8.65625 C 18.57124 7.9569741 17.754365 6.8664974 16.554688 5.8769531 C 15.35501 4.8874089 13.750777 4 11.851562 4 z M 11.851562 6 C 13.116348 6 14.309131 6.6164661 15.283203 7.4199219 C 16.257276 8.2233776 16.992088 9.2152915 17.255859 9.6660156 C 19.402273 13.33223 20.258963 16.85858 20.523438 18.025391 C 19.477373 18.322905 16.870504 19 12.943359 19 C 8.7660843 19 6.7382134 18.238967 5.8398438 17.582031 C 4.9414741 16.925095 5 16.434596 5 16.25 C 5 15.541867 5.7391594 14.562201 6.6875 13.796875 C 7.1616703 13.414212 7.656758 13.089939 8.0429688 12.855469 C 8.236074 12.738234 8.4022734 12.641976 8.5273438 12.572266 C 8.6524139 12.502555 8.68461 12.490797 8.8027344 12.419922 L 9.9238281 11.748047 L 8.9824219 10.841797 C 8.5214355 10.39754 8 9.8327868 8 8.984375 C 8 7.9035417 8.3688883 7.2678714 9.015625 6.78125 C 9.6623617 6.2946286 10.662934 6 11.851562 6 z M 20.074219 28.056641 L 19.236328 28.285156 C 18.405984 28.512539 16.201592 29.235956 13.900391 30.621094 C 12.260773 31.607773 10.585102 32.93499 9.2792969 34.46875 C 7.973142 36.002921 7 37.766935 7 39.667969 C 7 43.743365 9.4256701 46 11.615234 46 C 12.88574 46 13.794091 45.54061 14.425781 45.087891 C 15.26883 46.166446 16.815262 48 19.316406 48 C 20.259422 48 21.043589 47.441638 21.523438 46.792969 C 22.003286 46.1443 22.289205 45.383955 22.498047 44.621094 C 22.91573 43.095371 23 41.576387 23 40.957031 C 23 34.75169 20.417969 28.853516 20.417969 28.853516 L 20.074219 28.056641 z M 36.742188 29 C 31.456888 29 27.962891 30.042969 27.962891 30.042969 L 27.132812 30.291016 L 27.261719 31.146484 C 27.261719 31.146484 27.75039 34.493572 29.142578 37.773438 C 29.992091 39.776525 31.094276 41.768061 32.511719 43.316406 C 33.929162 44.864751 35.730232 46 37.84375 46 C 40.075181 46 41.646363 45.378315 42.638672 44.460938 C 43.630981 43.543559 44 42.401985 44 41.484375 C 44 40.347135 43.599582 39.450041 43.199219 38.826172 C 43.631081 38.543301 43.86041 38.437563 44.529297 37.873047 C 45.662793 36.916416 47 35.713913 47 33.984375 C 47 32.927119 46.409713 32.030036 45.652344 31.404297 C 44.894975 30.778557 43.946999 30.337168 42.921875 29.990234 C 40.871627 29.296366 38.501756 29 36.742188 29 z M 18.904297 30.591797 C 19.389076 31.815284 21 36.067811 21 40.957031 C 21 41.344676 20.90893 42.847769 20.568359 44.091797 C 20.398076 44.713811 20.157948 45.276466 19.916016 45.603516 C 19.674083 45.930565 19.539891 46 19.316406 46 C 17.745198 46 15.978068 43.87994 15.306641 43.0625 L 14.525391 42.113281 L 13.753906 43.070312 C 13.753906 43.070312 13.01696 44 11.615234 44 C 11.006799 44 9 42.938573 9 39.667969 C 9 38.480003 9.6786396 37.085954 10.802734 35.765625 C 11.92683 34.445296 13.458678 33.220222 14.931641 32.333984 L 14.933594 32.333984 C 16.639255 31.307314 17.986471 30.888874 18.904297 30.591797 z M 36.742188 31 C 38.263618 31 40.522748 31.289634 42.28125 31.884766 C 43.160501 32.182332 43.911104 32.560427 44.376953 32.945312 C 44.842803 33.330199 45 33.635631 45 33.984375 C 45 34.395837 44.221285 35.51413 43.238281 36.34375 C 42.255278 37.17337 41.257812 37.765625 41.257812 37.765625 L 40.080078 38.462891 L 41.101562 39.373047 C 41.101562 39.373047 42 40.195218 42 41.484375 C 42 41.856765 41.841691 42.474066 41.28125 42.992188 C 40.720809 43.510309 39.713319 44 37.84375 44 C 36.441268 44 35.172338 43.260202 33.988281 41.966797 C 32.804224 40.673392 31.774862 38.856099 30.984375 36.992188 C 30.014381 34.706971 29.60816 32.75701 29.423828 31.765625 C 30.398292 31.520405 32.720826 31 36.742188 31 z"></path>
                       </svg>
                     </button>
                   </div>
@@ -238,13 +282,127 @@ export const WatchAnime = () => {
                 <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
                 <Swiper
                   slidesPerView={4}
-                  spaceBetween={20}
+                  breakpoints={{
+                    0: {
+                      slidesPerView: 1,
+                    },
+                    768: {
+                      spaceBetween: 50,
+                      slidesPerView: 2,
+                    },
+                    880: {
+                      spaceBetween: 130,
+                      slidesPerView: 2,
+                    },
+                    884: {
+                      spaceBetween: 130,
+                      slidesPerView: 2,
+                    },
+                    944: {
+                      spaceBetween: 190,
+                      slidesPerView: 2,
+                    },
+                    988: {
+                      spaceBetween: 320,
+                      slidesPerView: 2,
+                    },
+                    1000: {
+                      spaceBetween: 250,
+                      slidesPerView: 2,
+                    },
+                    1048: {
+                      spaceBetween: 290,
+                      slidesPerView: 2,
+                    },
+                    1072: {
+                      spaceBetween: 10,
+                      slidesPerView: 3,
+                    },
+                    1228: {
+                      spaceBetween: 80,
+                      slidesPerView: 3,
+                    },
+                    1240: {
+                      spaceBetween: 90,
+                      slidesPerView: 3,
+                    },
+                    1252: {
+                      spaceBetween: 100,
+                      slidesPerView: 3,
+                    },
+                    1276: {
+                      spaceBetween: 100,
+                      slidesPerView: 3,
+                    },
+                    1300: {
+                      spaceBetween: 150,
+                      slidesPerView: 3,
+                    },
+                    1324: {
+                      spaceBetween: 150,
+                      slidesPerView: 3,
+                    },
+
+                    1332: {
+                      spaceBetween: 160,
+                      slidesPerView: 3,
+                    },
+                    1336: {
+                      spaceBetween: 160,
+                      slidesPerView: 3,
+                    },
+
+                    1360: {
+                      spaceBetween: 170,
+                      slidesPerView: 3,
+                    },
+                    1515: {
+                      spaceBetween: 30,
+                      slidesPerView: 4,
+                    },
+                    1543: {
+                      spaceBetween: 25,
+                      slidesPerView: 3,
+                    },
+                    1615: {
+                      spaceBetween: 130,
+                      slidesPerView: 3,
+                    },
+                    1630: {
+                      spaceBetween: 60,
+                      slidesPerView: 3,
+                    },
+                    1647: {
+                      spaceBetween: 70,
+                      slidesPerView: 3,
+                    },
+                    1716: {
+                      spaceBetween: 100,
+                      slidesPerView: 3,
+                    },
+                    1779: {
+                      spaceBetween: 130,
+                      slidesPerView: 3,
+                    },
+                    1799: {
+                      spaceBetween: 140,
+                      slidesPerView: 3,
+                    },
+                    1835: {
+                      spaceBetween: 160,
+                      slidesPerView: 3,
+                    },
+                    1847: {
+                      spaceBetween: 30,
+                      slidesPerView: 4,
+                    },
+                  }}
                   navigation={true}
                   modules={[Navigation]}
-                  className="mySwiper mt-[20px] mb-[20px] max-w-[1400px] overflow-hidden"
+                  className="mySwiper mt-[20px] mb-[20px] max-w-full"
                 >
-                  <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                  <SwiperSlide className="">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -280,8 +438,8 @@ export const WatchAnime = () => {
                       </a>
                     </div>
                   </SwiperSlide>
-                  <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                  <SwiperSlide className="">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -317,8 +475,8 @@ export const WatchAnime = () => {
                       </a>
                     </div>
                   </SwiperSlide>
-                  <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                  <SwiperSlide className="">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -354,8 +512,8 @@ export const WatchAnime = () => {
                       </a>
                     </div>
                   </SwiperSlide>
-                  <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                  <SwiperSlide className="">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -392,7 +550,7 @@ export const WatchAnime = () => {
                     </div>
                   </SwiperSlide>
                   <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -429,7 +587,7 @@ export const WatchAnime = () => {
                     </div>
                   </SwiperSlide>
                   <SwiperSlide className="overflow-hidden">
-                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] sm:w-full">
+                    <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
                       <a href="">
                         <div className="relative rounded-[10px] ObjfitSlider">
                           <img
@@ -473,6 +631,7 @@ export const WatchAnime = () => {
           </section>
         </div>
       </section>
+
       <main className="mt-[40px] px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <section className="max-w-[1300px] mx-auto">
           <div>
@@ -493,10 +652,10 @@ export const WatchAnime = () => {
           <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
           <div className="mt-[40px]">
             <h1 className="text-white font-GothamPro text-[21px]">
-              Смотреть аниме онлайн
+              Главные персонажи
             </h1>
           </div>
-          <aside className="mt-[20px] flex flex-wrap gap-[40px]">
+          <aside className="mt-[20px] flex flex-wrap gap-[40px] md:justify-between sm:justify-center">
             <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
               <div className="">
                 <img
