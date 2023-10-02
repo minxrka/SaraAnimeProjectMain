@@ -9,7 +9,7 @@ import { WatchAnime } from "./components/WatchAnime/watchanime";
 import { HeaderLoggedUser } from "./components/HeaderLoggedUsers/headerloggedusers";
 function App() {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <Router>
         <ScrollToTop></ScrollToTop>
         <Header />

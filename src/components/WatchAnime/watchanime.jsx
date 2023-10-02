@@ -21,7 +21,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 
-//////////////
+/* Скрытие и показ описания */
 const useTruncatedElement = ({ ref }) => {
   const [isTruncated, setIsTruncated] = useState(false);
   const [isShowingMore, setIsShowingMore] = useState(false);
@@ -44,14 +44,16 @@ const useTruncatedElement = ({ ref }) => {
     toggleIsShowingMore,
   };
 };
-////////////////
+/* Скрытие и показ описания */
 
 export const WatchAnime = () => {
+  /*   Реф ссылка для описания */
   const ref = React.useRef(null);
   const { isTruncated, isShowingMore, toggleIsShowingMore } =
     useTruncatedElement({
       ref,
     });
+  /*   Реф ссылка для описания */
   return (
     <main>
       <section className="bg-WatchAnimeBg w-full h-full bg-cover bg-center bg-no-repeat">

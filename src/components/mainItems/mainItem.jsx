@@ -7,6 +7,7 @@ import Anime5 from "../../img/bg-anime-card/small/Made in abyss.jpg";
 import Anime6 from "../../img/bg-anime-card/small/5c4a436f3905b894455115.jpg";
 import Anime7 from "../../img/bg-anime-card/small/649359de6710e761305857.jpg";
 import Anime8 from "../../img/bg-anime-card/small/648af8dc77dc4457600755.jpg";
+import { NavLink } from "react-router-dom";
 
 export const ItemAnime = () => {
   return (
@@ -24,7 +25,7 @@ export const ItemAnime = () => {
       </section>
       <section className="flex justify-between flex-wrap mt-[30px] gap-[80px] lg:gap-[40px] md:justify-center">
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime1} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -68,10 +69,10 @@ export const ItemAnime = () => {
                 2022, Fantasy
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px]" src={Anime2} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -115,10 +116,10 @@ export const ItemAnime = () => {
                 2016, Action, Comedy, Fantasy
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime3} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -162,10 +163,10 @@ export const ItemAnime = () => {
                 2023, Drama, Supernatural, Seinen
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime4} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -209,10 +210,10 @@ export const ItemAnime = () => {
                 2023, Fantasy, Adventure, Supernatural
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime5} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -256,10 +257,10 @@ export const ItemAnime = () => {
                 2017, Fantasy, Science Fiction, Napplications
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime6} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -303,10 +304,10 @@ export const ItemAnime = () => {
                 2007, Comedy, Fur, Adventure, Science Fiction...
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime7} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -350,10 +351,10 @@ export const ItemAnime = () => {
                 2021, Drama, Supernatural, Super Power, Fantasy
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
         <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-          <a href="">
+          <NavLink to="watch">
             <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
               <img className="rounded-[20px] hui" src={Anime8} alt="" />
               <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -397,7 +398,7 @@ export const ItemAnime = () => {
                 2023, Senen, Fantasy, School, Action
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
 
         {/* БОЛЬШОЕ ИЗОБРАЖЕНИЕ ТЕСТ */}

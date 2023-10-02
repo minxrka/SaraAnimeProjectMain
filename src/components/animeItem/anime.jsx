@@ -1,10 +1,11 @@
 import React from "react";
 import Anime1 from "../../img/bg-anime-card/small/anime1.jpg";
+import { NavLink } from "react-router-dom";
 
 export const Anime = () => {
   return (
     <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-      <a href="">
+      <NavLink to="watch">
         <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
           <img className="rounded-[20px]" src={Anime1} alt="" />
           <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -48,7 +49,7 @@ export const Anime = () => {
             2022, Fantasy
           </p>
         </div>
-      </a>
+      </NavLink>
     </div>
   );
 };
