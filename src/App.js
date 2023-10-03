@@ -7,9 +7,10 @@ import MainContentPageAnime from "./pages/MainPageContentAnime/mainpagecontentan
 import ScrollToTop from "./utils/scrollToTop";
 import { WatchAnime } from "./components/WatchAnime/watchanime";
 import { HeaderLoggedUser } from "./components/HeaderLoggedUsers/headerloggedusers";
+import { RandomAnime } from "./pages/RandomAnime/RandomAnime";
 function App() {
   return (
-    <div className="overflow-hidden">
+    <div className="">
       <Router>
         <ScrollToTop></ScrollToTop>
         <Header />
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/anime" element={<MainContentPageAnime />} />
           <Route path="/watch" element={<WatchAnime />} />
+          <Route path="/random" element={<RandomAnime />} />
         </Routes>
         <Footer />
       </Router>

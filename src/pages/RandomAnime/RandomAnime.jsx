@@ -1,15 +1,17 @@
 import React from "react";
-import AnimePreview from "../../img/bg-anime-card/small/64a44110252fe851868925.jpg";
-import AnimeBgSlider1 from "../../img/trailer-photo/kensin/64a70ec4d2ceb025626775.jpg";
-import AnimeBgSlider2 from "../../img/trailer-photo/kensin/64a70ec4d0dc5879791949.jpg";
-import AnimeBgSlider3 from "../../img/trailer-photo/kensin/83feb2cbe64d30e1d7d584205bdd4e5afc8b408b.jpg";
-import AnimeBgSlider4 from "../../img/trailer-photo/kensin/64a70ec4d1ed9530852142.jpg";
-import AnimeBgSlider5 from "../../img/trailer-photo/kensin/64a70ec4d26fb632702244.jpg";
-import AnimeBgSlider6 from "../../img/trailer-photo/kensin/64a70ec4dc11d750919818.jpg";
-import AnimePerson from "../../img/trailer-photo/kensin/Himura_Kenshin_default.jpg";
-import AnimePerson2 from "../../img/trailer-photo/kensin/Kaoru_default.jpg";
-import AnimePerson3 from "../../img/trailer-photo/kensin/640px-Yahiko12.jpg";
-import AnimePerson4 from "../../img/trailer-photo/kensin/Sagara_Sanosuke_default.jpg";
+import AnimePreview from "../../img/bg-anime-card/small/c6cdd36ef0e3ca592e08e062436e3d2d.jpg";
+import AnimeBgSlider1 from "../../img/trailer-photo/death note/M1LqmrHafNc.jpg";
+import AnimeBgSlider2 from "../../img/trailer-photo/death note/1626799300_24-kartinkin-com-p-anime-tetrad-smerti-lait-i-misa-anime-kras-27.jpg";
+import AnimeBgSlider3 from "../../img/trailer-photo/death note/L-Lawliet-quotes.jpg";
+import AnimeBgSlider4 from "../../img/trailer-photo/death note/1625692191_49-phonoteka-org-p-ryuk-i-lait-art-krasivo-49.jpg";
+import AnimeBgSlider5 from "../../img/trailer-photo/death note/2914841108.jpg";
+import AnimeBgSlider6 from "../../img/trailer-photo/death note/SoG_jsJHnR4.jpg";
+import AnimePerson from "../../img/trailer-photo/death note/79e1c247e1b703aed98a013e87c1ac79.jpg";
+import AnimePerson2 from "../../img/trailer-photo/death note/63436b6d049deef692464a6ef6870035.jpg";
+import AnimePerson3 from "../../img/trailer-photo/death note/fa23614ee667be7b03531c843aa8c5a1.jpg";
+import AnimePerson4 from "../../img/trailer-photo/death note/e7ab0e2194557b30ed70dd8be4fb5487.jpg";
+import AnimePerson5 from "../../img/trailer-photo/death note/d1e84d59d906025480a081e6b2ac244b.jpg";
+import AnimePerson6 from "../../img/trailer-photo/death note/cbrDGfUbrZo.jpg";
 import { useRef, useState, useLayoutEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -46,7 +48,7 @@ const useTruncatedElement = ({ ref }) => {
 };
 /* Скрытие и показ описания */
 
-export const WatchAnime = () => {
+export const RandomAnime = () => {
   /*   Реф ссылка для описания */
   const ref = React.useRef(null);
   const { isTruncated, isShowingMore, toggleIsShowingMore } =
@@ -57,7 +59,7 @@ export const WatchAnime = () => {
   return (
     <main>
       {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
-      <section className="bg-WatchAnimeBg w-full h-full bg-cover bg-center bg-no-repeat">
+      <section className="bg-RandomAnimeBg w-full h-full bg-cover bg-center bg-no-repeat">
         {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
         <div className="GradientWatchAnime h-full w-full">
           <section className="px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
@@ -112,15 +114,15 @@ export const WatchAnime = () => {
                 <aside className="flex flex-col mt-[80px] ml-[44px] md:ml-[0px]">
                   <div>
                     <h1 className="text-white font-GothamPro text-[36px] font-light">
-                      Бродяга Кэнсин
+                      Тетрадь смерти
                     </h1>
                     <div className="flex mt-[12px] items-center gap-[10px]">
                       <p className="py-[4px] px-[6px] text-center border-solid border border-mainBlue rounded-[5px] text-[16px] text-white font-GothamPro font-light">
-                        18+
+                        16+
                       </p>
                       <span className="border-solid border border-mainBlue rounded-[50%] w-[10px] h-[10px]"></span>
                       <p className="text-[16px] text-white font-GothamPro font-light">
-                        2023г
+                        2006г
                       </p>
                       <span className="border-solid border border-mainBlue rounded-[50%] w-[10px] h-[10px]"></span>
                       <p className="text-[16px] text-white font-GothamPro font-light">
@@ -172,10 +174,10 @@ export const WatchAnime = () => {
                     </div>
                     <div className="flex flex-col gap-[16px] mt-[1px] lg:gap-[18px] md:gap-[16px] sm:gap-[18px]">
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                        3 / 12
+                        37 / 37
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                        Romance, Action
+                        Mystery, Thriller, Detective
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
                         22 мин. ~ серия
@@ -186,16 +188,16 @@ export const WatchAnime = () => {
                         </a>
                       </div>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                        Нобухиро Вацуки
+                        Оба Цугуми
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                        Фурухаси Кадзухиро
+                        Араки Тэцуро
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
                         манга
                       </h1>
                       <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                        Бродяга Кэнсин
+                        Тетрадь смерти
                       </h1>
                       <div className="flex gap-[30px] max-w-[700px] flex-wrap">
                         <a
@@ -229,22 +231,21 @@ export const WatchAnime = () => {
                         !isShowingMore && "lineclamp7"
                       }`}
                     >
-                      История странствующего мечника эпохи Мэйдзи по имени
-                      Кэнсин – классика жанра аниме. Фанаты дождались
-                      современной адаптации любимой истории в отличной
-                      прорисовке. Зрителя ждет судьбоносная встреча хозяйки
-                      додзе Каору с загадочным странником, чье мужественное лицо
-                      покрыто шрамами. Женщина не подозревает, что перед ней не
-                      просто воин-ветеран, а элитный киллер с совершенными
-                      навыками мечника. Кэнсин устал нести смерть, поэтому
-                      заменил привычную катану на незаточенную, чтобы случайно
-                      не отнять чью-то жизнь. При этом Кэнсин не отказался от
-                      сражений, а лишь перенаправил свои умения на защиту
-                      угнетенных.Благодаря Каору суровый воин обретает дом и
-                      друзей. Горе тому, кто нарушит покой Кэнсина и его
-                      близких. Но удастся ли защитнику справедливости избежать
-                      новых смертей? Ведь щупальца прошлых кровопролитий не
-                      хотят отпускать умелого ликвидатора.
+                      У старшеклассника Лайта Ягами в жизни есть всё: успехи в
+                      школе, популярность среди сверстниц, замечательные
+                      родители, блестящее будущее. Но однажды юноша находит
+                      странную чёрную тетрадку и знакомится с её владельцем –
+                      синигами Рюком. Возможности «Тетради смерти» позволяют
+                      Лайту стать Кирой – загадочным и всеведущим убийцей,
+                      карающим преступников. Никто не может его поймать. У
+                      таинственного «L» никогда не было поражений: сохраняя
+                      инкогнито, он успешно распутывал самые трудные дела и
+                      помогал полиции. Появление Киры стало вызовом для его
+                      экстраординарных способностей. Итак, два весьма умных и
+                      одарённых молодых человека сталкиваются в смертельном
+                      противостоянии, и теперь каждая мелочь, каждая случайность
+                      может склонить весы на ту или другую сторону. И никто не
+                      собирается проигрывать или сдаваться…
                     </p>
                     <button
                       onClick={toggleIsShowingMore}
@@ -645,7 +646,7 @@ export const WatchAnime = () => {
           </div>
           <div className="mt-[20px] max-w-[1000px] h-[600px] md:max-w-[600px] md:h-[400px]">
             <iframe
-              src="//kodik.info/seria/1170509/c7c42fb5de1730cc86dbdf294c638d68/720p"
+              src="//kodik.info/seria/208036/30e0debac887bfa80643c54b25ba6e21/720p"
               width="100%"
               height="100%"
               frameborder="0"
@@ -670,7 +671,7 @@ export const WatchAnime = () => {
               </div>
               <div className="mt-[15px]">
                 <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                  Химура Кэнсин
+                  Лайт Ягами
                 </h1>
               </div>
             </section>
@@ -684,7 +685,7 @@ export const WatchAnime = () => {
               </div>
               <div className="mt-[15px]">
                 <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                  Камия Каору
+                  Эл
                 </h1>
               </div>
             </section>
@@ -698,7 +699,7 @@ export const WatchAnime = () => {
               </div>
               <div className="mt-[15px]">
                 <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                  Мёдзин Яхико
+                  Рюк
                 </h1>
               </div>
             </section>
@@ -712,7 +713,35 @@ export const WatchAnime = () => {
               </div>
               <div className="mt-[15px]">
                 <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                  Сагара Саносукэ
+                  Миса Аманэ
+                </h1>
+              </div>
+            </section>
+            <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
+              <div className="">
+                <img
+                  className="w-full object-cover rounded-[10px] h-[250px]"
+                  src={AnimePerson5}
+                  alt=""
+                />
+              </div>
+              <div className="mt-[15px]">
+                <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
+                  Мэлло
+                </h1>
+              </div>
+            </section>
+            <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
+              <div className="">
+                <img
+                  className="w-full object-cover rounded-[10px] h-[250px]"
+                  src={AnimePerson6}
+                  alt=""
+                />
+              </div>
+              <div className="mt-[15px]">
+                <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
+                  Ниа
                 </h1>
               </div>
             </section>

@@ -119,7 +119,7 @@ export const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="watch">
+            <NavLink to="random">
               <a
                 href="#"
                 className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
@@ -214,26 +214,30 @@ export const Header = () => {
             {/* <div className="h-[100px] w-full"></div> */}
 
             {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
-            <div className="cursor-pointer flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
-              <div>
-                <img
-                  className="rounded-[5px] max-w-[65px] h-auto object-cover"
-                  src={my}
-                  alt=""
-                />
-              </div>
-              <div className="ml-[11px] flex flex-col justify-around items-start">
-                <p className="font-GothamPro text-[13px] text-whiteGray">
-                  Завершен
-                </p>
-                <h1 className="font-GothamPro text-[15px] text-white font-light">
-                  Блич
-                </h1>
-                <p className="font-GothamPro text-[13px] text-white font-extralight">
-                  2004 Осень
-                </p>
-              </div>
-            </div>
+            <main>
+              <NavLink to="/watch">
+                <div className="cursor-pointer flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
+                  <div>
+                    <img
+                      className="rounded-[5px] max-w-[65px] h-auto object-cover"
+                      src={my}
+                      alt=""
+                    />
+                  </div>
+                  <div className="ml-[11px] flex flex-col justify-around items-start">
+                    <p className="font-GothamPro text-[13px] text-whiteGray">
+                      Завершен
+                    </p>
+                    <h1 className="font-GothamPro text-[15px] text-white font-light">
+                      Блич
+                    </h1>
+                    <p className="font-GothamPro text-[13px] text-white font-extralight">
+                      2004 Осень
+                    </p>
+                  </div>
+                </div>
+              </NavLink>
+            </main>
 
             {/* <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
               <h1 className="text-white font-GothamPro">Ничего не найдено</h1>

@@ -1,5 +1,3 @@
-import { Footer } from "../../components/footer/footer";
-import { HeaderLoggedUser } from "../../components/HeaderLoggedUsers/headerloggedusers";
 import { ContentAnime } from "../../components/ContentAnime/contentanime";
 
 function MainContentPageAnime() {
