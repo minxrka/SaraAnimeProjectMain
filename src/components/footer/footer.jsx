@@ -1,5 +1,6 @@
 import React from "react";
 import MainLogo from "../../img/logo/main-logo.svg";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -17,24 +18,25 @@ export const Footer = () => {
             <h1 className="text-[25px] font-GothamPro text-white">
               Карта сайта
             </h1>
-            <a
-              href=""
+
+            <NavLink
+              to="/"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Главная
-            </a>
-            <a
-              href=""
+            </NavLink>
+            <NavLink
+              to="anime"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Аниме
-            </a>
-            <a
-              href=""
+            </NavLink>
+            <NavLink
+              to="random"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Случайное
-            </a>
+            </NavLink>
             <a
               href=""
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
