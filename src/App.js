@@ -8,6 +8,7 @@ import ScrollToTop from "./utils/scrollToTop";
 import { WatchAnime } from "./components/WatchAnime/watchanime";
 import { HeaderLoggedUser } from "./components/HeaderLoggedUsers/headerloggedusers";
 import { RandomAnime } from "./pages/RandomAnime/RandomAnime";
+import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm";
 function App() {
   return (
     <div className="">
@@ -20,8 +21,9 @@ function App() {
           <Route path="/anime" element={<MainContentPageAnime />} />
           <Route path="/watch" element={<WatchAnime />} />
           <Route path="/random" element={<RandomAnime />} />
+          <Route path="/films" element={<MainContentPageFilm />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </div>
   );

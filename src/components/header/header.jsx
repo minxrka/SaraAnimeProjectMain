@@ -129,12 +129,14 @@ export const Header = () => {
             </NavLink>
           </li>
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Фильмы
-            </a>
+            <NavLink to="films">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Фильмы
+              </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
@@ -215,7 +217,7 @@ export const Header = () => {
 
             {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
             <main>
-              <NavLink to="/watch">
+              <NavLink to="/watch" onClick={handleClose}>
                 <div className="cursor-pointer flex max-w-full h-auto hoveringbg px-[20px] py-[15px] transition-colors">
                   <div>
                     <img

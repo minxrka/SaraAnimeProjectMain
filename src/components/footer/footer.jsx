@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="mt-[56px] footer sticky bg-darkViolet py-[50px]">
+    <footer className="mt-[56px] sticky bg-darkViolet py-[50px]">
       <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
-        <section className="flex justify-between flex-wrap gap-[100px] lg:gap-[50px] md:gap-[20px]">
+        <section className="flex justify-between flex-wrap gap-[100px] lg:gap-[50px] md:gap-[20px] max-w-[1500px] mx-auto">
           <div className="flex flex-col max-w-[300px]">
             <img src={MainLogo} alt="" />
             <p className="text-white text-[20px] font-GothamPro font-light">
@@ -156,7 +156,7 @@ export const Footer = () => {
         </aside>
       </main>
       <aside className="mt-[53px] relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-[#4990E8]"></aside>
-      <aside className="xl:flex xl:flex-col xl:items-center gap-[30px] flex flex-wrap justify-between mt-[120px] px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
+      <aside className="xl:flex max-w-[1900px] mx-auto xl:flex-col xl:items-center gap-[30px] flex flex-wrap justify-between mt-[120px] px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <div className="cursor-pointer">
           <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors">
             Условия предоставления услуг

@@ -1,4 +1,5 @@
 import { SupportUs } from "../../components/SupportUs/supportus";
+import { Footer } from "../../components/footer/footer";
 import { Join } from "../../components/join us/join";
 import { ItemAnime } from "../../components/mainItems/mainItem";
 import { Slider } from "../../components/slider/slider";
@@ -17,6 +18,7 @@ function Home() {
           <Join />
           <SliderAnime />
         </div>
+        <Footer />
       </div>
     </main>
   );
