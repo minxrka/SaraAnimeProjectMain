@@ -9,12 +9,13 @@ import { WatchAnime } from "./components/WatchAnime/watchanime";
 import { HeaderLoggedUser } from "./components/HeaderLoggedUsers/headerloggedusers";
 import { RandomAnime } from "./pages/RandomAnime/RandomAnime";
 import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm";
+import { Authentication } from "./pages/Authentication/Authentication";
 function App() {
   return (
     <div className="">
       <Router>
         <ScrollToTop></ScrollToTop>
-        <Header />
+        {/* <Header /> */}
         {/* <HeaderLoggedUser /> */}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/watch" element={<WatchAnime />} />
           <Route path="/random" element={<RandomAnime />} />
           <Route path="/films" element={<MainContentPageFilm />} />
+          <Route path="/auth" element={<Authentication />} />
         </Routes>
         {/* <Footer /> */}
       </Router>

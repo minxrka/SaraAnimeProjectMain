@@ -26,23 +26,23 @@ export const Footer = () => {
               Главная
             </NavLink>
             <NavLink
-              to="anime"
+              to="/anime"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Аниме
             </NavLink>
             <NavLink
-              to="random"
+              to="/random"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Случайное
             </NavLink>
-            <a
-              href=""
+            <NavLink
+              to="/films"
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
             >
               Фильмы
-            </a>
+            </NavLink>
           </div>
           <div className="flex flex-col gap-[22px]">
             <h1 className="text-[25px] font-GothamPro text-white">Помощь</h1>

@@ -86,7 +86,7 @@ export const Header = () => {
     <header
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-      } h-24 bg-mainViolet transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-[#4990E8]`}
+      } h-[90px] bg-mainViolet transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-[#4990E8]`}
     >
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
@@ -119,7 +119,7 @@ export const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="random">
+            <NavLink to="/random">
               <a
                 href="#"
                 className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
@@ -129,7 +129,7 @@ export const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="films">
+            <NavLink to="/films">
               <a
                 href="#"
                 className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
@@ -162,12 +162,14 @@ export const Header = () => {
           </button>
 
           <li>
-            <a
-              href="#"
-              className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
-            >
-              Вход
-            </a>
+            <NavLink to="/auth">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
+              >
+                Вход
+              </a>
+            </NavLink>
           </li>
         </ul>
       </nav>

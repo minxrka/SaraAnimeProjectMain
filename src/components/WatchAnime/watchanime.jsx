@@ -1,16 +1,17 @@
 import React from "react";
 import AnimePreview from "../../img/bg-anime-card/small/64a44110252fe851868925.jpg";
 import AnimeBgSlider1 from "../../img/trailer-photo/kensin/64a70ec4d2ceb025626775.jpg";
-import AnimeBgSlider2 from "../../img/trailer-photo/kensin/64a70ec4d0dc5879791949.jpg";
+import AnimeBgSlider2 from "../../img/trailer-photo/kensin/64a70ec4d26fb632702244.jpg";
 import AnimeBgSlider3 from "../../img/trailer-photo/kensin/83feb2cbe64d30e1d7d584205bdd4e5afc8b408b.jpg";
-import AnimeBgSlider4 from "../../img/trailer-photo/kensin/64a70ec4d1ed9530852142.jpg";
-import AnimeBgSlider5 from "../../img/trailer-photo/kensin/64a70ec4d26fb632702244.jpg";
+import AnimeBgSlider4 from "../../img/trailer-photo/kensin/64a70ec4d0dc5879791949.jpg";
+import AnimeBgSlider5 from "../../img/trailer-photo/kensin/64a70ec4d1ed9530852142.jpg";
 import AnimeBgSlider6 from "../../img/trailer-photo/kensin/64a70ec4dc11d750919818.jpg";
 import AnimePerson from "../../img/trailer-photo/kensin/Himura_Kenshin_default.jpg";
 import AnimePerson2 from "../../img/trailer-photo/kensin/Kaoru_default.jpg";
 import AnimePerson3 from "../../img/trailer-photo/kensin/640px-Yahiko12.jpg";
 import AnimePerson4 from "../../img/trailer-photo/kensin/Sagara_Sanosuke_default.jpg";
 import { useRef, useState, useLayoutEffect } from "react";
+import { useSpring, animated } from "react-spring";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,8 +20,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 // import required modules
-import { Navigation } from "swiper/modules";
-import { Footer } from "../footer/footer";
+import { Navigation, Pagination } from "swiper/modules";
+import { Footer } from "../../components/footer/footer";
+
+import { Modal } from "@mui/material";
+import { Header } from "../header/header";
 
 /* Скрытие и показ описания */
 const useTruncatedElement = ({ ref }) => {
@@ -55,9 +59,20 @@ export const WatchAnime = () => {
       ref,
     });
   /*   Реф ссылка для описания */
+
+  /* ОТКРЫТИE/ЗАКРЫТИЕ ДИАЛОГ ОКНА */
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  /* ОТКРЫТИE/ЗАКРЫТИЕ ДИАЛОГ ОКНА */
   return (
     <>
       <main className="max-h-full">
+        <Header />
         {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
         <section className="bg-WatchAnimeBg w-full h-[100vh] bg-cover bg-center bg-no-repeat">
           {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
@@ -114,15 +129,15 @@ export const WatchAnime = () => {
                   <aside className="flex flex-col mt-[80px] ml-[44px] md:ml-[0px]">
                     <div>
                       <h1 className="text-white font-GothamPro text-[36px] font-light">
-                        Бродяга Кэнсин
+                        Тетрадь смерти
                       </h1>
                       <div className="flex mt-[12px] items-center gap-[10px]">
                         <p className="py-[4px] px-[6px] text-center border-solid border border-mainBlue rounded-[5px] text-[16px] text-white font-GothamPro font-light">
-                          18+
+                          16+
                         </p>
                         <span className="border-solid border border-mainBlue rounded-[50%] w-[10px] h-[10px]"></span>
                         <p className="text-[16px] text-white font-GothamPro font-light">
-                          2023г
+                          2006г
                         </p>
                         <span className="border-solid border border-mainBlue rounded-[50%] w-[10px] h-[10px]"></span>
                         <p className="text-[16px] text-white font-GothamPro font-light">
@@ -174,30 +189,30 @@ export const WatchAnime = () => {
                       </div>
                       <div className="flex flex-col gap-[16px] mt-[1px] lg:gap-[18px] md:gap-[16px] sm:gap-[18px]">
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                          3 / 12
+                          37 / 37
                         </h1>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                          Romance, Action
+                          Mystery, Thriller, Detectiven
                         </h1>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
                           22 мин. ~ серия
                         </h1>
                         <div className="">
-                          <a className="text-white font-GothamPro bg-emerald-400 border-solid border border-emerald-300 rounded-[10px] px-[7px] text-center py-[4px] text-[16px] font-extralight">
-                            Онгоинг
+                          <a className="text-white font-GothamPro bg-fuchsia-400 border-solid border border-fuchsia-300 rounded-[10px] px-[7px] text-center py-[4px] text-[16px] font-extralight">
+                            Завершен
                           </a>
                         </div>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                          Нобухиро Вацуки
+                          Оба Цугуми
                         </h1>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                          Фурухаси Кадзухиро
+                          Араки Тэцуро
                         </h1>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
                           манга
                         </h1>
                         <h1 className="text-white font-GothamPro text-[16px] font-extralight">
-                          Бродяга Кэнсин
+                          Тетрадь смерти
                         </h1>
                         <div className="flex gap-[30px] max-w-[700px] flex-wrap">
                           <a
@@ -231,23 +246,22 @@ export const WatchAnime = () => {
                           !isShowingMore && "lineclamp7"
                         }`}
                       >
-                        История странствующего мечника эпохи Мэйдзи по имени
-                        Кэнсин – классика жанра аниме. Фанаты дождались
-                        современной адаптации любимой истории в отличной
-                        прорисовке. Зрителя ждет судьбоносная встреча хозяйки
-                        додзе Каору с загадочным странником, чье мужественное
-                        лицо покрыто шрамами. Женщина не подозревает, что перед
-                        ней не просто воин-ветеран, а элитный киллер с
-                        совершенными навыками мечника. Кэнсин устал нести
-                        смерть, поэтому заменил привычную катану на
-                        незаточенную, чтобы случайно не отнять чью-то жизнь. При
-                        этом Кэнсин не отказался от сражений, а лишь
-                        перенаправил свои умения на защиту угнетенных.Благодаря
-                        Каору суровый воин обретает дом и друзей. Горе тому, кто
-                        нарушит покой Кэнсина и его близких. Но удастся ли
-                        защитнику справедливости избежать новых смертей? Ведь
-                        щупальца прошлых кровопролитий не хотят отпускать
-                        умелого ликвидатора.
+                        У старшеклассника Лайта Ягами в жизни есть всё: успехи в
+                        школе, популярность среди сверстниц, замечательные
+                        родители, блестящее будущее. Но однажды юноша находит
+                        странную чёрную тетрадку и знакомится с её владельцем –
+                        синигами Рюком. Возможности «Тетради смерти» позволяют
+                        Лайту стать Кирой – загадочным и всеведущим убийцей,
+                        карающим преступников. Никто не может его поймать. У
+                        таинственного «L» никогда не было поражений: сохраняя
+                        инкогнито, он успешно распутывал самые трудные дела и
+                        помогал полиции. Появление Киры стало вызовом для его
+                        экстраординарных способностей. Итак, два весьма умных и
+                        одарённых молодых человека сталкиваются в смертельном
+                        противостоянии, и теперь каждая мелочь, каждая
+                        случайность может склонить весы на ту или другую
+                        сторону. И никто не собирается проигрывать или
+                        сдаваться…
                       </p>
                       <button
                         onClick={toggleIsShowingMore}
@@ -408,250 +422,220 @@ export const WatchAnime = () => {
                     modules={[Navigation]}
                     className="mySwiper mt-[20px] mb-[20px] max-w-full"
                   >
-                    <SwiperSlide className="">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider1}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide className="" onClick={handleClickOpen}>
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider1}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider2}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide className="" onClick={handleClickOpen}>
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider2}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider3}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide className="" onClick={handleClickOpen}>
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider3}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider4}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide className="" onClick={handleClickOpen}>
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider4}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="overflow-hidden">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider5}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide
+                      className="overflow-hidden"
+                      onClick={handleClickOpen}
+                    >
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider5}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
-                    <SwiperSlide className="overflow-hidden">
-                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full">
-                        <a href="">
-                          <div className="relative rounded-[10px] ObjfitSlider">
-                            <img
-                              className="rounded-[10px] w-full h-full object-cover"
-                              src={AnimeBgSlider6}
-                              alt=""
-                            />
-                            <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
-                              <span className="">
-                                <svg
-                                  className="max-w-[50px] h-full mx-auto SvgSearch"
-                                  width="59"
-                                  height="59"
-                                  viewBox="0 0 59 59"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                >
-                                  <g clip-path="url(#clip0_661_288)">
-                                    <path
-                                      d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
-                                      fill="white"
-                                    />
-                                  </g>
-                                  <defs>
-                                    <clipPath id="clip0_661_288">
-                                      <rect
-                                        width="59"
-                                        height="59"
-                                        fill="white"
-                                      />
-                                    </clipPath>
-                                  </defs>
-                                </svg>
-                              </span>
-                            </div>
+                    <SwiperSlide
+                      className="overflow-hidden"
+                      onClick={handleClickOpen}
+                    >
+                      <div className="hoverbgSliderEffect ZoomSearch w-[300px] md:w-full cursor-pointer">
+                        <div className="relative rounded-[10px] ObjfitSlider">
+                          <img
+                            className="rounded-[10px] w-full h-full object-cover"
+                            src={AnimeBgSlider6}
+                            alt=""
+                          />
+                          <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
+                            <span className="">
+                              <svg
+                                className="max-w-[50px] h-full mx-auto SvgSearch"
+                                width="59"
+                                height="59"
+                                viewBox="0 0 59 59"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <g clip-path="url(#clip0_661_288)">
+                                  <path
+                                    d="M24.1752 0C37.5299 0 48.3535 10.679 48.3535 23.8478C48.3576 29.5628 46.285 35.0847 42.5213 39.3854L58.4159 55.5308C58.6054 55.7221 58.7547 55.9494 58.8552 56.1992C58.9557 56.449 59.0054 56.7164 59.0013 56.9856C58.9972 57.2548 58.9394 57.5206 58.8312 57.7672C58.7231 58.0138 58.5669 58.2363 58.3717 58.4218C57.9749 58.7992 57.4461 59.0062 56.8986 58.9985C56.351 58.9908 55.8283 58.769 55.4423 58.3805L39.5625 42.244C35.2168 45.7838 29.7802 47.711 24.1752 47.6986C10.8265 47.6986 0 37.0196 0 23.8478C0 10.679 10.8265 0 24.1752 0ZM24.1752 4.0887C13.1127 4.0887 4.14475 12.9357 4.14475 23.8478C4.14475 34.7628 13.1127 43.6099 24.1752 43.6099C35.2378 43.6099 44.2087 34.7598 44.2087 23.8478C44.2087 12.9328 35.2407 4.0887 24.1782 4.0887H24.1752Z"
+                                    fill="white"
+                                  />
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_661_288">
+                                    <rect width="59" height="59" fill="white" />
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                            </span>
                           </div>
-                        </a>
+                        </div>
                       </div>
                     </SwiperSlide>
                   </Swiper>
@@ -694,7 +678,7 @@ export const WatchAnime = () => {
                     </div>
                     <div className="mt-[15px]">
                       <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Химура Кэнсин
+                        Лайт Ягами
                       </h1>
                     </div>
                   </section>
@@ -708,7 +692,7 @@ export const WatchAnime = () => {
                     </div>
                     <div className="mt-[15px]">
                       <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Камия Каору
+                        Эл
                       </h1>
                     </div>
                   </section>
@@ -722,7 +706,7 @@ export const WatchAnime = () => {
                     </div>
                     <div className="mt-[15px]">
                       <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Мёдзин Яхико
+                        Рюк
                       </h1>
                     </div>
                   </section>
@@ -736,7 +720,7 @@ export const WatchAnime = () => {
                     </div>
                     <div className="mt-[15px]">
                       <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Сагара Саносукэ
+                        Миса Аманэ
                       </h1>
                     </div>
                   </section>
@@ -747,6 +731,68 @@ export const WatchAnime = () => {
             <Footer />
           </div>
         </section>
+
+        {/* DIALOG BG ANIME */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          className="max-w-[1300px] mx-auto items-center flex"
+        >
+          <Swiper
+            open={open}
+            onClose={handleClose}
+            pagination={{
+              type: "progressbar",
+            }}
+            navigation={true}
+            modules={[Pagination, Navigation]}
+            className=""
+          >
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider1}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider2}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider3}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider4}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider5}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+            <SwiperSlide className="w-[1300px] h-auto">
+              <img
+                className="w-[1300px] max-h-[700px] object-cover"
+                src={AnimeBgSlider6}
+                alt="bgAnime"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </Modal>
+        {/* DIALOG BG ANIME */}
       </main>
     </>
   );

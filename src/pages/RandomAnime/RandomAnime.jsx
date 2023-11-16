@@ -24,8 +24,8 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper/modules";
 import { Footer } from "../../components/footer/footer";
 
-import Dialog from "@mui/material/Dialog";
 import { Modal } from "@mui/material";
+import { Header } from "../../components/header/header";
 
 /* Скрытие и показ описания */
 const useTruncatedElement = ({ ref }) => {
@@ -73,6 +73,7 @@ export const RandomAnime = () => {
   return (
     <>
       <main className="max-h-full">
+        <Header />
         {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
         <section className="bg-RandomAnimeBg w-full h-[100vh] bg-cover bg-center bg-no-repeat">
           {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
@@ -767,6 +768,8 @@ export const RandomAnime = () => {
           className="max-w-[1300px] mx-auto items-center flex"
         >
           <Swiper
+            open={open}
+            onClose={handleClose}
             pagination={{
               type: "progressbar",
             }}
