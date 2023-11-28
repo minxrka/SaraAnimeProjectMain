@@ -72,7 +72,7 @@ export const RandomAnime = () => {
   /* ОТКРЫТИE/ЗАКРЫТИЕ ДИАЛОГ ОКНА */
   return (
     <>
-      <main className="max-h-full">
+      <main className="h-[2900px]">
         <Header />
         {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
         <section className="bg-RandomAnimeBg w-full h-[100vh] bg-cover bg-center bg-no-repeat">

@@ -17,6 +17,7 @@
     "bootstrap": "^5.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.48.2",
     "react-remove-scroll": "^2.5.6",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
@@ -32,10 +33,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -48,9 +46,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "eslintIgnore": [
     "node_modules",

@@ -162,7 +162,7 @@ export const Header = () => {
           </button>
 
           <li>
-            <NavLink to="/auth">
+            <NavLink to="/login">
               <a
                 href="#"
                 className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
