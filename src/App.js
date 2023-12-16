@@ -12,6 +12,8 @@ import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm
 import { Login } from "./pages/Login/login";
 import { Registration } from "./pages/Registration/registration";
 import { ErrorPage } from "./pages/ErrorPage/errorpage";
+import Profile from "./pages/Profile/profile";
+
 function App() {
   return (
     <div className="">
@@ -28,6 +30,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/404" element={<ErrorPage />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         {/* <Footer /> */}
       </Router>

@@ -60,7 +60,7 @@ export const Registration = () => {
                 <input
                   className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
                     errors.login &&
-                    "  focus:border-[#ff2d2d] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                    "  focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="login"
@@ -91,7 +91,7 @@ export const Registration = () => {
                 <input
                   className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
                     errors.email &&
-                    "  focus:border-[#ff2d2d] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                    "  focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="email"
@@ -114,7 +114,7 @@ export const Registration = () => {
                 <input
                   className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
                     errors.login &&
-                    "  focus:border-[#ff2d2d] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                    "  focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="password"

@@ -142,11 +142,14 @@
   }
 
   @font-face {
-    font-family: "Bowler";
-    src: url("./fonts/BOWLER/BOWLER-Regular.woff2") format("woff2")
-      url("./fonts/BOWLER/BOWLER-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+    font-family: "AnimeAcev02Bold";
+    src: url("./fonts/ANIME/animeacev02bold.eot");
+    src: url("./fonts/ANIME/animeacev02bold.eot?#iefix")
+        format("embedded-opentype"),
+      url("./fonts/ANIME/animeacev02bold.woff2") format("woff2"),
+      url("./fonts/ANIME/animeacev02bold.woff") format("woff"),
+      url("./fonts/ANIME/animeacev02bold.ttf") format("truetype"),
+      url("./fonts/ANIME/animeacev02bold.svg#animeacev02bold") format("svg");
   }
 
   @font-face {

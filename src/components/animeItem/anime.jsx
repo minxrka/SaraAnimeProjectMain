@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export const Anime = () => {
   return (
     <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
-      <NavLink to="watch">
+      <NavLink to="/watch/">
         <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
           <img className="rounded-[20px]" src={Anime1} alt="" />
           <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">

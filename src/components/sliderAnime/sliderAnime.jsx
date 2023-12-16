@@ -24,7 +24,7 @@ export const SliderAnime = () => {
   return (
     <div className="xl:hidden mt-[170px] border-solid border border-mainBlue px-[20px] py-[20px] rounded-[20px] max-w-[1500px] mx-auto">
       <div className="flex justify-between mb-[40px] items-center">
-        <h1 className="text-white text-[40px] font-Bowler xl:text-[35px] lg:text-[30px] textwrap">
+        <h1 className="text-white text-[40px] font-AnimeAcev02Bold xl:text-[35px] lg:text-[30px] textwrap">
           Популярное за всё время
         </h1>
         <a

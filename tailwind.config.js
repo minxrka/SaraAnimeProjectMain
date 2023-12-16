@@ -29,7 +29,7 @@ module.exports = {
       },
       fontFamily: {
         GothamPro: ["Gotham Pro"],
-        Bowler: ["Bowler"],
+        AnimeAcev02Bold: ["AnimeAcev02Bold"],
         Akira: ["Akira"],
       },
       colors: {
