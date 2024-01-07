@@ -1,5 +1,5 @@
 import React from "react";
-import BgVideo from "../../img/BgVideoAuth/girl.mp4";
+import BgVideo from "../../img/BgVideoAuth/sasuke_auth.mp4";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
 import Logo from "../../img/logo/main-logo.svg";
 import SocialVK from "../../img/icons/vk.svg";
@@ -10,18 +10,16 @@ import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export const Registration = () => {
-  const [email, SetEmail] = useState("");
-  const [name, SetName] = useState("");
-  const [password, SetPassword] = useState("");
-  const [confirmPassword, SetConfirmPassword] = useState("");
-
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
   const onSubmit = (data) => alert(JSON.stringify(data));
+
+  const password = watch("password");
 
   return (
     <div>
@@ -60,7 +58,7 @@ export const Registration = () => {
                 <input
                   className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
                     errors.login &&
-                    "  focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                    "  focus:border-[#ff3030ea] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="login"
@@ -157,7 +155,7 @@ export const Registration = () => {
                   placeholder=""
                   id="confirmPassword"
                   type="password"
-                  name="onfirmPassword"
+                  name="confirmPassword"
                   {...register("confirmPassword", {
                     required: "Поле не должно быть пустым",
                     validate: (value) =>

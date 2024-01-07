@@ -1,14 +1,55 @@
 import React from "react";
+import "./profile.css";
 import { Header } from "../../components/header/header";
-import baner from "../../img/test.jpg";
+import banner from "../../img/test.jpg";
 import user from "../../img/bg-anime-card/13d91efa294e8cdff7715d530d946237.jpg";
-import achievements from "../../img/icons/onigiri.png";
 import { Anime } from "../../components/animeItem/anime";
 import prof from "../../img/other-content/photo_2023-12-15_18-57-01.jpg";
-import AnimePerson from "../../img/trailer-photo/death note/79e1c247e1b703aed98a013e87c1ac79.jpg";
+import LogOut from "../../img/other-content/svg-profile/logout.svg";
+import Pencil from "../../img/other-content/svg-profile/pencil.svg";
+import { useState, useEffect, useRef } from "react";
+import Dialog from "@mui/material/Dialog";
+
 import { Footer } from "../../components/footer/footer";
+import AnimePerson from "../../components/animePerson/animePerson";
+import DefaultFavoriteAnime from "../../components/defaultFavoriteAnime/defaultFavoriteAnime";
+import AddedFavoriteAnime from "../../components/AddedFavoriteAnime/addedFavoriteAnime";
+import DefaultFavoritePerson from "../../components/defaultFavoritePerson/DefaultFavoritePerson";
 
 const Profile = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const [isHoveringBanner, setIsHoveringBanner] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHoveringBanner(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHoveringBanner(false);
+  };
+
+  const inputRef = useRef(null);
+  const [image, SetImage] = useState(null);
+
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    console.log(file);
+    SetImage(event.target.files[0]);
+  };
+
   return (
     <div className="">
       <Header />
@@ -38,74 +79,118 @@ const Profile = () => {
           </aside>
         </section>
         <section className="mt-[43px]">
-          <div className="relative max-w-full mx-auto h-[400px]">
-            <img
-              className="rounded-[15px] h-full object-cover w-full"
-              src={baner}
-              alt=""
-            />
-            <img
-              className="absolute top-[270px] left-0 w-[220px] h-[220px] md:h-[100px] object-cover rounded-[15px]"
-              src={prof}
-              alt=""
-            />
+          <div
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            className="relative max-w-full mx-auto h-[400px]"
+          >
+            {image ? (
+              <img
+                className="rounded-[15px] h-full object-cover w-full"
+                src={URL.createObjectURL(image)}
+                alt=""
+              />
+            ) : (
+              <img
+                className="rounded-[15px] h-full object-cover w-full"
+                src={banner}
+                alt=""
+              />
+            )}
+
+            {isHoveringBanner && (
+              <button
+                onClick={handleImageClick}
+                className="flex gap-[7px] absolute top-[30px] right-[30px] items-center bg-[#52357DB2] hover:bg-[#52357DCC] px-[10px] py-[7px] rounded-[10px]"
+              >
+                <img className="w-[20px] h-[20px]" src={Pencil} alt="pencil" />
+
+                <input
+                  className="hidden"
+                  ref={inputRef}
+                  onChange={handleImageChange}
+                  type="file"
+                />
+                <h1 className="text-white font-GothamPro font-light text-[20px]">
+                  Сменить обложку
+                </h1>
+              </button>
+            )}
           </div>
+
           <div className="">
-            <div className="flex justify-between items-center ml-[250px] mt-[40px]">
-              <div>
-                <h1 className="text-[28px] font-GothamPro text-white">
-                  Minxrka
+            <div className="flex justify-between items-center mt-[40px]">
+              <div className="flex gap-[20px] items-center z-20">
+                <img
+                  className="mt-[-150px] w-[220px] h-[220px] object-cover rounded-[15px]"
+                  src={prof}
+                  alt=""
+                />
+                <h1 className="lowercase text-[28px] font-GothamPro text-white">
+                  MINXRKA
                 </h1>
               </div>
-              <div className="flex gap-[20px]">
-                <div className="bg-[#4990E8] cursor-pointer hover:bg-[#3287F0] transition-colors w-[50px] h-[50px] rounded-[50%]">
+              <div>
+                <button
+                  onClick={handleClickOpen}
+                  className="bg-[#ff2b2bc0] cursor-pointer hover:bg-[#ff3030] transition-colors w-[50px] h-[50px] rounded-[50%]"
+                >
                   <img
-                    className="w-[30px] mx-auto mt-[9px] h-[30px]"
-                    src={achievements}
+                    className="w-[30px] mx-auto h-[30px] mr-[7px] fill-white"
+                    src={LogOut}
                     alt=""
                   />
-                </div>
-                <div className="bg-[#4990E8] cursor-pointer hover:bg-[#3287F0] transition-colors w-[50px] h-[50px] rounded-[50%]">
-                  <img
-                    className="w-[30px] mx-auto mt-[9px] h-[30px]"
-                    src={achievements}
-                    alt=""
-                  />
-                </div>
-                <div className="bg-[#4990E8] cursor-pointer hover:bg-[#3287F0] transition-colors w-[50px] h-[50px] rounded-[50%]">
-                  <img
-                    className="w-[30px] mx-auto mt-[9px] h-[30px]"
-                    src={achievements}
-                    alt=""
-                  />
-                </div>
-                <div className="bg-[#4990E8] cursor-pointer hover:bg-[#3287F0] transition-colors w-[50px] h-[50px] rounded-[50%]">
-                  <img
-                    className="w-[30px] mx-auto mt-[9px] h-[30px]"
-                    src={achievements}
-                    alt=""
-                  />
-                </div>
+                </button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                  className="backdrop-blur-[5px] transition-all"
+                >
+                  <div className="w-[330px] h-[110px] bg-[#52357DB2] overflow-hidden">
+                    <h1 className="text-white mt-[10px] text-center font-GothamPro font-light text-[20px]">
+                      Вы действительно хотите выйти?
+                    </h1>
+                    <div className="mt-[10px] w-full h-[1px] bg-[#4990E8]"></div>
+                    <div className="flex justify-between h-full items-center">
+                      <button className="text-center w-[165px] h-full bg-[#33215473] hover:bg-[#ff3030b0] transition-colors">
+                        <h1 className="text-white font-Bluecurve uppercase text-[20px] mt-[-39px]">
+                          да
+                        </h1>
+                      </button>
+                      <div className="w-[1px] h-full bg-[#4990E8]"></div>
+                      <button
+                        onClick={handleClose}
+                        className="text-center w-[165px] h-full bg-[#33215473] hover:bg-[#332154A1] transition-colors"
+                      >
+                        <h1 className="text-white font-Bluecurve uppercase text-[20px] mt-[-39px]">
+                          нет
+                        </h1>
+                      </button>
+                    </div>
+                  </div>
+                </Dialog>
               </div>
             </div>
           </div>
         </section>
         <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
         <section>
-          <h1 className="text-white mt-[30px] mb-[30px] text-[40px] font-AnimeAcev02Bold xl:text-[35px] lg:text-[30px] textwrap">
+          <h1 className="text-white mt-[30px] mb-[30px] text-[40px] uppercase font-Bluecurve xl:text-[35px] lg:text-[30px] textwrap">
             Любимые аниме
           </h1>
-          <div className="grid grid-cols-[70%_minmax(auto,_1fr)] gap-[30px]">
+          <div className="grid grid-cols-[70%_minmax(auto,_1fr)] gap-[30px] xl:grid-cols-1">
             <div className="flex gap-[30px]">
               <Anime />
-              <Anime />
-              <Anime />
+              <DefaultFavoriteAnime />
+              <AddedFavoriteAnime />
             </div>
-            <div className="bg-[#4990E84D] rounded-[20px] px-[25px] py-[25px]">
-              <h1 className="text-white mb-[30px] text-[32px] font-AnimeAcev02Bold xl:text-[35px] lg:text-[30px] textwrap">
+            <div className="bg-[#4990E84D] rounded-[20px] px-[25px] py-[20px] max-w-[400px]">
+              <h1 className="text-white mb-[20px] text-[32px] uppercase font-Bluecurve xl:text-[35px] lg:text-[30px] textwrap">
                 Друзья
               </h1>
-              <div className="grid grid-rows-[100px_minmax(100px,_1fr)] gap-[20px]">
+              <div className="relative grid grid-rows-[100px_minmax(100px,_1fr)] gap-[20px]">
                 <div className="flex justify-between">
                   <div className="text-center cursor-pointer w-[100px] h-auto justify-center">
                     <img
@@ -138,6 +223,7 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
+                <div className="absolute top-[105px] w-full h-[1px] bg-[#4990E8]"></div>
                 <div className="flex justify-between">
                   <div className="text-center cursor-pointer w-[100px] h-auto justify-center">
                     <img
@@ -149,6 +235,7 @@ const Profile = () => {
                       12345678910
                     </p>
                   </div>
+
                   <div className="text-center cursor-pointer w-[100px] h-auto justify-center">
                     <img
                       className="w-[70px] h-[70px] mx-auto object-cover rounded-[20px]"
@@ -170,7 +257,7 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
-                <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[10px] max-w-[200px] text-center mx-auto hover:bg-[#D6FE5026] transition-colors">
+                <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[15px] max-w-[200px] text-center mx-auto hover:bg-[#D6FE5026] transition-colors">
                   Смотреть всех
                 </button>
               </div>
@@ -179,27 +266,12 @@ const Profile = () => {
         </section>
         <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
         <section>
-          <h1 className="text-white mt-[30px] mb-[30px] text-[40px] font-AnimeAcev02Bold xl:text-[35px] lg:text-[30px] textwrap">
+          <h1 className="text-white mt-[30px] mb-[30px] text-[40px] uppercase font-Bluecurve xl:text-[35px] lg:text-[30px] textwrap">
             Любимые персонажи
           </h1>
-          <section className="flex flex-wrap justify-between">
-            <article className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
-              <div className="">
-                <img
-                  className="w-full object-cover rounded-[10px] h-[250px]"
-                  src={AnimePerson}
-                  alt=""
-                />
-              </div>
-              <div className="mt-[15px]">
-                <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                  Лайт Ягами
-                </h1>
-                <p className="mt-[11px] text-whiteGray font-GothamPro font-light text-[14px]">
-                  Death note
-                </p>
-              </div>
-            </article>
+          <section className="flex flex-wrap gap-[33px]">
+            <AnimePerson />
+            <DefaultFavoritePerson />
           </section>
         </section>
         <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>

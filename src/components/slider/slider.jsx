@@ -12,6 +12,7 @@ import {
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/pagination";
+import { NavLink } from "react-router-dom";
 
 export const Slider = () => {
   return (
@@ -50,12 +51,14 @@ export const Slider = () => {
               и Рукии.
             </p>
             <div className="flex gap-[36px] mt-[17px] items-center">
-              <a
-                href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
-              >
-                К просмотру
-              </a>
+              <NavLink to={"watch"}>
+                <a
+                  href="#"
+                  className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                >
+                  К просмотру
+                </a>
+              </NavLink>
               <a
                 href="#"
                 className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"

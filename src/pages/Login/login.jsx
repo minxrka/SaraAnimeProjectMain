@@ -1,5 +1,5 @@
 import React from "react";
-import BgVideo from "../../img/BgVideoAuth/girl.mp4";
+import BgVideo from "../../img/BgVideoAuth/sasuke_auth.mp4";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
 import Logo from "../../img/logo/main-logo.svg";
 import SocialVK from "../../img/icons/vk.svg";

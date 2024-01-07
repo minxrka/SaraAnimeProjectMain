@@ -1,5 +1,6 @@
 import React from "react";
 import MainLogo from "../../img/logo/main-logo.svg";
+import ProfileUser from "../../img/other-content/photo_2023-12-15_18-57-01.jpg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
@@ -86,7 +87,7 @@ export const Header = () => {
     <header
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-      } h-[90px] bg-mainViolet transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-[#4990E8]`}
+      } h-[70px] bg-mainViolet transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-[#4990E8]`}
     >
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
@@ -103,7 +104,7 @@ export const Header = () => {
                 href="#"
                 className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors"
               >
-                Главная
+                None
               </a>
             </NavLink>
           </li>
@@ -142,7 +143,7 @@ export const Header = () => {
       </nav>
 
       <nav className="items-center lg:hidden">
-        <ul className="flex items-center gap-[123px] big:gap-[50px] xl:gap-[35px]">
+        <ul className="flex items-center gap-[100px] big:gap-[50px] xl:gap-[35px]">
           <button
             className="px-[8px] py-[8px] hover:bg-[#4A2979] rounded-[8px] transition-colors items-center cursor-pointer"
             onClick={handleClickOpen}
@@ -161,7 +162,7 @@ export const Header = () => {
             </svg>
           </button>
 
-          <li>
+          {/* <li>
             <NavLink to="/login">
               <a
                 href="#"
@@ -170,7 +171,20 @@ export const Header = () => {
                 Вход
               </a>
             </NavLink>
-          </li>
+            
+          </li> */}
+          <NavLink to="/profile/">
+            <li className="max-w-[160px] cursor-pointer flex items-center gap-[9px]">
+              <img
+                className="max-w-[45px] h-auto rounded-[10px]"
+                src={ProfileUser}
+                alt=""
+              />
+              <p className="text-white mt-[7px] break-words line-clamp-1 text-center font-GothamPro text-[16px] font-light">
+                1234567891012
+              </p>
+            </li>
+          </NavLink>
         </ul>
       </nav>
       <Dialog open={open} onClose={handleClose} className="backdrop-blur-[5px]">

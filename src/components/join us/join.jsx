@@ -7,11 +7,11 @@ export const Join = () => {
   return (
     <main className="max-w-[1500px] mx-auto">
       <section className="relative max-w-full h-auto bg-[#8198D9] rounded-[20px] mt-[50px] py-[32px] px-[25px] md:py-[20px] md:px-[10px]">
-        <h1 className="text-[#232323] font-AnimeAcev02Bold text-[120px] textwrap xlbig:text-[100px] xl:text-[80px] lg:text-[50px] md:text-[27px]">
-          Присоединяйся к нам
+        <h1 className="text-[#232323] uppercase font-Bluecurve text-[120px] textwrap xlbig:text-[100px] xl:text-[80px] lg:text-[50px] md:text-[27px]">
+          Присоединяйся к нам!
         </h1>
         <div className="max-w-[740px] flex justify-between items-center xlbig:flex-col xlbig:items-start">
-          <p className="text-[#363539] text-[37px] font-AnimeAcev02Bold textwrap lg:text-[30px] md:text-[20px] md:max-w-[438px]">
+          <p className="text-[#363539] text-[50px] uppercase font-Bluecurve textwrap lg:text-[30px] md:text-[20px] md:max-w-[438px]">
             смотри любимые аниме с комфортом!
           </p>
           <a

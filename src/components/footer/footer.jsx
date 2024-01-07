@@ -119,7 +119,7 @@ export const Footer = () => {
               </svg>
             </div>
           </a>
-          <a href="" className="">
+          <a href="https://t.me/minxrka" className="">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 width="60"
