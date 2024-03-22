@@ -1,7 +1,7 @@
 import React from "react";
 import MainLogo from "../../img/logo/newLogo.png";
 import SmallLogo from "../../img/logo/miniLogo.png";
-import ProfileUser from "../../img/other-content/photo_2023-12-15_18-57-01.jpg";
+import ProfileUser from "../../img/other-content/avatarProf.jpg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
