@@ -1,14 +1,19 @@
 import React from "react";
 import Anime1 from "../../img/bg-anime-card/small/anime1.jpg";
 import { NavLink } from "react-router-dom";
+import banner from "../../img/test.jpg";
 
 export const Anime = () => {
   return (
-    <div className="spanhovereffect bgZoomEffect w-[250px] sm:w-full">
+    <div className="spanhovereffect bgZoomEffect">
       <NavLink to="/watch/">
-        <div className="bgZoomEffect overflow-hidden relative rounded-[20px] objFit">
-          <img className="rounded-[20px]" src={Anime1} alt="" />
-          <div className="spanbgeffect anime absolute top-0 bg-black spanbgeffect rounded-[20px] w-full h-full opacity-0 transition-all">
+        <div className="bgZoomEffect overflow-hidden rounded-[20px] adaptiveImageAnime">
+          <img
+            className="rounded-[20px] absolute top-0 left-0 w-full h-full object-cover"
+            src={Anime1}
+            alt=""
+          />
+          <div className="spanbgeffect anime absolute top-0 bg-black rounded-[20px] w-full h-full opacity-0 transition-all">
             <span className="">
               <svg
                 className="max-w-[110px] h-full mx-auto svgPlay"
@@ -23,7 +28,7 @@ export const Anime = () => {
               </svg>
             </span>
           </div>
-          <div className="absolute flex left-3 px-[10px] py-[8px] items-center bg-mainViolet rounded-[10px] top-3 z-10">
+          <div className="absolute flex left-3 px-[10px] py-[8px] items-center bg-mainBlue rounded-[10px] top-3 z-10">
             <svg
               width="20"
               height="20"
@@ -42,10 +47,10 @@ export const Anime = () => {
           </div>
         </div>
         <div className="flex flex-col justify-between">
-          <h1 className="text-center font-GothamPro text-white text-[18px] font-light mt-[8px] textwrap lineclampone">
+          <h1 className="font-GothamPro text-white text-[18px] font-light mt-[8px] textwrap lineclampone">
             Киберпанк: Бегущий по краю
           </h1>
-          <p className="text-[15px] text-center font-GothamPro font-light text-gray-200 mt-[8px] textwrap lineclampone">
+          <p className="text-[15px] text-justify font-GothamPro font-light text-gray-200 mt-[8px] textwrap lineclampone">
             2022, Fantasy
           </p>
         </div>

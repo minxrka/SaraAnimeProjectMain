@@ -1,0 +1,20 @@
+.card_animation {
+  position: relative;
+  float: left;
+  background: linear-gradient(
+    120deg,
+    #4990e833 30%,
+    #4990e859 38%,
+    #4990e859 40%,
+    #4990e833 48%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  animation: load89234 1.7s infinite;
+}
+
+@keyframes load89234 {
+  100% {
+    background-position: -100% 0;
+  }
+}

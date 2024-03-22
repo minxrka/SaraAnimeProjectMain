@@ -1,0 +1,14 @@
+.mainText {
+  font-size: clamp(14px, 5vw, 40px);
+}
+
+.main404 {
+  font-size: clamp(100px, 40vw, 400px);
+}
+
+.test {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}

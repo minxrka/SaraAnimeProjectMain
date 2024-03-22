@@ -12,6 +12,7 @@ import {
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/pagination";
+import { NavLink } from "react-router-dom";
 
 export const Slider = () => {
   return (
@@ -50,21 +51,31 @@ export const Slider = () => {
               и Рукии.
             </p>
             <div className="flex gap-[36px] mt-[17px] items-center">
+              <NavLink to={"watch"}>
+                <a
+                  href="#"
+<<<<<<< HEAD
+                  className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
+=======
+                  className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+>>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
+                >
+                  К просмотру
+                </a>
+              </NavLink>
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
-              >
-                К просмотру
-              </a>
-              <a
-                href="#"
+<<<<<<< HEAD
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+=======
                 className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+>>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,19 +101,19 @@ export const Slider = () => {
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -138,19 +149,19 @@ export const Slider = () => {
             <div className="flex gap-[36px] mt-[17px] items-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -176,19 +187,19 @@ export const Slider = () => {
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -224,19 +235,19 @@ export const Slider = () => {
             <div className="flex gap-[36px] mt-[17px] items-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -261,19 +272,19 @@ export const Slider = () => {
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -311,19 +322,19 @@ export const Slider = () => {
             <div className="flex gap-[36px] mt-[17px] items-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -349,19 +360,19 @@ export const Slider = () => {
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -402,19 +413,19 @@ export const Slider = () => {
             <div className="flex gap-[36px] mt-[17px] items-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -440,19 +451,19 @@ export const Slider = () => {
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
               <a
                 href="#"
-                className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
+                className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
               >
                 К просмотру
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
+                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-[#E8DFD8] rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
 import React from "react";
-import BgVideo from "../../img/BgVideoAuth/girl.mp4";
+import BgVideo from "../../img/BgVideoAuth/sasuke_auth.mp4";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
 import Logo from "../../img/logo/main-logo.svg";
 import SocialVK from "../../img/icons/vk.svg";
@@ -58,9 +58,9 @@ export const Login = () => {
             <div className="gap-[20px] flex flex-col">
               <div className="relative">
                 <input
-                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
+                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-Blue500 rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-Blue500 focus:shadow-[_0_0_0_4px_#8DA4EC4F] focus:border focus:outline-none peer ${
                     errors.login &&
-                    "  focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                    "  focus:border-[#da4f4a] focus:shadow-[_0_0_0_4px_#DA4F4A4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="login"
@@ -89,9 +89,9 @@ export const Login = () => {
               </div>
               <div className="relative">
                 <input
-                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-cyberpunk rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-cyberpunk focus:shadow-[_0_0_0_4px_#D6FE504F] focus:border focus:outline-none peer ${
-                    errors.login &&
-                    "focus:border-[#ff3030] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
+                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-Blue500  rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-Blue500 focus:shadow-[_0_0_0_4px_#8DA4EC4F] focus:border focus:outline-none peer ${
+                    errors.password &&
+                    "focus:border-[#da4f4a] focus:shadow-[_0_0_0_4px_#DA4F4A4F] focus:border focus:outline-none"
                   }`}
                   placeholder=""
                   id="password"
@@ -133,7 +133,7 @@ export const Login = () => {
                 Забыли пароль?
               </div>
             </aside>
-            <button className="bg-[#D6FE5080] mx-[24px] mt-[30px] py-[15px] text-center rounded-[10px] text-white font-GothamPro text-[20px] hover:bg-[#D6FE50B2] transition-all">
+            <button className="bg-[#966FCF85] mx-[24px] mt-[30px] py-[15px] text-center rounded-[10px] text-white font-GothamPro text-[20px] hover:bg-[#966FCFB2] transition-all">
               Войти
             </button>
           </form>
@@ -141,19 +141,19 @@ export const Login = () => {
             Вход через социальные сети
           </h1>
           <aside className="gap-[46px] flex justify-between flex-wrap px-[24px]">
-            <div className="min-width-[90px] flex cursor-pointer gap-1 items-center border border-solid border-mainBlue px-[4px] py-[4px] rounded-[5px]">
+            <div className="min-width-[90px] flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
               <img width={25} height={25} src={SocialVK} alt="" />
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Вконтакте
               </p>
             </div>
-            <div className="flex cursor-pointer gap-1 items-center border border-solid border-mainBlue px-[4px] py-[4px] rounded-[5px]">
+            <div className="flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
               <img width={25} height={25} src={SocialShikimori} alt="" />
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Shikimori
               </p>
             </div>
-            <div className="w-[100px] flex cursor-pointer gap-1 items-center border border-solid border-mainBlue px-[4px] py-[4px] rounded-[5px]">
+            <div className="w-[100px] flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
               <img width={25} height={25} src={SocialDiscord} alt="" />
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Discord

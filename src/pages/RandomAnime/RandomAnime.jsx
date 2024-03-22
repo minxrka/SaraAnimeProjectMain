@@ -257,12 +257,7 @@ export const RandomAnime = () => {
                         таинственного «L» никогда не было поражений: сохраняя
                         инкогнито, он успешно распутывал самые трудные дела и
                         помогал полиции. Появление Киры стало вызовом для его
-                        экстраординарных способностей. Итак, два весьма умных и
-                        одарённых молодых человека сталкиваются в смертельном
-                        противостоянии, и теперь каждая мелочь, каждая
-                        случайность может склонить весы на ту или другую
-                        сторону. И никто не собирается проигрывать или
-                        сдаваться…
+                        экстр
                       </p>
                       <button
                         onClick={toggleIsShowingMore}
@@ -304,119 +299,10 @@ export const RandomAnime = () => {
                   <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
                   <Swiper
                     slidesPerView={4}
+                    spaceBetween={20}
                     breakpoints={{
-                      0: {
-                        slidesPerView: 1,
-                      },
-                      768: {
-                        spaceBetween: 50,
-                        slidesPerView: 2,
-                      },
-                      880: {
-                        spaceBetween: 130,
-                        slidesPerView: 2,
-                      },
-                      884: {
-                        spaceBetween: 130,
-                        slidesPerView: 2,
-                      },
-                      944: {
-                        spaceBetween: 190,
-                        slidesPerView: 2,
-                      },
-                      988: {
-                        spaceBetween: 320,
-                        slidesPerView: 2,
-                      },
-                      1000: {
-                        spaceBetween: 250,
-                        slidesPerView: 2,
-                      },
-                      1048: {
-                        spaceBetween: 290,
-                        slidesPerView: 2,
-                      },
-                      1072: {
-                        spaceBetween: 10,
-                        slidesPerView: 3,
-                      },
-                      1228: {
-                        spaceBetween: 80,
-                        slidesPerView: 3,
-                      },
-                      1240: {
-                        spaceBetween: 90,
-                        slidesPerView: 3,
-                      },
-                      1252: {
-                        spaceBetween: 100,
-                        slidesPerView: 3,
-                      },
-                      1276: {
-                        spaceBetween: 100,
-                        slidesPerView: 3,
-                      },
-                      1300: {
-                        spaceBetween: 150,
-                        slidesPerView: 3,
-                      },
-                      1324: {
-                        spaceBetween: 150,
-                        slidesPerView: 3,
-                      },
-
-                      1332: {
-                        spaceBetween: 160,
-                        slidesPerView: 3,
-                      },
-                      1336: {
-                        spaceBetween: 160,
-                        slidesPerView: 3,
-                      },
-
-                      1360: {
-                        spaceBetween: 170,
-                        slidesPerView: 3,
-                      },
-                      1515: {
-                        spaceBetween: 30,
-                        slidesPerView: 4,
-                      },
-                      1543: {
-                        spaceBetween: 25,
-                        slidesPerView: 3,
-                      },
                       1615: {
-                        spaceBetween: 130,
                         slidesPerView: 3,
-                      },
-                      1630: {
-                        spaceBetween: 60,
-                        slidesPerView: 3,
-                      },
-                      1647: {
-                        spaceBetween: 70,
-                        slidesPerView: 3,
-                      },
-                      1716: {
-                        spaceBetween: 100,
-                        slidesPerView: 3,
-                      },
-                      1779: {
-                        spaceBetween: 130,
-                        slidesPerView: 3,
-                      },
-                      1799: {
-                        spaceBetween: 140,
-                        slidesPerView: 3,
-                      },
-                      1835: {
-                        spaceBetween: 160,
-                        slidesPerView: 3,
-                      },
-                      1847: {
-                        spaceBetween: 30,
-                        slidesPerView: 4,
                       },
                     }}
                     navigation={true}

@@ -142,14 +142,12 @@
   }
 
   @font-face {
-    font-family: "AnimeAcev02Bold";
-    src: url("./fonts/ANIME/animeacev02bold.eot");
-    src: url("./fonts/ANIME/animeacev02bold.eot?#iefix")
+    font-family: "Blue curve";
+    src: url("./fonts/BLUECURVE/blue-curve-3.eot");
+    src: url("./fonts/BLUECURVE/blue-curve-3.eot?#iefix")
         format("embedded-opentype"),
-      url("./fonts/ANIME/animeacev02bold.woff2") format("woff2"),
-      url("./fonts/ANIME/animeacev02bold.woff") format("woff"),
-      url("./fonts/ANIME/animeacev02bold.ttf") format("truetype"),
-      url("./fonts/ANIME/animeacev02bold.svg#animeacev02bold") format("svg");
+      url("./fonts/BLUECURVE/blue-curve-3.woff") format("woff"),
+      url("./fonts/BLUECURVE/blue-curve-3.ttf") format("truetype");
   }
 
   @font-face {
@@ -291,7 +289,7 @@ table {
 }
 
 body {
-  background-color: #52357d;
+  background-color: #1e2142;
 }
 /* БАЛАНСИРОВАНИЕ ТЕКСТА */
 .textwrap {
@@ -368,26 +366,6 @@ body {
 /* ЭФФЕКТ ПРИ НАВЕДЕНИИ НА БЛОК  SVG КАРТИНКА ЗУМИТСЯ */
 
 /* relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-[-1px] after:bg-[#ffffff] after:scale-0 hover:after:scale-100 after:transition-transform */
-/* ХОВЕР НА КНОПКУ ПРИ КОТОРОЙ ТЕКСТУ ЗАДАЕТСЯ ПОДЧЕРКИВАНИЕ */
-.textBtnShowMore {
-  position: relative;
-}
-.textBtnShowMore::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  left: 0;
-  bottom: -1px;
-  background-color: aliceblue;
-  scale: 0%;
-  transition: all 0.3s ease;
-}
-
-.hoverBtnShowMore:hover .textBtnShowMore::after {
-  scale: 100%;
-}
-/* ХОВЕР НА КНОПКУ ПРИ КОТОРОЙ ТЕКСТУ ЗАДАЕТСЯ ПОДЧЕРКИВАНИЕ */
 
 /* OBJECTFIT ИЗОБРАЖЕНИЯМ */
 .objFit {
@@ -401,22 +379,22 @@ body {
 
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА СКРОЛБАРА!!! */
 .swiper-scrollbar {
-  background-color: #3474dc !important;
+  background-color: #363d79 !important;
   height: 5px !important;
 }
 .swiper-scrollbar-drag {
-  background-color: #d6fe50 !important;
+  background-color: #7185e3 !important;
 }
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА СКРОЛБАРА!!! */
 
 /* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
 .swiper-pagination-bullet {
-  background-color: #dfd2c9 !important;
+  background-color: #5662d5 !important;
   width: 20px !important;
   height: 20px !important;
 }
 .swiper-pagination-bullet-active {
-  background-color: #2b60ca !important;
+  background-color: #5662d5 !important;
 }
 /* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
 
@@ -448,7 +426,7 @@ body {
   transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .input-container input:focus {
-  border: 1px solid #d6fe50;
+  border: 1px solid #7185e3;
 }
 .invite-btn {
   position: absolute;
@@ -458,7 +436,7 @@ body {
   bottom: 4px;
   z-index: 10;
   border-radius: 15px;
-  background-color: #d6fe50;
+  background-color: #7185e3;
   color: #000000;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -477,7 +455,7 @@ body {
 }
 .input-container input:placeholder-shown ~ .invite-btn {
   pointer-events: none;
-  background-color: #b9d362;
+  background-color: #8da4ec;
   opacity: 0.5;
 }
 /* СТИЛИЗАЦИЯ КНОПКИ FOLLOW FOOTER */
@@ -524,40 +502,18 @@ body {
 
 /* СТИЛИЗАЦИЯ СКРОЛБАРА */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #3474dc;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #d6fe50;
+  background: #5662d5;
   border-radius: 20px;
 }
 /* СТИЛИЗАЦИЯ СКРОЛБАРА */
-
-/* СТИЛИЗАЦИЯ ЗАКРЫТИЯ МОДАЛЬНОГО ОКНА */
-.ClosedModal:hover path {
-  fill: #d6fe50;
-}
-.ClosedModal:active {
-  border: 1px solid #d6fe50;
-  border-radius: 5px;
-}
-/* СТИЛИЗАЦИЯ ЗАКРЫТИЯ МОДАЛЬНОГО ОКНА */
-
-/* BACKGROUND КНОПКИ СМОТРЕТЬ ЕЩЕ */
-.buttonShowMore:hover {
-  background: rgba(214, 254, 80, 0.15);
-}
-/* BACKGROUND КНОПКИ СМОТРЕТЬ ЕЩЕ */
-
-/* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
-.GradientWatchAnime {
-  background: linear-gradient(180deg, rgba(82, 53, 125, 0.85) 0%, #52357d 95%);
-}
-/* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
 
 /* ЗАДНЯЯ КАРТИНКА СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
 .bgbuttonSearchAnime {
@@ -598,31 +554,28 @@ body {
   left: 0;
 } */
 
-/* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */
-.hoverGeneralPerson:hover h1 {
-  color: #d6fe50;
-}
 /* ОГРАНИЧЕНИЯ ОПИСАНИЯ КОНТЕНТА ПРОСМОТРА АНИМЕ */
 
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА ГДЕ ПРОСМОТР АНИМЕ КАРТИНОК */
 .swiper-button-next,
 .swiper-button-prev {
-  background: rgba(73, 144, 232, 0.56) !important;
+  background: #5662d58f !important;
   padding-top: 16px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
   padding-bottom: 16px !important;
   border-radius: 50% !important;
-  width: 50px !important;
-  height: 50px !important;
+  width: clamp(25px, 5vw, 50px) !important;
+  height: clamp(25px, 5vw, 50px) !important;
 }
+
 .swiper-button-prev:hover {
-  background: rgba(73, 144, 232, 0.75) !important;
+  background: #5662d5c2 !important;
   transition: 0.2s ease-in-out;
 }
 
 .swiper-button-next:hover {
-  background: rgba(73, 144, 232, 0.75) !important;
+  background: #5662d5c2 !important;
   transition: 0.2s ease-in-out;
 }
 .swiper-button-next::after {
@@ -646,28 +599,7 @@ body {
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА ГДЕ ПРОСМОТР АНИМЕ КАРТИНОК */
 
 /* СТИЛИЗАЦИЯ ХОВЕРА И САМИХ КАРТИНОК В СЛАЙДЕРЕ */
-.hoverbgSliderEffect:hover .sliderbg {
-  opacity: 1;
-  transition: all 0.3s ease-in;
-}
-.bgSliderEffect {
-  background: rgba(255, 255, 255, 0.04);
-}
-.ObjfitSlider {
-  width: 100%;
-  min-width: 150px;
-  height: 200px;
-  min-height: 200px;
-  object-fit: cover;
-}
-.ZoomSearch .SvgSearch {
-  width: 100%;
-  height: 100%;
-  transition: scale 400ms;
-}
-.ZoomSearch:hover .SvgSearch {
-  scale: 130%;
-}
+
 /* СТИЛИЗАЦИЯ ХОВЕРА И САМИХ КАРТИНОК В СЛАЙДЕРЕ */
 .check {
   cursor: pointer;
@@ -735,4 +667,15 @@ body {
   stroke-dashoffset: 42;
   transition: all 0.2s linear;
   transition-delay: 0.15s;
+}
+
+/* .pestxr {
+  width: clamp(180px, 13vh, 250px);
+  height: clamp(100px, 10vh, 350px);
+} */
+
+.adaptiveImageAnime {
+  padding: 0px 0px 120% 0px;
+  overflow: hidden;
+  position: relative;
 }

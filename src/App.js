@@ -13,6 +13,7 @@ import { Login } from "./pages/Login/login";
 import { Registration } from "./pages/Registration/registration";
 import { ErrorPage } from "./pages/ErrorPage/errorpage";
 import Profile from "./pages/Profile/profile";
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/404" element={<ErrorPage />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
+        <CookieConsent debug={true}>asd</CookieConsent>
         {/* <Footer /> */}
       </Router>
     </div>

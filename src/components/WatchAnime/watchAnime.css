@@ -1,0 +1,62 @@
+/* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
+.GradientWatchAnime {
+  display: inline-block;
+  position: relative;
+  line-height: 0;
+}
+.GradientWatchAnime:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  background: linear-gradient(180deg, rgba(30, 33, 66, 0.85) 0%, #1e2142 95%);
+}
+/* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
+
+.mybutton {
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #da4f4a;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.1px;
+  transition: all 0.5s ease;
+}
+
+.mybutton:hover {
+  letter-spacing: 2.5px;
+  background-color: #da4f4a;
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+}
+
+.mybutton:active {
+  letter-spacing: 2.5px;
+  background-color: #e05357;
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  transform: translateY(-2px);
+  transition: 100ms;
+}
+.gridcols2 {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: unset;
+}
+@media (max-width: 640px) {
+  .gridcols2 {
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    grid-template-rows: unset;
+  }
+}
+
+/* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */
+.hoverGeneralPerson:hover h1 {
+  color: #e05357;
+}
+/* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */

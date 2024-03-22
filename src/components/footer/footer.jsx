@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="mt-[56px] sticky bg-darkViolet py-[50px]">
+    <footer className="mt-[56px] sticky bg-darkBlue py-[50px]">
       <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <section className="flex justify-between flex-wrap gap-[100px] lg:gap-[50px] md:gap-[20px] max-w-[1500px] mx-auto">
           <div className="flex flex-col max-w-[300px]">
@@ -21,25 +21,25 @@ export const Footer = () => {
 
             <NavLink
               to="/"
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               Главная
             </NavLink>
             <NavLink
               to="/anime"
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               Аниме
             </NavLink>
             <NavLink
               to="/random"
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               Случайное
             </NavLink>
             <NavLink
               to="/films"
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               Фильмы
             </NavLink>
@@ -48,19 +48,19 @@ export const Footer = () => {
             <h1 className="text-[25px] font-GothamPro text-white">Помощь</h1>
             <a
               href=""
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               О нас
             </a>
             <a
               href=""
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               FAQ
             </a>
             <a
               href=""
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors"
+              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
             >
               Настройки
             </a>
@@ -119,7 +119,7 @@ export const Footer = () => {
               </svg>
             </div>
           </a>
-          <a href="" className="">
+          <a href="https://t.me/minxrka" className="">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 width="60"
@@ -158,7 +158,7 @@ export const Footer = () => {
       <aside className="mt-[53px] relative after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-0.5 after:bg-[#4990E8]"></aside>
       <aside className="xl:flex max-w-[1900px] mx-auto xl:flex-col xl:items-center gap-[30px] flex flex-wrap justify-between mt-[120px] px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <div className="cursor-pointer">
-          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors">
+          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors">
             Условия предоставления услуг
           </h1>
         </div>
@@ -175,12 +175,12 @@ export const Footer = () => {
               fill="white"
             />
           </svg>
-          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors">
+          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors">
             2023. All rights reserved.
           </h1>
         </div>
         <div className="cursor-pointer">
-          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#D6FE50] transition-colors">
+          <h1 className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors">
             Политика конфиденциальности
           </h1>
         </div>
