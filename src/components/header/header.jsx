@@ -1,12 +1,8 @@
 import React from "react";
-<<<<<<< HEAD
 import MainLogo from "../../img/logo/newLogo.png";
 import SmallLogo from "../../img/logo/miniLogo.png";
-=======
-import MainLogo from "../../img/logo/main-logo.svg";
 import ProfileUser from "../../img/other-content/photo_2023-12-15_18-57-01.jpg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
 import my from "../../img/bg-anime-card/small/bleach.jpg";
 import notFound from "../../img/other-content/unnamed.png";
@@ -15,7 +11,6 @@ import { NavLink } from "react-router-dom";
 import "./header.css";
 import NavPorfilePop from "../NavPorfilePop/NavPorfilePop";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
-import ProfileUser from "../../img/other-content/avatarProf.jpg";
 import sasuke3tomoelogoanime from "../../img/other-content/sasuke3tomoe.png";
 
 import Drawer from "@mui/material/Drawer";
@@ -366,11 +361,7 @@ export const Header = () => {
     <header
       className={`sticky ${
         scrollDirection === "down" ? "-top-24" : "top-0"
-<<<<<<< HEAD
       } h-[70px] bg-mainBlue transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] px-[160px] py-[10px] items-center flex justify-between after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-Blue600`}
-=======
-      } h-[70px] bg-mainViolet transition-all duration-500 z-index-header xl:px-[80px] big:px-[150px] sm:px-[25px] lg:px-[73px] items-center flex justify-between px-[200px] py-[10px] after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-[#4990E8]`}
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
     >
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
@@ -445,10 +436,7 @@ export const Header = () => {
               />
             </svg>
           </button>
-<<<<<<< HEAD
-=======
 
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
           {/* <li>
             <NavLink to="/login">
               <a
@@ -459,27 +447,12 @@ export const Header = () => {
               </a>
             </NavLink>
 <<<<<<< HEAD
+<<<<<<< HEAD
           </li> */}
 
           {/* ИЛИ УЖЕ ПРОФИЛЬ */}
 
           <NavPorfilePop />
-=======
-            
-          </li> */}
-          <NavLink to="/profile/">
-            <li className="max-w-[160px] cursor-pointer flex items-center gap-[9px]">
-              <img
-                className="max-w-[45px] h-auto rounded-[10px]"
-                src={ProfileUser}
-                alt=""
-              />
-              <p className="text-white mt-[7px] break-words line-clamp-1 text-center font-GothamPro text-[16px] font-light">
-                1234567891012
-              </p>
-            </li>
-          </NavLink>
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
         </ul>
       </nav>
       <Dialog open={open} onClose={handleClose} className="backdrop-blur-[5px]">

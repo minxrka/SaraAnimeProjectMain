@@ -58,11 +58,7 @@ export const Registration = () => {
                 <input
                   className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-Blue500 rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-Blue500 focus:shadow-[_0_0_0_4px_#8DA4EC4F] focus:border focus:outline-none peer ${
                     errors.login &&
-<<<<<<< HEAD
                     "  focus:border-[#da4f4a] focus:shadow-[_0_0_0_4px_#DA4F4A4F] focus:border focus:outline-none"
-=======
-                    "  focus:border-[#ff3030ea] focus:shadow-[_0_0_0_4px_#FF2B2B4F] focus:border focus:outline-none"
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
                   }`}
                   placeholder=""
                   id="login"

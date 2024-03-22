@@ -54,22 +54,14 @@ export const Slider = () => {
               <NavLink to={"watch"}>
                 <a
                   href="#"
-<<<<<<< HEAD
                   className="py-[12px] px-[9px] bg-Blue600 rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-Blue700 transition-colors"
-=======
-                  className="py-[12px] px-[9px] bg-mainBlue rounded-[25px] text-white font-GothamPro text-[16px] font-extralight hover:bg-[#2F67C2] transition-colors"
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
                 >
                   К просмотру
                 </a>
               </NavLink>
               <a
                 href="#"
-<<<<<<< HEAD
                 className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
-=======
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-[#987AD8] hover:bg-[#987AD8]"
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
               >
                 Трейлер
               </a>

@@ -4,18 +4,11 @@ import { Header } from "../../components/header/header";
 import banner from "../../img/test.jpg";
 import user from "../../img/bg-anime-card/13d91efa294e8cdff7715d530d946237.jpg";
 import { Anime } from "../../components/animeItem/anime";
-<<<<<<< HEAD
 import prof from "../../img/other-content/avatarProf.jpg";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
 import Pencil from "../../img/other-content/svg-profile/pencil.svg";
 import { useState, useRef } from "react";
-=======
-import prof from "../../img/other-content/photo_2023-12-15_18-57-01.jpg";
-import LogOut from "../../img/other-content/svg-profile/logout.svg";
-import Pencil from "../../img/other-content/svg-profile/pencil.svg";
-import { useState, useEffect, useRef } from "react";
 import Dialog from "@mui/material/Dialog";
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
 
 import { Footer } from "../../components/footer/footer";
 import AnimePerson from "../../components/animePerson/animePerson";
@@ -148,8 +141,6 @@ const Profile = () => {
                     alt=""
                   />
                 </button>
-<<<<<<< HEAD
-=======
                 <Dialog
                   open={open}
                   onClose={handleClose}
@@ -180,7 +171,6 @@ const Profile = () => {
                     </div>
                   </div>
                 </Dialog>
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
               </div>
             </div>
           </div>
@@ -233,11 +223,12 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
-<<<<<<< HEAD
+
                 <div className="absolute top-[105px] w-full h-[1px] bg-Blue600"></div>
-=======
+
                 <div className="absolute top-[105px] w-full h-[1px] bg-[#4990E8]"></div>
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
+
+                <div className="absolute top-[105px] w-full h-[1px] bg-[#4990E8]"></div>
                 <div className="flex justify-between">
                   <div className="text-center cursor-pointer w-[100px] h-auto justify-center">
                     <img
@@ -271,11 +262,8 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
-<<<<<<< HEAD
-                <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[15px] max-w-[200px] text-center mx-auto hover:bg-superLightRed transition-colors">
-=======
+
                 <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[15px] max-w-[200px] text-center mx-auto hover:bg-[#D6FE5026] transition-colors">
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
                   Смотреть всех
                 </button>
               </div>

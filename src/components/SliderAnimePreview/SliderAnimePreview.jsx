@@ -53,21 +53,13 @@ const SliderAnimePreview = () => {
         }}
         className="mySwiper mt-[20px] mb-[20px]"
       >
-<<<<<<< HEAD
-        {Data.map((id, index) => (
-=======
         {Data.map((result, index) => (
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
           <SwiperSlide key={index} onClick={handleClickOpen} className="">
             <div className="hoverbgSliderEffect ZoomSearch cursor-pointer">
               <div className="rounded-[10px] adaptiveImageSlider">
                 <img
                   className="rounded-[10px] absolute top-0 left-0 w-full h-full object-cover"
-<<<<<<< HEAD
-                  src={id.img}
-=======
                   src={result.img}
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
                   alt=""
                 />
                 <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
@@ -104,11 +96,7 @@ const SliderAnimePreview = () => {
       <Modal
         open={open}
         onClose={handleClose}
-<<<<<<< HEAD
         className="max-w-[1550px] mx-auto items-center flex"
-=======
-        className="max-w-[1300px] mx-auto items-center flex"
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
       >
         <Swiper
           open={open}
@@ -120,19 +108,11 @@ const SliderAnimePreview = () => {
           modules={[Pagination, Navigation]}
           className=""
         >
-<<<<<<< HEAD
-          {Data.map((id, index) => (
-            <SwiperSlide key={index} className="w-full h-auto">
-              <img
-                className="w-full h-full object-cover"
-                src={id.img}
-=======
           {Data.map((result, index) => (
             <SwiperSlide key={index} className="w-[1300px] h-auto">
               <img
                 className="w-[1300px] max-h-[700px] object-cover"
                 src={result.img}
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
                 alt="bgAnime"
               />
             </SwiperSlide>

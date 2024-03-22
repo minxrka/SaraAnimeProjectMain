@@ -6,12 +6,9 @@
   transition: all 0.5s ease;
 }
 .adaptiveImageSlider:hover {
-<<<<<<< HEAD
   filter: brightness(110%);
-=======
-  filter: brightness(105%);
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
   transition: all 5s ease;
+  -webkit-filter: brightness(110%);
 }
 
 .hoverbgSliderEffect:hover .sliderbg {

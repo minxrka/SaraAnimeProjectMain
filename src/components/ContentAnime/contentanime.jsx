@@ -9,11 +9,8 @@ export const ContentAnime = () => {
           Аниме каталог
         </h1>
       </section>
-<<<<<<< HEAD
+
       <main className="overflow-hidden px-[20px] py-[20px] border-solid border border-mainLightRed rounded-[20px]">
-=======
-      <main className="overflow-hidden px-[20px] py-[20px] border-solid border border-mainBlue rounded-[20px]">
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
         <section className="grid grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-[80px] lg:gap-[40px] md:justify-center">
           {/* +Idindex anime NavLink to={`/watch/` + index} */}
           {/* ///////////////////////// */}

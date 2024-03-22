@@ -1,6 +1,5 @@
 [
   {
-<<<<<<< HEAD
     "id": 1,
     "img": "https://animego.org/upload/anime/images/63445455c43fc478206729.jpg"
   },
@@ -34,8 +33,7 @@
   },
   {
     "id": 9,
-    "img": "https://animego.org/upload/anime/images/63445455ba2fe221946166.jpg"
-=======
+    "img": "https://animego.org/upload/anime/images/63445455ba2fe221946166.jpg",
     "titleAnime": "Блич",
     "yearOfIssue": "16+",
     "Country": "Япония",
@@ -86,6 +84,5 @@
   {
     "id": 9,
     "img": "https://w.forfun.com/fetch/12/12b20bf92053492abdff17e191916a54.jpeg"
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
   }
 ]

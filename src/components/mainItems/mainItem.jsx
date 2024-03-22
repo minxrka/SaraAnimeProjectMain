@@ -1,10 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Anime } from "../animeItem/anime";
-<<<<<<< HEAD
+
 import "./GeneralPopularAnime.css";
-=======
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
 
 export const ItemAnime = () => {
   return (

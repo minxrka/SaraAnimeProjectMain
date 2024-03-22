@@ -6,11 +6,8 @@ import shape2 from "../../img/other-content/shape-1.png";
 export const Join = () => {
   return (
     <main className="max-w-[1500px] mx-auto">
-<<<<<<< HEAD
       <section className="relative max-w-full h-auto bg-Blue400 rounded-[20px] mt-[50px] py-[32px] px-[25px] md:py-[20px] md:px-[10px]">
-=======
       <section className="relative max-w-full h-auto bg-[#8198D9] rounded-[20px] mt-[50px] py-[32px] px-[25px] md:py-[20px] md:px-[10px]">
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
         <h1 className="text-[#232323] uppercase font-Bluecurve text-[120px] textwrap xlbig:text-[100px] xl:text-[80px] lg:text-[50px] md:text-[27px]">
           Присоединяйся к нам!
         </h1>

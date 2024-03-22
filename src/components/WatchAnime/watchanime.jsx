@@ -6,11 +6,7 @@ import { useSpring, animated } from "react-spring";
 import InformationAnime from "./mainInfoAnime.json";
 import GeneralPerson from "./generalPerson.json";
 // Import Swiper React components
-<<<<<<< HEAD
 import "./watchAnime.css";
-=======
-import "./test.css";
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -59,7 +55,6 @@ export const WatchAnime = () => {
   /*   Реф ссылка для описания */
   const myref = useRef(null);
 
-<<<<<<< HEAD
   const handleClick = () => {
     myref.current?.scrollIntoView({
       behavior: "smooth",
@@ -67,8 +62,6 @@ export const WatchAnime = () => {
     });
   };
 
-=======
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
   return (
     <>
       <main>
@@ -320,7 +313,6 @@ export const WatchAnime = () => {
                       </button>
                     </div>
                   </aside>
-<<<<<<< HEAD
                 ))}
               </section>
 
@@ -378,103 +370,6 @@ export const WatchAnime = () => {
           </main>
           <Footer />
         </main>
-=======
-                </section>
-                <section className="">
-                  <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
-                  <SliderAnimePreview />
-                  <div className="w-full h-[1px] bg-[#4990E8]"></div>
-                </section>
-              </div>
-            </section>
-            <main className="mt-[40px] px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
-              <section className="max-w-[1300px] mx-auto">
-                <div>
-                  <h1 className="text-white font-GothamPro text-[21px]">
-                    Смотреть аниме онлайн
-                  </h1>
-                </div>
-                <div className="mt-[20px] max-w-[1000px] h-[600px] md:max-w-[600px] md:h-[400px]">
-                  <iframe
-                    src="//kodik.info/seria/1170509/c7c42fb5de1730cc86dbdf294c638d68/720p"
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                    AllowFullScreen
-                    allow="autoplay *; fullscreen *"
-                  ></iframe>
-                </div>
-                <div className="mt-[40px] w-full h-[1px] bg-[#4990E8]"></div>
-                <div className="mt-[40px]">
-                  <h1 className="text-white font-GothamPro text-[21px]">
-                    Главные персонажи
-                  </h1>
-                </div>
-                <aside className="mt-[20px] flex flex-wrap gap-[40px] md:justify-between sm:justify-center">
-                  <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
-                    <div className="">
-                      <img
-                        className="w-full object-cover rounded-[10px] h-[250px]"
-                        src={AnimePerson}
-                        alt=""
-                      />
-                    </div>
-                    <div className="mt-[15px]">
-                      <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Лайт Ягами
-                      </h1>
-                    </div>
-                  </section>
-                  <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
-                    <div className="">
-                      <img
-                        className="w-full object-cover rounded-[10px] h-[250px]"
-                        src={AnimePerson2}
-                        alt=""
-                      />
-                    </div>
-                    <div className="mt-[15px]">
-                      <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Эл
-                      </h1>
-                    </div>
-                  </section>
-                  <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
-                    <div className="">
-                      <img
-                        className="w-full object-cover rounded-[10px] h-[250px]"
-                        src={AnimePerson3}
-                        alt=""
-                      />
-                    </div>
-                    <div className="mt-[15px]">
-                      <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Рюк
-                      </h1>
-                    </div>
-                  </section>
-                  <section className="block w-[180px] cursor-pointer hoverGeneralPerson transition-colors">
-                    <div className="">
-                      <img
-                        className="w-full object-cover rounded-[10px] h-[250px]"
-                        src={AnimePerson4}
-                        alt=""
-                      />
-                    </div>
-                    <div className="mt-[15px]">
-                      <h1 className="text-[16px] font-GothamPro font-light text-white textwrap lineclampone">
-                        Миса Аманэ
-                      </h1>
-                    </div>
-                  </section>
-                </aside>
-                <div className="mt-[40px] w-full h-[1px] bg-[#4990E8] mb-[110px]"></div>
-              </section>
-            </main>
-            <Footer />
-          </div>
-        </section>
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
       </main>
     </>
   );

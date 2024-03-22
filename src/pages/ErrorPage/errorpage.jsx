@@ -13,11 +13,10 @@ export const ErrorPage = () => {
             Данная страница не найдена или находится в разработке
           </h1>
         </div>
-<<<<<<< HEAD
-        <h1 className="text-darkBlue select-none main404 uppercase font-Bluecurve text-center">
-=======
+
+        
+
         <h1 className="text-[#D6FE50B0] select-none main404 uppercase font-Bluecurve text-center">
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
           404
         </h1>
         <div className="select-none test">
