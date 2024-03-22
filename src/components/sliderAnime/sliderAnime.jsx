@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Data from "./DummyDataImages.json";
 import { NavLink } from "react-router-dom";
+import { Anime } from "../animeItem/anime";
 
 // Import Swiper styles
 import "swiper/css";
@@ -55,7 +56,6 @@ export const SliderAnime = () => {
         modules={[Scrollbar, Mousewheel]}
         className="mySwiper"
       >
-<<<<<<< HEAD
         {Data.map((id, index) => (
           <SwiperSlide>
             {/* //////////////////////////// */}
@@ -113,7 +113,7 @@ export const SliderAnime = () => {
             {/* //////////////////////////// */}
           </SwiperSlide>
         ))}
-=======
+        =======
         <SwiperSlide>
           <section className="flex justify-between">
             <Anime />
@@ -147,7 +147,6 @@ export const SliderAnime = () => {
             <Anime />
           </section>
         </SwiperSlide>
->>>>>>> 325cd2b3f190c6f697ac3186e6c002b23d5e5b3a
         <div class="swiper-scrollbar"></div>
       </Swiper>
     </div>
