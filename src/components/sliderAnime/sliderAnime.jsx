@@ -1,18 +1,9 @@
-import { useEffect, useRef } from "react";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Data from "./DummyDataImages.json";
 import { NavLink } from "react-router-dom";
-import { Anime } from "../animeItem/anime";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/scrollbar";
-
-// import required modules
 import { Scrollbar, Mousewheel } from "swiper/modules";
-
-import Anime1 from "../../img/bg-anime-card/small/Mob Psycho 100.jpg";
 
 export const SliderAnime = () => {
   return (
@@ -113,41 +104,6 @@ export const SliderAnime = () => {
             {/* //////////////////////////// */}
           </SwiperSlide>
         ))}
-        =======
-        <SwiperSlide>
-          <section className="flex justify-between">
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section className="flex justify-between mb-[30px]">
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-          </section>
-        </SwiperSlide>
-        <SwiperSlide>
-          <section className="flex justify-between mb-[30px]">
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-            {/* //////////////////////////// */}
-            <Anime />
-          </section>
-        </SwiperSlide>
-        <div class="swiper-scrollbar"></div>
       </Swiper>
     </div>
   );

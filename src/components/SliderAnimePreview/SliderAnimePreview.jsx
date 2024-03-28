@@ -96,7 +96,7 @@ const SliderAnimePreview = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        className="max-w-[1550px] mx-auto items-center flex"
+        className="max-w-[1400px] mx-auto items-center flex"
       >
         <Swiper
           open={open}
@@ -109,9 +109,9 @@ const SliderAnimePreview = () => {
           className=""
         >
           {Data.map((result, index) => (
-            <SwiperSlide key={index} className="w-[1300px] h-auto">
+            <SwiperSlide key={index} className="w-[1400px] h-auto">
               <img
-                className="w-[1300px] max-h-[700px] object-cover"
+                className="w-full max-h-[700px] object-cover"
                 src={result.img}
                 alt="bgAnime"
               />

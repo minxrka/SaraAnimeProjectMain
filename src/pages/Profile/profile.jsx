@@ -1,5 +1,4 @@
 import React from "react";
-import "./profile.css";
 import { Header } from "../../components/header/header";
 import banner from "../../img/test.jpg";
 import user from "../../img/bg-anime-card/13d91efa294e8cdff7715d530d946237.jpg";
@@ -141,36 +140,6 @@ const Profile = () => {
                     alt=""
                   />
                 </button>
-                <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="alert-dialog-title"
-                  aria-describedby="alert-dialog-description"
-                  className="backdrop-blur-[5px] transition-all"
-                >
-                  <div className="w-[330px] h-[110px] bg-[#52357DB2] overflow-hidden">
-                    <h1 className="text-white mt-[10px] text-center font-GothamPro font-light text-[20px]">
-                      Вы действительно хотите выйти?
-                    </h1>
-                    <div className="mt-[10px] w-full h-[1px] bg-[#4990E8]"></div>
-                    <div className="flex justify-between h-full items-center">
-                      <button className="text-center w-[165px] h-full bg-[#33215473] hover:bg-[#ff3030b0] transition-colors">
-                        <h1 className="text-white font-Bluecurve uppercase text-[20px] mt-[-39px]">
-                          да
-                        </h1>
-                      </button>
-                      <div className="w-[1px] h-full bg-[#4990E8]"></div>
-                      <button
-                        onClick={handleClose}
-                        className="text-center w-[165px] h-full bg-[#33215473] hover:bg-[#332154A1] transition-colors"
-                      >
-                        <h1 className="text-white font-Bluecurve uppercase text-[20px] mt-[-39px]">
-                          нет
-                        </h1>
-                      </button>
-                    </div>
-                  </div>
-                </Dialog>
               </div>
             </div>
           </div>
