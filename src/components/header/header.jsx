@@ -1,5 +1,5 @@
 import React from "react";
-import MainLogo from "../../img/logo/newLogo.png";
+import MainLogo from "../../img/logo/newLogo.svg";
 import SmallLogo from "../../img/logo/miniLogo.png";
 import ProfileUser from "../../img/other-content/avatarProf.jpg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
@@ -368,7 +368,7 @@ export const Header = () => {
           <li>
             <NavLink to="/">
               <a href="#">
-                <img src={MainLogo} alt="" />
+                <img className="w-[170px] h-auto" src={MainLogo} alt="" />
               </a>
             </NavLink>
           </li>
@@ -446,8 +446,6 @@ export const Header = () => {
                 Вход
               </a>
             </NavLink>
-<<<<<<< HEAD
-<<<<<<< HEAD
           </li> */}
 
           {/* ИЛИ УЖЕ ПРОФИЛЬ */}

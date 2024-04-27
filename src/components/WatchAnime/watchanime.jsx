@@ -15,7 +15,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
-import { Footer } from "../../components/footer/footer";
+import { Footer } from "../footer/footer";
 
 import { Header } from "../header/header";
 import SliderAnimePreview from "../SliderAnimePreview/SliderAnimePreview";
@@ -71,12 +71,12 @@ export const WatchAnime = () => {
           mousewheel={true}
           modules={[Pagination]}
           style={{ position: "absolute", zIndex: 1, top: 0, left: 0 }}
-          className="mySwiper w-full pyp"
+          className="mySwiper w-full"
         >
           <SwiperSlide className="">
             <section className="w-full h-[100vh] GradientWatchAnime">
               <img
-                src="https://animego.org/upload/anime/images/63445455c43fc478206729.jpg"
+                src="https://i.kodik.biz/screenshots/video/97738/1.jpg"
                 className="w-full h-full"
               ></img>
             </section>

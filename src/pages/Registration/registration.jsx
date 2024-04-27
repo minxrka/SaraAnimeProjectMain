@@ -2,6 +2,7 @@ import React from "react";
 import BgVideo from "../../img/BgVideoAuth/sasuke_auth.mp4";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
 import Logo from "../../img/logo/main-logo.svg";
+import MainLogo from "../../img/logo/newLogo.svg";
 import SocialVK from "../../img/icons/vk.svg";
 import SocialDiscord from "../../img/icons/discord.svg";
 import SocialShikimori from "../../img/icons/shikimori.svg";

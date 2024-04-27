@@ -1,10 +1,10 @@
 import React from "react";
-import MainLogo from "../../img/logo/main-logo.svg";
+import MainLogo from "../../img/logo/newLogo.svg";
 import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
-    <footer className="mt-[56px] sticky bg-darkBlue py-[50px]">
+    <footer className="sticky bg-darkBlue py-[50px]">
       <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
         <section className="flex justify-between flex-wrap gap-[100px] lg:gap-[50px] md:gap-[20px] max-w-[1500px] mx-auto">
           <div className="flex flex-col max-w-[300px]">
@@ -46,18 +46,22 @@ export const Footer = () => {
           </div>
           <div className="flex flex-col gap-[22px]">
             <h1 className="text-[25px] font-GothamPro text-white">Помощь</h1>
-            <a
-              href=""
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
-            >
-              О нас
-            </a>
-            <a
-              href=""
-              className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
-            >
-              FAQ
-            </a>
+            <NavLink to="/about">
+              <a
+                href=""
+                className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
+              >
+                О нас
+              </a>
+            </NavLink>
+            <NavLink to="/faq">
+              <a
+                href=""
+                className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"
+              >
+                FAQ
+              </a>
+            </NavLink>
             <a
               href=""
               className="text-white font-GothamPro font-light text-[20px] hover:text-[#da4f4a] transition-colors"

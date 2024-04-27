@@ -1,0 +1,69 @@
+.glassEffect {
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-right: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px) /* brightness(70%) */;
+}
+.EffectDropShadowLogo:hover {
+  filter: drop-shadow(0 0 0.85rem #1e2142);
+  transition: all 0.25s ease-in;
+}
+
+/*------ Settings ------*/
+/*------ Settings ------*/
+.container {
+  --color: #f9e5cc;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  background-color: #1e2142;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+
+.container .mute {
+  position: absolute;
+  animation: keyframes-fill 0.5s;
+}
+
+.container .voice {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill 0.5s;
+}
+
+/* ------ On check event ------ */
+.container input:checked ~ .mute {
+  display: none;
+}
+
+.container input:checked ~ .voice {
+  display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: rotate(0deg) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: rotate(-10deg) scale(1.2);
+  }
+}

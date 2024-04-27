@@ -6,8 +6,9 @@ import "swiper/css/scrollbar";
 import { Scrollbar, Mousewheel } from "swiper/modules";
 
 export const SliderAnime = () => {
+  
   return (
-    <div className="mt-[170px] border-solid border border-mainLightRed px-[20px] py-[20px] rounded-[20px] max-w-[1500px] mx-auto">
+    <div className="mt-[170px] mb-[70px] border-solid border border-mainLightRed px-[20px] py-[20px] rounded-[20px] max-w-[1500px] mx-auto">
       <div className="flex justify-between mb-[40px] items-center">
         <h1 className="text-white text-[40px] uppercase font-Bluecurve xl:text-[35px] lg:text-[30px] textwrap">
           Популярное за всё время
@@ -26,7 +27,7 @@ export const SliderAnime = () => {
           0: {
             slidesPerView: 1,
           },
-          400: {
+          600: {
             slidesPerView: 2,
           },
           900: {
@@ -41,7 +42,6 @@ export const SliderAnime = () => {
         }}
         mousewheel={true}
         scrollbar={{
-          el: ".swiper-scrollbar",
           hide: true,
         }}
         modules={[Scrollbar, Mousewheel]}

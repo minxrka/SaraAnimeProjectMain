@@ -2,6 +2,7 @@ import React from "react";
 import bgJoinUs from "../../img/other-content/my.jpg";
 import shape1 from "../../img/other-content/shape.png";
 import shape2 from "../../img/other-content/shape-1.png";
+import { NavLink } from "react-router-dom";
 
 export const Join = () => {
   return (
@@ -14,12 +15,11 @@ export const Join = () => {
           <p className="text-[#363539] text-[50px] uppercase font-Bluecurve textwrap lg:text-[30px] md:text-[20px] md:max-w-[438px]">
             смотри любимые аниме с комфортом!
           </p>
-          <a
-            href="#"
-            className="md:hidden py-[21px] px-[31px] bg-heroGradient text-white text-[16px] font-GothamPro font-light rounded-[50px] hover:scale-110 transition-transform xlbig:mt-[20px]"
-          >
-            Регистрация
-          </a>
+          <NavLink to="/registration/">
+            <p className="md:hidden py-[21px] px-[31px] bg-heroGradient text-white text-[16px] font-GothamPro font-light rounded-[50px] hover:scale-110 transition-transform xlbig:mt-[20px]">
+              Регистрация
+            </p>
+          </NavLink>
         </div>
       </section>
       <section className="grid grid-cols-2 mt-[-200px] xl:grid xl:grid-cols-1">
@@ -150,13 +150,14 @@ export const Join = () => {
               Смотри вместе с друзьями прямо на сайте
             </p>
           </aside>
-
-          <a
-            href="#"
-            className="hidden md:block text-center md:mt-[30px] py-[21px] px-[31px] bg-heroGradient text-white text-[16px] font-GothamPro font-light rounded-[50px] hover:scale-110 transition-transform xlbig:mt-[20px]"
-          >
-            Регистрация
-          </a>
+          <NavLink to="/registration/">
+            <a
+              href=""
+              className="hidden md:block text-center md:mt-[30px] py-[21px] px-[31px] bg-heroGradient text-white text-[16px] font-GothamPro font-light rounded-[50px] hover:scale-110 transition-transform xlbig:mt-[20px]"
+            >
+              Регистрация
+            </a>
+          </NavLink>
         </div>
         <div className="relative max-w-[515px] h-auto justify-self-end xl:hidden">
           <img

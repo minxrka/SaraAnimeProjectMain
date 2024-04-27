@@ -5,12 +5,8 @@ import { Join } from "../../components/join us/join";
 import { ItemAnime } from "../../components/mainItems/mainItem";
 import { Slider } from "../../components/slider/slider";
 import { SliderAnime } from "../../components/sliderAnime/sliderAnime";
-import { useCookies } from "react-cookie";
-/* import CookiesAlert from "../../components/CookiesAlert/cookesalert"; */
-import CookieConsent from "react-cookie-consent";
 
 function Home() {
-  const [cookies] = useCookies(["cookieConset"]);
   return (
     <main className="main">
       <Header />

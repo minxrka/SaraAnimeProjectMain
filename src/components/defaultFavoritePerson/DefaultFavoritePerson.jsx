@@ -4,7 +4,7 @@ import BgVideo from "../../img/BgVideoAuth/profileFavPerson.mp4";
 const DefaultFavoritePerson = () => {
   return (
     <React.Fragment>
-      <article className="w-full relative rounded-[10px] h-[250px] cursor-pointer">
+      <article className="w-full relative rounded-[10px] h-[250px]">
         <video
           className="w-full h-full object-cover rounded-[10px]"
           src={BgVideo}

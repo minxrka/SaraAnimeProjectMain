@@ -66,3 +66,10 @@
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }
+/* .opium {
+  background: linear-gradient(
+    180deg,
+    rgb(30, 33, 66),
+    rgba(30, 33, 66, 0.3) 100%
+  );
+} */

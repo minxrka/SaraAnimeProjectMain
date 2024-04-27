@@ -124,7 +124,7 @@ export const SupportUs = () => {
               </svg>
             </div>
             <p className="text-[25px] font-GothamPro font-light text-white lg:text-[20px] md:text-[17px]">
-              Не стесняйся, и пиши нам нам на почту!
+              Не стесняйся, и пиши нам на почту!
             </p>
           </aside>
           <aside className="flex gap-[36px] items-center mt-[30px] ml-[22px] md:gap-[20px] md:ml-[0px]">

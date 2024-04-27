@@ -6,7 +6,6 @@ import Home from "./pages/HomePage/HomePage";
 import MainContentPageAnime from "./pages/MainPageContentAnime/mainpagecontentanime";
 import ScrollToTop from "./utils/scrollToTop";
 import { WatchAnime } from "./components/WatchAnime/watchanime";
-import { HeaderLoggedUser } from "./components/HeaderLoggedUsers/headerloggedusers";
 import { RandomAnime } from "./pages/RandomAnime/RandomAnime";
 import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm";
 import { Login } from "./pages/Login/login";
@@ -14,6 +13,8 @@ import { Registration } from "./pages/Registration/registration";
 import { ErrorPage } from "./pages/ErrorPage/errorpage";
 import Profile from "./pages/Profile/profile";
 import CookieConsent from "react-cookie-consent";
+import { AboutUs } from "./pages/AboutUs/aboutus";
+import { FAQ } from "./pages/FAQ/faq";
 
 function App() {
   return (
@@ -21,7 +22,6 @@ function App() {
       <Router>
         <ScrollToTop></ScrollToTop>
         {/* <Header /> */}
-        {/* <HeaderLoggedUser /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/anime" element={<MainContentPageAnime />} />
@@ -31,6 +31,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/404" element={<ErrorPage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
         <CookieConsent
@@ -57,6 +59,7 @@ function App() {
         >
           Наш сайт использует Cookie, потому что они вкусные✨🍪!
         </CookieConsent>
+
         {/* <Footer /> */}
       </Router>
     </div>
