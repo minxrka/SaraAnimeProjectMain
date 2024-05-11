@@ -1,9 +1,5 @@
 import React from "react";
 import Data from "./DummyDataImages.json";
-import AnimePreview from "../../img/bg-anime-card/small/64a44110252fe851868925.jpg";
-import AnimeBgSlider1 from "../../img/trailer-photo/kensin/64a70ec4d2ceb025626775.jpg";
-import Anime1 from "../../img/bg-anime-card/small/anime1.jpg";
-import { useRef, useState, useLayoutEffect } from "react";
 import { useSpring, animated } from "react-spring";
 // Import Swiper React components
 import "./SliderAnimePreview.css";
@@ -27,6 +23,7 @@ const SliderAnimePreview = () => {
     setOpen(false);
   };
   /* ОТКРЫТИE/ЗАКРЫТИЕ ДИАЛОГ ОКНА */
+
   return (
     <div>
       <Swiper

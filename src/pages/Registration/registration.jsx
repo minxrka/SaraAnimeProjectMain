@@ -1,13 +1,11 @@
 import React from "react";
-import BgVideo from "../../img/BgVideoAuth/sasuke_auth.mp4";
+import BgVideo from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.mp4";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
-import Logo from "../../img/logo/main-logo.svg";
-import MainLogo from "../../img/logo/newLogo.svg";
+import Logo from "../../img/logo/newLogo.svg";
 import SocialVK from "../../img/icons/vk.svg";
 import SocialDiscord from "../../img/icons/discord.svg";
 import SocialShikimori from "../../img/icons/shikimori.svg";
 import { NavLink } from "react-router-dom";
-import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export const Registration = () => {
@@ -27,11 +25,9 @@ export const Registration = () => {
       <main className="grid grid-cols-[auto_700px] h-[100vh]">
         <section className="w-full relative">
           <NavLink to={"/"}>
-            <img
-              className="absolute top-5 left-[70px] cursor-pointer z-10"
-              src={Logo}
-              alt=""
-            />
+            <div className="absolute top-5 left-[70px] z-10 max-w-[250px]">
+              <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
+            </div>
           </NavLink>
           <video
             className="w-full h-full object-cover"

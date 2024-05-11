@@ -8,7 +8,7 @@ function MainContentPageFilm() {
     <div className="main">
       <Header />
       <div className="overflow-hidden">
-        <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
+        <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] mb-[130px]">
           <ContentFilm />
         </div>
         <Footer />

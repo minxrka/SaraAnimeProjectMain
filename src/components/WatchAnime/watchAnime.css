@@ -70,3 +70,36 @@
   color: #e05357;
 }
 /* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */
+
+.buttonWatch {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  background-color: #363d79;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.buttonWatch:hover {
+  border-color: #646cff;
+}
+
+.buttonWatch:focus,
+.buttonWatch:focus-visible {
+  border-color: #646cff;
+}
+
+@media (max-width: 868px) {
+  .gridAdaptiveBlockPlayer {
+    display: grid;
+    grid-template-rows: 60% 40%;
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  .gridAdaptiveBlockPlayer {
+    display: grid;
+    grid-template-rows: 40% 60%;
+    grid-template-columns: 1fr;
+  }
+}

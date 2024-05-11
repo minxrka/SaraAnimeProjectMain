@@ -5,6 +5,7 @@ import { useRef, useState, useLayoutEffect, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import InformationAnime from "./mainInfoAnime.json";
 import GeneralPerson from "./generalPerson.json";
+import PlayerSeriaAnime from "./PlayerSeriaAnime.json";
 // Import Swiper React components
 import "./watchAnime.css";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -61,6 +62,11 @@ export const WatchAnime = () => {
       timeout: "10000",
     });
   };
+
+  const [currentEpisode, setCurrentEpisode] = useState(1);
+  const currentSerie = PlayerSeriaAnime.filter(
+    (result) => result.id === currentEpisode
+  )[0];
 
   return (
     <>
@@ -207,11 +213,8 @@ export const WatchAnime = () => {
                         </h1>
                       </div>
                       <div>
-                        <p className="text-white font-GothamPro max-w-[100px] bg-lime-600 border-solid border border-lime-800 rounded-[10px] px-[7px] text-center py-[4px] text-[16px] font-extralight">
-                          {result.status}
-                        </p>
                         <p className="text-white font-GothamPro max-w-[100px] bg-amber-600 border-solid border border-amber-800 rounded-[10px] px-[7px] text-center py-[4px] text-[16px] font-extralight">
-                          Онгоинг
+                          {result.status}
                         </p>
                       </div>
                       <div>
@@ -331,16 +334,32 @@ export const WatchAnime = () => {
                   Смотреть аниме онлайн
                 </h1>
               </div>
-              <div className="mt-[20px] max-w-[1000px] h-[600px] md:max-w-[600px] md:h-[400px] sm:h-[300px]">
-                <iframe
-                  src="//kodik.info/seria/1059961/22146c0a313d4cbb82b963ae8f434f98/720p"
-                  width="100%"
-                  height="100%"
-                  frameborder="0"
-                  AllowFullScreen
-                  allow="autoplay *; fullscreen *"
-                ></iframe>
-              </div>
+
+              <section className="grid grid-cols-[70%_minmax(auto,_1fr)] duration-500 items-center mt-[10px] gap-[120px] lg:gap-[70px] h-[550px] md:h-[700px] gridAdaptiveBlockPlayer md:gap-[30px]">
+                <div className="h-full items-start w-full">
+                  <iframe
+                    className="magn"
+                    src={currentSerie.video}
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    AllowFullScreen
+                    allow="autoplay *; fullscreen *"
+                  ></iframe>
+                </div>
+                <div className="flex flex-col gap-[4px] overflow-auto h-full">
+                  {PlayerSeriaAnime.map((result) => (
+                    <button
+                      onClick={() => setCurrentEpisode(result.id)}
+                      key={result.id}
+                      className="buttonWatch text-left text-white font-GothamPro text-[16px] font-light"
+                    >
+                      {result.episod}
+                    </button>
+                  ))}
+                </div>
+              </section>
+
               <div className="mt-[40px] w-full h-[1px] bg-Blue600"></div>
               <div className="mt-[40px]">
                 <h1 className="text-white font-GothamPro text-[21px]">

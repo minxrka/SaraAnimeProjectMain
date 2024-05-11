@@ -1,5 +1,5 @@
 import React from "react";
-import Anime1 from "../../img/bg-anime-card/small/anime1.jpg";
+import AnimePreview from "../../img/bg-anime-card/small/bleach.jpg";
 import { NavLink } from "react-router-dom";
 import banner from "../../img/test.jpg";
 
@@ -10,7 +10,7 @@ export const Anime = () => {
         <div className="bgZoomEffect overflow-hidden rounded-[20px] adaptiveImageAnime">
           <img
             className="rounded-[20px] absolute top-0 left-0 w-full h-full object-cover"
-            src={Anime1}
+            src={AnimePreview}
             alt=""
           />
           <div className="spanbgeffect anime absolute top-0 bg-black rounded-[20px] w-full h-full opacity-0 transition-all">
@@ -48,10 +48,10 @@ export const Anime = () => {
         </div>
         <div className="flex flex-col justify-between">
           <h1 className="font-GothamPro text-white text-[18px] font-light mt-[8px] textwrap lineclampone">
-            Киберпанк: Бегущий по краю
+            Блич: Тысячелетняя кровавая война
           </h1>
           <p className="text-[15px] text-justify font-GothamPro font-light text-gray-200 mt-[8px] textwrap lineclampone">
-            2022, Fantasy
+            2022, Приключения, Фэнтези, Экшен
           </p>
         </div>
       </NavLink>

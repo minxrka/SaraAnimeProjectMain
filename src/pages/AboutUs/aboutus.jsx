@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainLogo from "../../img/logo/newLogo.svg";
 import { Header } from "../../components/header/header";
-import video from "../../img/other-content/ходячий замок.mp4";
+import video from "../../img/other-content/howlBGMAIN.mp4";
 import { NavLink } from "react-router-dom";
 import "./aboutus.css";
 import { Footer } from "../../components/footer/footer";
-import { useRef, useState, useEffect } from "react";
+
 export const AboutUs = () => {
   const [isMuted, setIsMuted] = useState(false);
 
@@ -155,7 +155,6 @@ export const AboutUs = () => {
             </section>
           </div>
         </div>
-        <Footer />
         <div className="container">
           <label
             style={{
