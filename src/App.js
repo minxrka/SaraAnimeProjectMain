@@ -15,6 +15,7 @@ import Profile from "./pages/Profile/profile";
 import CookieConsent from "react-cookie-consent";
 import { AboutUs } from "./pages/AboutUs/aboutus";
 import { FAQ } from "./pages/FAQ/faq";
+import CookieConsentComponent from "./components/CookieConsent/CookieConsent";
 
 function App() {
   return (
@@ -35,32 +36,7 @@ function App() {
           <Route path="/faq" element={<FAQ />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        <CookieConsent
-          style={{
-            background: "#5662D5F2",
-            width: "460px",
-            fontFamily: "Gotham Pro",
-            textAlign: "left",
-            alignItems: "center",
-            borderRadius: "9px",
-            marginBottom: "25px",
-            marginLeft: "25px",
-          }}
-          buttonStyle={{
-            color: "#fff",
-            fontSize: "16px",
-            fontFamily: "Gotham Pro",
-            background: "transparent",
-            border: "1px solid #992434",
-            borderRadius: "8px",
-          }}
-          buttonText="Окей!"
-          debug={true}
-          expires={150} // expires in 150 days
-          onAccept={() => console.log("User accepted cookie policy")}
-        >
-          Наш сайт использует Cookie, потому что они вкусные✨🍪!
-        </CookieConsent>
+        <CookieConsentComponent />
 
         {/* <Footer /> */}
       </Router>
