@@ -56,6 +56,8 @@ function App() {
           }}
           buttonText="Окей!"
           debug={true}
+          expires={150} // expires in 150 days
+          onAccept={() => console.log("User accepted cookie policy")}
         >
           Наш сайт использует Cookie, потому что они вкусные✨🍪!
         </CookieConsent>
