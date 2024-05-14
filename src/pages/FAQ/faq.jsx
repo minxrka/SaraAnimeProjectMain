@@ -9,7 +9,7 @@ import Light from "../../img/AboutUs 2 person/Layt-no-bg.png";
 import Ryuk from "../../img/AboutUs 2 person/Ryuk-no-bg.png";
 import "./faq.css";
 
-export const FAQ = () => {
+function FAQ() {
   return (
     <>
       <Header />
@@ -697,4 +697,5 @@ export const FAQ = () => {
       </main>
     </>
   );
-};
+}
+export default FAQ;

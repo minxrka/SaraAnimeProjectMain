@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./aboutus.css";
 import { Footer } from "../../components/footer/footer";
 
-export const AboutUs = () => {
+function AboutUs() {
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
@@ -205,4 +205,5 @@ export const AboutUs = () => {
       </main>
     </>
   );
-};
+}
+export default AboutUs;

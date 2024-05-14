@@ -46,7 +46,7 @@ const useTruncatedElement = ({ ref }) => {
 };
 /* Скрытие и показ описания */
 
-export const WatchAnime = () => {
+function WatchAnime() {
   /*   Реф ссылка для описания */
   const ref = React.useRef(null);
   const { isTruncated, isShowingMore, toggleIsShowingMore } =
@@ -392,4 +392,5 @@ export const WatchAnime = () => {
       </main>
     </>
   );
-};
+}
+export default WatchAnime;

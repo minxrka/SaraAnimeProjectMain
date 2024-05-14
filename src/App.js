@@ -37,20 +37,40 @@ const AnimeLazy = React.lazy(() =>
   import("./pages/MainPageContentAnime/mainpagecontentanime")
 );
 const RandomAnimeLazy = React.lazy(() =>
-  import("./pages/RandomAnime/RandomAnime")
+  import("./pages/RandomAnime/RandomAnime").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+  })
 );
 const FilmsLazy = React.lazy(() =>
   import("./pages/MainPageContentFilm/mainpagecontentfilm")
 );
 const ProfileLazy = React.lazy(() => import("./pages/Profile/profile"));
 const WatchDefaultAnimeLazy = React.lazy(() =>
-  import("./components/WatchAnime/watchanime")
+  import("./components/WatchAnime/watchanime").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+  })
 );
-const LoginLazy = React.lazy(() => import("./pages/Login/login"));
+const LoginLazy = React.lazy(() =>
+  import("./pages/Login/login").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+  })
+);
 const RegistrationLazy = React.lazy(() =>
-  import("./pages/Registration/registration")
+  import("./pages/Registration/registration").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+  })
 );
-const AboutUsLazy = React.lazy(() => import("./pages/AboutUs/aboutus"));
+
+const AboutUsLazy = React.lazy(() =>
+  import("./pages/AboutUs/aboutus").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+  })
+);
 const FAQLazy = React.lazy(() => import("./pages/FAQ/faq"));
 
 function App() {
