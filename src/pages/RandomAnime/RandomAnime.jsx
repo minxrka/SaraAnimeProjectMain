@@ -46,7 +46,7 @@ const useTruncatedElement = ({ ref }) => {
 };
 /* Скрытие и показ описания */
 
-export const RandomAnime = () => {
+function RandomAnime() {
   const ref = React.useRef(null);
   const { isTruncated, isShowingMore, toggleIsShowingMore } =
     useTruncatedElement({
@@ -386,4 +386,5 @@ export const RandomAnime = () => {
       </main>
     </>
   );
-};
+}
+export default RandomAnime;

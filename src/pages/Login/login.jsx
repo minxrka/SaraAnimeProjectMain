@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 
-export const Login = () => {
+function Login() {
   const [email, SetEmail] = useState("");
   const [name, SetName] = useState("");
   const [password, SetPassword] = useState("");
@@ -26,7 +26,7 @@ export const Login = () => {
   return (
     <div>
       <main className="grid grid-cols-[auto_700px] h-[100vh]">
-        <section className="w-full relative">
+        <section className="w-full relative lg:hidden hidden">
           <NavLink to={"/"}>
             <div className="absolute top-5 left-[70px] z-10 max-w-[250px]">
               <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
@@ -170,4 +170,5 @@ export const Login = () => {
       </main>
     </div>
   );
-};
+}
+export default Login;

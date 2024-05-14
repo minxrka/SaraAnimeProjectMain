@@ -9,7 +9,7 @@ export const ContentFilm = () => {
     <div className="max-w-[1500px] mx-auto">
       <section className="items-center text-center mt-[50px] mb-[50px]">
         <h1 className="text-white text-[40px] font-GothamPro font-light xl:text-[35px] lg:text-[30px] textwrap">
-          Аниме каталог
+          Каталог фильмов
         </h1>
       </section>
 

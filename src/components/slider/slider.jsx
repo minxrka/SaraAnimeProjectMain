@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 export const Slider = () => {
   return (
     <Swiper
-      className="lg:max-w-[900px] lg:max-h-[400px] md:max-h-[300px] max-w-[1500px] mySwiper max-h-[479px] rounded-[25px] bg-cover bg-center mt-[60px] bg-no-repeat"
+      className="lg:max-w-[900px] lg:max-h-[400px] md:max-h-[300px] sm:max-h-[200px] max-w-[1500px] mySwiper max-h-[479px] rounded-[25px] bg-cover bg-center mt-[60px] bg-no-repeat"
       direction={"vertical"}
       slidesPerView={1}
       spaceBetween={0}
@@ -53,12 +53,12 @@ export const Slider = () => {
                   К просмотру
                 </a>
               </NavLink>
-              <a
+              <div
                 href="#"
                 className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
-              </a>
+              </div>
               <a
                 href="#"
                 className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
@@ -80,8 +80,8 @@ export const Slider = () => {
           </section>
 
           {/* MOBILE VERSION */}
-          <section className="lg:max-w-auto lg:h-[165px] lg:my-auto hidden lg:block lg:pt-[235px] md:pt-[130px]">
-            <h1 className="lg:text-[60px] font-Akira text-white lg:flex lg:justify-center md:text-[40px]">
+          <section className="lg:max-w-auto lg:h-full lg:my-auto flex flex-col justify-center">
+            <h1 className="lg:text-[60px] text-center font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
               Bleach
             </h1>
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
@@ -93,13 +93,13 @@ export const Slider = () => {
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+                className="py-[12px] sm:hidden px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] sm:hidden px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -166,8 +166,8 @@ export const Slider = () => {
           </section>
 
           {/* MOBILE VERSION */}
-          <section className="lg:max-w-auto lg:h-[165px] lg:my-auto hidden lg:block lg:pt-[235px] md:pt-[130px]">
-            <h1 className="lg:text-[48px] font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
+          <section className="lg:max-w-auto lg:h-full lg:my-auto flex flex-col justify-center">
+            <h1 className="lg:text-[48px] text-center font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
               Rurouni Kenshin
             </h1>
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
@@ -179,13 +179,13 @@ export const Slider = () => {
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+                className="py-[12px] sm:hidden px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] sm:hidden px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -251,8 +251,8 @@ export const Slider = () => {
             </div>
           </section>
           {/* MOBILE VERSION */}
-          <section className="lg:max-w-auto lg:h-[165px] lg:my-auto hidden lg:block lg:pt-[235px] md:pt-[130px]">
-            <h1 className="lg:text-[60px] font-Akira text-white lg:flex lg:justify-center md:text-[40px]">
+          <section className="lg:max-w-auto lg:h-full lg:my-auto flex flex-col justify-center">
+            <h1 className="lg:text-[60px] text-center font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
               Claymore
             </h1>
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
@@ -264,13 +264,13 @@ export const Slider = () => {
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+                className="py-[12px] sm:hidden px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] sm:hidden px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -339,8 +339,8 @@ export const Slider = () => {
           </section>
 
           {/* MOBILE VERSION */}
-          <section className="lg:max-w-auto lg:h-[165px] lg:my-auto hidden lg:block lg:pt-[235px] md:pt-[130px]">
-            <h1 className="lg:text-[48px] font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
+          <section className="lg:max-w-auto lg:h-full lg:my-auto flex flex-col justify-center">
+            <h1 className="lg:text-[48px] text-center font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
               Hell's Paradise
             </h1>
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
@@ -352,13 +352,13 @@ export const Slider = () => {
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+                className="py-[12px] sm:hidden px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] sm:hidden px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -430,8 +430,8 @@ export const Slider = () => {
           </section>
 
           {/* MOBILE VERSION */}
-          <section className="lg:max-w-auto lg:h-[165px] lg:my-auto hidden lg:block lg:pt-[235px] md:pt-[130px]">
-            <h1 className="lg:text-[48px] font-Akira text-white lg:flex lg:justify-center md:text-[30px]">
+          <section className="lg:max-w-auto lg:h-full lg:my-auto flex flex-col justify-center">
+            <h1 className="lg:text-[48px] font-Akira text-white lg:flex lg:justify-center text-center md:text-[30px]">
               Magic and Muscles
             </h1>
             <div className="lg:flex lg:gap-[36px] lg:mt-[17px] lg:items-center lg:justify-center">
@@ -443,13 +443,13 @@ export const Slider = () => {
               </a>
               <a
                 href="#"
-                className="py-[12px] px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
+                className="py-[12px] sm:hidden px-[27px] rounded-[25px] text-white font-GothamPro text-[16px] font-extralight border-solid border border-mainLightRed hover:bg-mainLightRed"
               >
                 Трейлер
               </a>
               <a
                 href="#"
-                className="py-[9px] px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
+                className="py-[9px] sm:hidden px-[13px] border-solid border border-mainVanilla rounded-[25px] active:bg-[#FF9494] transition-all"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

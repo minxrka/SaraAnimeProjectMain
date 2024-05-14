@@ -8,7 +8,7 @@ import SocialShikimori from "../../img/icons/shikimori.svg";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export const Registration = () => {
+function Registration() {
   const {
     register,
     handleSubmit,
@@ -223,4 +223,5 @@ export const Registration = () => {
       </main>
     </div>
   );
-};
+}
+export default Registration;

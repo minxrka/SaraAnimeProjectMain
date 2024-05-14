@@ -13,7 +13,13 @@
 
 /*------ Settings ------*/
 /*------ Settings ------*/
-.container {
+.MainBlockButtonAboutUs {
+  position: absolute;
+  bottom: 10vh;
+  right: 10vh;
+  z-index: 3; /* adjust the value as needed */
+}
+.containerButtonMute {
   --color: #f9e5cc;
   --size: 30px;
   display: flex;
@@ -27,28 +33,28 @@
   fill: var(--color);
 }
 
-.container .mute {
+.containerButtonMute .mute {
   position: absolute;
   animation: keyframes-fill 0.5s;
 }
 
-.container .voice {
+.containerButtonMute .voice {
   position: absolute;
   display: none;
   animation: keyframes-fill 0.5s;
 }
 
 /* ------ On check event ------ */
-.container input:checked ~ .mute {
+.containerButtonMute input:checked ~ .mute {
   display: none;
 }
 
-.container input:checked ~ .voice {
+.containerButtonMute input:checked ~ .voice {
   display: block;
 }
 
 /* ------ Hide the default checkbox ------ */
-.container input {
+.containerButtonMute input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
