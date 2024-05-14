@@ -50,7 +50,7 @@ export const Anime = () => {
           <h1 className="font-GothamPro text-white text-[18px] font-light mt-[8px] textwrap lineclampone">
             Блич: Тысячелетняя кровавая война
           </h1>
-          <p className="text-[15px] text-justify font-GothamPro font-light text-gray-200 mt-[8px] textwrap lineclampone">
+          <p className="text-[15px] text-start font-GothamPro font-light text-gray-200 mt-[8px] textwrap lineclampone">
             2022, Приключения, Фэнтези, Экшен
           </p>
         </div>

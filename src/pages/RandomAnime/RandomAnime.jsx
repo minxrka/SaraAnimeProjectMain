@@ -79,14 +79,15 @@ function RandomAnime() {
         >
           <SwiperSlide className="">
             <section className="w-full h-[100vh] GradientWatchAnime">
-              <img src={BgMain} className="w-full h-full"></img>
+              <img src={BgMain} className="w-full h-full object-cover"></img>
             </section>
           </SwiperSlide>
         </Swiper>
 
         {/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
+
         <main
-          className="relative z-2"
+          className="relative z-2 content-container"
           style={{ position: "relative", zIndex: 2 }}
         >
           <section className="px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
@@ -381,8 +382,8 @@ function RandomAnime() {
               <div className="mt-[40px] w-full h-[1px] bg-Blue600 mb-[110px]"></div>
             </section>
           </main>
-          <Footer />
         </main>
+        <Footer />
       </main>
     </>
   );

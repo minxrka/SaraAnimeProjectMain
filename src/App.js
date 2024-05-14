@@ -10,20 +10,14 @@ import {
 import Home from "./pages/HomePage/HomePage";
 import MainContentPageAnime from "./pages/MainPageContentAnime/mainpagecontentanime";
 import ScrollToTop from "./utils/scrollToTop";
-import { WatchAnime } from "./components/WatchAnime/watchanime";
-import { RandomAnime } from "./pages/RandomAnime/RandomAnime";
 import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm";
-import { Login } from "./pages/Login/login";
 import { ErrorPage } from "./pages/ErrorPage/errorpage";
 import Profile from "./pages/Profile/profile";
-import { AboutUs } from "./pages/AboutUs/aboutus";
 import { FAQ } from "./pages/FAQ/faq";
 import CookieConsentComponent from "./components/CookieConsent/CookieConsent";
 import { Loader } from "./components/Loader/loader";
 
 import React, { Suspense } from "react";
-import LazyRoute from "./components/LazyRouter/LazyRouter";
-
 ///ОБЪЯВЛЕНИЕ ЗАДЕРЭКИ ЧТОБЫ УВИДЕТЬ ЛОАДЕР.
 /* const HomeLazy = React.lazy(() =>
   import("./pages/HomePage/HomePage").then((module) => {
@@ -39,7 +33,7 @@ const AnimeLazy = React.lazy(() =>
 const RandomAnimeLazy = React.lazy(() =>
   import("./pages/RandomAnime/RandomAnime").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
-    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1000));
   })
 );
 const FilmsLazy = React.lazy(() =>
@@ -49,26 +43,26 @@ const ProfileLazy = React.lazy(() => import("./pages/Profile/profile"));
 const WatchDefaultAnimeLazy = React.lazy(() =>
   import("./components/WatchAnime/watchanime").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
-    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1000));
   })
 );
 const LoginLazy = React.lazy(() =>
   import("./pages/Login/login").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
-    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1000));
   })
 );
 const RegistrationLazy = React.lazy(() =>
   import("./pages/Registration/registration").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
-    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1000));
   })
 );
 
 const AboutUsLazy = React.lazy(() =>
   import("./pages/AboutUs/aboutus").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
-    return new Promise((resolve) => setTimeout(() => resolve(module), 500));
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1500));
   })
 );
 const FAQLazy = React.lazy(() => import("./pages/FAQ/faq"));
@@ -78,7 +72,6 @@ function App() {
     <div className="">
       <Router>
         <ScrollToTop></ScrollToTop>
-        {/* <Header /> */}
         <Routes>
           <Route
             path="/"
@@ -163,8 +156,6 @@ function App() {
           />
         </Routes>
         <CookieConsentComponent />
-
-        {/* <Footer /> */}
       </Router>
     </div>
   );

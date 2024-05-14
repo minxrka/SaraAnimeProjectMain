@@ -1,0 +1,67 @@
+.FavoriteAnimeANDFriends {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+.tabs {
+  position: relative;
+}
+
+.tabs * {
+  z-index: 2;
+}
+
+.ProfileNav input[type="radio"] {
+  display: none;
+}
+
+.tab {
+  transition: color 0.15s ease-in;
+}
+
+.ProfileNav input[id="radio-1"]:checked ~ .glider {
+  transform: translateX(0);
+}
+
+.ProfileNav input[id="radio-2"]:checked ~ .glider {
+  transform: translateX(100%);
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.ProfileNav input[id="radio-3"]:checked ~ .glider {
+  transform: translateX(200%);
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.ProfileNav input[id="radio-4"]:checked ~ .glider {
+  transform: translateX(300%);
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.glider {
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  height: 100%;
+  width: 161px;
+  z-index: 1;
+  transition: 0.25s ease-out;
+}
+
+@media (max-width: 700px) {
+  .tabs {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 500px) {
+  .tabs {
+    transform: scale(0.7);
+  }
+}

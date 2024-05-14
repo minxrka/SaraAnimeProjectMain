@@ -7,15 +7,35 @@ import { Header } from "../../components/header/header";
 import { Box } from "@mui/material";
 import Light from "../../img/AboutUs 2 person/Layt-no-bg.png";
 import Ryuk from "../../img/AboutUs 2 person/Ryuk-no-bg.png";
+import AudioLight from "../../img/audio/L_Theme.mp3";
 import "./faq.css";
-
+import { useRef, useEffect } from "react";
 function FAQ() {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.1; // adjust the volume (optional)
+    }
+  }, [audioRef]);
+
+  const playSound = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
   return (
     <>
       <Header />
       <main className="relative">
+        <div className="box"></div>
         <div className="absolute top-0 left-0 flex justify-between w-full">
-          <img className="h-[1100px] object-cover" src={Light}></img>
+          <img
+            onClick={playSound}
+            className="h-[800px] object-cover snovka cursor-pointer"
+            src={Light}
+          ></img>
+          <audio ref={audioRef} src={AudioLight} />
           <img className="h-[1100px] object-cover" src={Ryuk}></img>
         </div>
         <section className="max-w-[1450px] mx-auto mt-[40px]">

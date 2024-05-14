@@ -1,0 +1,24 @@
+.MainGridAuth {
+  display: grid;
+  grid-template-columns: auto 645px;
+}
+.AuthClampTextAccept {
+  font-size: clamp(10px, 5vw, 14px);
+}
+
+@media (max-width: 1280px) {
+  .MainGridAuth {
+    grid-template-columns: auto 445px;
+  }
+}
+@media (max-width: 1000px) {
+  .MainGridAuth {
+    grid-template-columns: 100%;
+  }
+  .RigthSideAuth {
+    width: 100%;
+  }
+  .LeftSideAuth {
+    display: none;
+  }
+}

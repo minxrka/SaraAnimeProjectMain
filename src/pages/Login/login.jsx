@@ -8,7 +8,7 @@ import SocialShikimori from "../../img/icons/shikimori.svg";
 import { NavLink } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import "./login.css";
 function Login() {
   const [email, SetEmail] = useState("");
   const [name, SetName] = useState("");
@@ -24,9 +24,9 @@ function Login() {
   const onSubmit = (data) => alert(JSON.stringify(data));
 
   return (
-    <div>
-      <main className="grid grid-cols-[auto_700px] h-[100vh]">
-        <section className="w-full relative lg:hidden hidden">
+    <>
+      <main className="MainGridAuth h-[100vh]">
+        <section className="w-full relative LeftSideAuth">
           <NavLink to={"/"}>
             <div className="absolute top-5 left-[70px] z-10 max-w-[250px]">
               <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
@@ -40,14 +40,16 @@ function Login() {
             loop
           ></video>
         </section>
-        <section className="flex flex-col justify-center items-center px-[57px] w-full h-auto">
-          <img
-            className="mb-[30px]"
-            width={163}
-            height={163}
-            src={GirlForm}
-            alt=""
-          />
+        <section className="flex RigthSideAuth flex-col justify-center items-center px-[57px] sm:px-[15px] w-full h-auto sm:py-[50px]">
+          <NavLink to={"/"}>
+            <img
+              className="mb-[30px]"
+              width={163}
+              height={163}
+              src={GirlForm}
+              alt=""
+            />
+          </NavLink>
           <form
             action=""
             className="w-full flex flex-col"
@@ -138,21 +140,45 @@ function Login() {
           <h1 className="mt-[30px] mb-[30px] text-center text-[16px] font-GothamPro text-white">
             Вход через социальные сети
           </h1>
-          <aside className="gap-[46px] flex justify-between flex-wrap px-[24px]">
-            <div className="min-width-[90px] flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
-              <img width={25} height={25} src={SocialVK} alt="" />
+          <aside className="gap-[46px] duration-500 flex justify-between flex-wrap px-[24px] sm:flex-col sm:justify-center sm:items-center xl:flex-col xl:justify-center xl:gap-[20px] items-center">
+            <div className="w-[125px] flex gap-2 cursor-pointer text-center items-center border border-solid border-Blue500 px-[5px] py-[8px] rounded-[5px]">
+              <div>
+                <img
+                  className=""
+                  width={25}
+                  height={25}
+                  src={SocialVK}
+                  alt=""
+                />
+              </div>
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Вконтакте
               </p>
             </div>
-            <div className="flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
-              <img width={25} height={25} src={SocialShikimori} alt="" />
+            <div className="w-[125px] flex gap-2 cursor-pointer text-center items-center border border-solid border-Blue500 px-[5px] py-[8px] rounded-[5px]">
+              <div>
+                <img
+                  className=""
+                  width={25}
+                  height={25}
+                  src={SocialShikimori}
+                  alt=""
+                />
+              </div>
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Shikimori
               </p>
             </div>
-            <div className="w-[100px] flex cursor-pointer gap-1 items-center border border-solid border-Blue500 px-[4px] py-[4px] rounded-[5px]">
-              <img width={25} height={25} src={SocialDiscord} alt="" />
+            <div className="w-[125px] flex gap-2 cursor-pointer text-center items-center border border-solid border-Blue500 px-[5px] py-[8px] rounded-[5px]">
+              <div>
+                <img
+                  className=""
+                  width={25}
+                  height={25}
+                  src={SocialDiscord}
+                  alt=""
+                />
+              </div>
               <p className="text-[15px] font-GothamPro font-light text-white">
                 Discord
               </p>
@@ -168,7 +194,7 @@ function Login() {
           </h1>
         </section>
       </main>
-    </div>
+    </>
   );
 }
 export default Login;

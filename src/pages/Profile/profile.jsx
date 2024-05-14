@@ -7,7 +7,6 @@ import prof from "../../img/other-content/avatarProf.jpg";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
 import Pencil from "../../img/other-content/svg-profile/pencil.svg";
 import { useState, useRef } from "react";
-import Dialog from "@mui/material/Dialog";
 
 import { Footer } from "../../components/footer/footer";
 import AnimePerson from "../../components/animePerson/animePerson";
@@ -15,6 +14,7 @@ import DefaultFavoriteAnime from "../../components/defaultFavoriteAnime/defaultF
 import AddedFavoriteAnime from "../../components/AddedFavoriteAnime/addedFavoriteAnime";
 import DefaultFavoritePerson from "../../components/defaultFavoritePerson/DefaultFavoritePerson";
 
+import "./profile.css";
 const Profile = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -50,11 +50,11 @@ const Profile = () => {
   };
 
   return (
-    <div className="">
+    <main className="">
       <Header />
-      <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] max-w-[1900px] mx-auto">
+      <main className="content-container px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] max-w-[1900px] mx-auto">
         <section className="">
-          <aside className="bg-[#3C4497B2] max-w-[644px] mx-auto flex rounded-[40px] mt-[50px]">
+          {/* <aside className="bg-[#3C4497B2] max-w-[644px] mx-auto flex rounded-[40px] mt-[50px]">
             <div className="py-[12px] cursor-pointer px-[25px] active:bg-Blue600 hover:bg-[#5662D585] rounded-[40px] w-[161px] text-center transition-all">
               <h1 className="text-white font-GothamPro font-light text-[20px] select-none">
                 Профиль
@@ -75,7 +75,46 @@ const Profile = () => {
                 Коллекция
               </h1>
             </div>
-          </aside>
+          </aside> */}
+          <div class="ProfileNav max-w-[644px] mx-auto">
+            <div class="bg-[#3C4497B2] flex rounded-[40px] mt-[50px] tabs">
+              <input
+                className=""
+                type="radio"
+                id="radio-1"
+                name="tabs"
+                checked=""
+              />
+              <label
+                class="py-[12px] cursor-pointer px-[25px] rounded-l-[40px] w-[161px] text-center transition-all text-white font-GothamPro font-light text-[20px] select-none"
+                for="radio-1"
+              >
+                Профиль
+              </label>
+              <input type="radio" id="radio-2" name="tabs" />
+              <label
+                class="py-[12px] cursor-pointer px-[25px] w-[161px] text-center transition-all text-white font-GothamPro font-light text-[20px] select-none"
+                for="radio-2"
+              >
+                Друзья
+              </label>
+              <input type="radio" id="radio-3" name="tabs" />
+              <label
+                class="py-[12px] cursor-pointer px-[25px] w-[161px] text-center transition-all text-white font-GothamPro font-light text-[20px] select-none"
+                for="radio-3"
+              >
+                Чаты
+              </label>
+              <input type="radio" id="radio-4" name="tabs" />
+              <label
+                class="py-[12px] cursor-pointer px-[25px] rounded-r-[40px] w-[161px] text-center transition-all text-white font-GothamPro font-light text-[20px] select-none"
+                for="radio-4"
+              >
+                Коллекция
+              </label>
+              <span class="glider bg-[#5662D585]"></span>
+            </div>
+          </div>
         </section>
         <section className="mt-[43px]">
           <div
@@ -149,8 +188,8 @@ const Profile = () => {
           <h1 className="text-white mt-[30px] mb-[30px] text-[40px] uppercase font-Bluecurve xl:text-[35px] lg:text-[30px] textwrap">
             Любимые аниме
           </h1>
-          <div className="grid grid-cols-[70%_minmax(auto,_1fr)] gap-[30px] xl:grid-cols-1">
-            <div className="flex gap-[30px]">
+          <div className="grid grid-cols-[70%_minmax(auto,_1fr)] gap-[70px] xl:grid-cols-1">
+            <div className="FavoriteAnimeANDFriends">
               <Anime />
               <DefaultFavoriteAnime />
               <AddedFavoriteAnime />
@@ -232,7 +271,7 @@ const Profile = () => {
                   </div>
                 </div>
 
-                <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[15px] max-w-[200px] text-center mx-auto hover:bg-[#D6FE5026] transition-colors">
+                <button className="text-white font-GothamPro px-[22px] py-[14px] font-light border border-solid border-cyberpunk rounded-[15px] max-w-[200px] text-center mx-auto hover:bg-superLightRed transition-colors">
                   Смотреть всех
                 </button>
               </div>
@@ -252,7 +291,7 @@ const Profile = () => {
         <div className="mt-[40px] w-full h-[1px] bg-Blue600"></div>
       </main>
       <Footer />
-    </div>
+    </main>
   );
 };
 

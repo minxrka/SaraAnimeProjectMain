@@ -11,7 +11,7 @@ function Home() {
     <main className="main">
       <Header />
       <div className="overflow-hidden">
-        <div className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
+        <div className="content-container px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
           <div className="">
             <Slider />
           </div>
