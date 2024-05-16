@@ -94,7 +94,7 @@ export const Footer = () => {
           </div>
         </section>
         <aside className="social flex max-w-[500px] mx-auto mt-[60px] gap-[57px] flex-wrap md:justify-center">
-          <a href="" className="">
+          <a href="https://www.instagram.com/minxrka" className="">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ export const Footer = () => {
               </svg>
             </div>
           </a>
-          <a href="" className="">
+          <a href="https://www.youtube.com/@minxrka6491" className="">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 width="60"
@@ -144,7 +144,7 @@ export const Footer = () => {
               </svg>
             </div>
           </a>
-          <a href="" className="">
+          <a href="https://www.tiktok.com/@minxrka" className="">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 width="60"

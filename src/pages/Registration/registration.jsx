@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BgVideo from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.mp4";
+import BgImage from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.jpg";
 import GirlForm from "../../img/logo/MainLogoSmall.svg";
 import Logo from "../../img/logo/newLogo.svg";
 import SocialVK from "../../img/icons/vk.svg";
@@ -7,6 +8,7 @@ import SocialDiscord from "../../img/icons/discord.svg";
 import SocialShikimori from "../../img/icons/shikimori.svg";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+
 import "./registration.css";
 function Registration() {
   const {
@@ -20,6 +22,12 @@ function Registration() {
 
   const password = watch("password");
 
+  const [connectionType, setConnectionType] = useState("");
+
+  useEffect(() => {
+    setConnectionType(navigator.connection.effectiveType);
+  }, []);
+
   return (
     <div>
       <main className="MainGridAuth h-[100vh]">
@@ -29,13 +37,22 @@ function Registration() {
               <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
             </div>
           </NavLink>
-          <video
-            className="w-full h-full object-cover"
-            src={BgVideo}
-            autoPlay
-            muted
-            loop
-          ></video>
+          {connectionType === "4g" ? (
+            <video
+              playsinline
+              className="w-full h-full object-cover"
+              src={BgVideo}
+              autoPlay
+              muted
+              loop
+            ></video>
+          ) : (
+            <img
+              className="w-full h-full object-cover"
+              src={BgImage}
+              alt="Fallback"
+            />
+          )}
         </section>
         <section className="flex RigthSideAuth flex-col justify-center items-center px-[57px] sm:px-[15px] w-full h-auto sm:py-[50px]">
           <NavLink to={"/"}>

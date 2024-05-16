@@ -26,6 +26,7 @@ function AboutUs() {
         >
           <Header />
           <video
+            playsinline
             style={{ position: "absolute", zIndex: 1, top: 0, left: 0 }}
             autoPlay
             loop
