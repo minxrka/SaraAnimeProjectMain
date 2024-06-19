@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BgVideo from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.mp4";
 import BgImage from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.jpg";
-import GirlForm from "../../img/logo/MainLogoSmall.svg";
+import GirlForm from "../../img/logo/MiniLogoUpdate.png";
 import Logo from "../../img/logo/newLogo.svg";
 import SocialVK from "../../img/icons/vk.svg";
 import SocialDiscord from "../../img/icons/discord.svg";
@@ -22,25 +22,24 @@ function Registration() {
 
   const password = watch("password");
 
+  /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
+
   const [connectionType, setConnectionType] = useState("");
 
   useEffect(() => {
     setConnectionType(navigator.connection.effectiveType);
   }, []);
 
+  /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
+
   return (
     <div>
       <main className="MainGridAuth h-[100vh]">
         <section className="w-full relative LeftSideAuth">
-          <NavLink to={"/"}>
-            <div className="absolute top-5 left-[70px] z-10 max-w-[250px]">
-              <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
-            </div>
-          </NavLink>
           {connectionType === "4g" ? (
             <video
               playsinline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-r-[80px]"
               src={BgVideo}
               autoPlay
               muted
@@ -56,13 +55,9 @@ function Registration() {
         </section>
         <section className="flex RigthSideAuth flex-col justify-center items-center px-[57px] sm:px-[15px] w-full h-auto sm:py-[50px]">
           <NavLink to={"/"}>
-            <img
-              className="mb-[30px]"
-              width={163}
-              height={163}
-              src={GirlForm}
-              alt=""
-            />
+            <div className="ClampingWidthGirlForm h-auto">
+              <img className="mb-[30px] w-full h-full" src={GirlForm} alt="" />
+            </div>
           </NavLink>
           <form
             action=""
@@ -179,7 +174,7 @@ function Registration() {
                   })}
                 />
                 <label className="absolute font-GothamPro text-md text-whiteGray font-light duration-150 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-3 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
-                  Подтверждение пароля
+                  Подтверждение
                 </label>
                 {errors.confirmPassword && (
                   <span className="mt-8 text-[15px] font-GothamPro font-light text-[#ff2b2b]">
@@ -190,22 +185,9 @@ function Registration() {
             </div>
             <aside className="flex justify-between items-start">
               <div className="flex items-center gap-[5px] mt-[5px]">
-                <input type="checkbox" id="cbx" className="hidden" />
-                <label for="cbx" className="check">
-                  <svg width="17px" height="17px" viewBox="0 0 18 18">
-                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                    <polyline points="1 9 7 14 15 4"></polyline>
-                  </svg>
-                </label>
-                <p
-                  onClick={() => {
-                    const checkbox = document.getElementById("cbx");
-                    checkbox.checked = !checkbox.checked;
-                  }}
-                  className="font-GothamPro font-light text-white AuthClampTextAccept cursor-pointer"
-                >
-                  Я согласен с условиями Политики конфиденциальности и
-                  Пользовательского соглашения
+                <p className="font-GothamPro font-light text-white AuthClampTextAccept select-none text-center">
+                  Продолжая, вы соглашаетесь с нашей политикой
+                  конфиденциальности и пользовательского соглашения
                 </p>
               </div>
             </aside>

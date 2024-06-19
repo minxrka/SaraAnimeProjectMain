@@ -47,7 +47,13 @@ const NavPorfilePop = () => {
       </li>
 
       <Popover
-        className="w-[240px]"
+        PaperProps={{
+          sx: {
+            border: "2px solid", // добавляет границу
+            borderColor: "#5662d5", // устанавливает цвет границы
+            borderRadius: 2, // или любое другое значение, которое вам нужно
+          },
+        }}
         id={id}
         open={open}
         anchorEl={anchorEl}
@@ -61,7 +67,7 @@ const NavPorfilePop = () => {
           horizontal: "center",
         }}
       >
-        <main className="bg-[#1e2142] py-[10px] text-center px-[10px] border-solid border border-Blue600 w-[190px] h-full">
+        <main className="bg-[#1e2142] py-[10px] text-center px-[10px] w-[190px] h-full">
           <NavLink to="/profile/">
             <section className="cursor-pointer gap-[8px] items-center flex justify-start hover:bg-darkBlue transition-colors py-[9px] px-[9px] rounded-[7px]">
               <svg
@@ -80,7 +86,7 @@ const NavPorfilePop = () => {
               </h1>
             </section>
           </NavLink>
-          <NavLink to="https://t.me/minxrka">
+          <NavLink to="https://t.me/minxrka" target="_blank">
             <section className="cursor-pointer gap-[8px] items-center flex justify-start hover:bg-darkBlue transition-colors py-[9px] px-[9px] rounded-[7px]">
               <svg
                 className="w-[20px] h-[20px]"
@@ -153,9 +159,11 @@ const NavPorfilePop = () => {
           <div className="mt-[5px] mb-[5px] w-full h-[1px] bg-Blue600"></div>
           <section className="cursor-pointer gap-[8px] items-center flex justify-start hover:bg-mainRedJapan transition-colors py-[9px] px-[9px] rounded-[7px]">
             <img className="w-[20px] h-[20px] fill-white" src={LogOut} alt="" />
-            <h1 className="text-white font-GothamPro font-light text-[20px] ">
-              Выйти
-            </h1>
+            <NavLink to="/">
+              <h1 className="text-white font-GothamPro font-light text-[20px] ">
+                Выйти
+              </h1>
+            </NavLink>
           </section>
         </main>
       </Popover>

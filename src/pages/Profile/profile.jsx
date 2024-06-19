@@ -15,6 +15,7 @@ import AddedFavoriteAnime from "../../components/AddedFavoriteAnime/addedFavorit
 import DefaultFavoritePerson from "../../components/defaultFavoritePerson/DefaultFavoritePerson";
 
 import "./profile.css";
+import { HeaderLoggedUser } from "../../components/HeaderLoggedUsers/headerloggedusers";
 const Profile = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -51,31 +52,9 @@ const Profile = () => {
 
   return (
     <main className="">
-      <Header />
+      <HeaderLoggedUser />
       <main className="content-container px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] max-w-[1900px] mx-auto">
-        <section className="">
-          {/* <aside className="bg-[#3C4497B2] max-w-[644px] mx-auto flex rounded-[40px] mt-[50px]">
-            <div className="py-[12px] cursor-pointer px-[25px] active:bg-Blue600 hover:bg-[#5662D585] rounded-[40px] w-[161px] text-center transition-all">
-              <h1 className="text-white font-GothamPro font-light text-[20px] select-none">
-                Профиль
-              </h1>
-            </div>
-            <div className="py-[12px] cursor-pointer px-[25px] active:bg-Blue600 hover:bg-[#5662D585] rounded-[40px] w-[161px] text-center transition-all">
-              <h1 className="text-white font-GothamPro font-light text-[20px] select-none">
-                Друзья
-              </h1>
-            </div>
-            <div className="py-[12px] cursor-pointer px-[25px] active:bg-Blue600 hover:bg-[#5662D585] rounded-[40px] w-[161px] text-center transition-all">
-              <h1 className="text-white font-GothamPro font-light text-[20px] select-none">
-                Чаты
-              </h1>
-            </div>
-            <div className="py-[12px] cursor-pointer px-[25px] active:bg-Blue600 hover:bg-[#5662D585] rounded-[40px] w-[161px] text-center transition-all">
-              <h1 className="text-white font-GothamPro font-light text-[20px] select-none">
-                Коллекция
-              </h1>
-            </div>
-          </aside> */}
+        {/* <section className="">
           <div class="ProfileNav max-w-[644px] mx-auto">
             <div class="bg-[#3C4497B2] flex rounded-[40px] mt-[50px] tabs">
               <input
@@ -115,7 +94,8 @@ const Profile = () => {
               <span class="glider bg-[#5662D585]"></span>
             </div>
           </div>
-        </section>
+        </section> */}
+
         <section className="mt-[43px]">
           <div
             onMouseOver={handleMouseOver}

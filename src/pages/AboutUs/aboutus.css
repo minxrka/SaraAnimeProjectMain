@@ -12,7 +12,6 @@
 }
 
 /*------ Settings ------*/
-/*------ Settings ------*/
 .MainBlockButtonAboutUs {
   position: absolute;
   bottom: 10vh;
@@ -60,6 +59,15 @@
   cursor: pointer;
   height: 0;
   width: 0;
+}
+.resultNumbers {
+  font-size: clamp(14px, 4vw, 32px);
+}
+.subTitleAboutUs {
+  font-size: clamp(15px, 2.5vw, 20px);
+}
+.titleAboutUs {
+  font-size: clamp(19px, 4vw, 32px);
 }
 
 /* ------ Animation ------ */

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BgVideo from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.mp4";
 import BgImage from "../../img/BgVideoAuth/Odin_iz_otvergnutykh.jpg";
-import GirlForm from "../../img/logo/MainLogoSmall.svg";
+import GirlForm from "../../img/logo/MiniLogoUpdate.png";
 import Logo from "../../img/logo/newLogo.svg";
 import SocialVK from "../../img/icons/vk.svg";
 import SocialDiscord from "../../img/icons/discord.svg";
@@ -21,7 +21,9 @@ function Login() {
     formState: { errors },
   } = useForm({ mode: "onSubmit" });
 
-  const onSubmit = (data) => alert(JSON.stringify(data));
+  /* const onSubmit = (data) => alert(JSON.stringify(data)); */
+
+  /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
 
   const [connectionType, setConnectionType] = useState("");
 
@@ -29,19 +31,23 @@ function Login() {
     setConnectionType(navigator.connection.effectiveType);
   }, []);
 
+  /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
+  const onSubmit = (data) => {
+    if (data.login === "minxrka" && data.password === "Minorka12312!") {
+      // Redirect to Profile page
+      window.location.href = "/profile/";
+    } else {
+      alert(JSON.stringify(data));
+    }
+  };
   return (
     <>
       <main className="MainGridAuth h-[100vh]">
         <section className="w-full relative LeftSideAuth">
-          <NavLink to={"/"}>
-            <div className="absolute top-5 left-[70px] z-10 max-w-[250px]">
-              <img className="w-full h-auto cursor-pointer" src={Logo} alt="" />
-            </div>
-          </NavLink>
           {connectionType === "4g" ? (
             <video
               playsinline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-r-[80px]"
               src={BgVideo}
               autoPlay
               muted
@@ -57,13 +63,9 @@ function Login() {
         </section>
         <section className="flex RigthSideAuth flex-col justify-center items-center px-[57px] sm:px-[15px] w-full h-auto sm:py-[50px]">
           <NavLink to={"/"}>
-            <img
-              className="mb-[30px]"
-              width={163}
-              height={163}
-              src={GirlForm}
-              alt=""
-            />
+            <div className="ClampingWidthGirlForm h-auto">
+              <img className="mb-[30px] w-full h-full" src={GirlForm} alt="" />
+            </div>
           </NavLink>
           <form
             action=""
@@ -132,18 +134,7 @@ function Login() {
               </div>
             </div>
             <aside className="flex justify-between items-start">
-              <div className="flex items-center gap-[5px] mt-[5px]">
-                <input type="checkbox" id="cbx" className="hidden" />
-                <label for="cbx" class="check">
-                  <svg width="17px" height="17px" viewBox="0 0 18 18">
-                    <path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                    <polyline points="1 9 7 14 15 4"></polyline>
-                  </svg>
-                </label>
-                <p className="text-[14px] font-GothamPro font-light text-white">
-                  Запомнить меня
-                </p>
-              </div>
+              <div className="flex items-center gap-[5px] mt-[5px]"></div>
               <div className="relative cursor-pointer mt-[5px] items-center text-[14px] font-GothamPro font-light text-white after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-[3px] after:bg-white hover:text-cyberpunk after:hover:bg-cyberpunk transition-all">
                 Забыли пароль?
               </div>

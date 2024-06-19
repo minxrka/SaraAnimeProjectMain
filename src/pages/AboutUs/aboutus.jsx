@@ -64,11 +64,11 @@ function AboutUs() {
               </NavLink>
             </div>
             <div className="px-[30px] py-[50px] glassEffect">
-              <h1 className="mainText text-center uppercase font-Bluecurve text-white mb-[40px] text-[200px] xbig:text-[10px]">
-                ИЗУЧЕНИЕ АНГЛИЙСКОГО ЯЗЫКА <br></br> И ОБСУЖДЕНИЕ АНИМЕ
+              <h1 className="mainText text-center font-Bluecurve text-white mb-[40px] text-[200px] xbig:text-[10px]">
+                Anime with Sara
               </h1>
-              <div className="flex justify-center">
-                <p className="text-white font-GothamPro font-light text-[20px] mb-[40px] text-center max-w-[1100px]">
+              <div className="flex justify-center duration-500">
+                <p className="text-white font-GothamPro font-light mb-[40px] text-center max-w-[1100px] subTitleAboutUs">
                   <span className="font-medium">Anime with Sara</span> — это
                   уникальный сайт, предназначенный для просмотра аниме-контента
                   в уютной атмосфере. Здесь вы сможете наслаждаться любимыми
@@ -79,9 +79,9 @@ function AboutUs() {
                   изучения английского языка через просмотр аниме.
                 </p>
               </div>
-              <div className="flex gap-[90px] justify-center text-center">
+              <div className="flex gap-[90px] justify-center text-center flex-wrap md:gap-[50px] sm:gap-[30px]">
                 <div>
-                  <h1 className="mainText uppercase font-Bluecurve text-white ">
+                  <h1 className="mainText uppercase font-Bluecurve text-white resultNumbers">
                     600 тыс
                   </h1>
                   <p className="text-white font-GothamPro font-light text-[20px]">
@@ -89,7 +89,7 @@ function AboutUs() {
                   </p>
                 </div>
                 <div>
-                  <h1 className="mainText uppercase font-Bluecurve text-white">
+                  <h1 className="mainText uppercase font-Bluecurve text-white resultNumbers">
                     400 тыс
                   </h1>
                   <p className="text-white font-GothamPro font-light text-[20px]">
@@ -97,7 +97,7 @@ function AboutUs() {
                   </p>
                 </div>
                 <div>
-                  <h1 className="mainText uppercase font-Bluecurve text-white">
+                  <h1 className="mainText uppercase font-Bluecurve text-white resultNumbers">
                     1 млн
                   </h1>
                   <p className="text-white font-GothamPro font-light text-[20px]">
@@ -105,7 +105,7 @@ function AboutUs() {
                   </p>
                 </div>
                 <div>
-                  <h1 className="mainText uppercase font-Bluecurve text-white">
+                  <h1 className="mainText uppercase font-Bluecurve text-white resultNumbers">
                     6 тыс
                   </h1>
                   <p className="text-white font-GothamPro font-light text-[20px]">
@@ -114,16 +114,16 @@ function AboutUs() {
                 </div>
               </div>
             </div>
-            <section className="grid grid-cols-2 mt-[30px] gap-[30px]">
+            <section className="grid grid-cols-2 mt-[30px] gap-[30px] lg:grid-cols-1 duration-500">
               <div className="px-[30px] py-[50px] glassEffect">
-                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px]">
+                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px] titleAboutUs">
                   Чего{" "}
                   <mark style={{ backgroundColor: "#ab2533", color: "white" }}>
                     ждать
                   </mark>{" "}
                   дальше
                 </h1>
-                <p className="text-white font-GothamPro font-light text-[20px]">
+                <p className="text-white font-GothamPro font-light text-[20px] subTitleAboutUs">
                   Мы планируем добавить вкладку «Обучение». Там вы сможете
                   изучать материалы и проходить тесты после просмотра эпизодов.
                   Также будут доступны субтитры на английском языке с
@@ -132,13 +132,13 @@ function AboutUs() {
                 </p>
               </div>
               <div className="px-[30px] py-[50px] glassEffect">
-                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px]">
+                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px] titleAboutUs">
                   Где ваше{" "}
                   <mark style={{ backgroundColor: "#ab2533", color: "white" }}>
                     приложение
                   </mark>
                 </h1>
-                <p className="text-white font-GothamPro font-light text-[20px]">
+                <p className="text-white font-GothamPro font-light text-[20px] subTitleAboutUs">
                   У нас есть идеи по работе с приложением, но они пока
                   достаточно сырые для показа комьюнити. Как только мы будем
                   уверены, что этим действительно можно пользоваться без
@@ -146,13 +146,13 @@ function AboutUs() {
                 </p>
               </div>
               <div className="px-[30px] py-[50px] glassEffect">
-                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px]">
+                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px] titleAboutUs">
                   Как вам{" "}
                   <mark style={{ backgroundColor: "#ab2533", color: "white" }}>
                     помочь
                   </mark>
                 </h1>
-                <p className="text-white font-GothamPro font-light text-[20px]">
+                <p className="text-white font-GothamPro font-light text-[20px] subTitleAboutUs">
                   Мы всегда рады помощи фанатов и на данный момент нам нужны:
                   видео-монтажёр(ка), контент-мейкер(ша), сценарист(ка),
                   программист(ка), художник(ца) и модераторы. Если ты тот, кого
@@ -160,14 +160,14 @@ function AboutUs() {
                 </p>
               </div>
               <div className="px-[30px] py-[50px] glassEffect">
-                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px]">
+                <h1 className="mainText uppercase font-Bluecurve text-white mb-[20px] titleAboutUs">
                   Хочу{" "}
                   <mark style={{ backgroundColor: "#ab2533", color: "white" }}>
                     больше
                   </mark>{" "}
                   информации
                 </h1>
-                <p className="text-white font-GothamPro font-light text-[20px]">
+                <p className="text-white font-GothamPro font-light text-[20px] subTitleAboutUs">
                   Вся необходимая информация размещена на сайте и в нашем
                   Telegram-канале. Следите за новостями и подписывайтесь на наши
                   социальные сети, такие как Telegram, TikTok и YouTube.
@@ -175,7 +175,7 @@ function AboutUs() {
               </div>
             </section>
           </div>
-          <section className="MainBlockButtonAboutUs">
+          <section className="MainBlockButtonAboutUs lg:hidden">
             <div className="containerButtonMute">
               <label class="cursor-pointer">
                 <input

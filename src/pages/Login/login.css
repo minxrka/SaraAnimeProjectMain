@@ -22,3 +22,6 @@
     display: none;
   }
 }
+.ClampingWidthGirlForm {
+  width: clamp(150px, 50vw, 250px);
+}

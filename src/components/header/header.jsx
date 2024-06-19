@@ -4,7 +4,7 @@ import SmallLogo from "../../img/logo/miniLogo.png";
 import ProfileUser from "../../img/other-content/avatarProf.jpg";
 import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
-import my from "../../img/bg-anime-card/small/bleach.jpg";
+import BgBleach from "../../img/bg-anime-card/small/bleach.jpg";
 import notFound from "../../img/other-content/unnamed.png";
 import Dialog from "@mui/material/Dialog";
 import { NavLink } from "react-router-dom";
@@ -12,7 +12,7 @@ import "./header.css";
 import NavPorfilePop from "../NavPorfilePop/NavPorfilePop";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
 import sasuke3tomoelogoanime from "../../img/other-content/sasuke3tomoe.png";
-
+import BgCyberpunk from "../../img/bg-anime-card/small/anime1.jpg";
 import Drawer from "@mui/material/Drawer";
 
 export const Header = () => {
@@ -339,6 +339,37 @@ export const Header = () => {
     </nav>
   );
 
+  const [searchText, setSearchText] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const handleSearch = (e) => {
+    const searchText = e.target.value;
+    setSearchText(searchText);
+
+    if (searchText === "") {
+      setSearchResults([]);
+    } else if (searchText.match(/блич/i)) {
+      setSearchResults([
+        {
+          title: "Блич",
+          image: BgBleach,
+          description: "Завершен",
+          year: "2004 Осень",
+        },
+      ]);
+    } else if (searchText.match(/киберпанк/i)) {
+      setSearchResults([
+        {
+          title: "Киберпанк: Бегущие по краю",
+          image: BgCyberpunk,
+          description: "Завершен",
+          year: "2022 Осень",
+        },
+      ]);
+    } else {
+      setSearchResults(null);
+    }
+  };
+
   return (
     <header
       className={`sticky ${
@@ -419,29 +450,33 @@ export const Header = () => {
             </svg>
           </button>
 
-          {/* <li>
+          <li>
             <NavLink to="/login">
-              <a
-                href="#"
-                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors"
-              >
+              <button className="opimka font-GothamPro font-extralight text-white text-[16px] px-[30px] py-[8px] transition-colors">
                 Вход
-              </a>
+              </button>
             </NavLink>
-          </li> */}
+          </li>
 
           {/* ИЛИ УЖЕ ПРОФИЛЬ */}
 
-          <NavPorfilePop />
+          {/* <NavPorfilePop /> */}
         </ul>
       </nav>
       <Dialog
+        sx={{
+          "& .MuiDialog-paper": {
+            border: "2px solid", // or any other value you want
+            borderColor: "#e05357", // or any other color you want
+            borderRadius: 2, // or any other value you want
+          },
+        }}
         disablePortal
         open={open}
         onClose={handleClose}
         className="backdrop-blur-[5px]"
       >
-        <div className="border-solid border-2 border-cyberpunk w-[577px] sm:w-full">
+        <div className="w-[577px] sm:w-full">
           <div className="bg-mainBlue h-[52px] relative gap-[18px] items-center flex px-[20px] py-[14px] justify-between after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-[0.1px] after:bg-cyberpunk after:opacity-[0.60]">
             <div>
               <svg
@@ -459,6 +494,8 @@ export const Header = () => {
             </div>
 
             <input
+              value={searchText}
+              onChange={handleSearch}
               type="text"
               className="w-full h-[22px] bg-transparent text-white font-GothamPro text-[16px] font-light outline-none placeholder:text-white"
               placeholder="Поиск аниме..."
@@ -482,44 +519,50 @@ export const Header = () => {
             </button>
           </div>
           <section className="bg-mainBlue overflow-auto max-w-[577px] max-h-[600px]">
-            {/* <div className="h-[100px] w-full"></div> */}
-
-            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
-            <main>
-              <NavLink to="/watch/" onClick={handleClose}>
-                <div className="cursor-pointer flex max-w-full h-auto hover:bg-superLightRed px-[20px] py-[15px] transition-colors">
-                  <div>
-                    <img
-                      className="rounded-[5px] max-w-[65px] h-auto object-cover"
-                      src={my}
-                      alt=""
-                    />
+            {searchResults === null ? (
+              <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
+                <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
+                <img
+                  className="max-w-[100px] rounded-b-[120px] mt-[20px]"
+                  src={notFound}
+                  alt=""
+                />
+              </div>
+            ) : searchResults.length === 0 ? (
+              <div className="h-[150px] w-full"></div>
+            ) : (
+              searchResults.map((result) => (
+                <NavLink
+                  to={
+                    result.title === "Киберпанк: Бегущие по краю"
+                      ? "/random/"
+                      : "/watch/"
+                  }
+                  onClick={handleClose}
+                >
+                  <div className="cursor-pointer flex max-w-full h-auto hover:bg-superLightRed px-[20px] py-[15px] transition-colors">
+                    <div>
+                      <img
+                        className="rounded-[5px] max-w-[65px] h-auto object-cover"
+                        src={result.image}
+                        alt=""
+                      />
+                    </div>
+                    <div className="ml-[11px] flex flex-col justify-around items-start">
+                      <p className="font-GothamPro text-[13px] text-whiteGray">
+                        {result.description}
+                      </p>
+                      <h1 className="font-GothamPro text-[15px] text-white font-light">
+                        {result.title}
+                      </h1>
+                      <p className="font-GothamPro text-[13px] text-white font-extralight">
+                        {result.year}
+                      </p>
+                    </div>
                   </div>
-                  <div className="ml-[11px] flex flex-col justify-around items-start">
-                    <p className="font-GothamPro text-[13px] text-whiteGray">
-                      Завершен
-                    </p>
-                    <h1 className="font-GothamPro text-[15px] text-white font-light">
-                      Блич
-                    </h1>
-                    <p className="font-GothamPro text-[13px] text-white font-extralight">
-                      2004 Осень
-                    </p>
-                  </div>
-                </div>
-              </NavLink>
-            </main>
-
-            <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
-              <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
-              <img
-                className="max-w-[100px] rounded-b-[120px] mt-[20px]"
-                src={notFound}
-                alt=""
-              />
-            </div>
-
-            {/*           ПРИ НАХОЖДЕНИИ ОТСУТСВИИ ИНФОРМАЦИИ В ПОИСКЕ МОДАЛЬНОГО ОКНА */}
+                </NavLink>
+              ))
+            )}
           </section>
         </div>
       </Dialog>
@@ -535,15 +578,16 @@ export const Header = () => {
       <Drawer open={visible} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
-      <a href="" class="hidden lg:flex items-center z-30">
-        <img className="max-w-[45px] h-auto" src={SmallLogo} alt="logo" />
-      </a>
+      <div className="hidden lg:flex items-center z-30">
+        <NavLink to="/">
+          <img className="max-w-[45px] h-auto" src={SmallLogo} alt="logo" />
+        </NavLink>
+      </div>
 
       <button
         href="#"
         class="hidden lg:flex items-center"
         onClick={handleClickOpen}
-        /* onClick={() => setVisible(!visible)} */
       >
         <svg
           width="34"
