@@ -75,7 +75,7 @@ function Login() {
             </div>
           </NavLink>
           <section className="w-full flex flex-col">
-            <Form title="Вход" handleClick={handleLogin} isLogin={true} />
+            <Form title="Вход" handleClick={handleLogin} /* isLogin={true} */ />
           </section>
           <h1 className="mt-[30px] mb-[30px] text-center text-[16px] font-GothamPro text-white">
             Вход через социальные сети

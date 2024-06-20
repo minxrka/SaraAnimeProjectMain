@@ -80,7 +80,7 @@ function Registration() {
             <Form
               title="Регистрация"
               handleClick={handleRegister}
-              isLogin={false}
+              /* isLogin={false} */
             />
           </section>
           <h1 className="mt-[30px] mb-[30px] text-center text-[16px] font-GothamPro text-white">

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-const Form = ({ title, handleClick, isLogin }) => {
+const Form = ({ title, handleClick }) => {
   const {
     register,
     formState: { errors },
@@ -72,23 +72,23 @@ const Form = ({ title, handleClick, isLogin }) => {
           )}
         </div>
       </section>
-      {isLogin ? (
-        <aside className="flex justify-between items-start">
-          <div className="flex items-center gap-[5px] mt-[5px]"></div>
-          <div className="relative cursor-pointer mt-[5px] items-center text-[14px] font-GothamPro font-light text-white after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-[3px] after:bg-white hover:text-cyberpunk after:hover:bg-cyberpunk transition-all">
-            Забыли пароль?
-          </div>
-        </aside>
-      ) : (
-        <aside className="flex justify-between items-start">
-          <div className="flex items-center gap-[5px] mt-[5px]">
-            <p className="font-GothamPro font-light text-white AuthClampTextAccept select-none text-center">
-              Продолжая, вы соглашаетесь с нашей политикой конфиденциальности и
-              пользовательского соглашения
-            </p>
-          </div>
-        </aside>
-      )}
+
+      {/* <aside className="flex justify-between items-start">
+        <div className="flex items-center gap-[5px] mt-[5px]"></div>
+        <div className="relative cursor-pointer mt-[5px] items-center text-[14px] font-GothamPro font-light text-white after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-[3px] after:bg-white hover:text-cyberpunk after:hover:bg-cyberpunk transition-all">
+          Забыли пароль?
+        </div>
+      </aside>
+
+      <aside className="flex justify-between items-start">
+        <div className="flex items-center gap-[5px] mt-[5px]">
+          <p className="font-GothamPro font-light text-white AuthClampTextAccept select-none text-center">
+            Продолжая, вы соглашаетесь с нашей политикой конфиденциальности и
+            пользовательского соглашения
+          </p>
+        </div>
+      </aside> */}
+
       <button
         onClick={handleSubmit(onSubmit)}
         className="bg-[#966FCF85] mx-[24px] mt-[30px] py-[15px] text-center rounded-[10px] text-white font-GothamPro text-[20px] hover:bg-[#966FCFB2] transition-all"
