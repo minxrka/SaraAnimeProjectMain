@@ -30,7 +30,8 @@ export const SupportUs = () => {
           </svg>
 
           <a
-            href="#"
+            href="https://www.tinkoff.ru/rm/nepomnyaschiy.mikhail1/dihf419741/"
+            target="_blank"
             className="md:hidden py-[21px] px-[31px] bg-heroGradient text-white text-[16px] font-GothamPro font-light rounded-[50px] hover:scale-110 transition-transform xlbig:mt-[20px]"
           >
             Поддержать

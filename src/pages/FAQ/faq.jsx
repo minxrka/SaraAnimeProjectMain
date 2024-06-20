@@ -36,7 +36,7 @@ function FAQ() {
             src={Light}
           ></img>
           <audio ref={audioRef} src={AudioLight} />
-          <img className="h-[1100px] object-cover" src={Ryuk}></img>
+          <img className="h-[900px] object-cover" src={Ryuk}></img>
         </div>
         <section className="max-w-[1450px] mx-auto mt-[40px]">
           <h1 className="mainText text-center uppercase font-Bluecurve text-white mb-[40px]">

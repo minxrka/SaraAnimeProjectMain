@@ -6,7 +6,6 @@ import "swiper/css/scrollbar";
 import { Scrollbar, Mousewheel } from "swiper/modules";
 
 export const SliderAnime = () => {
-  
   return (
     <div className="mt-[170px] mb-[70px] border-solid border border-mainLightRed px-[20px] py-[20px] rounded-[20px] max-w-[1500px] mx-auto">
       <div className="flex justify-between mb-[40px] items-center">
@@ -17,7 +16,9 @@ export const SliderAnime = () => {
           className="hoverBtnShowMore pt-[12px] pb-[12px] pr-[13px] pl-[18px] border border-solid border-Blue600 rounded-[50px] text-base font-GothamPro font-extralight text-white"
           href=""
         >
-          <p className="textBtnShowMore">Смотреть все</p>
+          <NavLink to="/anime/">
+            <p className="textBtnShowMore">Смотреть все</p>
+          </NavLink>
         </a>
       </div>
       <Swiper

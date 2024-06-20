@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import "./footer.css";
 
 export const Footer = () => {
+  const handleClick = () => {
+    alert("Спасибо, вы подписаны на рассылку!");
+  };
   return (
     <footer className=" bg-darkBlue py-[50px]">
       <main className="px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
@@ -84,17 +87,16 @@ export const Footer = () => {
                 required
                 placeholder="Email"
                 type="email"
-                pattern="[^ @]*@[^ @]*"
                 className="placeholder:font-GothamPro placeholder:text-[18px] placeholder:font-light placeholder:text-black font-GothamPro font-light"
               />
-              <button class="invite-btn font-Akira" type="submit">
+              <button onClick={handleClick} class="invite-btn font-Akira">
                 follow!
               </button>
             </form>
           </div>
         </section>
         <aside className="social flex max-w-[500px] mx-auto mt-[60px] gap-[57px] flex-wrap md:justify-center">
-          <a href="https://www.instagram.com/minxrka" target="_blank">
+          <a href="https://discord.gg/tT5cuW72z2" target="_blank">
             <div className="max-w-[80px] h-full bg-white rounded-[50%] px-[10px] py-[10px] hover:bg-cyberpunk hover:scale-105 transition-all">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

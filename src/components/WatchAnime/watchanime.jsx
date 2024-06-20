@@ -95,7 +95,7 @@ function WatchAnime() {
           <SwiperSlide className="">
             <section className="w-[100vw] h-[100vh] GradientWatchAnime object-cover">
               <img
-                src="https://i.kodik.biz/screenshots/video/97738/1.jpg"
+                src="https://animego.org/upload/anime/images/63445455cd990983357209.jpg"
                 className="w-full h-full object-cover"
               ></img>
             </section>

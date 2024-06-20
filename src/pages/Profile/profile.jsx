@@ -15,7 +15,11 @@ import AddedFavoriteAnime from "../../components/AddedFavoriteAnime/addedFavorit
 import DefaultFavoritePerson from "../../components/defaultFavoritePerson/DefaultFavoritePerson";
 
 import "./profile.css";
-import { HeaderLoggedUser } from "../../components/HeaderLoggedUsers/headerloggedusers";
+
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useAuth } from "./../../hooks/useAuth";
+import { removeUser } from "./../../store/slices/userSlice";
 const Profile = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -50,11 +54,14 @@ const Profile = () => {
     SetImage(event.target.files[0]);
   };
 
-  return (
+  const dispatch = useDispatch();
+  const { isAuth, email } = useAuth();
+
+  return isAuth ? (
     <main className="">
-      <HeaderLoggedUser />
+      <Header />
       <main className="content-container px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] max-w-[1900px] mx-auto">
-        {/* <section className="">
+        <section className="">
           <div class="ProfileNav max-w-[644px] mx-auto">
             <div class="bg-[#3C4497B2] flex rounded-[40px] mt-[50px] tabs">
               <input
@@ -94,7 +101,7 @@ const Profile = () => {
               <span class="glider bg-[#5662D585]"></span>
             </div>
           </div>
-        </section> */}
+        </section>
 
         <section className="mt-[43px]">
           <div
@@ -145,12 +152,12 @@ const Profile = () => {
                   alt=""
                 />
                 <h1 className="lowercase text-[28px] font-GothamPro text-white">
-                  MINXRKA
+                  {email}
                 </h1>
               </div>
               <div>
                 <button
-                  onClick={handleClickOpen}
+                  onClick={() => dispatch(removeUser())}
                   className="bg-[#ff2b2bc0] cursor-pointer hover:bg-[#ff3030] transition-colors w-[50px] h-[50px] rounded-[50%]"
                 >
                   <img
@@ -272,6 +279,10 @@ const Profile = () => {
       </main>
       <Footer />
     </main>
+  ) : (
+    <>
+      <Navigate to="/404" replace={true} />
+    </>
   );
 };
 

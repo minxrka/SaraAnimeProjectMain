@@ -9,20 +9,14 @@ import SocialShikimori from "../../img/icons/shikimori.svg";
 import { NavLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "./login.css";
+
+import { useDispatch } from "react-redux";
+import { setUser } from "../../store/slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { Form } from "../../components/Form/Form";
+
 function Login() {
-  const [email, SetEmail] = useState("");
-  const [name, SetName] = useState("");
-  const [password, SetPassword] = useState("");
-  const [confirmPassword, SetConfirmPassword] = useState("");
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({ mode: "onSubmit" });
-
-  /* const onSubmit = (data) => alert(JSON.stringify(data)); */
-
   /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
 
   const [connectionType, setConnectionType] = useState("");
@@ -32,14 +26,27 @@ function Login() {
   }, []);
 
   /*   При слабом подключении к сайту будет отображатся картинка вместо видео */
-  const onSubmit = (data) => {
-    if (data.login === "minxrka" && data.password === "Minorka12312!") {
-      // Redirect to Profile page
-      window.location.href = "/profile/";
-    } else {
-      alert(JSON.stringify(data));
-    }
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = (email, password) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        console.log(user);
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+            token: user.accessToken,
+          })
+        );
+        navigate("/profile");
+      })
+      .catch(console.error);
   };
+
   return (
     <>
       <main className="MainGridAuth h-[100vh]">
@@ -55,7 +62,7 @@ function Login() {
             ></video>
           ) : (
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-r-[80px]"
               src={BgImage}
               alt="Fallback"
             />
@@ -67,82 +74,9 @@ function Login() {
               <img className="mb-[30px] w-full h-full" src={GirlForm} alt="" />
             </div>
           </NavLink>
-          <form
-            action=""
-            className="w-full flex flex-col"
-            onSubmit={handleSubmit(onSubmit)}
-          >
-            <div className="gap-[20px] flex flex-col">
-              <div className="relative">
-                <input
-                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-Blue500 rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-Blue500 focus:shadow-[_0_0_0_4px_#8DA4EC4F] focus:border focus:outline-none peer ${
-                    errors.login &&
-                    "  focus:border-[#da4f4a] focus:shadow-[_0_0_0_4px_#DA4F4A4F] focus:border focus:outline-none"
-                  }`}
-                  placeholder=""
-                  id="login"
-                  type="text"
-                  name="login"
-                  {...register("login", {
-                    required: "Поле не должно быть пустым",
-                    minLength: {
-                      value: 5,
-                      message: "Логин не может быть менее 5 символов",
-                    },
-                    maxLength: {
-                      value: 12,
-                      message: "Логин не может быть более 12 символов",
-                    },
-                  })}
-                />
-                <label className="absolute font-GothamPro text-md text-whiteGray font-light duration-150 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-3 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
-                  Логин
-                </label>
-                {errors.login && (
-                  <span className="mt-8 text-[15px] font-GothamPro font-light text-[#ff2b2b]">
-                    {errors.login.message}
-                  </span>
-                )}
-              </div>
-              <div className="relative">
-                <input
-                  className={`mb-[4px] w-full text-whiteGray font-GothamPro bg-transparent px-[9px] border border-solid border-Blue500  rounded-[10px] h-[40px] placeholder:text-[14px] placeholder:font-GothamPro placeholder:font-light placeholder:text-whiteGray focus:border-solid focus:border-Blue500 focus:shadow-[_0_0_0_4px_#8DA4EC4F] focus:border focus:outline-none peer ${
-                    errors.password &&
-                    "focus:border-[#da4f4a] focus:shadow-[_0_0_0_4px_#DA4F4A4F] focus:border focus:outline-none"
-                  }`}
-                  placeholder=""
-                  id="password"
-                  type="password"
-                  name="password"
-                  {...register("password", {
-                    required: "Поле не должно быть пустым",
-                    pattern: {
-                      value:
-                        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
-                      message: "Неверный логин или пароль",
-                    },
-                  })}
-                />
-                <label className="absolute font-GothamPro text-md text-whiteGray font-light duration-150 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] left-3 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
-                  Пароль
-                </label>
-                {errors.password && (
-                  <span className="mt-8 text-[15px] font-GothamPro font-light text-[#ff2b2b]">
-                    {errors.password.message}
-                  </span>
-                )}
-              </div>
-            </div>
-            <aside className="flex justify-between items-start">
-              <div className="flex items-center gap-[5px] mt-[5px]"></div>
-              <div className="relative cursor-pointer mt-[5px] items-center text-[14px] font-GothamPro font-light text-white after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-[3px] after:bg-white hover:text-cyberpunk after:hover:bg-cyberpunk transition-all">
-                Забыли пароль?
-              </div>
-            </aside>
-            <button className="bg-[#966FCF85] mx-[24px] mt-[30px] py-[15px] text-center rounded-[10px] text-white font-GothamPro text-[20px] hover:bg-[#966FCFB2] transition-all">
-              Войти
-            </button>
-          </form>
+          <section className="w-full flex flex-col">
+            <Form title="Вход" handleClick={handleLogin} isLogin={true} />
+          </section>
           <h1 className="mt-[30px] mb-[30px] text-center text-[16px] font-GothamPro text-white">
             Вход через социальные сети
           </h1>

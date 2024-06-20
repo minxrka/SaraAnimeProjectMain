@@ -103,10 +103,10 @@ const SliderAnimePreview = () => {
           }}
           navigation={true}
           modules={[Pagination, Navigation]}
-          className=""
+          className="w-[1400px] h-auto"
         >
           {Data.map((result, index) => (
-            <SwiperSlide key={index} className="w-[1400px] h-auto">
+            <SwiperSlide key={index}>
               <img
                 className="w-full max-h-[700px] object-cover"
                 src={result.img}

@@ -6,7 +6,14 @@ import { ItemAnime } from "../../components/mainItems/mainItem";
 import { Slider } from "../../components/slider/slider";
 import { SliderAnime } from "../../components/sliderAnime/sliderAnime";
 
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useAuth } from "./../../hooks/useAuth";
+import { removeUser } from "./../../store/slices/userSlice";
+
 function Home() {
+  const dispatch = useDispatch();
+  const { isAuth } = useAuth();
   return (
     <main className="main">
       <Header />
@@ -15,9 +22,10 @@ function Home() {
           <div className="">
             <Slider />
           </div>
+
           <ItemAnime />
-          <SupportUs />
-          <Join />
+          {isAuth ? <SupportUs /> : <Join />}
+
           <SliderAnime />
         </div>
         <Footer />

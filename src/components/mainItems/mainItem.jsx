@@ -15,7 +15,9 @@ export const ItemAnime = () => {
           className="hoverBtnShowMore pt-[12px] pb-[12px] pr-[13px] pl-[18px] border border-solid border-Blue500 rounded-[50px] text-base font-GothamPro font-extralight text-white"
           href=""
         >
-          <p className="textBtnShowMore">Смотреть все</p>
+          <NavLink to="/anime/">
+            <p className="textBtnShowMore">Смотреть все</p>
+          </NavLink>
         </a>
       </section>
       <section className="grid grid-cols-4 xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mt-[30px] gap-[90px] lg:gap-[40px] md:justify-center">

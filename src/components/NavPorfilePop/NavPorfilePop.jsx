@@ -4,6 +4,11 @@ import Popover from "@mui/material/Popover";
 import { NavLink } from "react-router-dom";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
 
+import { Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useAuth } from "./../../hooks/useAuth";
+import { removeUser } from "./../../store/slices/userSlice";
+
 const NavPorfilePop = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -17,6 +22,9 @@ const NavPorfilePop = () => {
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
+
+  const dispatch = useDispatch();
+  const { isAuth, email } = useAuth();
   return (
     <React.Fragment>
       <li
@@ -37,7 +45,7 @@ const NavPorfilePop = () => {
           />
         </svg>
         <p className="text-white ml-[5px] mr-[10px] break-words line-clamp-1 text-center font-GothamPro text-[16px]">
-          minxrka
+          {email}
         </p>
         <img
           className="max-w-[40px] h-auto rounded-[7px]"
@@ -157,7 +165,10 @@ const NavPorfilePop = () => {
             </h1>
           </section>
           <div className="mt-[5px] mb-[5px] w-full h-[1px] bg-Blue600"></div>
-          <section className="cursor-pointer gap-[8px] items-center flex justify-start hover:bg-mainRedJapan transition-colors py-[9px] px-[9px] rounded-[7px]">
+          <section
+            onClick={() => dispatch(removeUser())}
+            className="cursor-pointer gap-[8px] items-center flex justify-start hover:bg-mainRedJapan transition-colors py-[9px] px-[9px] rounded-[7px]"
+          >
             <img className="w-[20px] h-[20px] fill-white" src={LogOut} alt="" />
             <NavLink to="/">
               <h1 className="text-white font-GothamPro font-light text-[20px] ">
