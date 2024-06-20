@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./footer.css";
 
 export const Footer = () => {
-  const handleClick = () => {
+  const buttonSubscribe = () => {
     alert("Спасибо, вы подписаны на рассылку!");
   };
   return (
@@ -89,7 +89,7 @@ export const Footer = () => {
                 type="email"
                 className="placeholder:font-GothamPro placeholder:text-[18px] placeholder:font-light placeholder:text-black font-GothamPro font-light"
               />
-              <button onClick={handleClick} class="invite-btn font-Akira">
+              <button onClick={buttonSubscribe} class="invite-btn font-Akira">
                 follow!
               </button>
             </form>
