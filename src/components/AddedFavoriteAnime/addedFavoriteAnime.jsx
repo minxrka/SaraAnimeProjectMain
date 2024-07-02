@@ -1,9 +1,12 @@
+/* IMPORTS */
 import React from "react";
 import Juzo from "../../img/other-content/juzo.png";
 import "./addedFavoriteAnime.css";
 import Dialog from "@mui/material/Dialog";
+/* IMPORTS */
 
 const AddedFavoriteAnime = () => {
+  /*   модалка с предложкой аниме или выбором */
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -13,6 +16,7 @@ const AddedFavoriteAnime = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  /*   модалка с предложкой аниме или выбором */
   return (
     <React.Fragment>
       <div

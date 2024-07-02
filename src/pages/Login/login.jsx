@@ -29,7 +29,7 @@ function Login() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  /* проверка и авторизация пользователя и передача через токен в firebase */
   const handleLogin = (email, password) => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
@@ -46,6 +46,7 @@ function Login() {
       })
       .catch(console.error);
   };
+  /* проверка и авторизация пользователя и передача через токен в firebase */
 
   return (
     <>

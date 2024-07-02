@@ -34,32 +34,21 @@ export const Header = () => {
   /* ОТКРЫТИЕ МОДАЛЬНОГО ОКНА */
 
   /*  СКРЫТИЕ И ПОКАЗ НАВБАРА ПРИ СКРОЛЕ  */
-  function useScrollDirection() {
-    const [scrollDirection, setScrollDirection] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
 
-    useEffect(() => {
-      let lastScrollY = window.pageYOffset;
-
-      const updateScrollDirection = () => {
-        const scrollY = window.pageYOffset;
-        const direction = scrollY > lastScrollY ? "down" : "up";
-        if (
-          direction !== scrollDirection &&
-          (scrollY - lastScrollY > 5 || scrollY - lastScrollY < -5)
-        ) {
-          setScrollDirection(direction);
-        }
-        lastScrollY = scrollY > 0 ? scrollY : 0;
-      };
-      window.addEventListener("scroll", updateScrollDirection); // add event listener
-      return () => {
-        window.removeEventListener("scroll", updateScrollDirection); // clean up
-      };
-    }, [scrollDirection]);
-
-    return scrollDirection;
-  }
-  const scrollDirection = useScrollDirection();
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   /*  СКРЫТИЕ И ПОКАЗ НАВБАРА ПРИ СКРОЛЕ  */
 
   const [visible, setVisible] = React.useState(false);
@@ -344,51 +333,20 @@ export const Header = () => {
     </nav>
   );
 
-  const [searchText, setSearchText] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const handleSearch = (e) => {
-    const searchText = e.target.value;
-    setSearchText(searchText);
-
-    if (searchText === "") {
-      setSearchResults([]);
-    } else if (searchText.match(/блич/i)) {
-      setSearchResults([
-        {
-          title: "Блич",
-          image: BgBleach,
-          description: "Завершен",
-          year: "2004 Осень",
-        },
-      ]);
-    } else if (searchText.match(/киберпанк/i)) {
-      setSearchResults([
-        {
-          title: "Киберпанк: Бегущие по краю",
-          image: BgCyberpunk,
-          description: "Завершен",
-          year: "2022 Осень",
-        },
-      ]);
-    } else {
-      setSearchResults(null);
-    }
-  };
-
   const dispatch = useDispatch();
   const { isAuth, email } = useAuth();
   return (
     <header
-      className={`sticky ${
-        scrollDirection === "down" ? "-top-24" : "top-0"
-      } h-[70px] bg-mainBlue transition-all duration-500 z-index-header xl:px-[70px] big:px-[110px] sm:px-[25px] lg:px-[73px] px-[160px] py-[10px] items-center flex justify-between after:absolute after:h-[.0625rem] after:w-full after:left-0 after:bottom-[0.1px] after:bg-Blue600`}
+      className={`sticky top-0 ${
+        scrolled ? "h-[65px] bg-mainBlue" : "h-[70px] header-linear-grd"
+      } transition-all duration-500 z-index-header xl:px-[70px] big:px-[110px] sm:px-[25px] lg:px-[73px] px-[160px] py-[10px] items-center flex justify-between`}
     >
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[68px] xl:gap-[34px]">
           <li>
             <NavLink to="/">
               <a href="#">
-                <img className="w-[170px] h-auto" src={MainLogo} alt="" />
+                <img className="w-[160px] h-auto" src={MainLogo} alt="" />
               </a>
             </NavLink>
           </li>
@@ -501,8 +459,6 @@ export const Header = () => {
             </div>
 
             <input
-              value={searchText}
-              onChange={handleSearch}
               type="text"
               className="w-full h-[22px] bg-transparent text-white font-GothamPro text-[16px] font-light outline-none placeholder:text-white"
               placeholder="Поиск аниме..."
@@ -526,50 +482,37 @@ export const Header = () => {
             </button>
           </div>
           <section className="bg-mainBlue overflow-auto max-w-[577px] max-h-[600px]">
-            {searchResults === null ? (
-              <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
-                <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
-                <img
-                  className="max-w-[100px] rounded-b-[120px] mt-[20px]"
-                  src={notFound}
-                  alt=""
-                />
+            <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
+              <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
+              <img
+                className="max-w-[100px] rounded-b-[120px] mt-[20px]"
+                src={notFound}
+                alt=""
+              />
+            </div>
+            <div className="h-[150px] w-full"></div>
+            <NavLink to={"/random/"} onClick={handleClose}>
+              <div className="cursor-pointer flex max-w-full h-auto hover:bg-superLightRed px-[20px] py-[15px] transition-colors">
+                <div>
+                  <img
+                    className="rounded-[5px] max-w-[65px] h-auto object-cover"
+                    src={BgBleach}
+                    alt=""
+                  />
+                </div>
+                <div className="ml-[11px] flex flex-col justify-around items-start">
+                  <p className="font-GothamPro text-[13px] text-whiteGray">
+                    2004
+                  </p>
+                  <h1 className="font-GothamPro text-[15px] text-white font-light">
+                    123123
+                  </h1>
+                  <p className="font-GothamPro text-[13px] text-white font-extralight">
+                    123123123
+                  </p>
+                </div>
               </div>
-            ) : searchResults.length === 0 ? (
-              <div className="h-[150px] w-full"></div>
-            ) : (
-              searchResults.map((result) => (
-                <NavLink
-                  to={
-                    result.title === "Киберпанк: Бегущие по краю"
-                      ? "/random/"
-                      : "/watch/"
-                  }
-                  onClick={handleClose}
-                >
-                  <div className="cursor-pointer flex max-w-full h-auto hover:bg-superLightRed px-[20px] py-[15px] transition-colors">
-                    <div>
-                      <img
-                        className="rounded-[5px] max-w-[65px] h-auto object-cover"
-                        src={result.image}
-                        alt=""
-                      />
-                    </div>
-                    <div className="ml-[11px] flex flex-col justify-around items-start">
-                      <p className="font-GothamPro text-[13px] text-whiteGray">
-                        {result.description}
-                      </p>
-                      <h1 className="font-GothamPro text-[15px] text-white font-light">
-                        {result.title}
-                      </h1>
-                      <p className="font-GothamPro text-[13px] text-white font-extralight">
-                        {result.year}
-                      </p>
-                    </div>
-                  </div>
-                </NavLink>
-              ))
-            )}
+            </NavLink>
           </section>
         </div>
       </Dialog>

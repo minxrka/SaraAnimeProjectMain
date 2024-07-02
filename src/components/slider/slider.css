@@ -1,0 +1,105 @@
+.grd-test {
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 77.602%,
+      rgba(30, 33, 66, 0.2) 100%
+    ),
+    linear-gradient(270deg, rgba(30, 33, 66, 0.7), rgb(30, 33, 66) 100%);
+}
+.watchNow {
+  padding: 18px 30px;
+  border-radius: 35px;
+  cursor: pointer;
+  background-color: #da4f4a;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.1px;
+  transition: all 0.5s ease;
+}
+
+.watchNow:hover {
+  background-color: #da4f4a;
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+}
+
+.watchNow:active {
+  background-color: #e05357;
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  transform: translateY(-2px);
+  transition: 100ms;
+}
+.showMoreSwiper {
+  padding: 16px 30px;
+  border-radius: 35px;
+  border: 1px solid transparent;
+  background-color: #363d79;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.showMoreSwiper:hover {
+  border-color: #646cff;
+}
+
+.showMoreSwiper:active {
+  transform: translateY(2px);
+  transition: 100ms;
+}
+
+.loading {
+  display: flex;
+}
+.pip {
+  transform: rotate(180deg);
+}
+
+.load {
+  width: 2px;
+  height: 33px;
+  background-color: #eeecff;
+  animation: 1s move6 infinite;
+  border-radius: 5px;
+  margin: 0.1em;
+}
+
+.load:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.load:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.load:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes move6 {
+  0% {
+    height: 0.2em;
+  }
+
+  25% {
+    height: 0.7em;
+  }
+
+  50% {
+    height: 1.5em;
+  }
+
+  100% {
+    height: 0.2em;
+  }
+}
+.glassEffect {
+  background: linear-gradient(
+    135deg,
+    rgba(203, 51, 63, 0.2),
+    rgba(203, 51, 63, 0)
+  );
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

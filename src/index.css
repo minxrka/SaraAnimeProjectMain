@@ -160,6 +160,15 @@
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+    font-family: "WiGuru";
+    src: url("./fonts/WiGuru/wiguru.eot?") format("eot"),
+      url("./fonts/WiGuru/wiguru.woff") format("woff"),
+      url("./fonts/WiGuru/wiguru.ttf") format("truetype"),
+      url("./fonts/WiGuru/wiguru.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
 }
 html,
 body,

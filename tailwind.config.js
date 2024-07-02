@@ -31,6 +31,7 @@ module.exports = {
         GothamPro: ["Gotham Pro"],
         Bluecurve: ["Blue curve"],
         Akira: ["Akira"],
+        WiGuru: ["WiGuru"],
       },
       colors: {
         mainBlue: "#1e2142",
