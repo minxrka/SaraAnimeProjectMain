@@ -132,3 +132,11 @@
   -moz-transition: box-shadow 0.2s ease-in;
   transition: box-shadow 0.2s ease-in;
 }
+
+.header-linear-grd {
+  background: linear-gradient(
+    180deg,
+    rgba(30, 33, 66, 0.7) 0%,
+    rgba(30, 33, 66, 0) 95%
+  );
+}

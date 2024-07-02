@@ -30,7 +30,7 @@ function Registration() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  /* Рега пользователя и передача через токен в firebase */
   const handleRegister = (email, password) => {
     const auth = getAuth();
     console.log(auth);
@@ -48,6 +48,7 @@ function Registration() {
       })
       .catch(console.error);
   };
+  /* Рега пользователя и передача через токен в firebase */
 
   return (
     <div>

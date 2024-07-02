@@ -1,19 +1,13 @@
 import "./App.css";
-import { Footer } from "./components/footer/footer";
-import { Header } from "./components/header/header";
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "./pages/HomePage/HomePage";
-import MainContentPageAnime from "./pages/MainPageContentAnime/mainpagecontentanime";
 import ScrollToTop from "./utils/scrollToTop";
-import MainContentPageFilm from "./pages/MainPageContentFilm/mainpagecontentfilm";
 import { ErrorPage } from "./pages/ErrorPage/errorpage";
-import Profile from "./pages/Profile/profile";
-import { FAQ } from "./pages/FAQ/faq";
 import CookieConsentComponent from "./components/CookieConsent/CookieConsent";
 import { Loader } from "./components/Loader/loader";
 

@@ -70,13 +70,14 @@ function WatchAnime() {
     });
   };
   /* При клике скролится до плеера */
-  /* Свич эпизодов */
 
+  /* Свич эпизодов */
   const [currentEpisode, setCurrentEpisode] = useState(1);
   const currentSerie = PlayerSeriaAnime.filter(
     (result) => result.id === currentEpisode
   )[0];
   /* Свич эпизодов */
+
   useEffect(() => {
     const title = InformationAnime.map((anime) => anime.titleAnime).join(", ");
     document.title = `Anime with Sara - ${title}`;

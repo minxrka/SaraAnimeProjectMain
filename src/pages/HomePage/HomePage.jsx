@@ -15,17 +15,16 @@ function Home() {
   const dispatch = useDispatch();
   const { isAuth } = useAuth();
   return (
-    <main className="main">
+    <main className="main relative">
       <Header />
       <div className="overflow-hidden">
-        <div className="content-container px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]">
+        {/* px-[200px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px] */}
+        <div className="">
           <div className="">
             <Slider />
           </div>
-
           <ItemAnime />
           {isAuth ? <SupportUs /> : <Join />}
-
           <SliderAnime />
         </div>
         <Footer />
