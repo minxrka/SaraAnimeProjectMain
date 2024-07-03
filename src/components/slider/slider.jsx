@@ -102,7 +102,6 @@ export const Slider = () => {
     transform: videoMuted ? "translateY(0)" : "translateY(-150%)",
     config: { duration: 400 },
   }); */
-  const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <main className="h-[85vh]">
       <Swiper
@@ -126,9 +125,6 @@ export const Slider = () => {
         }}
         loop={true}
         modules={[Autoplay, Mousewheel, Pagination]}
-        onSlideChange={(swiper) => {
-          setCurrentIndex(swiper.activeIndex); // Update current index
-        }}
       >
         <SwiperSlide>
           <main
@@ -361,7 +357,7 @@ export const Slider = () => {
                     maskRepeat: "no-repeat",
                     opacity: animationImage.opacity,
                   }}
-                  src="https://i.pinimg.com/originals/10/8a/25/108a25122b98f4916dddc5c6e9061fb8.jpg"
+                  src="https://baldezh.top/uploads/posts/2022-08/1660147005_14-funart-pro-p-tokiiskii-gul-fon-na-rabochii-stol-krasivo-14.png"
                   className="w-full h-full object-cover absolute top-0"
                 ></animated.img>
               ) : (
@@ -373,7 +369,7 @@ export const Slider = () => {
                     maskRepeat: "no-repeat",
                     opacity: animationImage.opacity,
                   }}
-                  src="https://i.pinimg.com/originals/10/8a/25/108a25122b98f4916dddc5c6e9061fb8.jpg"
+                  src="https://baldezh.top/uploads/posts/2022-08/1660147005_14-funart-pro-p-tokiiskii-gul-fon-na-rabochii-stol-krasivo-14.png"
                   className="w-full h-full object-cover absolute top-0"
                 ></animated.img>
               )}
