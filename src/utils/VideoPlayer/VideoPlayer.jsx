@@ -26,6 +26,7 @@ const VideoPlayer = () => {
 	const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 	const [selectedQuality, setSelectedQuality] = useState('1080p');
 	const [selectedEpisode, setSelectedEpisode] = useState(1);
+	const [lastButtonPress, setLastButtonPress] = useState(0);
 
 	const videoRef = useRef(null);
 	const containerRef = useRef(null);
@@ -317,6 +318,7 @@ const VideoPlayer = () => {
 	};
 
 	const handlePreviousEpisode = () => {
+		if (Date.now() - lastButtonPress < 500) return;
 		const previousVideoIndex = currentVideoIndex - 1;
 		if (previousVideoIndex >= 0) {
 			setSelectedEpisode(currentVideoIndex);
@@ -324,9 +326,11 @@ const VideoPlayer = () => {
 			videoRef.current.src =
 				currentEpisode[previousVideoIndex][`video${selectedQuality}`];
 		}
+		setLastButtonPress(Date.now());
 	};
 
 	const handleNextEpisode = () => {
+		if (Date.now() - lastButtonPress < 500) return;
 		const nextVideoIndex = currentVideoIndex + 1;
 		if (nextVideoIndex < currentEpisode.length) {
 			setSelectedEpisode(nextVideoIndex + 1);
@@ -334,6 +338,7 @@ const VideoPlayer = () => {
 			videoRef.current.src =
 				currentEpisode[nextVideoIndex][`video${selectedQuality}`];
 		}
+		setLastButtonPress(Date.now());
 	};
 
 	return (
@@ -344,12 +349,10 @@ const VideoPlayer = () => {
 				onMouseMove={handleMouseMove}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
-				onDoubleClick={handleToggleFullscreen}
 			>
 				<video
 					ref={videoRef}
 					width='100%'
-					onClick={handlePlayPause}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
@@ -359,6 +362,7 @@ const VideoPlayer = () => {
 				<div
 					className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
 					onClick={handlePlayPause}
+					onDoubleClick={handleToggleFullscreen}
 				></div>
 				<div
 					className={`absolute bottom-0 left-0 z-20 flex w-full px-4 text-gray-50/80 text-base mb-1 items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
