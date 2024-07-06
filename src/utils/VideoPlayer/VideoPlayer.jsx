@@ -297,25 +297,25 @@ const VideoPlayer = () => {
 		});
 	};
 
-	const handleEpisodeSelect = (event) => {
-		const episodeSelect = event.target.value;
-		setSelectedEpisode(episodeSelect);
-		setCurrentVideoIndex(episodeSelect - 1);
-		videoRef.current.src =
-			currentEpisode[currentVideoIndex][`video${selectedQuality}`];
-		videoRef.current.load();
-		videoRef.current.addEventListener('loadedmetadata', () => {
-			let isReadyToPlay = false;
-			videoRef.current.addEventListener('canplay', () => {
-				isReadyToPlay = true;
-			});
-			setTimeout(() => {
-				if (isReadyToPlay) {
-					videoRef.current.play();
-				}
-			}, 200);
-		});
-	};
+	// const handleEpisodeSelect = (event) => {
+	// 	const episodeSelect = event.target.value;
+	// 	setSelectedEpisode(episodeSelect);
+	// 	setCurrentVideoIndex(episodeSelect - 1);
+	// 	videoRef.current.src =
+	// 		currentEpisode[currentVideoIndex][`video${selectedQuality}`];
+	// 	videoRef.current.load();
+	// 	videoRef.current.addEventListener('loadedmetadata', () => {
+	// 		let isReadyToPlay = false;
+	// 		videoRef.current.addEventListener('canplay', () => {
+	// 			isReadyToPlay = true;
+	// 		});
+	// 		setTimeout(() => {
+	// 			if (isReadyToPlay) {
+	// 				videoRef.current.play();
+	// 			}
+	// 		}, 200);
+	// 	});
+	// };
 
 	const handlePreviousEpisode = () => {
 		if (Date.now() - lastButtonPress < 500) return;
@@ -360,38 +360,24 @@ const VideoPlayer = () => {
 					<source type='video/mp4' />
 				</video>
 				<div
-					className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
+					className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
 					onClick={handlePlayPause}
 					onDoubleClick={handleToggleFullscreen}
-				></div>
-				<div
-					className={`absolute bottom-0 left-0 z-20 flex w-full px-4 text-gray-50/80 text-base mb-1 items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 				>
-					<button onClick={handlePlayPause}>
-						{playing ? (
-							<Pause className='h-10 w-10 fill-gray-50/80 drop-shadow-md' />
-						) : (
-							<Play className='h-10 w-10 fill-gray-50/80 drop-shadow-md' />
-						)}
-					</button>
-					<div className='flex justify-center items-center ml-2'>
-						<button onClick={handleMuteClick} className='ml-2'>
-							{getVolumeIcon()}
-						</button>
-						<input
-							type='range'
-							min='0'
-							max='100'
-							value={muted ? 0 : volume * 100}
-							ref={volumeRef}
-							onChange={handleInputChange}
-							className='w-24 select-none cursor-pointer ml-2 h-1 bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15]'
-						/>
-					</div>
-					<div className='flex w-full items-center ml-5 mr-3 select-none'>
-						<span className='font-GothamPro w-14 text-center'>
+					<div
+						className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/25 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+					>
+						<span className='w-11 drop-shadow-sm'>
 							{formatTime(currentTime)}
 						</span>
+						<span className='text-[10px] drop-shadow-sm w-[6px]'>/</span>
+						<span className='w-11 drop-shadow-sm'>{formatTime(duration)}</span>
+					</div>
+				</div>
+				<div
+					className={`absolute bottom-0 left-0 z-20 flex flex-col w-full px-4 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+				>
+					<div className='flex w-full h-2 items-center select-none'>
 						<input
 							type='range'
 							min='0'
@@ -400,49 +386,79 @@ const VideoPlayer = () => {
 							ref={timelineRef}
 							onChange={handleSeek}
 							onMouseUp={handleTimelineMouseUp}
-							className='w-full select-none cursor-pointer mx-2 h-1 bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
+							className='w-full select-none cursor-pointer mx-2 my-1 h-1 hover:h-2 bg-white/50 rounded-full border-none outline-none appearance-none transition-all duration-200 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-opacity-transform [&::-webkit-slider-thumb]:hover:opacity-100 [&::-webkit-slider-thumb]:duration-200 [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
 						/>
-						<span className='font-GothamPro w-14 text-center'>
-							{formatTime(duration)}
-						</span>
 					</div>
-					<div className='flex justify-center items-center mr-2 gap-1'>
-						<button onClick={handlePreviousEpisode}>
-							<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
-						</button>
-						<select
-							value={selectedEpisode}
-							onChange={handleEpisodeSelect}
-							className='font-GothamPro cursor-pointer text-sm outline-none border-none bg-transparent mx-2 py-2 [&>option]:p-4 [&>option]:bg-black/90 border-0'
-						>
-							{currentEpisode.map((episode) => (
-								<option value={episode.id}>{episode.episode}</option>
-							))}
-						</select>
-						<button onClick={handleNextEpisode}>
-							<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
-						</button>
+					<div className='flex w-full justify-between my-1'>
+						<div className='flex items-center justify-start w-[240px]'>
+							<button
+								className='flex w-10 h-10 justify-center items-center'
+								onClick={handlePlayPause}
+							>
+								{playing ? (
+									<Pause className='h-9 w-9 fill-gray-50/80 drop-shadow-md' />
+								) : (
+									<Play className='h-9 w-9 fill-gray-50/80 drop-shadow-md' />
+								)}
+							</button>
+							<div className='flex justify-center items-center ml-2 group'>
+								<button onClick={handleMuteClick} className='ml-2'>
+									{getVolumeIcon()}
+								</button>
+								<input
+									type='range'
+									min='0'
+									max='100'
+									value={muted ? 0 : volume * 100}
+									ref={volumeRef}
+									onChange={handleInputChange}
+									className='w-24 opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
+								/>
+							</div>
+						</div>
+						<div className='select-none font-GothamPro text-sm py-2'>
+							Эпизод {selectedEpisode}
+						</div>
+						<div className='flex w-[240px] justify-end items-center'>
+							<div className='flex justify-center items-center mr-2 gap-1'>
+								<button
+									className='flex w-10 h-10 justify-center items-center'
+									onClick={handlePreviousEpisode}
+								>
+									<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
+								</button>
+								<button
+									className='flex w-10 h-10 justify-center items-center'
+									onClick={handleNextEpisode}
+								>
+									<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
+								</button>
+							</div>
+							<select
+								value={selectedQuality}
+								onChange={handleQualityChange}
+								className='font-GothamPro cursor-pointer text-sm outline-none border-none bg-transparent mx-4 py-2 [&>option]:p-4 [&>option]:bg-black/90 border-0 ml-2'
+							>
+								{Object.keys(currentEpisode[currentVideoIndex])
+									.filter((key) => key.startsWith('video'))
+									.map((key) => (
+										<option value={key.replace('video', '')}>
+											{key.replace('video', '')}
+										</option>
+									))}
+							</select>
+							<button
+								className='flex w-10 justify-center items-center'
+								onClick={handleToggleFullscreen}
+							>
+								{fullscreen ? (
+									<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
+								) : (
+									<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
+								)}
+							</button>
+						</div>
 					</div>
-					<select
-						value={selectedQuality}
-						onChange={handleQualityChange}
-						className='font-GothamPro cursor-pointer text-sm outline-none border-none bg-transparent mx-4 py-2 [&>option]:p-4 [&>option]:bg-black/90 border-0 ml-2'
-					>
-						{Object.keys(currentEpisode[currentVideoIndex])
-							.filter((key) => key.startsWith('video'))
-							.map((key) => (
-								<option value={key.replace('video', '')}>
-									{key.replace('video', '')}
-								</option>
-							))}
-					</select>
-					<button onClick={handleToggleFullscreen}>
-						{fullscreen ? (
-							<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
-						) : (
-							<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
-						)}
-					</button>
 				</div>
 			</div>
 		</>
