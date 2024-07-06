@@ -34,7 +34,7 @@ module.exports = {
         WiGuru: ["WiGuru"],
       },
       colors: {
-        mainBlue: "#1e2142",
+        mainBlue: "#070211",
         mainRedJapan: "#992434",
         Red50: "#fdf4f3",
         Red100: "#fce8e7",
@@ -73,6 +73,9 @@ module.exports = {
       animation: {
         "spin-slow": "spin 3s linear infinite",
         "pulse-slow": "pulse 3s linear infinite",
+      },
+      transitionProperty: {
+        'opacity-transform': 'opacity, transform',
       },
     },
   },
