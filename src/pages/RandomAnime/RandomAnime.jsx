@@ -9,6 +9,7 @@ import PlayerSeriaAnimeRandom from "./PlayerSeriaAnimeRandom.json";
 // Import Swiper React components
 import "./RandomAnime.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import VideoPlayer from "../../utils/VideoPlayer/VideoPlayer.jsx"
 
 // Import Swiper styles
 import "swiper/css";
@@ -341,28 +342,9 @@ function RandomAnime() {
                   Смотреть аниме онлайн
                 </h1>
               </div>
-              <section className="grid grid-cols-[70%_minmax(auto,_1fr)] duration-500 items-center mt-[10px] gap-[120px] lg:gap-[70px] h-[550px] md:h-[700px] gridAdaptiveBlockPlayer md:gap-[30px]">
+              <section className="pt-5">
                 <div className="h-full items-start w-full">
-                  <iframe
-                    className="magn"
-                    src={currentSerie.video}
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                    AllowFullScreen
-                    allow="autoplay *; fullscreen *"
-                  ></iframe>
-                </div>
-                <div className="flex flex-col gap-[4px] overflow-auto h-full">
-                  {PlayerSeriaAnimeRandom.map((result) => (
-                    <button
-                      onClick={() => setCurrentEpisode(result.id)}
-                      key={result.id}
-                      className="buttonWatch text-left text-white font-GothamPro text-[16px] font-light"
-                    >
-                      {result.episod}
-                    </button>
-                  ))}
+                <VideoPlayer />
                 </div>
               </section>
 
