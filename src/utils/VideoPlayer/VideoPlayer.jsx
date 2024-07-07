@@ -157,12 +157,17 @@ const VideoPlayer = () => {
 			});
 		}
 	};
-
+	
 	const handleMuteClick = () => {
 		setMuted(!muted);
 		if (muted) {
-			videoRef.current.volume = volume;
-			volumeRef.current.value = volume * 100;
+			if (!isMobile) {
+				videoRef.current.volume = volume;
+				volumeRef.current.value = volume * 100;
+			} else {
+				videoRef.current.volume = 1;
+				volumeRef.current.value = 1;
+			}
 		} else {
 			videoRef.current.volume = 0;
 			volumeRef.current.value = 0;
