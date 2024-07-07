@@ -34,6 +34,11 @@ const VideoPlayer = () => {
 	const timelineRef = useRef(null);
 	const volumeRef = useRef(null);
 
+	const isMobile =
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
+
 	useEffect(() => {
 		const video = videoRef.current;
 		video.volume = volume;
@@ -172,33 +177,35 @@ const VideoPlayer = () => {
 	const getVolumeIcon = () => {
 		if (volume === 0 || muted) {
 			return (
-				<VolumeMute className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance' />
+				<VolumeMute className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance sm:h-[18px] sm:w-[18px]' />
 			);
 		} else if (volume < 0.5) {
 			return (
-				<VolumeLow className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance' />
+				<VolumeLow className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance sm:h-[18px] sm:w-[18px]' />
 			);
 		} else {
 			return (
-				<VolumeFull className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance' />
+				<VolumeFull className='h-5 w-5 fill-gray-50/80 drop-shadow-md animate-smooth-appearance sm:h-[18px] sm:w-[18px]' />
 			);
 		}
 	};
 
 	const handlePlayPause = () => {
-		if (videoRef.current.paused) {
-			if (videoRef.current.readyState === 4) {
-				videoRef.current.play();
-				setPlaying(true);
-			} else {
-				videoRef.current.addEventListener('canplay', () => {
+		if ((isMobile && controlsVisible) || !isMobile) {
+			if (videoRef.current.paused) {
+				if (videoRef.current.readyState === 4) {
 					videoRef.current.play();
 					setPlaying(true);
-				});
+				} else {
+					videoRef.current.addEventListener('canplay', () => {
+						videoRef.current.play();
+						setPlaying(true);
+					});
+				}
+			} else {
+				videoRef.current.pause();
+				setPlaying(false);
 			}
-		} else {
-			videoRef.current.pause();
-			setPlaying(false);
 		}
 	};
 
@@ -214,19 +221,34 @@ const VideoPlayer = () => {
 			setFullscreen(false);
 		} else {
 			containerRef.current.requestFullscreen();
+			if (
+				isMobile &&
+				typeof window.screen.orientation !== 'undefined' &&
+				typeof window.screen.orientation.lock !== 'undefined'
+			) {
+				window.screen.orientation.lock('landscape');
+			}
 			setFullscreen(true);
 		}
 	};
 
 	const handleMouseMove = () => {
-		clearTimeout(timeoutRef.current);
-		setControlsVisible(true);
-		setCursorVisible(true);
-		if (playing) {
+		if (isMobile) {
+			clearTimeout(timeoutRef.current);
+			setControlsVisible(true);
 			timeoutRef.current = setTimeout(() => {
 				setControlsVisible(false);
-				setCursorVisible(false);
 			}, 2500);
+		} else {
+			clearTimeout(timeoutRef.current);
+			setControlsVisible(true);
+			setCursorVisible(true);
+			if (playing) {
+				timeoutRef.current = setTimeout(() => {
+					setControlsVisible(false);
+					setCursorVisible(false);
+				}, 2500);
+			}
 		}
 	};
 
@@ -353,6 +375,7 @@ const VideoPlayer = () => {
 				<video
 					ref={videoRef}
 					width='100%'
+					playsinline
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
@@ -360,24 +383,45 @@ const VideoPlayer = () => {
 					<source type='video/mp4' />
 				</video>
 				<div
+					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+				>
+					<select
+						value={selectedQuality}
+						onChange={handleQualityChange}
+						className='font-GothamPro cursor-pointer text-xs outline-none border-none rounded-full bg-black/20 mx-3 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
+					>
+						{Object.keys(currentEpisode[currentVideoIndex])
+							.filter((key) => key.startsWith('video'))
+							.map((key) => (
+								<option value={key.replace('video', '')}>
+									{key.replace('video', '')}
+								</option>
+							))}
+					</select>
+				</div>
+				<div
 					className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
 					onClick={handlePlayPause}
 					onDoubleClick={handleToggleFullscreen}
 				>
 					<div
-						className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/25 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+						className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/20 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform md:opacity-0 ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 					>
-						<span className='w-11 drop-shadow-sm'>
+						<span className='w-12 drop-shadow-sm'>
 							{formatTime(currentTime)}
 						</span>
 						<span className='text-[10px] drop-shadow-sm w-[6px]'>/</span>
-						<span className='w-11 drop-shadow-sm'>{formatTime(duration)}</span>
+						<span className='w-12 drop-shadow-sm'>{formatTime(duration)}</span>
 					</div>
 				</div>
 				<div
 					className={`absolute bottom-0 left-0 z-20 flex flex-col w-full px-4 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 				>
-					<div className='flex w-full h-2 items-center select-none'>
+					<div className='flex w-full h-2 font-GothamPro text-center text-xs items-center select-none'>
+						<span className='w-12 drop-shadow-sm hidden md:block'>
+							{formatTime(currentTime)}
+						</span>
+
 						<input
 							type='range'
 							min='0'
@@ -388,20 +432,23 @@ const VideoPlayer = () => {
 							onMouseUp={handleTimelineMouseUp}
 							className='w-full select-none cursor-pointer mx-2 my-1 h-1 hover:h-2 bg-white/50 rounded-full border-none outline-none appearance-none transition-all duration-200 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-opacity-transform [&::-webkit-slider-thumb]:hover:opacity-100 [&::-webkit-slider-thumb]:duration-200 [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
 						/>
+						<span className='w-12 drop-shadow-sm hidden md:block'>
+							{formatTime(duration)}
+						</span>
 					</div>
-					<div className='flex w-full justify-between my-1'>
+					<div className='flex w-full justify-between items-center my-1'>
 						<div className='flex items-center justify-start w-[240px]'>
 							<button
-								className='flex w-10 h-10 justify-center items-center'
+								className='flex w-10 h-10 sm:h-7 justify-center items-center'
 								onClick={handlePlayPause}
 							>
 								{playing ? (
-									<Pause className='h-9 w-9 fill-gray-50/80 drop-shadow-md' />
+									<Pause className='h-9 w-9 fill-gray-50/80 drop-shadow-md sm:h-7 sm:w-7' />
 								) : (
-									<Play className='h-9 w-9 fill-gray-50/80 drop-shadow-md' />
+									<Play className='h-9 w-9 fill-gray-50/80 drop-shadow-md sm:h-7 sm:w-7' />
 								)}
 							</button>
-							<div className='flex justify-center items-center ml-2 group'>
+							<div className='flex justify-center items-center sm:ml-0 ml-2 group'>
 								<button onClick={handleMuteClick} className='ml-2'>
 									{getVolumeIcon()}
 								</button>
@@ -412,49 +459,36 @@ const VideoPlayer = () => {
 									value={muted ? 0 : volume * 100}
 									ref={volumeRef}
 									onChange={handleInputChange}
-									className='w-24 opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
+									className='w-24 sm:hidden opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
 								/>
 							</div>
 						</div>
-						<div className='select-none font-GothamPro text-sm py-2'>
+						<div className='select-none whitespace-nowrap font-GothamPro text-sm py-2 sm:py-1 sm:text-xs'>
 							Эпизод {selectedEpisode}
 						</div>
 						<div className='flex w-[240px] justify-end items-center'>
 							<div className='flex justify-center items-center mr-2 gap-1'>
 								<button
-									className='flex w-10 h-10 justify-center items-center'
+									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
 									onClick={handlePreviousEpisode}
 								>
-									<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
+									<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
 								</button>
 								<button
-									className='flex w-10 h-10 justify-center items-center'
+									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
 									onClick={handleNextEpisode}
 								>
-									<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none' />
+									<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
 								</button>
 							</div>
-							<select
-								value={selectedQuality}
-								onChange={handleQualityChange}
-								className='font-GothamPro cursor-pointer text-sm outline-none border-none bg-transparent mx-4 py-2 [&>option]:p-4 [&>option]:bg-black/90 border-0 ml-2'
-							>
-								{Object.keys(currentEpisode[currentVideoIndex])
-									.filter((key) => key.startsWith('video'))
-									.map((key) => (
-										<option value={key.replace('video', '')}>
-											{key.replace('video', '')}
-										</option>
-									))}
-							</select>
 							<button
-								className='flex w-10 justify-center items-center'
+								className='flex w-10 sm:w-8 justify-center items-center'
 								onClick={handleToggleFullscreen}
 							>
 								{fullscreen ? (
-									<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
+									<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
 								) : (
-									<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md' />
+									<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
 								)}
 							</button>
 						</div>
