@@ -41,7 +41,11 @@ const VideoPlayer = () => {
 
 	useEffect(() => {
 		const video = videoRef.current;
-		video.volume = volume;
+		if (!isMobile) {
+			video.volume = volume;
+		} else {
+			video.volume = 1;
+		}
 		video.addEventListener('timeupdate', () => {
 			setCurrentTime(video.currentTime);
 		});
