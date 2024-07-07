@@ -393,12 +393,12 @@ const VideoPlayer = () => {
 					<source type='video/mp4' />
 				</video>
 				<div
-					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 				>
 					<select
 						value={selectedQuality}
 						onChange={handleQualityChange}
-						className='font-GothamPro cursor-pointer text-xs outline-none border-none rounded-full bg-black/20 mx-3 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
+						className='font-GothamPro cursor-pointer text-sm sm:text-xs outline-none border-none rounded-full bg-black/20 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
 					>
 						{Object.keys(currentEpisode[currentVideoIndex])
 							.filter((key) => key.startsWith('video'))
