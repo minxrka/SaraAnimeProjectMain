@@ -95,18 +95,6 @@ const VideoPlayer = () => {
 		};
 	}, []);
 
-	useEffect(() => {
-		videoRef.current.addEventListener('click', () => {
-			if (videoRef.current.paused) {
-				videoRef.current.play();
-				setPlaying(true);
-			} else {
-				videoRef.current.pause();
-				setPlaying(false);
-			}
-		});
-	}, [videoRef]);
-
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
 			event.preventDefault();
@@ -390,20 +378,21 @@ const VideoPlayer = () => {
 			<div
 				className={`relative w-full duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
 				ref={containerRef}
-				onMouseMove={handleMouseMove}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
 				<video
 					ref={videoRef}
 					width='100%'
+					preload='metadata'
 					playsinline
-					  preload='metadata'
+					webkit-playsinline
+					poster={currentEpisode[currentVideoIndex].poster}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
 				>
-					<source type='video/mp4' />
+					<source type='video/mp4' src={currentEpisode[currentVideoIndex][`video${selectedQuality}`]}/>
 				</video>
 				<div
 					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
@@ -444,7 +433,6 @@ const VideoPlayer = () => {
 						<span className='w-12 drop-shadow-sm hidden md:block'>
 							{formatTime(currentTime)}
 						</span>
-
 						<input
 							type='range'
 							min='0'
