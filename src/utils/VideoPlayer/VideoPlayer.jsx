@@ -95,6 +95,18 @@ const VideoPlayer = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		videoRef.current.addEventListener('click', () => {
+			if (videoRef.current.paused) {
+				videoRef.current.play();
+				setPlaying(true);
+			} else {
+				videoRef.current.pause();
+				setPlaying(false);
+			}
+		});
+	}, [videoRef]);
+
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
 			event.preventDefault();
@@ -386,6 +398,7 @@ const VideoPlayer = () => {
 					ref={videoRef}
 					width='100%'
 					playsinline
+					  preload='metadata'
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
