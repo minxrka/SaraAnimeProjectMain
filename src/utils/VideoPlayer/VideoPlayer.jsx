@@ -19,7 +19,7 @@ const VideoPlayer = () => {
 	const [duration, setDuration] = useState(0);
 	const [timelineValue, setTimelineValue] = useState(0);
 	const [fullscreen, setFullscreen] = useState(false);
-	const [controlsVisible, setControlsVisible] = useState(false);
+	const [controlsVisible, setControlsVisible] = useState(true);
 	const [mouseOver, setMouseOver] = useState(false);
 	const [cursorVisible, setCursorVisible] = useState(false);
 	const [userSeeking, setUserSeeking] = useState(false);
@@ -157,7 +157,7 @@ const VideoPlayer = () => {
 			});
 		}
 	};
-	
+
 	const handleMuteClick = () => {
 		setMuted(!muted);
 		if (muted) {
@@ -242,17 +242,14 @@ const VideoPlayer = () => {
 	};
 
 	const handleMouseMove = () => {
-		if (isMobile) {
+		if (isMobile && !playing) {
 			clearTimeout(timeoutRef.current);
 			setControlsVisible(true);
-			timeoutRef.current = setTimeout(() => {
-				setControlsVisible(false);
-			}, 2500);
 		} else {
 			clearTimeout(timeoutRef.current);
 			setControlsVisible(true);
 			setCursorVisible(true);
-			if (playing) {
+			if (playing && !isMobile) {
 				timeoutRef.current = setTimeout(() => {
 					setControlsVisible(false);
 					setCursorVisible(false);
@@ -262,6 +259,7 @@ const VideoPlayer = () => {
 	};
 
 	const handleMouseEnter = () => {
+		if (!isMobile) {
 		setMouseOver(true);
 		setControlsVisible(true);
 		setCursorVisible(true);
@@ -271,12 +269,15 @@ const VideoPlayer = () => {
 				setCursorVisible(false);
 			}, 2500);
 		}
+	}
 	};
 
 	const handleMouseLeave = () => {
+		if (!isMobile) {
 		setControlsVisible(false);
 		setCursorVisible(false);
 		clearTimeout(timeoutRef.current);
+		}
 	};
 
 	const handleVideoEnd = () => {
