@@ -378,6 +378,7 @@ const VideoPlayer = () => {
 			<div
 				className={`relative w-full duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
 				ref={containerRef}
+				onMouseMove={handleMouseMove}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 			>
