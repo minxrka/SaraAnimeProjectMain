@@ -1,34 +1,42 @@
 [
   {
     "id": 1,
-    "img": "https://animego.org/upload/anime/images/63445455c43fc478206729.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455c43fc478206729.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088d9fa9119352090.jpg"
   },
   {
     "id": 2,
-    "img": "https://animego.org/upload/anime/images/63445455b3bc6629361018.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b3bc6629361018.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088db3ea083931338.jpg"
   },
   {
     "id": 3,
-    "img": "https://animego.org/upload/anime/images/63445455b4c51651599355.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b4c51651599355.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088dc846522319026.jpg"
   },
   {
     "id": 4,
-    "img": "https://animego.org/upload/anime/images/63445455b598c505269494.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b598c505269494.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088de007309599770.jpg"
   },
   {
     "id": 5,
-    "img": "https://animego.org/upload/anime/images/63445455b6648745361176.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b6648745361176.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088df4b7765288762.jpg"
   },
   {
     "id": 6,
-    "img": "https://animego.org/upload/anime/images/63445455b73dc830475035.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b73dc830475035.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088e0a12362105214.jpg"
   },
   {
     "id": 7,
-    "img": "https://animego.org/upload/anime/images/63445455b81d3189857711.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b81d3189857711.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088e1f23157805500.jpg"
   },
   {
     "id": 8,
-    "img": "https://animego.org/upload/anime/images/63445455b934d237780081.jpg"
+    "img": "https://animego.org/upload/anime/images/63445455b934d237780081.jpg",
+    "img2": "https://animego.org/upload/anime/images/6321e088e3410576159641.jpg"
   }
 ]

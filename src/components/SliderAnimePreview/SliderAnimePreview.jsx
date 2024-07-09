@@ -13,7 +13,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation, Pagination } from "swiper/modules";
 
-const SliderAnimePreview = () => {
+const SliderAnimePreview = ({sourceImg}) => {
   /* ОТКРЫТИE/ЗАКРЫТИЕ ДИАЛОГ ОКНА */
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
@@ -48,7 +48,7 @@ const SliderAnimePreview = () => {
             slidesPerView: 4,
           },
         }}
-        className="mySwiper mt-[20px] mb-[20px]"
+        className="mySwiper my-5"
       >
         {Data.map((result, index) => (
           <SwiperSlide key={index} onClick={handleClickOpen} className="">
@@ -56,8 +56,7 @@ const SliderAnimePreview = () => {
               <div className="rounded-[10px] adaptiveImageSlider">
                 <img
                   className="rounded-[10px] absolute top-0 left-0 w-full h-full object-cover"
-                  src={result.img}
-                  alt=""
+                  src={result[sourceImg]}
                 />
                 <div className="bgSliderEffect sliderbg absolute top-0 rounded-[10px] w-full h-full opacity-0 transition-all">
                   <span className="">
@@ -109,7 +108,7 @@ const SliderAnimePreview = () => {
             <SwiperSlide key={index}>
               <img
                 className="w-full max-h-[700px] object-cover"
-                src={result.img}
+                src={result[sourceImg]}
                 alt="bgAnime"
               />
             </SwiperSlide>

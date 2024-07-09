@@ -28,27 +28,25 @@
 /* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
 
 .mybutton {
-  padding: 20px;
+  padding: 16px 0;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #da4f4a;
+  background-color: #d9abc5dc;
   box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
   letter-spacing: 1.1px;
   transition: all 0.5s ease;
 }
 
 .mybutton:hover {
-  letter-spacing: 2.5px;
-  background-color: #da4f4a;
+  background-color: #d9abc5;
   color: hsl(0, 0%, 100%);
-  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  box-shadow: rgb(189 119 156) 0px 5px 15px 0px;
 }
 
 .mybutton:active {
-  letter-spacing: 2.5px;
-  background-color: #e05357;
+  background-color: #cf97b5;
   color: hsl(0, 0%, 100%);
-  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  box-shadow: rgb(189 119 156) 0px 5px 15px 0px;
   transform: translateY(-2px);
   transition: 100ms;
 }
@@ -117,7 +115,7 @@
   height: 1px;
   left: 0;
   bottom: -4px;
-  background-color: #f6615b;
+  background-color: #d9abc5;
   scale: 0%;
   transition: all 0.3s ease;
 }

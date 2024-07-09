@@ -300,6 +300,10 @@ table {
 body {
   background-color: #070211;
 }
+::selection {
+  color: #f5c6e1;
+  background: rgba(211, 179, 236, 0.14);
+}
 
 .content-container {
   min-height: 100vh;
@@ -579,7 +583,7 @@ body {
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА ГДЕ ПРОСМОТР АНИМЕ КАРТИНОК */
 .swiper-button-next,
 .swiper-button-prev {
-  background: #5662d58f !important;
+  background:#bd779cb4 !important;
   padding-top: 16px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
@@ -595,7 +599,7 @@ body {
 }
 
 .swiper-button-next:hover {
-  background: #5662d5c2 !important;
+  background: #bd779cde !important;
   transition: 0.2s ease-in-out;
 }
 .swiper-button-next::after {

@@ -338,7 +338,7 @@ export const Header = () => {
   return (
     <header
       className={`sticky top-0 ${
-        scrolled ? "h-[65px] bg-mainBlue" : "h-[70px] header-linear-grd"
+        scrolled ? "h-[65px] bg-mainBlue" : "h-[75px] header-linear-grd"
       } transition-all duration-500 z-index-header xl:px-[70px] big:px-[110px] sm:px-[25px] lg:px-[73px] px-[160px] py-[10px] items-center flex justify-between`}
     >
       <nav className="items-center lg:hidden">

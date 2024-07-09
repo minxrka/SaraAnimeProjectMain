@@ -1,4 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import currentEpisode from './currentEpisode.json';
 import { ReactComponent as Pause } from '../../img/icons/pause-small.svg';
@@ -22,11 +26,13 @@ const VideoPlayer = () => {
 	const [controlsVisible, setControlsVisible] = useState(true);
 	const [mouseOver, setMouseOver] = useState(false);
 	const [cursorVisible, setCursorVisible] = useState(false);
-	const [userSeeking, setUserSeeking] = useState(false);
+	const [isSeeking, setIsSeeking] = useState(false);
 	const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 	const [selectedQuality, setSelectedQuality] = useState('1080p');
 	const [selectedEpisode, setSelectedEpisode] = useState(1);
 	const [lastButtonPress, setLastButtonPress] = useState(0);
+	const [isMuteButtonClicked, setIsMuteButtonClicked] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const videoRef = useRef(null);
 	const containerRef = useRef(null);
@@ -34,10 +40,18 @@ const VideoPlayer = () => {
 	const timelineRef = useRef(null);
 	const volumeRef = useRef(null);
 
-	const isMobile =
-		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-			navigator.userAgent
-		);
+	useEffect(() => {
+		const video = videoRef.current;
+		video.addEventListener('loadstart', () => {
+			setIsLoading(true);
+		});
+		video.addEventListener('waiting', () => {
+			setIsLoading(true);
+		});
+		video.addEventListener('canplay', () => {
+			setIsLoading(false);
+		});
+	}, [videoRef]);
 
 	useEffect(() => {
 		const video = videoRef.current;
@@ -95,6 +109,11 @@ const VideoPlayer = () => {
 		};
 	}, []);
 
+	const isMobile =
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
+
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
 			event.preventDefault();
@@ -138,33 +157,44 @@ const VideoPlayer = () => {
 		videoRef.current.currentTime = timelineValue;
 		setCurrentTime(timelineValue);
 		setTimelineValue(timelineValue);
-		setUserSeeking(true);
+		setIsSeeking(true);
+		setIsLoading(true);
 	};
 
 	const handleTimelineMouseUp = () => {
-		setUserSeeking(false);
-		if (videoRef.current.readyState === 4) {
+		setIsSeeking(false);
+		if (videoRef.current.readyState >= 3) {
 			if (!playing) {
 				videoRef.current.play();
 				setPlaying(true);
 			}
 		} else {
-			videoRef.current.addEventListener('canplay', () => {
-				if (!playing) {
-					videoRef.current.play();
-					setPlaying(true);
-				}
-			});
-		}
+      const waitForLoad = setInterval(() => {
+        if (videoRef.current.readyState >= 3) {
+          videoRef.current.play();
+          setPlaying(true);
+          clearInterval(waitForLoad);
+        }
+      }, 100);
+    }
 	};
 
 	const handleMuteClick = () => {
 		setMuted(!muted);
+		setIsMuteButtonClicked(true);
 		if (muted) {
 			if (!isMobile) {
-				videoRef.current.volume = volume;
-				volumeRef.current.value = volume * 100;
+				if (volume === 0 && !isMuteButtonClicked) {
+					setVolume(0.2);
+					videoRef.current.volume = 0.2;
+					volumeRef.current.value = 0.2;
+				} else {
+					setVolume(volume);
+					videoRef.current.volume = volume;
+					volumeRef.current.value = volume * 100;
+				}
 			} else {
+				setVolume(1);
 				videoRef.current.volume = 1;
 				volumeRef.current.value = 1;
 			}
@@ -176,10 +206,17 @@ const VideoPlayer = () => {
 
 	const handleInputChange = (event) => {
 		const videoVolume = event.target.value / 100;
-		setVolume(videoVolume);
-		videoRef.current.volume = videoVolume;
-		if (muted) {
+		setIsMuteButtonClicked(false);
+		if (videoVolume === 0) {
+			setMuted(true);
+			setVolume(0);
+			videoRef.current.volume = 0;
+			volumeRef.current.value = 0;
+		} else {
 			setMuted(false);
+			setVolume(videoVolume);
+			videoRef.current.volume = videoVolume;
+			volumeRef.current.value = videoVolume;
 		}
 	};
 
@@ -260,23 +297,23 @@ const VideoPlayer = () => {
 
 	const handleMouseEnter = () => {
 		if (!isMobile) {
-		setMouseOver(true);
-		setControlsVisible(true);
-		setCursorVisible(true);
-		if (playing) {
-			timeoutRef.current = setTimeout(() => {
-				setControlsVisible(false);
-				setCursorVisible(false);
-			}, 2500);
+			setMouseOver(true);
+			setControlsVisible(true);
+			setCursorVisible(true);
+			if (playing) {
+				timeoutRef.current = setTimeout(() => {
+					setControlsVisible(false);
+					setCursorVisible(false);
+				}, 2500);
+			}
 		}
-	}
 	};
 
 	const handleMouseLeave = () => {
 		if (!isMobile) {
-		setControlsVisible(false);
-		setCursorVisible(false);
-		clearTimeout(timeoutRef.current);
+			setControlsVisible(false);
+			setCursorVisible(false);
+			clearTimeout(timeoutRef.current);
 		}
 	};
 
@@ -329,25 +366,24 @@ const VideoPlayer = () => {
 		});
 	};
 
-	// const handleEpisodeSelect = (event) => {
-	// 	const episodeSelect = event.target.value;
-	// 	setSelectedEpisode(episodeSelect);
-	// 	setCurrentVideoIndex(episodeSelect - 1);
-	// 	videoRef.current.src =
-	// 		currentEpisode[currentVideoIndex][`video${selectedQuality}`];
-	// 	videoRef.current.load();
-	// 	videoRef.current.addEventListener('loadedmetadata', () => {
-	// 		let isReadyToPlay = false;
-	// 		videoRef.current.addEventListener('canplay', () => {
-	// 			isReadyToPlay = true;
-	// 		});
-	// 		setTimeout(() => {
-	// 			if (isReadyToPlay) {
-	// 				videoRef.current.play();
-	// 			}
-	// 		}, 200);
-	// 	});
-	// };
+	const handleEpisodeSelect = (index) => {
+		setSelectedEpisode(index + 1);
+		setCurrentVideoIndex(index);
+		videoRef.current.src = currentEpisode[index][`video${selectedQuality}`];
+		videoRef.current.load();
+		videoRef.current.addEventListener('loadedmetadata', () => {
+			let isReadyToPlay = false;
+			videoRef.current.addEventListener('canplay', () => {
+				isReadyToPlay = true;
+			});
+			setTimeout(() => {
+				if (isReadyToPlay) {
+					videoRef.current.play();
+					setPlaying(true);
+				}
+			}, 200);
+		});
+	};
 
 	const handlePreviousEpisode = () => {
 		if (Date.now() - lastButtonPress < 500) return;
@@ -386,14 +422,16 @@ const VideoPlayer = () => {
 					ref={videoRef}
 					width='100%'
 					preload='metadata'
-					playsinline
-					webkit-playsinline
+					playsInline
 					poster={currentEpisode[currentVideoIndex].poster}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
 				>
-					<source type='video/mp4' src={currentEpisode[currentVideoIndex][`video${selectedQuality}`]}/>
+					<source
+						type='video/mp4'
+						src={currentEpisode[currentVideoIndex][`video${selectedQuality}`]}
+					/>
 				</video>
 				<div
 					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
@@ -413,22 +451,35 @@ const VideoPlayer = () => {
 					</select>
 				</div>
 				<div
-					className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
+					className={`absolute z-10 top-0 left-0 w-full h-full`}
 					onClick={handlePlayPause}
 					onDoubleClick={handleToggleFullscreen}
 				>
-					<div
-						className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/20 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform md:opacity-0 ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
-					>
-						<span className='w-12 drop-shadow-sm'>
-							{formatTime(currentTime)}
-						</span>
-						<span className='text-[10px] drop-shadow-sm w-[6px]'>/</span>
-						<span className='w-12 drop-shadow-sm'>{formatTime(duration)}</span>
+									<div className='absolute flex w-full h-full top-0 left-0 justify-center items-center text-white z-50'>
+					{isLoading ? (
+						<div className='flex-col gap-4 w-full flex items-center justify-center'>
+							<div className='w-14 h-14 border-4 animate-spin border-solid border-transparent flex items-center justify-center border-t-[#d9abc5]/90 rounded-full'></div>
+						</div>
+					) : (
+						''
+					)}
+				</div>
+					<div className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing || isLoading ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}>
+						<div
+							className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/20 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform md:opacity-0 ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+						>
+							<span className='w-12 drop-shadow-sm'>
+								{formatTime(currentTime)}
+							</span>
+							<span className='text-[10px] drop-shadow-sm w-[6px]'>/</span>
+							<span className='w-12 drop-shadow-sm'>
+								{formatTime(duration)}
+							</span>
+						</div>
 					</div>
 				</div>
 				<div
-					className={`absolute bottom-0 left-0 z-20 flex flex-col w-full px-4 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+					className={`absolute bottom-0 left-0 z-30 flex flex-col w-full px-4 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 				>
 					<div className='flex w-full h-2 font-GothamPro text-center text-xs items-center select-none'>
 						<span className='w-12 drop-shadow-sm hidden md:block'>
@@ -506,6 +557,47 @@ const VideoPlayer = () => {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div>
+				<Swiper
+					slidesPerView={5}
+					navigation={true}
+					spaceBetween={20}
+					modules={[Navigation]}
+					breakpoints={{
+						0: {
+							slidesPerView: 1,
+						},
+						400: {
+							slidesPerView: 2,
+						},
+						900: {
+							slidesPerView: 3,
+						},
+						1220: {
+							slidesPerView: 4,
+						},
+						1537: {
+							slidesPerView: 5,
+						},
+					}}
+					className='mySwiper my-5'
+				>
+					{currentEpisode.map((episode, index) => (
+						<SwiperSlide key={index} onClick={() => handleEpisodeSelect(index)}>
+							<div className='h-full relative aspect-video cursor-pointer'>
+								<img
+									value={index + 1}
+									className='rounded-3xl w-full h-full object-cover brightness-50'
+									src={episode.poster}
+								/>
+								<div className='absolute flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
+									{index + 1} Эпизод
+								</div>
+							</div>
+						</SwiperSlide>
+					))}
+				</Swiper>
 			</div>
 		</>
 	);
