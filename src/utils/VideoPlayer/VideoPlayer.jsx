@@ -169,14 +169,14 @@ const VideoPlayer = () => {
 				setPlaying(true);
 			}
 		} else {
-      const waitForLoad = setInterval(() => {
-        if (videoRef.current.readyState >= 3) {
-          videoRef.current.play();
-          setPlaying(true);
-          clearInterval(waitForLoad);
-        }
-      }, 100);
-    }
+			const waitForLoad = setInterval(() => {
+				if (videoRef.current.readyState >= 3) {
+					videoRef.current.play();
+					setPlaying(true);
+					clearInterval(waitForLoad);
+				}
+			}, 100);
+		}
 	};
 
 	const handleMuteClick = () => {
@@ -455,16 +455,18 @@ const VideoPlayer = () => {
 					onClick={handlePlayPause}
 					onDoubleClick={handleToggleFullscreen}
 				>
-									<div className='absolute flex w-full h-full top-0 left-0 justify-center items-center text-white z-50'>
-					{isLoading ? (
-						<div className='flex-col gap-4 w-full flex items-center justify-center'>
-							<div className='w-14 h-14 border-4 animate-spin border-solid border-transparent flex items-center justify-center border-t-[#d9abc5]/90 rounded-full'></div>
-						</div>
-					) : (
-						''
-					)}
-				</div>
-					<div className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing || isLoading ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}>
+					<div className='absolute w-full h-full text-white z-50'>
+						{isLoading ? (
+							<div className='w-full h-full flex items-center justify-center'>
+								<div className='w-14 h-14 border-4 animate-spin border-solid border-transparent border-t-[#d9abc5]/90 rounded-full'></div>
+							</div>
+						) : (
+							''
+						)}
+					</div>
+					<div
+						className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing || isLoading ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
+					>
 						<div
 							className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/20 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform md:opacity-0 ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 						>
