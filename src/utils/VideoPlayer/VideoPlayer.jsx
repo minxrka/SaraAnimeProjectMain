@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import Hls from "hls.js"
+import Hls from 'hls.js';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -72,7 +72,8 @@ const VideoPlayer = () => {
 			`video${selectedQuality}`
 		);
 		if (hasQuality) {
-			const videoSrc = currentEpisode[currentVideoIndex][`video${selectedQuality}`];
+			const videoSrc =
+				currentEpisode[currentVideoIndex][`video${selectedQuality}`];
 			if (Hls.isSupported()) {
 				const hls = new Hls();
 				hls.loadSource(videoSrc);
@@ -366,22 +367,24 @@ const VideoPlayer = () => {
 	};
 
 	const handleEpisodeSelect = (index) => {
-		setSelectedEpisode(index + 1);
-		setCurrentVideoIndex(index);
-		videoRef.current.src = currentEpisode[index][`video${selectedQuality}`];
-		videoRef.current.load();
-		videoRef.current.addEventListener('loadedmetadata', () => {
-			let isReadyToPlay = false;
-			videoRef.current.addEventListener('canplay', () => {
-				isReadyToPlay = true;
+		if (index !== currentVideoIndex) {
+			setSelectedEpisode(index + 1);
+			setCurrentVideoIndex(index);
+			videoRef.current.src = currentEpisode[index][`video${selectedQuality}`];
+			videoRef.current.load();
+			videoRef.current.addEventListener('loadedmetadata', () => {
+				let isReadyToPlay = false;
+				videoRef.current.addEventListener('canplay', () => {
+					isReadyToPlay = true;
+				});
+				setTimeout(() => {
+					if (isReadyToPlay) {
+						videoRef.current.play();
+						setPlaying(true);
+					}
+				}, 200);
 			});
-			setTimeout(() => {
-				if (isReadyToPlay) {
-					videoRef.current.play();
-					setPlaying(true);
-				}
-			}, 200);
-		});
+		}
 	};
 
 	const handlePreviousEpisode = () => {
@@ -427,9 +430,7 @@ const VideoPlayer = () => {
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
 				>
-					<source
-						type='application/x-mpegURL'
-					/>
+					<source type='application/x-mpegURL' />
 				</video>
 				<div
 					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
@@ -581,7 +582,7 @@ const VideoPlayer = () => {
 							slidesPerView: 5,
 						},
 					}}
-					className='mySwiper my-5'
+					className='mySwiper my-6 mb-10'
 				>
 					{currentEpisode.map((episode, index) => (
 						<SwiperSlide key={index} onClick={() => handleEpisodeSelect(index)}>
