@@ -372,18 +372,13 @@ const VideoPlayer = () => {
 			setCurrentVideoIndex(index);
 			videoRef.current.src = currentEpisode[index][`video${selectedQuality}`];
 			videoRef.current.load();
-			videoRef.current.addEventListener('loadedmetadata', () => {
-				let isReadyToPlay = false;
-				videoRef.current.addEventListener('canplay', () => {
-					isReadyToPlay = true;
-				});
-				setTimeout(() => {
-					if (isReadyToPlay) {
-						videoRef.current.play();
-						setPlaying(true);
-					}
-				}, 200);
-			});
+			const waitForLoad = setInterval(() => {
+				if (videoRef.current.readyState >= 3) {
+					videoRef.current.play();
+					setPlaying(true);
+					clearInterval(waitForLoad);
+				}
+			}, 100);
 		}
 	};
 
@@ -395,6 +390,13 @@ const VideoPlayer = () => {
 			setCurrentVideoIndex(previousVideoIndex);
 			videoRef.current.src =
 				currentEpisode[previousVideoIndex][`video${selectedQuality}`];
+			const waitForLoad = setInterval(() => {
+				if (videoRef.current.readyState >= 3) {
+					videoRef.current.play();
+					setPlaying(true);
+					clearInterval(waitForLoad);
+				}
+			}, 100);
 		}
 		setLastButtonPress(Date.now());
 	};
@@ -407,6 +409,13 @@ const VideoPlayer = () => {
 			setCurrentVideoIndex(nextVideoIndex);
 			videoRef.current.src =
 				currentEpisode[nextVideoIndex][`video${selectedQuality}`];
+			const waitForLoad = setInterval(() => {
+				if (videoRef.current.readyState >= 3) {
+					videoRef.current.play();
+					setPlaying(true);
+					clearInterval(waitForLoad);
+				}
+			}, 100);
 		}
 		setLastButtonPress(Date.now());
 	};
