@@ -326,16 +326,13 @@ const VideoPlayer = () => {
 				videoRef.current.src =
 					currentEpisode[nextVideoIndex][`video${selectedQuality}`];
 				videoRef.current.load();
-				let isReadyToPlay = false;
-				videoRef.current.addEventListener('canplay', () => {
-					isReadyToPlay = true;
-				});
-				setTimeout(() => {
-					if (isReadyToPlay) {
-						videoRef.current.currentTime = 0;
+				const waitForLoad = setInterval(() => {
+					if (videoRef.current.readyState >= 3) {
 						videoRef.current.play();
+						setPlaying(true);
+						clearInterval(waitForLoad);
 					}
-				}, 200);
+				}, 100);
 			}, 1500);
 		}
 	};
