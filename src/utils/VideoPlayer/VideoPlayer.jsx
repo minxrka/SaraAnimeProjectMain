@@ -353,17 +353,13 @@ const VideoPlayer = () => {
 			currentEpisode[currentVideoIndex][`video${changeQuality}`];
 		videoRef.current.load();
 		videoRef.current.currentTime = currentTime;
-		videoRef.current.addEventListener('loadedmetadata', () => {
-			let isReadyToPlay = false;
-			videoRef.current.addEventListener('canplay', () => {
-				isReadyToPlay = true;
-			});
-			setTimeout(() => {
-				if (isReadyToPlay) {
-					videoRef.current.play();
-				}
-			}, 200);
-		});
+		const waitForLoad = setInterval(() => {
+			if (videoRef.current.readyState >= 3) {
+				videoRef.current.play();
+				setPlaying(true);
+				clearInterval(waitForLoad);
+			}
+		}, 100);
 	};
 
 	const handleEpisodeSelect = (index) => {
