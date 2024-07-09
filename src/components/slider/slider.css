@@ -10,22 +10,22 @@
   padding: 18px 30px;
   border-radius: 35px;
   cursor: pointer;
-  background-color: #da4f4a;
+  background-color: #8f4767;
   box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
   letter-spacing: 1.1px;
   transition: all 0.5s ease;
 }
 
 .watchNow:hover {
-  background-color: #da4f4a;
+  background-color: #8f4767;
   color: hsl(0, 0%, 100%);
-  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  box-shadow: rgb(143, 71, 103) 0px 7px 19px 0px;
 }
 
 .watchNow:active {
-  background-color: #e05357;
+  background-color: #a85a7f;
   color: hsl(0, 0%, 100%);
-  box-shadow: rgb(224 83 87) 0px 7px 19px 0px;
+  box-shadow: rgb(143, 71, 103) 0px 7px 19px 0px;
   transform: translateY(-2px);
   transition: 100ms;
 }
@@ -56,7 +56,7 @@
 
 .load {
   width: 2px;
-  height: 33px;
+  height: 0.2em;
   background-color: #eeecff;
   animation: 1s move6 infinite;
   border-radius: 5px;
@@ -85,21 +85,61 @@
   }
 
   50% {
-    height: 1.5em;
+    height: 1.2em;
   }
 
   100% {
     height: 0.2em;
   }
 }
-.glassEffect {
+.glassEffectSwiper {
   background: linear-gradient(
     135deg,
-    rgba(203, 51, 63, 0.2),
-    rgba(203, 51, 63, 0)
+    rgba(217, 171, 197, 0.3),
+    rgba(217, 171, 197, 0)
   );
   border-radius: 40px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.BgEditorProfile {
+  --r: 56px; /* control the size */
+  --c1: #773d55 /*color 1*/ 99%, #0000 101%;
+  --c2: #773d55 /*color 2*/ 99%, #0000 101%;
+
+  --s: calc(var(--r) * 0.866); /* .866 = cos(30deg) */
+  --g0: radial-gradient(var(--r), var(--c1));
+  --g1: radial-gradient(var(--r), var(--c2));
+  --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
+  --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
+  background: var(--f) 0 calc(-5 * var(--r) / 2),
+    var(--f) calc(-2 * var(--s)) calc(var(--r) / 2),
+    var(--p) 0 calc(-2 * var(--r)), var(--g0) var(--s) calc(-5 * var(--r) / 2),
+    var(--g1) var(--s) calc(5 * var(--r) / 2),
+    radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
+    radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)),
+    var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
+    var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2),
+    var(--p) calc(-2 * var(--s)) var(--r),
+    var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2),
+    var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
+    var(--g0) 0 calc(-1 * var(--r)), var(--g1) var(--s) calc(var(--r) / -2),
+    var(--g0) var(--s) calc(var(--r) / 2) #070211; /*color 2 again here (yes I got lazy defining a variable ) */
+  background-size: calc(4 * var(--s)) calc(6 * var(--r));
+  border-radius: 40px;
+  -webkit-animation: move1 4s linear infinite;
+}
+
+.hoverEffectArticle:hover .acticleProfileEditor {
+  display: block;
+}
+
+@keyframes move1 {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: calc(-4 * var(--s)) calc(-6 * var(--r)); /* set to negative background-size */
+  }
 }

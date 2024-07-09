@@ -1,24 +1,18 @@
 import React from "react";
-import MainLogo from "../../img/logo/newLogo.svg";
-import SmallLogo from "../../img/logo/miniLogo.png";
-import ProfileUser from "../../img/other-content/avatarProf.jpg";
-import MainLogoSmall from "../../img/logo/MainLogoSmall.svg";
+import MainLogo from "../../img/logo/otakuri.svg";
+import SmallLogo from "../../img/logo/flower-otakuri.svg";
 import { useRef, useState, useEffect, useLayoutEffect } from "react";
-import BgBleach from "../../img/bg-anime-card/small/bleach.jpg";
+import BgBleach from "../../img/bg-anime-card/bleach.jpg";
 import notFound from "../../img/other-content/unnamed.png";
 import Dialog from "@mui/material/Dialog";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 import NavPorfilePop from "../NavPorfilePop/NavPorfilePop";
-import LogOut from "../../img/other-content/svg-profile/logout.svg";
 import sasuke3tomoelogoanime from "../../img/other-content/sasuke3tomoe.png";
-import BgCyberpunk from "../../img/bg-anime-card/small/anime1.jpg";
 import Drawer from "@mui/material/Drawer";
 
-import { Navigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useAuth } from "./../../hooks/useAuth";
-import { removeUser } from "./../../store/slices/userSlice";
 
 export const Header = () => {
   /* ОТКРЫТИЕ МОДАЛЬНОГО ОКНА */
@@ -58,7 +52,7 @@ export const Header = () => {
   };
 
   const DrawerList = (
-    <nav class=" bg-mainBlue justify-around h-full items-center z-20 flex flex-col w-[320px]">
+    <nav class=" bg-mainColor950 justify-around h-full items-center z-20 flex flex-col w-[320px]">
       <main class="flex flex-col justify-between items-center w-full">
         <section className="w-full px-[15px] py-[15px]">
           <NavLink to="/">
@@ -338,11 +332,11 @@ export const Header = () => {
   return (
     <header
       className={`sticky top-0 ${
-        scrolled ? "h-[65px] bg-mainBlue" : "h-[70px] header-linear-grd"
+        scrolled ? "h-[65px] bg-mainColor950" : "h-[75px] header-linear-grd"
       } transition-all duration-500 z-index-header xl:px-[70px] big:px-[110px] sm:px-[25px] lg:px-[73px] px-[160px] py-[10px] items-center flex justify-between`}
     >
       <nav className="items-center lg:hidden">
-        <ul className="flex items-center gap-[68px] xl:gap-[34px]">
+        <ul className="flex items-center gap-[35px] xl:gap-[20px]">
           <li>
             <NavLink to="/">
               <a href="#">
@@ -350,55 +344,63 @@ export const Header = () => {
               </a>
             </NavLink>
           </li>
-
           <li>
             <NavLink to="/">
               <a
                 href="#"
-                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors"
-              >
-                Главная
-              </a>
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/anime">
-              <a
-                href="#"
-                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
               >
                 Аниме
               </a>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/random">
+            <NavLink to="/">
               <a
                 href="#"
-                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
               >
                 Случайное
               </a>
             </NavLink>
           </li>
           <li>
-            <NavLink to="/films">
+            <NavLink to="/">
               <a
                 href="#"
-                className="font-GothamPro font-extralight text-white text-[19px] px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
               >
-                Фильмы
+                Коллекция
               </a>
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
+              >
+                Лидерборд
+              </a>
+            </NavLink>
+          </li>
+          {/* <li>
+            <NavLink to="/">
+              <a
+                href="#"
+                className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
+              >
+                Коллекция
+              </a>
+            </NavLink>
+          </li> */}
         </ul>
       </nav>
 
       <nav className="items-center lg:hidden">
         <ul className="flex items-center gap-[100px] big:gap-[50px] xl:gap-[35px]">
           <button
-            className="px-[8px] py-[8px] hover:bg-darkBlue rounded-[8px] transition-colors items-center cursor-pointer"
+            className="px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors items-center cursor-pointer"
             onClick={handleClickOpen}
           >
             <svg
@@ -420,9 +422,12 @@ export const Header = () => {
           ) : (
             <li>
               <NavLink to="/login">
-                <button className="opimka font-GothamPro font-extralight text-white text-[16px] px-[30px] py-[8px] transition-colors">
+                <a
+                  href="#"
+                  className="font-GothamPro font-extralight text-white text-[19px] px-[18px] py-[5px] HeaderHoverColor rounded-full transition-colors"
+                >
                   Вход
-                </button>
+                </a>
               </NavLink>
             </li>
           )}
@@ -442,7 +447,7 @@ export const Header = () => {
         className="backdrop-blur-[5px]"
       >
         <div className="w-[577px] sm:w-full">
-          <div className="bg-mainBlue h-[52px] relative gap-[18px] items-center flex px-[20px] py-[14px] justify-between after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-[0.1px] after:bg-cyberpunk after:opacity-[0.60]">
+          <div className="bg-mainColor950 h-[52px] relative gap-[18px] items-center flex px-[20px] py-[14px] justify-between after:absolute after:h-[.0625rem] after:w-full after:left-0 after:-bottom-[0.1px] after:bg-cyberpunk after:opacity-[0.60]">
             <div>
               <svg
                 width="24"
@@ -481,7 +486,7 @@ export const Header = () => {
               </svg>
             </button>
           </div>
-          <section className="bg-mainBlue overflow-auto max-w-[577px] max-h-[600px]">
+          <section className="bg-mainColor950 overflow-auto max-w-[577px] max-h-[600px]">
             <div className="mt-[1px] max-w-full h-auto px-[20px] py-[25px] flex flex-col justify-center items-center">
               <h1 className="text-white font-GothamPro">Ничего не найдено</h1>
               <img

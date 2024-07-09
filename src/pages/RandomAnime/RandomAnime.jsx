@@ -1,5 +1,5 @@
 import React from "react";
-import AnimePreview from "../../img/bg-anime-card/small/anime1.jpg";
+import AnimePreview from "../../img/bg-anime-card/bleach.jpg";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import BgMain from "../../img/other-content/BgCyberpunkMainPage.png";

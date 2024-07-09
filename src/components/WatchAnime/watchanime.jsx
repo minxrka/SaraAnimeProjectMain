@@ -1,6 +1,5 @@
 import React from "react";
-import AnimePreview from "../../img/bg-anime-card/small/bleach.jpg";
-import AnimePerson from "../../img/trailer-photo/kensin/Himura_Kenshin_default.jpg";
+import AnimePreview from "../../img/bg-anime-card/bleach.jpg";
 import { useRef, useState, useLayoutEffect, useEffect } from "react";
 import { useSpring, animated } from "react-spring";
 import InformationAnime from "./mainInfoAnime.json";
@@ -125,7 +124,7 @@ function WatchAnime() {
                   >
                     Смотреть онлайн
                   </button>
-                  <button className="flex gap-[5px] justify-center flex-wrap bg-[#5662D578] border-solid border border-Blue600 rounded-[10px] py-[20px] text-center text-white font-GothamPro text-[20px] font-light active:scale-95 transition-transform">
+                  <button className="flex gap-[5px] justify-center flex-wrap bg-[#5662D578] border-solid border border-additionalColor200 rounded-[10px] py-[20px] text-center text-white font-GothamPro text-[20px] font-light active:scale-95 transition-transform">
                     Добавить в избранное
                     <div>
                       <svg
@@ -142,7 +141,7 @@ function WatchAnime() {
                       </svg>
                     </div>
                   </button>
-                  <button className="flex gap-[5px] justify-center bg-[#5662D578] border-solid border border-Blue600 rounded-[10px] py-[20px] text-center text-white font-GothamPro text-[20px] font-light active:scale-95 transition-transform">
+                  <button className="flex gap-[5px] justify-center bg-[#5662D578] border-solid border border-additionalColor200 rounded-[10px] py-[20px] text-center text-white font-GothamPro text-[20px] font-light active:scale-95 transition-transform">
                     Написать коментарий
                     <div>
                       <svg
@@ -167,18 +166,18 @@ function WatchAnime() {
                         {result.titleAnime}
                       </h1>
                       <div className="flex mt-[12px] items-center gap-[10px]">
-                        <p className="py-[4px] px-[6px] text-center border-solid border border-Blue600 rounded-[5px] text-[16px] text-white font-GothamPro font-light">
+                        <p className="py-[4px] px-[6px] text-center border-solid border border-additionalColor200 rounded-[5px] text-[16px] text-white font-GothamPro font-light">
                           {result.yearOfIssue}
                         </p>
-                        <span className="border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]"></span>
+                        <span className="border-solid border border-additionalColor200 rounded-[50%] w-[10px] h-[10px]"></span>
                         <p className="text-[16px] text-white font-GothamPro font-light">
                           {result.yearOfRelease}
                         </p>
-                        <span className="border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]"></span>
+                        <span className="border-solid border border-additionalColor200 rounded-[50%] w-[10px] h-[10px]"></span>
                         <p className="text-[16px] text-white font-GothamPro font-light">
                           {result.country}
                         </p>
-                        <span className="border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]"></span>
+                        <span className="border-solid border border-additionalColor200 rounded-[50%] w-[10px] h-[10px]"></span>
                         <p className="text-[16px] text-white font-GothamPro font-light">
                           {result.format}
                         </p>
@@ -279,19 +278,19 @@ function WatchAnime() {
                       <div className="flex gap-[30px] flex-wrap">
                         <a
                           href="#"
-                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-Blue600 text-white text-[16px] font-GothamPro font-extralight"
+                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-additionalColor200 text-white text-[16px] font-GothamPro font-extralight"
                         >
                           {result.voiceActing}
                         </a>
                         <a
                           href="#"
-                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-Blue600 text-white text-[16px] font-GothamPro font-extralight"
+                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-additionalColor200 text-white text-[16px] font-GothamPro font-extralight"
                         >
                           AnimeVost
                         </a>
                         <a
                           href="#"
-                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-Blue600 text-white text-[16px] font-GothamPro font-extralight"
+                          className="bg-[#5662D578] rounded-[5px] px-[15px] py-[2px] border-solid border border-additionalColor200 text-white text-[16px] font-GothamPro font-extralight"
                         >
                           AniLibria
                         </a>
@@ -330,9 +329,9 @@ function WatchAnime() {
               </section>
 
               <section className="">
-                <div className="mt-[40px] w-full h-[1px] bg-Blue600"></div>
+                <div className="mt-[40px] w-full h-[1px] bg-additionalColor200"></div>
                 <SliderAnimePreview />
-                <div className="w-full h-[1px] bg-Blue600"></div>
+                <div className="w-full h-[1px] bg-additionalColor200"></div>
               </section>
             </div>
           </section>
@@ -347,15 +346,9 @@ function WatchAnime() {
 
               <section className="grid grid-cols-[70%_minmax(auto,_1fr)] duration-500 items-center mt-[10px] gap-[120px] lg:gap-[70px] h-[550px] md:h-[700px] gridAdaptiveBlockPlayer md:gap-[30px]">
                 <div className="h-full items-start w-full">
-                  <iframe
-                    className="magn"
-                    src={currentSerie.video}
-                    width="100%"
-                    height="100%"
-                    frameborder="0"
-                    AllowFullScreen
-                    allow="autoplay *; fullscreen *"
-                  ></iframe>
+                  <video width="100%" height="100%" controls>
+                    <source src={currentSerie.video} type="video/mp4" />
+                  </video>
                 </div>
                 <div className="flex flex-col gap-[4px] overflow-auto h-full">
                   {PlayerSeriaAnime.map((result) => (
@@ -371,7 +364,7 @@ function WatchAnime() {
               </section>
               {/* <VideoPlayer /> */}
 
-              <div className="mt-[40px] w-full h-[1px] bg-Blue600"></div>
+              <div className="mt-[40px] w-full h-[1px] bg-additionalColor200"></div>
               <div className="mt-[40px]">
                 <h1 className="text-white font-GothamPro text-[21px]">
                   Главные персонажи
@@ -395,7 +388,7 @@ function WatchAnime() {
                   </section>
                 ))}
               </aside>
-              <div className="mt-[40px] w-full h-[1px] bg-Blue600 mb-[110px]"></div>
+              <div className="mt-[40px] w-full h-[1px] bg-additionalColor200 mb-[110px]"></div>
             </section>
           </main>
         </main>
