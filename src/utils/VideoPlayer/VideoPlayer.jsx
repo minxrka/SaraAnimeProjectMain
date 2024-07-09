@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import Hls from "hls.js"
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -71,7 +72,12 @@ const VideoPlayer = () => {
 			`video${selectedQuality}`
 		);
 		if (hasQuality) {
-			video.src = currentEpisode[currentVideoIndex][`video${selectedQuality}`];
+			const videoSrc = currentEpisode[currentVideoIndex][`video${selectedQuality}`];
+			if (Hls.isSupported()) {
+				const hls = new Hls();
+				hls.loadSource(videoSrc);
+				hls.attachMedia(video);
+			}
 		} else {
 			const availableQualities = Object.keys(
 				currentEpisode[currentVideoIndex]
@@ -326,16 +332,13 @@ const VideoPlayer = () => {
 				videoRef.current.src =
 					currentEpisode[nextVideoIndex][`video${selectedQuality}`];
 				videoRef.current.load();
-				let isReadyToPlay = false;
-				videoRef.current.addEventListener('canplay', () => {
-					isReadyToPlay = true;
-				});
-				setTimeout(() => {
-					if (isReadyToPlay) {
-						videoRef.current.currentTime = 0;
+				const waitForLoad = setInterval(() => {
+					if (videoRef.current.readyState >= 3) {
 						videoRef.current.play();
+						setPlaying(true);
+						clearInterval(waitForLoad);
 					}
-				}, 200);
+				}, 100);
 			}, 1500);
 		}
 	};
@@ -417,7 +420,7 @@ const VideoPlayer = () => {
 				<video
 					ref={videoRef}
 					width='100%'
-					preload='metadata'
+					preload='none'
 					playsInline
 					poster={currentEpisode[currentVideoIndex].poster}
 					onEnded={handleVideoEnd}
@@ -425,8 +428,7 @@ const VideoPlayer = () => {
 					className='rounded-xl aspect-video bg-black'
 				>
 					<source
-						type='video/mp4'
-						src={currentEpisode[currentVideoIndex][`video${selectedQuality}`]}
+						type='application/x-mpegURL'
 					/>
 				</video>
 				<div
