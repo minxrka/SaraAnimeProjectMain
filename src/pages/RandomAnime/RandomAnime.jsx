@@ -10,6 +10,7 @@ import PlayerSeriaAnimeRandom from './PlayerSeriaAnimeRandom.json';
 import './RandomAnime.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import VideoPlayer from '../../utils/VideoPlayer/VideoPlayer.jsx';
+import { ReactComponent as Play } from '../../img/icons/play-small.svg';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -80,7 +81,7 @@ function RandomAnime() {
 
 	useEffect(() => {
 		const title = InformationAnime.map((anime) => anime.titleAnime).join(', ');
-		document.title = `Anime with Sara - ${title}`;
+		document.title = `${title} | Otakuri`;
 	}, [InformationAnime]);
 	return (
 		<>
@@ -95,7 +96,10 @@ function RandomAnime() {
 				>
 					<SwiperSlide className=''>
 						<section className='w-full h-[100vh] GradientWatchAnime'>
-							<img src={BgMain} className='w-full h-full object-cover'></img>
+							<img
+								src={BgMain}
+								className='w-full h-full object-cover blur-[4px]'
+							></img>
 						</section>
 					</SwiperSlide>
 				</Swiper>
@@ -111,68 +115,83 @@ function RandomAnime() {
 						<div className='max-w-[1300px] mx-auto'>
 							{/* огр.контента */}
 							<section className='containerGrid md:grid-cols-1'>
-								<aside className='flex flex-col gap-5 max-w-[300px] h-auto mt-[80px] md:max-w-full md:h-full'>
+								<aside className='flex flex-col gap-4 max-w-[300px] h-auto mt-[80px] md:max-w-full md:h-full'>
 									<img
 										className='w-full object-cover rounded-[10px] h-[420px] md:h-[600px] sm:h-[500px]'
 										src={AnimePreview}
 									/>
-									<div className='flex justify-between items-center w-full gap-3'>
+									<div className='flex justify-between items-center w-full '>
 										<button
 											onClick={handleClick}
-											className='mybutton w-4/5 text-center whitespace-nowrap border-solid border border-[#cf97b5]/80 text-white/90 font-GothamPro text-base font-light will-change-transform'
+											className='mybutton px-10 md:px-[84px] sm:px-0 rounded-[25px] md:rounded-[50px] h-11 md:h-20 sm:h-16 sm:w-full text-center flex justify-center items-center gap-1 md:gap-2 border border-transparent whitespace-nowrap text-[#eee]/90 font-GothamPro text-sm md:text-lg font-normal'
 										>
-											Смотреть онлайн
+											<Play className='h-7 md:h-9 w-7 md:w-9  fill-[#eee] drop-shadow-md' />
+											Смотреть
 										</button>
-										<button className='flex w-1/5 px-4 justify-center flex-wrap bg-[#5663d580] border-solid border border-Blue600/80 rounded-[10px] py-4 text-center text-white font-GothamPro text-[20px] font-light active:scale-95 will-change-transform transition-transform'>
-											<div>
+										<button className='mybutton px-[11px] rounded-full h-11 md:h-20 md:w-[84px] sm:hidden flex justify-center items-center flex-wrap border border-transparent font-GothamPro active:scale-95 will-change-transform transition-transform'>
+											<div className='md:[&>svg]:w-8 md:[&>svg]:h-8'>
 												<svg
-													width='24'
-													height='24'
-													viewBox='0 0 21 20'
-													fill='white'
+													viewBox='0 0 24 24'
+													fill='none'
+													width='22'
+													height='22'
 													opacity={0.8}
-													xmlns='http://www.w3.org/2000/svg'
 												>
 													<path
-														d='M14.0785 2.65625C12.4176 2.65625 10.9734 3.39609 10.1239 4.63594C9.27449 3.39609 7.83027 2.65625 6.16934 2.65625C4.9112 2.6577 3.70501 3.15202 2.81538 4.03079C1.92574 4.90955 1.42529 6.10099 1.42383 7.34375C1.42383 9.625 2.8633 11.9992 5.7027 14.3992C7.0038 15.4943 8.40924 16.4624 9.89932 17.2898C9.96837 17.3265 10.0455 17.3457 10.1239 17.3457C10.2023 17.3457 10.2795 17.3265 10.3486 17.2898C11.8386 16.4624 13.2441 15.4943 14.5452 14.3992C17.3846 11.9992 18.824 9.625 18.824 7.34375C18.8226 6.10099 18.3221 4.90955 17.4325 4.03079C16.5429 3.15202 15.3367 2.6577 14.0785 2.65625ZM10.1239 16.3367C8.82604 15.5969 2.37293 11.6969 2.37293 7.34375C2.37398 6.34951 2.77429 5.39628 3.48603 4.69324C4.19777 3.9902 5.16279 3.59478 6.16934 3.59375C7.77333 3.59375 9.12026 4.43984 9.68498 5.80234C9.72073 5.88832 9.78155 5.96185 9.85971 6.0136C9.93787 6.06535 10.0298 6.09298 10.1239 6.09298C10.218 6.09298 10.31 6.06535 10.3882 6.0136C10.4663 5.96185 10.5271 5.88832 10.5629 5.80234C11.1276 4.43984 12.4745 3.59375 14.0785 3.59375C15.0851 3.59478 16.0501 3.9902 16.7618 4.69324C17.4736 5.39628 17.8739 6.34951 17.8749 7.34375C17.8749 11.6969 11.4218 15.5969 10.1239 16.3367Z'
-														fill='white'
-													/>
+														d='M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z'
+														fill='#eee'
+													></path>
+												</svg>
+											</div>
+										</button>
+										<button className='mybutton px-[11px] rounded-full h-11 md:h-20 md:w-[84px] sm:hidden flex justify-center items-center flex-wrap border border-transparent font-GothamPro active:scale-95 will-change-transform transition-transform'>
+											<div className='md:[&>svg]:w-8 md:[&>svg]:h-8'>
+												<svg
+													width='22'
+													height='22'
+													viewBox='0 0 24 24'
+													opacity={0.8}
+												>
+													<path
+														d='M20 5h-9.586L8.707 3.293A.997.997 0 0 0 8 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2z'
+														fill='#eee'
+													></path>
 												</svg>
 											</div>
 										</button>
 									</div>
 								</aside>
 								{InformationAnime.map((result) => (
-									<aside className='flex flex-col justify-between gap-5 mt-[80px] ml-[44px] md:ml-[0px] will-change-transform'>
+									<aside className='flex flex-col justify-between gap-2 mt-[80px] ml-[44px] md:ml-[0px] will-change-transform'>
 										<div>
 											<h1 className='text-white font-GothamPro text-[36px] font-light'>
 												{result.titleAnime}
 											</h1>
 											<div className='flex mt-[12px] items-center gap-3'>
-												<p className='py-[4px] px-[6px] text-center border-solid border border-Blue600 rounded-[5px] text-[16px] text-white font-GothamPro font-light'>
+												<p className='py-[4px] px-[6px] text-center border-solid border border-[#7459ff] rounded-[5px] text-[16px] text-white font-GothamPro font-light'>
 													{result.yearOfIssue}
 												</p>
 												<div className='flex gap-2 justify-center items-center'>
-													<span className='border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]'></span>
+													<span className='border-solid border border-[#7459ff] rounded-[50%] w-[10px] h-[10px]'></span>
 													<p className='text-[16px] text-white font-GothamPro font-light'>
 														{result.yearOfRelease}
 													</p>
 												</div>
-                        <div className='flex gap-2 justify-center items-center'>
-												<span className='border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]'></span>
-												<p className='text-[16px] text-white font-GothamPro font-light'>
-													{result.country}
-												</p>
-                        </div>
-                        <div className='flex gap-2 justify-center items-center'>
-												<span className='border-solid border border-Blue600 rounded-[50%] w-[10px] h-[10px]'></span>
-												<p className='text-[16px] text-white font-GothamPro font-light'>
-													{result.format}
-												</p>
-                        </div>
+												<div className='flex gap-2 justify-center items-center'>
+													<span className='border-solid border border-[#7459ff] rounded-[50%] w-[10px] h-[10px]'></span>
+													<p className='text-[16px] text-white font-GothamPro font-light'>
+														{result.country}
+													</p>
+												</div>
+												<div className='flex gap-2 justify-center items-center'>
+													<span className='border-solid border border-[#7459ff] rounded-[50%] w-[10px] h-[10px]'></span>
+													<p className='text-[16px] text-white font-GothamPro font-light'>
+														{result.format}
+													</p>
+												</div>
 											</div>
 										</div>
-										<section class='gridcols2 items-center mt-6 gap-[16px]'>
+										<section class='gridcols2 items-center mt-6 gap-[16px] will-change-transform'>
 											<div>
 												<h1 className='text-white font-GothamPro text-[16px] lg:text-[15px]'>
 													Кол-во серий:
@@ -231,7 +250,7 @@ function RandomAnime() {
 											</h1>
 											<p
 												ref={ref}
-												className={`break-words text-white leading-6 font-GothamPro text-[16px] font-extralight text-justify mt-[16px] transition-all duration-500 ${
+												className={`break-words text-white leading-6 font-GothamPro text-[16px] font-extralight text-justify mt-2 transition-all will-change-transform duration-[1000ms] ${
 													!isShowingMore ? 'line-clamp-6' : ''
 												}`}
 												style={{
@@ -245,7 +264,7 @@ function RandomAnime() {
 											</p>
 											<button
 												onClick={toggleIsShowingMore}
-												className='text-[#cf97b5] mt-[7px] hoverBtnShowMore flex items-center gap-[5px] hover:text-[#d9abc5] transition-colors font-GothamPro text-[16px]'
+												className='text-[#8f88ff] mt-[7px] hoverBtnShowMore flex items-center gap-[5px] hover:text-[#7459ff] transition-colors font-GothamPro text-[16px]'
 											>
 												<p className='textBtnReadMore'>
 													{isShowingMore ? 'Скрыть' : 'Читать далее'}
@@ -256,10 +275,10 @@ function RandomAnime() {
 								))}
 							</section>
 
-							<section>
-								<div className='mt-7 w-full h-[1px] bg-Blue600'></div>
+							<section className='mt-8 mb-10'>
+								<hr className='border-t-[#7459ff] mb-6' />
 								<SliderAnimePreview sourceImg='img2' />
-								<div className='w-full h-[1px] bg-Blue600'></div>
+								<hr className='border-t-[#7459ff] mt-6' />
 							</section>
 						</div>
 					</section>
@@ -277,7 +296,7 @@ function RandomAnime() {
 								</div>
 							</section>
 
-							<div className='mt-7 w-full h-[1px] bg-Blue600'></div>
+							<div className='mt-7 w-full h-[1px] bg-[#7459ff]'></div>
 							<div className='mt-10'>
 								<h1 className='text-white font-GothamPro text-[21px]'>
 									Главные персонажи
@@ -301,7 +320,7 @@ function RandomAnime() {
 									</section>
 								))}
 							</aside>
-							<div className='mt-[40px] w-full h-[1px] bg-Blue600 mb-[110px]'></div>
+							<div className='mt-[40px] w-full h-[1px] bg-[#7459ff] mb-[110px]'></div>
 						</section>
 					</main>
 				</main>

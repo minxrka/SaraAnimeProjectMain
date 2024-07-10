@@ -473,7 +473,7 @@ const VideoPlayer = () => {
 						)}
 					</div>
 					<div
-						className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 bg-gradient-to-t from-0% from-black/50 to-15% rounded-xl ${!playing || isLoading ? 'bg-black/40' : 'bg-gradient-to-t from-0% from-black/50 to-15%'}`}
+						className={`absolute z-10 top-0 left-0 w-full h-full flex justify-center items-end transition-colors duration-300 rounded-xl ${!playing || isLoading ? 'bg-black/40 bg-gradient-to-t from-0% from-black/60 to-20%' : controlsVisible ? 'bg-gradient-to-t from-0% from-black/60 to-20%' : ''}`}
 					>
 						<div
 							className={`flex select-none font-GothamPro text-center text-gray-50/80 justify-center items-center text-xs bg-white/20 drop-shadow-md rounded-full p-1 mb-20 transition-opacity-transform will-change-transform md:opacity-0 ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
@@ -576,29 +576,26 @@ const VideoPlayer = () => {
 					modules={[Navigation]}
 					breakpoints={{
 						0: {
-							slidesPerView: 1,
-						},
-						400: {
 							slidesPerView: 2,
 						},
-						900: {
+						600: {
 							slidesPerView: 3,
 						},
-						1220: {
+						1150: {
 							slidesPerView: 4,
 						},
-						1537: {
+						1536: {
 							slidesPerView: 5,
 						},
 					}}
-					className='mySwiper my-6 mb-10'
+					className='mySwiper mt-6 mb-10'
 				>
 					{currentEpisode.map((episode, index) => (
 						<SwiperSlide key={index} onClick={() => handleEpisodeSelect(index)}>
-							<div className='h-full relative aspect-video cursor-pointer'>
+							<div className='h-full relative aspect-video cursor-pointer [&>img]:hover:brightness-[0.75]'>
 								<img
 									value={index + 1}
-									className='rounded-3xl w-full h-full object-cover brightness-50'
+									className='rounded-3xl w-full h-full object-cover transition-[--tw-brightness] brightness-[.45] '
 									src={episode.poster}
 								/>
 								<div className='absolute flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
