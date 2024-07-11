@@ -29,7 +29,11 @@ const VideoPlayer = () => {
 	const [cursorVisible, setCursorVisible] = useState(false);
 	const [isSeeking, setIsSeeking] = useState(false);
 	const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-	const [selectedQuality, setSelectedQuality] = useState('1080p');
+	const [selectedQuality, setSelectedQuality] = useState(null);
+	const [animeName, setAnimeName] = useState(Object.keys(currentEpisode)[0]);
+	const [selectedSource, setSelectedSource] = useState(
+		Object.keys(currentEpisode[animeName].Dubs)[0]
+	);
 	const [selectedEpisode, setSelectedEpisode] = useState(1);
 	const [lastButtonPress, setLastButtonPress] = useState(0);
 	const [isMuteButtonClicked, setIsMuteButtonClicked] = useState(true);
@@ -68,12 +72,17 @@ const VideoPlayer = () => {
 			setDuration(video.duration);
 		});
 
-		const hasQuality = currentEpisode[currentVideoIndex].hasOwnProperty(
-			`video${selectedQuality}`
-		);
-		if (hasQuality) {
+		const hasSource =
+			currentEpisode[animeName].Dubs.hasOwnProperty(selectedSource);
+		const hasQuality = currentEpisode[animeName].Dubs[selectedSource][
+			currentVideoIndex
+		].hasOwnProperty(`video${selectedQuality}`);
+
+		if (hasQuality && hasSource) {
 			const videoSrc =
-				currentEpisode[currentVideoIndex][`video${selectedQuality}`];
+				currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex][
+					`video${selectedQuality}`
+				];
 			if (Hls.isSupported()) {
 				const hls = new Hls();
 				hls.loadSource(videoSrc);
@@ -81,13 +90,13 @@ const VideoPlayer = () => {
 			}
 		} else {
 			const availableQualities = Object.keys(
-				currentEpisode[currentVideoIndex]
+				currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex]
 			).filter((key) => key.startsWith('video'));
 			if (availableQualities.length > 0) {
 				setSelectedQuality(availableQualities[0].replace('video', ''));
 			}
 		}
-	}, [videoRef, currentVideoIndex, selectedQuality]);
+	}, [videoRef, currentVideoIndex, selectedQuality, selectedSource]);
 
 	useEffect(() => {
 		const progress = (timelineValue / videoRef.current.duration) * 100;
@@ -121,6 +130,7 @@ const VideoPlayer = () => {
 			navigator.userAgent
 		);
 
+	let controlsTimeout = null;
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
 			event.preventDefault();
@@ -140,7 +150,10 @@ const VideoPlayer = () => {
 			setCurrentTime(changedTime);
 			setTimelineValue(changedTime);
 			setControlsVisible(true);
-			setTimeout(() => {
+			if (controlsTimeout) {
+				clearTimeout(controlsTimeout);
+			}
+			controlsTimeout = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		} else if (event.code === 'ArrowRight') {
@@ -153,7 +166,48 @@ const VideoPlayer = () => {
 			setCurrentTime(changedTime);
 			setTimelineValue(changedTime);
 			setControlsVisible(true);
-			setTimeout(() => {
+			if (controlsTimeout) {
+				clearTimeout(controlsTimeout);
+			}
+			controlsTimeout = setTimeout(() => {
+				setControlsVisible(false);
+			}, 2500);
+		} else if (event.code === 'ArrowUp') {
+			event.preventDefault();
+			setVolume((prevVolume) => {
+				const newVolume = Math.min(1, prevVolume + 0.1);
+				videoRef.current.volume = newVolume;
+				if (newVolume === 0) {
+					setMuted(true);
+				} else {
+					setMuted(false);
+				}
+				return newVolume;
+			});
+			setControlsVisible(true);
+			if (controlsTimeout) {
+				clearTimeout(controlsTimeout);
+			}
+			controlsTimeout = setTimeout(() => {
+				setControlsVisible(false);
+			}, 2500);
+		} else if (event.code === 'ArrowDown') {
+			event.preventDefault();
+			setVolume((prevVolume) => {
+				const newVolume = Math.max(0, prevVolume - 0.1);
+				videoRef.current.volume = newVolume;
+				if (newVolume === 0) {
+					setMuted(true);
+				} else {
+					setMuted(false);
+				}
+				return newVolume;
+			});
+			setControlsVisible(true);
+			if (controlsTimeout) {
+				clearTimeout(controlsTimeout);
+			}
+			controlsTimeout = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		}
@@ -326,12 +380,16 @@ const VideoPlayer = () => {
 
 	const handleVideoEnd = () => {
 		const nextVideoIndex = currentVideoIndex + 1;
-		if (nextVideoIndex < currentEpisode.length) {
+		if (
+			nextVideoIndex < currentEpisode[animeName].Dubs[selectedSource].length
+		) {
 			setTimeout(() => {
 				setSelectedEpisode(nextVideoIndex + 1);
 				setCurrentVideoIndex(nextVideoIndex);
 				videoRef.current.src =
-					currentEpisode[nextVideoIndex][`video${selectedQuality}`];
+					currentEpisode[animeName].Dubs[selectedSource][nextVideoIndex][
+						`video${selectedQuality}`
+					];
 				videoRef.current.load();
 				const waitForLoad = setInterval(() => {
 					if (videoRef.current.readyState >= 3) {
@@ -354,9 +412,27 @@ const VideoPlayer = () => {
 		const changeQuality = event.target.value;
 		setSelectedQuality(changeQuality);
 		videoRef.current.src =
-			currentEpisode[currentVideoIndex][`video${changeQuality}`];
+			currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex][
+				`video${changeQuality}`
+			];
 		videoRef.current.load();
 		videoRef.current.currentTime = currentTime;
+		const waitForLoad = setInterval(() => {
+			if (videoRef.current.readyState >= 3) {
+				videoRef.current.play();
+				setPlaying(true);
+				clearInterval(waitForLoad);
+			}
+		}, 100);
+	};
+
+	const handleSourceChange = (event) => {
+		const changeSource = event.target.value;
+		setSelectedSource(changeSource);
+		videoRef.current.src =
+			currentEpisode[animeName].Dubs[changeSource][currentVideoIndex][
+				`video${selectedQuality}`
+			];
 		const waitForLoad = setInterval(() => {
 			if (videoRef.current.readyState >= 3) {
 				videoRef.current.play();
@@ -370,7 +446,10 @@ const VideoPlayer = () => {
 		if (index !== currentVideoIndex) {
 			setSelectedEpisode(index + 1);
 			setCurrentVideoIndex(index);
-			videoRef.current.src = currentEpisode[index][`video${selectedQuality}`];
+			videoRef.current.src =
+				currentEpisode[animeName].Dubs[selectedSource][index][
+					`video${selectedQuality}`
+				];
 			videoRef.current.load();
 			const waitForLoad = setInterval(() => {
 				if (videoRef.current.readyState >= 3) {
@@ -389,7 +468,9 @@ const VideoPlayer = () => {
 			setSelectedEpisode(currentVideoIndex);
 			setCurrentVideoIndex(previousVideoIndex);
 			videoRef.current.src =
-				currentEpisode[previousVideoIndex][`video${selectedQuality}`];
+				currentEpisode[animeName].Dubs[selectedSource][previousVideoIndex][
+					`video${selectedQuality}`
+				];
 			const waitForLoad = setInterval(() => {
 				if (videoRef.current.readyState >= 3) {
 					videoRef.current.play();
@@ -404,11 +485,15 @@ const VideoPlayer = () => {
 	const handleNextEpisode = () => {
 		if (Date.now() - lastButtonPress < 500) return;
 		const nextVideoIndex = currentVideoIndex + 1;
-		if (nextVideoIndex < currentEpisode.length) {
+		if (
+			nextVideoIndex < currentEpisode[animeName].Dubs[selectedSource].length
+		) {
 			setSelectedEpisode(nextVideoIndex + 1);
 			setCurrentVideoIndex(nextVideoIndex);
 			videoRef.current.src =
-				currentEpisode[nextVideoIndex][`video${selectedQuality}`];
+				currentEpisode[animeName].Dubs[selectedSource][nextVideoIndex][
+					`video${selectedQuality}`
+				];
 			const waitForLoad = setInterval(() => {
 				if (videoRef.current.readyState >= 3) {
 					videoRef.current.play();
@@ -434,7 +519,9 @@ const VideoPlayer = () => {
 					width='100%'
 					preload='none'
 					playsInline
-					poster={currentEpisode[currentVideoIndex].poster}
+					poster={
+						currentEpisode[animeName].Information[currentVideoIndex].poster
+					}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
 					className='rounded-xl aspect-video bg-black'
@@ -449,13 +536,28 @@ const VideoPlayer = () => {
 						onChange={handleQualityChange}
 						className='font-GothamPro cursor-pointer text-sm sm:text-xs outline-none border-none rounded-full bg-black/20 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
 					>
-						{Object.keys(currentEpisode[currentVideoIndex])
+						{Object.keys(
+							currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex]
+						)
 							.filter((key) => key.startsWith('video'))
 							.map((key) => (
 								<option value={key.replace('video', '')}>
 									{key.replace('video', '')}
 								</option>
 							))}
+					</select>
+				</div>
+				<div
+					className={`flex absolute top-0 right-24 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+				>
+					<select
+						value={selectedSource}
+						onChange={handleSourceChange}
+						className='font-GothamPro cursor-pointer text-sm sm:text-xs outline-none border-none rounded-full bg-black/20 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
+					>
+						{Object.keys(currentEpisode[animeName].Dubs).map((key) => (
+							<option value={key}>{key}</option>
+						))}
 					</select>
 				</div>
 				<div
@@ -539,8 +641,8 @@ const VideoPlayer = () => {
 						<div className='select-none whitespace-nowrap font-GothamPro text-sm py-2 sm:py-1 sm:text-xs'>
 							Эпизод {selectedEpisode}
 						</div>
-						<div className='flex w-[240px] justify-end items-center'>
-							<div className='flex justify-center items-center mr-2 gap-1'>
+						<div className='flex w-[240px] justify-end items-center gap-4'>
+							<div className='flex justify-center items-center'>
 								<button
 									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
 									onClick={handlePreviousEpisode}
@@ -590,7 +692,7 @@ const VideoPlayer = () => {
 					}}
 					className='mySwiper mt-6 mb-10'
 				>
-					{currentEpisode.map((episode, index) => (
+					{currentEpisode[animeName].Information.map((episode, index) => (
 						<SwiperSlide key={index} onClick={() => handleEpisodeSelect(index)}>
 							<div className='h-full relative aspect-video cursor-pointer [&>img]:hover:brightness-[0.75]'>
 								<img
@@ -599,7 +701,7 @@ const VideoPlayer = () => {
 									src={episode.poster}
 								/>
 								<div className='absolute flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
-									{index + 1} Эпизод
+									{episode.episode}
 								</div>
 							</div>
 						</SwiperSlide>
