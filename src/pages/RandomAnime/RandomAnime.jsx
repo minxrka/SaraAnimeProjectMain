@@ -275,17 +275,17 @@ function RandomAnime() {
 								))}
 							</section>
 
-							<section className='mt-8 mb-10'>
+							<section className='mt-8 mb-7'>
 								<hr className='border-t-[#7459ff] mb-6' />
 								<SliderAnimePreview sourceImg='img2' />
-								<hr className='border-t-[#7459ff] mt-6' />
+								<hr ref={myref} className='border-t-[#7459ff] mt-6' />
 							</section>
 						</div>
 					</section>
 
-					<main className='mt-7 px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]'>
+					<main className='px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]'>
 						<section className='max-w-[1300px] mx-auto'>
-							<div ref={myref}>
+							<div>
 								<h1 className='text-white font-GothamPro text-2xl tracking-tight'>
 									Смотреть аниме онлайн
 								</h1>
