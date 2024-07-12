@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
-import Hls from 'hls.js';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import Hls from 'hls.js';
+import SettingsMenu from './SettingsMenu';
 
 import currentEpisode from './currentEpisode.json';
 import { ReactComponent as Pause } from '../../img/icons/pause-small.svg';
@@ -15,6 +16,7 @@ import { ReactComponent as OpenFullscreen } from '../../img/icons/open-fullscree
 import { ReactComponent as ExitFullscreen } from '../../img/icons/exit-fullscreen.svg';
 import { ReactComponent as PreviousEpisode } from '../../img/icons/episode-back.svg';
 import { ReactComponent as NextEpisode } from '../../img/icons/episode-next.svg';
+import { ReactComponent as Settings } from '../../img/icons/settings.svg';
 
 const VideoPlayer = () => {
 	const [playing, setPlaying] = useState(false);
@@ -38,6 +40,8 @@ const VideoPlayer = () => {
 	const [lastButtonPress, setLastButtonPress] = useState(0);
 	const [isMuteButtonClicked, setIsMuteButtonClicked] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
+	const [settingsShown, setSettingsShown] = useState(false);
+	const [mode, setMode] = useState('default');
 
 	const videoRef = useRef(null);
 	const containerRef = useRef(null);
@@ -100,11 +104,11 @@ const VideoPlayer = () => {
 
 	useEffect(() => {
 		const progress = (timelineValue / videoRef.current.duration) * 100;
-		timelineRef.current.style.background = `linear-gradient(to right, #cf97b5 ${progress}%, #ffffff80 ${progress}%)`;
+		timelineRef.current.style.background = `linear-gradient(to right, #ff9fd2de ${progress}%, #ffffff80 ${progress}%)`;
 	}, [timelineValue]);
 
 	useEffect(() => {
-		volumeRef.current.style.background = `linear-gradient(to right, #cf97b5 ${volumeRef.current.value}%, #ffffff80 ${volumeRef.current.value}%)`;
+		volumeRef.current.style.background = `linear-gradient(to right, #ff9fd2de ${volumeRef.current.value}%, #ffffff80 ${volumeRef.current.value}%)`;
 	});
 
 	useEffect(() => {
@@ -125,12 +129,18 @@ const VideoPlayer = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		document.addEventListener('click', handleOutsideClick);
+		return () => {
+			document.removeEventListener('click', handleOutsideClick);
+		};
+	}, []);
+
 	const isMobile =
 		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
 			navigator.userAgent
 		);
 
-	let controlsTimeout = null;
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
 			event.preventDefault();
@@ -150,10 +160,8 @@ const VideoPlayer = () => {
 			setCurrentTime(changedTime);
 			setTimelineValue(changedTime);
 			setControlsVisible(true);
-			if (controlsTimeout) {
-				clearTimeout(controlsTimeout);
-			}
-			controlsTimeout = setTimeout(() => {
+			clearTimeout(timeoutRef.current);
+			timeoutRef.current = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		} else if (event.code === 'ArrowRight') {
@@ -166,10 +174,8 @@ const VideoPlayer = () => {
 			setCurrentTime(changedTime);
 			setTimelineValue(changedTime);
 			setControlsVisible(true);
-			if (controlsTimeout) {
-				clearTimeout(controlsTimeout);
-			}
-			controlsTimeout = setTimeout(() => {
+			clearTimeout(timeoutRef.current);
+			timeoutRef.current = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		} else if (event.code === 'ArrowUp') {
@@ -185,10 +191,8 @@ const VideoPlayer = () => {
 				return newVolume;
 			});
 			setControlsVisible(true);
-			if (controlsTimeout) {
-				clearTimeout(controlsTimeout);
-			}
-			controlsTimeout = setTimeout(() => {
+			clearTimeout(timeoutRef.current);
+			timeoutRef.current = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		} else if (event.code === 'ArrowDown') {
@@ -204,10 +208,8 @@ const VideoPlayer = () => {
 				return newVolume;
 			});
 			setControlsVisible(true);
-			if (controlsTimeout) {
-				clearTimeout(controlsTimeout);
-			}
-			controlsTimeout = setTimeout(() => {
+			clearTimeout(timeoutRef.current);
+			timeoutRef.current = setTimeout(() => {
 				setControlsVisible(false);
 			}, 2500);
 		}
@@ -224,17 +226,23 @@ const VideoPlayer = () => {
 
 	const handleTimelineMouseUp = () => {
 		setIsSeeking(false);
-		if (videoRef.current.readyState >= 3) {
+		if (videoRef.current.readyState === 4) {
 			if (!playing) {
 				videoRef.current.play();
 				setPlaying(true);
 			}
 		} else {
 			const waitForLoad = setInterval(() => {
-				if (videoRef.current.readyState >= 3) {
-					videoRef.current.play();
-					setPlaying(true);
-					clearInterval(waitForLoad);
+				if (videoRef.current.readyState === 4) {
+					videoRef.current
+						.play()
+						.then(() => {
+							setPlaying(true);
+							clearInterval(waitForLoad);
+						})
+						.catch((error) => {
+							console.error('Error playing video:', error);
+						});
 				}
 			}, 100);
 		}
@@ -340,14 +348,13 @@ const VideoPlayer = () => {
 	};
 
 	const handleMouseMove = () => {
+		clearTimeout(timeoutRef.current);
 		if (isMobile && !playing) {
-			clearTimeout(timeoutRef.current);
 			setControlsVisible(true);
 		} else {
-			clearTimeout(timeoutRef.current);
 			setControlsVisible(true);
 			setCursorVisible(true);
-			if (playing && !isMobile) {
+			if (playing && !isMobile && !settingsShown) {
 				timeoutRef.current = setTimeout(() => {
 					setControlsVisible(false);
 					setCursorVisible(false);
@@ -358,10 +365,11 @@ const VideoPlayer = () => {
 
 	const handleMouseEnter = () => {
 		if (!isMobile) {
+			clearTimeout(timeoutRef.current);
 			setMouseOver(true);
 			setControlsVisible(true);
 			setCursorVisible(true);
-			if (playing) {
+			if (playing && !settingsShown) {
 				timeoutRef.current = setTimeout(() => {
 					setControlsVisible(false);
 					setCursorVisible(false);
@@ -371,7 +379,7 @@ const VideoPlayer = () => {
 	};
 
 	const handleMouseLeave = () => {
-		if (!isMobile) {
+		if (!isMobile && playing && !settingsShown) {
 			setControlsVisible(false);
 			setCursorVisible(false);
 			clearTimeout(timeoutRef.current);
@@ -386,16 +394,18 @@ const VideoPlayer = () => {
 			setTimeout(() => {
 				setSelectedEpisode(nextVideoIndex + 1);
 				setCurrentVideoIndex(nextVideoIndex);
-				videoRef.current.src =
-					currentEpisode[animeName].Dubs[selectedSource][nextVideoIndex][
-						`video${selectedQuality}`
-					];
 				videoRef.current.load();
 				const waitForLoad = setInterval(() => {
-					if (videoRef.current.readyState >= 3) {
-						videoRef.current.play();
-						setPlaying(true);
-						clearInterval(waitForLoad);
+					if (videoRef.current.readyState === 4) {
+						videoRef.current
+							.play()
+							.then(() => {
+								setPlaying(true);
+								clearInterval(waitForLoad);
+							})
+							.catch((error) => {
+								console.error('Error playing video:', error);
+							});
 					}
 				}, 100);
 			}, 1500);
@@ -408,54 +418,22 @@ const VideoPlayer = () => {
 		setTimelineValue(timelineValue);
 	};
 
-	const handleQualityChange = (event) => {
-		const changeQuality = event.target.value;
-		setSelectedQuality(changeQuality);
-		videoRef.current.src =
-			currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex][
-				`video${changeQuality}`
-			];
-		videoRef.current.load();
-		videoRef.current.currentTime = currentTime;
-		const waitForLoad = setInterval(() => {
-			if (videoRef.current.readyState >= 3) {
-				videoRef.current.play();
-				setPlaying(true);
-				clearInterval(waitForLoad);
-			}
-		}, 100);
-	};
-
-	const handleSourceChange = (event) => {
-		const changeSource = event.target.value;
-		setSelectedSource(changeSource);
-		videoRef.current.src =
-			currentEpisode[animeName].Dubs[changeSource][currentVideoIndex][
-				`video${selectedQuality}`
-			];
-		const waitForLoad = setInterval(() => {
-			if (videoRef.current.readyState >= 3) {
-				videoRef.current.play();
-				setPlaying(true);
-				clearInterval(waitForLoad);
-			}
-		}, 100);
-	};
-
 	const handleEpisodeSelect = (index) => {
 		if (index !== currentVideoIndex) {
 			setSelectedEpisode(index + 1);
 			setCurrentVideoIndex(index);
-			videoRef.current.src =
-				currentEpisode[animeName].Dubs[selectedSource][index][
-					`video${selectedQuality}`
-				];
 			videoRef.current.load();
 			const waitForLoad = setInterval(() => {
-				if (videoRef.current.readyState >= 3) {
-					videoRef.current.play();
-					setPlaying(true);
-					clearInterval(waitForLoad);
+				if (videoRef.current.readyState === 4) {
+					videoRef.current
+						.play()
+						.then(() => {
+							setPlaying(true);
+							clearInterval(waitForLoad);
+						})
+						.catch((error) => {
+							console.error('Error playing video:', error);
+						});
 				}
 			}, 100);
 		}
@@ -467,15 +445,17 @@ const VideoPlayer = () => {
 		if (previousVideoIndex >= 0) {
 			setSelectedEpisode(currentVideoIndex);
 			setCurrentVideoIndex(previousVideoIndex);
-			videoRef.current.src =
-				currentEpisode[animeName].Dubs[selectedSource][previousVideoIndex][
-					`video${selectedQuality}`
-				];
 			const waitForLoad = setInterval(() => {
-				if (videoRef.current.readyState >= 3) {
-					videoRef.current.play();
-					setPlaying(true);
-					clearInterval(waitForLoad);
+				if (videoRef.current.readyState === 4) {
+					videoRef.current
+						.play()
+						.then(() => {
+							setPlaying(true);
+							clearInterval(waitForLoad);
+						})
+						.catch((error) => {
+							console.error('Error playing video:', error);
+						});
 				}
 			}, 100);
 		}
@@ -490,19 +470,40 @@ const VideoPlayer = () => {
 		) {
 			setSelectedEpisode(nextVideoIndex + 1);
 			setCurrentVideoIndex(nextVideoIndex);
-			videoRef.current.src =
-				currentEpisode[animeName].Dubs[selectedSource][nextVideoIndex][
-					`video${selectedQuality}`
-				];
 			const waitForLoad = setInterval(() => {
-				if (videoRef.current.readyState >= 3) {
-					videoRef.current.play();
-					setPlaying(true);
-					clearInterval(waitForLoad);
+				if (videoRef.current.readyState === 4) {
+					videoRef.current
+						.play()
+						.then(() => {
+							setPlaying(true);
+							clearInterval(waitForLoad);
+						})
+						.catch((error) => {
+							console.error('Error playing video:', error);
+						});
 				}
 			}, 100);
 		}
 		setLastButtonPress(Date.now());
+	};
+
+	const handleToggleSettings = () => {
+		setSettingsShown(!settingsShown);
+		setMode('default');
+	};
+
+	const handleDubsChange = (newSelectedDub) => {
+		setSelectedSource(newSelectedDub);
+	};
+
+	const handleQualityChange = (newSelectedQuality) => {
+		setSelectedQuality(newSelectedQuality);
+	};
+
+	const handleOutsideClick = (event) => {
+		if (!event.target.closest('.settings')) {
+			setSettingsShown(false);
+		}
 	};
 
 	return (
@@ -529,38 +530,6 @@ const VideoPlayer = () => {
 					<source type='application/x-mpegURL' />
 				</video>
 				<div
-					className={`flex absolute top-0 right-0 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
-				>
-					<select
-						value={selectedQuality}
-						onChange={handleQualityChange}
-						className='font-GothamPro cursor-pointer text-sm sm:text-xs outline-none border-none rounded-full bg-black/20 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
-					>
-						{Object.keys(
-							currentEpisode[animeName].Dubs[selectedSource][currentVideoIndex]
-						)
-							.filter((key) => key.startsWith('video'))
-							.map((key) => (
-								<option value={key.replace('video', '')}>
-									{key.replace('video', '')}
-								</option>
-							))}
-					</select>
-				</div>
-				<div
-					className={`flex absolute top-0 right-24 py-2 z-50 text-gray-50/80 mx-8 my-3 sm:mx-4 sm:my-1 transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
-				>
-					<select
-						value={selectedSource}
-						onChange={handleSourceChange}
-						className='font-GothamPro cursor-pointer text-sm sm:text-xs outline-none border-none rounded-full bg-black/20 py-1 px-2 [&>option]:bg-black/90 border-0 ml-2'
-					>
-						{Object.keys(currentEpisode[animeName].Dubs).map((key) => (
-							<option value={key}>{key}</option>
-						))}
-					</select>
-				</div>
-				<div
 					className={`absolute z-10 top-0 left-0 w-full h-full`}
 					onClick={handlePlayPause}
 					onDoubleClick={handleToggleFullscreen}
@@ -568,7 +537,7 @@ const VideoPlayer = () => {
 					<div className='absolute w-full h-full text-white z-50'>
 						{isLoading ? (
 							<div className='w-full h-full flex items-center justify-center'>
-								<div className='w-14 h-14 border-4 animate-spin border-solid border-transparent border-t-[#d9abc5]/90 rounded-full'></div>
+								<div className='w-14 h-14 border-4 animate-spin border-solid border-transparent border-t-[#fecce7]/90 rounded-full'></div>
 							</div>
 						) : (
 							''
@@ -605,7 +574,7 @@ const VideoPlayer = () => {
 							ref={timelineRef}
 							onChange={handleSeek}
 							onMouseUp={handleTimelineMouseUp}
-							className='w-full select-none cursor-pointer mx-2 my-1 h-1 hover:h-2 bg-white/50 rounded-full border-none outline-none appearance-none transition-all duration-200 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-opacity-transform [&::-webkit-slider-thumb]:hover:opacity-100 [&::-webkit-slider-thumb]:duration-200 [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
+							className='w-full select-none cursor-pointer mx-2 my-1 h-1 hover:h-2 bg-white/50 rounded-full border-none outline-none appearance-none transition-all duration-200 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#ffb8de] [&::-webkit-slider-thumb]:transition-opacity-transform [&::-webkit-slider-thumb]:hover:opacity-100 [&::-webkit-slider-thumb]:duration-200 [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
 						/>
 						<span className='w-12 drop-shadow-sm hidden md:block'>
 							{formatTime(duration)}
@@ -634,14 +603,14 @@ const VideoPlayer = () => {
 									value={muted ? 0 : volume * 100}
 									ref={volumeRef}
 									onChange={handleInputChange}
-									className='w-24 sm:hidden opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#d9abc5] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
+									className='w-24 sm:hidden opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#ffb8de] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
 								/>
 							</div>
 						</div>
 						<div className='select-none whitespace-nowrap font-GothamPro text-sm py-2 sm:py-1 sm:text-xs'>
 							Эпизод {selectedEpisode}
 						</div>
-						<div className='flex w-[240px] justify-end items-center gap-4'>
+						<div className='flex w-[240px] justify-end items-center gap-5 sm:gap-1'>
 							<div className='flex justify-center items-center'>
 								<button
 									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
@@ -656,16 +625,39 @@ const VideoPlayer = () => {
 									<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
 								</button>
 							</div>
-							<button
-								className='flex w-10 sm:w-8 justify-center items-center'
-								onClick={handleToggleFullscreen}
-							>
-								{fullscreen ? (
-									<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
-								) : (
-									<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
-								)}
-							</button>
+							<div className='flex justify-center items-center gap-3 sm:gap-1'>
+								<button
+									className='flex justify-center items-center'
+									onClick={handleToggleSettings}
+								>
+									<Settings
+										className={`settings h-6 sm:h-5 w-6 sm:w-5 fill-gray-50/80 drop-shadow-md select-none outline-none border-none will-change-transform transition-transform ${settingsShown ? 'rotate-[30deg]' : 'rotate-0'}`}
+									/>
+								</button>
+								<SettingsMenu
+									onChange={{ handleDubsChange, handleQualityChange }}
+									visible={settingsShown}
+									selectedSource={selectedSource}
+									animeName={animeName}
+									videoRef={videoRef}
+									setPlaying={setPlaying}
+									selectedQuality={selectedQuality}
+									currentVideoIndex={currentVideoIndex}
+									currentTime={currentTime}
+									mode={mode}
+									setMode={setMode}
+								/>
+								<button
+									className='flex w-10 sm:w-8 justify-center items-center'
+									onClick={handleToggleFullscreen}
+								>
+									{fullscreen ? (
+										<ExitFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
+									) : (
+										<OpenFullscreen className='h-6 w-6 fill-gray-50/80 drop-shadow-md sm:h-5 sm:w-5' />
+									)}
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
