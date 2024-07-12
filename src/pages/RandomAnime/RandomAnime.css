@@ -1,125 +1,125 @@
 /* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
 .GradientWatchAnime {
-  display: inline-block;
-  position: relative;
-  line-height: 0;
+	display: inline-block;
+	position: relative;
+	line-height: 0;
 }
 .GradientWatchAnime:after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 101%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: transparent;
-  /*   background: linear-gradient(180deg, rgba(30, 33, 66, 0.85) 0%, #1e2142 95%); */
-  background: rgb(7, 1, 20);
-  background: linear-gradient(
-    180deg,
-    rgba(7, 2, 17, 0.7315301120448179) 0%,
-    rgba(7, 2, 17, 0.8407738095238095) 14%,
-    rgba(7, 2, 17, 0.8547794117647058) 50%,
-    rgba(7, 2, 17, 0.9920343137254902) 80%,
-    rgba(7, 2, 17, 0.9752275910364145) 90%,
-    rgba(7, 2, 17, 1) 100%
-  );
+	content: '';
+	display: block;
+	width: 100%;
+	height: 101%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: transparent;
+	/*   background: linear-gradient(180deg, rgba(30, 33, 66, 0.85) 0%, #1e2142 95%); */
+	background: rgb(7, 1, 20);
+	background: linear-gradient(
+		180deg,
+		rgba(7, 2, 17, 0.7315301120448179) 0%,
+		rgba(7, 2, 17, 0.8407738095238095) 14%,
+		rgba(7, 2, 17, 0.8547794117647058) 50%,
+		rgba(7, 2, 17, 0.9920343137254902) 80%,
+		rgba(7, 2, 17, 0.9752275910364145) 90%,
+		rgba(7, 2, 17, 1) 100%
+	);
 }
 /* ПЕРЕДНИЙ ГРАДИЕНТ ПЕРЕД КАРТИНКОЙ СТРАНИЦЫ ПРОСМОТРА АНИМЕ */
 
 .mybutton {
-  background-color: #7459ff86;
-  cursor: pointer;
-  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-  letter-spacing: 1.1px;
-  transition: all 0.5s ease;
+	background-color: #7459ff86;
+	cursor: pointer;
+	box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+	letter-spacing: 1.1px;
+	transition: all 0.5s ease;
 }
 
 .mybutton:hover {
-  background-color: #8f88ff;
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(101, 51, 255) 0px 5px 15px 0px;
-  border: 1px solid #6533ff;
+	background-color: #8f88ff;
+	color: hsl(0, 0%, 100%);
+	box-shadow: rgb(101, 51, 255) 0px 5px 15px 0px;
+	border: 1px solid #6533ff;
 }
 
 .mybutton:active {
-  background-color: #7459ff;
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(116, 89, 255) 0px 5px 15px 0px;
-  border: 1px solid #7459ff;
-  transform: translateY(-2px);
-  transition: 100ms;
+	background-color: #7459ff;
+	color: hsl(0, 0%, 100%);
+	box-shadow: rgb(116, 89, 255) 0px 5px 15px 0px;
+	border: 1px solid #7459ff;
+	transform: translateY(-2px);
+	transition: 100ms;
 }
 .gridcols2 {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  grid-template-rows: unset;
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	grid-template-rows: unset;
 }
 @media (max-width: 640px) {
-  .gridcols2 {
-    display: grid;
-    grid-template-columns: 125px 1fr;
-    grid-template-rows: unset;
-  }
+	.gridcols2 {
+		display: grid;
+		grid-template-columns: 125px 1fr;
+		grid-template-rows: unset;
+	}
 }
 
 /* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */
 .hoverGeneralPerson:hover h1 {
-  color: #e05357;
+	color: #e05357;
 }
 /* ХОВЕР ГЛАВНЫХ ПЕРСОНАЖЕЙ ЗАМЕНА ЦВЕТА ТЕКСТА */
 
 /* КНОПКА НАЖАТИЯ ЭПИЗОДОВ */
 .buttonWatch {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  background-color: #363d79;
-  cursor: pointer;
-  transition: border-color 0.25s;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	background-color: #363d79;
+	cursor: pointer;
+	transition: border-color 0.25s;
 }
 
 .buttonWatch:hover {
-  border-color: #646cff;
+	border-color: #646cff;
 }
 
 .buttonWatch:focus,
 .buttonWatch:focus-visible {
-  border-color: #646cff;
+	border-color: #646cff;
 }
 /* КНОПКА НАЖАТИЯ ЭПИЗОДОВ */
 
 /* АДАПТИВ ГРИДА ПЛЛЕЕРА И КНОПКОК */
 @media (max-width: 868px) {
-  .gridAdaptiveBlockPlayer {
-    display: grid;
-    grid-template-rows: 60% 40%;
-    grid-template-columns: 1fr;
-  }
+	.gridAdaptiveBlockPlayer {
+		display: grid;
+		grid-template-rows: 60% 40%;
+		grid-template-columns: 1fr;
+	}
 }
 @media (max-width: 640px) {
-  .gridAdaptiveBlockPlayer {
-    display: grid;
-    grid-template-rows: 40% 60%;
-    grid-template-columns: 1fr;
-  }
+	.gridAdaptiveBlockPlayer {
+		display: grid;
+		grid-template-rows: 40% 60%;
+		grid-template-columns: 1fr;
+	}
 }
 /* АДАПТИВ ГРИДА ПЛЛЕЕРА И КНОПКОК */
 .textBtnReadMore {
-  position: relative;
+	position: relative;
 }
 .textBtnReadMore::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  left: 0;
-  bottom: -4px;
-  background-color: #7459ff;
-  scale: 0%;
-  transition: all 0.3s ease;
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	left: 0;
+	bottom: -4px;
+	background-color: #7459ff;
+	scale: 0%;
+	transition: all 0.3s ease;
 }
 
 .hoverBtnShowMore:hover .textBtnReadMore::after {
-  scale: 100%;
+	scale: 100%;
 }

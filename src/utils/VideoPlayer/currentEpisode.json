@@ -118,63 +118,63 @@
 			"Субтитры": [
 				{
 					"id": 1,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/f6fb6c1f-a4f7-4615-9e73-7e5eac794cf6/b2186e14878d0b33386f27624f557085:2024071200/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/f6fb6c1f-a4f7-4615-9e73-7e5eac794cf6/b2186e14878d0b33386f27624f557085:2024071200/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/f6fb6c1f-a4f7-4615-9e73-7e5eac794cf6/b2186e14878d0b33386f27624f557085:2024071200/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_1/episode_1_1080p.m3u8",
+					"video720p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_1/episode_1_720p.m3u8",
+					"video480p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_1/episode_1_480p.m3u8"
 				},
 				{
 					"id": 2,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/6b84cddf-f0ec-4c89-b6c8-642bdd4c581d/16115c2d1f8730a3f102ef99960843bf:2024071200/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/6b84cddf-f0ec-4c89-b6c8-642bdd4c581d/16115c2d1f8730a3f102ef99960843bf:2024071200/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/6b84cddf-f0ec-4c89-b6c8-642bdd4c581d/16115c2d1f8730a3f102ef99960843bf:2024071200/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_2/episode_2_1080p.m3u8",
+					"video720p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_2/episode_2_720p.m3u8",
+					"video480p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_2/episode_2_480p.m3u8"
 				},
 				{
 					"id": 3,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/c23d37a0-79bc-4de9-ab2a-17a6de610856/f8b516a9c6c79030840c80b96eecda1b:2024071200/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/c23d37a0-79bc-4de9-ab2a-17a6de610856/f8b516a9c6c79030840c80b96eecda1b:2024071200/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/c23d37a0-79bc-4de9-ab2a-17a6de610856/f8b516a9c6c79030840c80b96eecda1b:2024071200/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_3/episode_3_1080p.m3u8",
+					"video720p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_3/episode_3_720p.m3u8",
+					"video480p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_3/episode_3_480p.m3u8"
 				},
 				{
 					"id": 4,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/cb86dcce-36de-407f-b191-7ca4b3a3a144/97abe11e469b05fabc309b2b2c0fe2cf:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/cb86dcce-36de-407f-b191-7ca4b3a3a144/97abe11e469b05fabc309b2b2c0fe2cf:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/cb86dcce-36de-407f-b191-7ca4b3a3a144/97abe11e469b05fabc309b2b2c0fe2cf:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_4/episode_4_1080p.m3u8",
+					"video720p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_4/episode_4_720p.m3u8",
+					"video480p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_4/episode_4_480p.m3u8"
 				},
 				{
 					"id": 5,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/e8fbe5f7-37c6-4776-8871-1ccfb3000bc1/4f9b2a9c3ab44008e9a691add72fd5e0:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/e8fbe5f7-37c6-4776-8871-1ccfb3000bc1/4f9b2a9c3ab44008e9a691add72fd5e0:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/e8fbe5f7-37c6-4776-8871-1ccfb3000bc1/4f9b2a9c3ab44008e9a691add72fd5e0:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_5/episode_5_1080p.m3u8",
+					"video720p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_5/episode_5_720p.m3u8",
+					"video480p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_5/episode_5_480p.m3u8"
 				},
 				{
 					"id": 6,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/783f311e-c2c0-4d30-926f-aac8b934dce1/ffa4cff96a779d18cc6fe1608bee3c7c:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/783f311e-c2c0-4d30-926f-aac8b934dce1/ffa4cff96a779d18cc6fe1608bee3c7c:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/783f311e-c2c0-4d30-926f-aac8b934dce1/ffa4cff96a779d18cc6fe1608bee3c7c:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu2.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_6/episode_6_1080p.m3u8",
+					"video720p": "https://scu2.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_6/episode_6_720p.m3u8",
+					"video480p": "https://scu2.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_6/episode_6_480p.m3u8"
 				},
 				{
 					"id": 7,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/4c8b4925-045a-4896-8bc2-59d4424e98de/c9a9206b1c8cf41f15584e8be08e80eb:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/4c8b4925-045a-4896-8bc2-59d4424e98de/c9a9206b1c8cf41f15584e8be08e80eb:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/4c8b4925-045a-4896-8bc2-59d4424e98de/c9a9206b1c8cf41f15584e8be08e80eb:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_7/episode_7_1080p.m3u8",
+					"video720p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_7/episode_7_720p.m3u8",
+					"video480p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_7/episode_7_480p.m3u8"
 				},
 				{
 					"id": 8,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/3cbddebd-c2b8-4ffe-b73d-39db13d7143e/3e3bc3cd0c7701fa93f154b4cf55e7f2:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/3cbddebd-c2b8-4ffe-b73d-39db13d7143e/3e3bc3cd0c7701fa93f154b4cf55e7f2:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/3cbddebd-c2b8-4ffe-b73d-39db13d7143e/3e3bc3cd0c7701fa93f154b4cf55e7f2:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_8/episode_8_1080p.m3u8",
+					"video720p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_8/episode_8_720p.m3u8",
+					"video480p": "https://scu3.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_8/episode_8_480p.m3u8"
 				},
 				{
 					"id": 9,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/fed206de-7556-4a31-b4c9-48e94786ae13/8376fd96732718c1aaecda086669f485:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/fed206de-7556-4a31-b4c9-48e94786ae13/8376fd96732718c1aaecda086669f485:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/fed206de-7556-4a31-b4c9-48e94786ae13/8376fd96732718c1aaecda086669f485:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_9/episode_9_1080p.m3u8",
+					"video720p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_9/episode_9_720p.m3u8",
+					"video480p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_9/episode_9_480p.m3u8"
 				},
 				{
 					"id": 10,
-					"video720p": "https://cloud.kodik-storage.com/useruploads/fc128e91-f09e-450d-8862-33b009479a10/152ff77dc54dc58771ff3275a290d03e:2024071201/720.mp4:hls:manifest.m3u8",
-					"video480p": "https://cloud.kodik-storage.com/useruploads/fc128e91-f09e-450d-8862-33b009479a10/152ff77dc54dc58771ff3275a290d03e:2024071201/480.mp4:hls:manifest.m3u8",
-					"video360p": "https://cloud.kodik-storage.com/useruploads/fc128e91-f09e-450d-8862-33b009479a10/152ff77dc54dc58771ff3275a290d03e:2024071201/360.mp4:hls:manifest.m3u8"
+					"video1080p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_10/episode_10_1080p.m3u8",
+					"video720p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_10/episode_10_720p.m3u8",
+					"video480p": "https://scu1.sovetromantica.com/anime/1369_cyberpunk-edgerunners/episodes/subtitles/episode_10/episode_10_480p.m3u8"
 				}
 			]
 		}
