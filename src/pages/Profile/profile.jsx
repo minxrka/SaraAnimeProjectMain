@@ -1,9 +1,9 @@
 import React from "react";
 import { Header } from "../../components/header/header";
 import banner from "../../img/test.jpg";
-import user from "../../img/bg-anime-card/13d91efa294e8cdff7715d530d946237.jpg";
+import user from "../../img/bg-anime-card/bleach.jpg";
 import { Anime } from "../../components/animeItem/anime";
-import prof from "../../img/other-content/avatarProf.jpg";
+import prof from "../../img/other-content/proftest.jpeg";
 import LogOut from "../../img/other-content/svg-profile/logout.svg";
 import Pencil from "../../img/other-content/svg-profile/pencil.svg";
 import { useState, useRef } from "react";

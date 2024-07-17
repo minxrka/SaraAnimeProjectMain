@@ -1,11 +1,11 @@
-import React from 'react';
-import AnimePreview from '../../img/bg-anime-card/small/anime1.jpg';
-import { useRef, useState, useLayoutEffect, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
-import BgMain from '../../img/other-content/BgCyberpunkMainPage.png';
-import InformationAnime from './mainInfoAnimeRandom.json';
-import GeneralPerson from './generalPersonRandom.json';
-import PlayerSeriaAnimeRandom from './PlayerSeriaAnimeRandom.json';
+import React from "react";
+import AnimePreview from "../../img/bg-anime-card/bleach.jpg";
+import { useRef, useState, useLayoutEffect, useEffect } from "react";
+import { useSpring, animated } from "react-spring";
+import BgMain from "../../img/other-content/BgCyberpunkMainPage.png";
+import InformationAnime from "./mainInfoAnimeRandom.json";
+import GeneralPerson from "./generalPersonRandom.json";
+import PlayerSeriaAnimeRandom from "./PlayerSeriaAnimeRandom.json";
 // Import Swiper React components
 import './RandomAnime.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
