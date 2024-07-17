@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel, Autoplay } from "swiper/modules";
-import BgVideo from "../../img/BgVideoAuth/prikol.mp4";
-import BgVideo1 from "../../img/BgVideoAuth/snovvy.mp4";
 import "./slider.css";
 // Import Swiper styles
 import "swiper/css";
@@ -11,24 +9,47 @@ import "swiper/css/pagination";
 import { NavLink } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import SliderData from "./SliderData.json";
-
+import { useSwiper } from "swiper/react";
 export const Slider = () => {
   const [videoPlaying, setVideoPlaying] = useState(false);
-  const [videoMuted, setVideoMuted] = useState(true);
-  const [imageShowing, setImageShowing] = useState(false);
   const [videoShouldPlay, setVideoShouldPlay] = useState(false);
-  const videoRef = useRef(null);
+
   useEffect(() => {
     if (videoShouldPlay) {
       setVideoPlaying(true);
     }
   }, [videoShouldPlay]);
 
-  /*   КНОПКА MUTE/UNMUTE ВИДЕО и еще громкость устанавливается в 0.045 */
+  /*   КНОПКА MUTE/UNMUTE ВИДЕО и еще громкость устанавливается в 0.02 */
+  const videoRef = useRef(null);
+  const [videoMuted, setVideoMuted] = useState(true);
   const handleMuteClick = () => {
     videoRef.current.volume = 0.02;
     setVideoMuted(!videoMuted);
   };
+  /*   КНОПКА MUTE/UNMUTE ВИДЕО и еще громкость устанавливается в 0.02 */
+  const [realSlideIndex, setRealSlideIndex] = useState(0);
+  const [imageShowing, setImageShowing] = useState(true);
+  const handleSlideChange = (swiper) => {
+    const realIndex = swiper.realIndex;
+    setRealSlideIndex(realIndex);
+
+    // Reset animation and video playback when slide changes
+    setVideoPlaying(false);
+    setImageShowing(true);
+    setVideoShouldPlay(false);
+
+    // Wait for the animation to finish before playing the video again
+    setTimeout(() => {
+      setAnimationRunning(true);
+      setImageShowing(false);
+      setTimeout(() => {
+        setVideoPlaying(true);
+        setVideoMuted(true);
+      }, 250); // 2.5 милисекунды
+    }, 6000); // 15 секунд
+  };
+
   /*   КНОПКА MUTE/UNMUTE ВИДЕО и еще громкость устанавливается в 0.045 */
 
   /* АНИМАЦИЯ FADEIN ПОЯВЛЕНИЯ ВИДЕО */
@@ -57,7 +78,7 @@ export const Slider = () => {
   }, [animationRunning]);
 
   const animationImage = useSpring({
-    opacity: animationRunning ? 0 : 1,
+    opacity: animationRunning ? 0.5 : 1,
   });
   /* АНИМАЦИЯ FADEOUT ИЗОБРАЖЕНИЯ */
 
@@ -74,32 +95,34 @@ export const Slider = () => {
     };
   }, [videoMuted]);
   /* ПРИ ПРОКРУТКЕ СВАЙПЕРА НА 900PX ВИДЕО МУТИТСЯ */
+
   /* ПРИ КОНЦОВКЕ ВИДЕО ПЛЕЕР НЕ ОТОБРАЖАЕТСЯ ОТОБРАЖАЕТСЯ КАРТИНКА НА 15 СЕКУНД ПОТОМ ОПЯТЬ АНИМАЦИЯ И ОПЯТЬ ВИДЕО */
+  const swiperRef = useRef(null);
+  const swiperInstance = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperInstance.current = swiperRef.current.swiper;
+    }
+  }, [swiperRef]);
+
   const handleVideoEnd = () => {
+    setImageShowing(true);
     setVideoPlaying(false);
     setAnimationRunning(false);
-    setImageShowing(true);
     setTimeout(() => {
-      setAnimationRunning(true);
-      setImageShowing(false);
-      setTimeout(() => {
-        setVideoPlaying(true);
-        setVideoMuted(true);
-      }, 250); // 2.5 милисекунды
-    }, 15000); // 15 секунд
+      if (swiperInstance.current) {
+        swiperInstance.current.slideNext();
+      }
+    }, 5000);
   };
+
   /*   ПРИ КОНЦОВКЕ ВИДЕО ПЛЕЕР НЕ ОТОБРАЖАЕТСЯ ОТОБРАЖАЕТСЯ КАРТИНКА НА 15 СЕКУНД ПОТОМ ОПЯТЬ АНИМАЦИЯ И ОПЯТЬ ВИДЕО */
   const { opacity, transform } = useSpring({
     opacity: !videoMuted ? 1 : 0,
     transform: !videoMuted ? "translateY(0)" : "translateY(100%)",
     config: { duration: 300 },
   });
-
-  /*   const { opacityOut, transformOut } = useSpring({
-    opacity: videoMuted ? 0 : 1,
-    transform: videoMuted ? "translateY(0)" : "translateY(-150%)",
-    config: { duration: 400 },
-  }); */
   const [hover, setHover] = useState(false);
 
   const sectionAnimation = useSpring({
@@ -126,6 +149,7 @@ export const Slider = () => {
   return (
     <main className="h-[85vh]">
       <Swiper
+        ref={swiperRef}
         speed={2600}
         className="mySwiper h-[80vh] w-full"
         style={{
@@ -147,9 +171,10 @@ export const Slider = () => {
         }}
         loop={true}
         modules={[Autoplay, Mousewheel, Pagination]}
+        onSlideChange={handleSlideChange}
       >
-        {SliderData.map((result) => (
-          <SwiperSlide>
+        {SliderData.map((result, index) => (
+          <SwiperSlide key={index}>
             <main
               style={{ position: "relative", zIndex: 2 }}
               className="h-full w-full"
@@ -157,7 +182,7 @@ export const Slider = () => {
               <section className="w-full h-full">
                 <section className="w-full h-full flex flex-col justify-center items-center relative z-10 text-center">
                   <h1 className="text-white text-[100px] font-WiGuru uppercase z-20">
-                    Клинок, рассекающий демонов: Тренировка столпов
+                    {result.title}
                   </h1>
                   <section className="">
                     <div className="flex items-center justify-center mt-[10px]">
@@ -174,24 +199,24 @@ export const Slider = () => {
                         />
                       </svg>
                       <p className="text-white text-[18px] font-GothamPro ml-[7px] font-light">
-                        9.5
+                        {result.rating}
                       </p>
                       <span className="h-[20px] bg-white w-[1px] ml-[10px] opacity-50"></span>
                       <h1 className="text-white text-[18px] font-GothamPro ml-[7px] font-light">
-                        2024г.
+                        {result.yearOfRelease}
                       </h1>
                       <span className="h-[20px] bg-white w-[1px] ml-[10px] opacity-50"></span>
                       <h1 className="text-white text-[18px] font-GothamPro ml-[7px] font-light">
-                        18+
+                        {result.yearOfIssue}
                       </h1>
                       <span className="h-[20px] bg-white w-[1px] ml-[10px] opacity-50"></span>
-                      <h1 className="text-white text-[18px] font-GothamPro ml-[7px] font-light">
-                        Сериал
+                      <h1 className="text-primary-50 text-[18px] font-GothamPro ml-[7px] font-light">
+                        {result.format}
                       </h1>
                     </div>
-                    <div className="flex items-center mt-[15px] justify-center gap-[30px]">
-                      <button className="watchNow flex items-center text-center text-white font-GothamPro text-[16px] font-light">
-                        Смотреть онлайн
+                    <div className="flex items-center mt-[30px] justify-center gap-[30px]">
+                      <button class="button x flex items-center text-center text-white font-GothamPro font-light will-change-transform">
+                        Подробнее
                         <svg
                           className="ml-[6px]"
                           xmlns="http://www.w3.org/2000/svg"
@@ -213,8 +238,9 @@ export const Slider = () => {
                     </div>
                   </section>
                 </section>
-                {videoPlaying ? (
+                {videoPlaying && index === realSlideIndex ? (
                   <animated.video
+                    preload="auto"
                     ref={videoRef}
                     style={{
                       maskImage: `linear-gradient(to bottom, rgba(30, 20, 66, 1), rgba(30, 20, 66, 0))`,
@@ -226,9 +252,9 @@ export const Slider = () => {
                     }}
                     playsInline
                     className="w-full h-full object-cover absolute top-0"
-                    src={BgVideo}
+                    src={result.videoPreviewAnime}
                     muted={videoMuted}
-                    autoPlay={videoShouldPlay}
+                    autoPlay={videoShouldPlay && index === realSlideIndex}
                     loop={false}
                     onEnded={handleVideoEnd}
                   ></animated.video>
@@ -257,10 +283,10 @@ export const Slider = () => {
                     className="w-full h-full object-cover absolute top-0"
                   ></animated.img>
                 )}
-                {videoPlaying && (
+                {videoPlaying && index === realSlideIndex && (
                   <button
                     style={{ zIndex: 29 }}
-                    className="absolute active:scale-105 bottom-[100px] right-[80px] px-[12px] py-[12px] rounded-[50%] text-white bg-mainRedJapan hover:bg-[#C03346] transition-all"
+                    className="absolute active:scale-105 bottom-[51px] right-[80px] px-[12px] py-[12px] rounded-[50%] text-white bg-secondary-600 hover:bg-secondary-500 transition-all"
                     onClick={handleMuteClick}
                   >
                     {videoMuted ? (
@@ -289,7 +315,7 @@ export const Slider = () => {
                     )}
                   </button>
                 )}
-                {!videoMuted && !imageShowing && (
+                {!videoMuted && !imageShowing && index === realSlideIndex && (
                   <animated.section
                     style={{
                       opacity,
@@ -302,17 +328,14 @@ export const Slider = () => {
                       justifyContent: "center",
                       alignItems: "center",
                     }}
-                    class="absolute bottom-[100px] w-full flex justify-center items-center"
+                    class="absolute w-full flex justify-center items-center"
                   >
-                    <NavLink
-                      to={`https://open.spotify.com/track/40GxMXuCa8AA5tNfdsHsU5`}
-                      target="blank"
-                    >
+                    <NavLink to={result.LinkOnSong} target="blank">
                       <section className="flex items-center glassEffectSwiper pr-[30px]">
                         <div className="px-[12px] pip py-[12px] rounded-[50%] w-[50px] h-[50px] flex justify-center">
                           <img
                             className="absolute top-0 w-full h-full object-cover rounded-[50%] z-2 opacity-50 rotate-180"
-                            src="https://i.scdn.co/image/ab67616d00001e02fc0a69d44eeda71d528c88cd"
+                            src={result.ImageSong}
                           ></img>
                           <div style={{ zIndex: 19 }} class="loading">
                             <span class="load"></span>
@@ -322,45 +345,47 @@ export const Slider = () => {
                           </div>
                         </div>
                         <article>
-                          <h1 className="text-white text-[18px] font-GothamPro ml-[7px] font-light mb-[3px]">
-                            COLLAR!
+                          <h1 className="text-white text-[18px] uppercase font-GothamPro ml-[7px] font-light mb-[3px]">
+                            {result.SongName}
                           </h1>
-                          <p className="text-mainVanilla text-[14px] font-GothamPro ml-[7px] font-light">
-                            CHASHKAKEFIRA, DJ PXRPLE
+                          <p className="text-mainVanilla uppercase text-[14px] max-w-[215px] line-clamp-1 font-GothamPro ml-[7px] font-light">
+                            {result.AuthorSong}
                           </p>
                         </article>
                       </section>
                     </NavLink>
                   </animated.section>
                 )}
-                <main class="absolute left-[100px] bottom-[50px] z-40">
-                  <animated.section
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                    className="flex items-center BgEditorProfile cursor-pointer hoverEffectArticle"
-                  >
-                    <img
-                      className="absolute top-0 w-[50px] h-[50px] object-cover rounded-[50%]"
-                      src="https://sun9-42.userapi.com/impg/JFAEz-im4x2LIgQONrQPwoJPW3SqLOhsNqxN0A/N2cNQoY9SUU.jpg?size=320x406&quality=95&sign=9a8b09cf9691d8fbba0e68d8c58a7a73&c_uniq_tag=txhdH_tdmtCPWG2ifc-yH6fGBWSOFk_N1f8fCQvWxuE&type=album"
-                    ></img>
-                    <animated.div
-                      style={sectionAnimation}
-                      className="py-[12px] rounded-[50%] h-[50px] items-center justify-center text-center"
+                {!imageShowing && index === realSlideIndex && (
+                  <main class="absolute left-[100px] bottom-[50px] z-40">
+                    <animated.section
+                      onMouseEnter={() => setHover(true)}
+                      onMouseLeave={() => setHover(false)}
+                      className="flex items-center bg-primary-500/30 rounded-[40px] cursor-pointer hoverEffectArticle"
                     >
+                      <img
+                        className="absolute top-0 w-[50px] h-[50px] object-cover rounded-[50%]"
+                        src="https://sun9-42.userapi.com/impg/JFAEz-im4x2LIgQONrQPwoJPW3SqLOhsNqxN0A/N2cNQoY9SUU.jpg?size=320x406&quality=95&sign=9a8b09cf9691d8fbba0e68d8c58a7a73&c_uniq_tag=txhdH_tdmtCPWG2ifc-yH6fGBWSOFk_N1f8fCQvWxuE&type=album"
+                      ></img>
                       <animated.div
-                        style={articleAnimation}
-                        className="acticleProfileEditor hidden text-center ml-[30px] flex justify-between flex-col"
+                        style={sectionAnimation}
+                        className="py-[12px] rounded-[50%] h-[50px] items-center justify-center text-center"
                       >
-                        <h1 className="text-white uppercase text-[14px] font-GothamPro font-light mb-[3px] w-[115px] line-clamp-1 mx-auto">
-                          snovvy
-                        </h1>
-                        <p className="text-mainVanilla uppercase text-[12px] font-GothamPro font-light whitespace-nowrap">
-                          Автор эдита
-                        </p>
+                        <animated.div
+                          style={articleAnimation}
+                          className="acticleProfileEditor hidden text-center ml-[30px] flex justify-between flex-col"
+                        >
+                          <h1 className="text-white uppercase text-[14px] font-GothamPro font-light mb-[3px] w-[115px] line-clamp-1 mx-auto">
+                            snovvy
+                          </h1>
+                          <p className="text-mainVanilla uppercase text-[12px] font-GothamPro font-light whitespace-nowrap">
+                            Автор эдита
+                          </p>
+                        </animated.div>
                       </animated.div>
-                    </animated.div>
-                  </animated.section>
-                </main>
+                    </animated.section>
+                  </main>
+                )}
               </section>
             </main>
           </SwiperSlide>

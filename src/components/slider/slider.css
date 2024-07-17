@@ -6,29 +6,50 @@
     ),
     linear-gradient(270deg, rgba(30, 33, 66, 0.7), rgb(30, 33, 66) 100%);
 }
-.watchNow {
-  padding: 18px 30px;
-  border-radius: 35px;
+.button.x {
+  max-width: 320px;
+  display: flex;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.15rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 25px;
+  gap: 0.75rem;
+  color: #ffffff;
+  background-color: #7459ffc2;
   cursor: pointer;
-  background-color: #8f4767;
-  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-  letter-spacing: 1.1px;
-  transition: all 0.5s ease;
+  transition: all 0.6s ease;
+  text-decoration: none;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
 }
 
-.watchNow:hover {
-  background-color: #8f4767;
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(143, 71, 103) 0px 7px 19px 0px;
+.button.x:hover {
+  transform: scale(1.02);
+  background-color: #8f88ff;
 }
 
-.watchNow:active {
-  background-color: #a85a7f;
-  color: hsl(0, 0%, 100%);
-  box-shadow: rgb(143, 71, 103) 0px 7px 19px 0px;
-  transform: translateY(-2px);
-  transition: 100ms;
+.button.x:focus {
+  outline: none;
 }
+
+.button.x:active {
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+@media (max-width: 480px) {
+  .button.x {
+    max-width: 100%;
+  }
+}
+
 .showMoreSwiper {
   padding: 16px 30px;
   border-radius: 35px;
@@ -102,33 +123,6 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.BgEditorProfile {
-  --r: 56px; /* control the size */
-  --c1: #773d55 /*color 1*/ 99%, #0000 101%;
-  --c2: #773d55 /*color 2*/ 99%, #0000 101%;
-
-  --s: calc(var(--r) * 0.866); /* .866 = cos(30deg) */
-  --g0: radial-gradient(var(--r), var(--c1));
-  --g1: radial-gradient(var(--r), var(--c2));
-  --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
-  --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
-  background: var(--f) 0 calc(-5 * var(--r) / 2),
-    var(--f) calc(-2 * var(--s)) calc(var(--r) / 2),
-    var(--p) 0 calc(-2 * var(--r)), var(--g0) var(--s) calc(-5 * var(--r) / 2),
-    var(--g1) var(--s) calc(5 * var(--r) / 2),
-    radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
-    radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)),
-    var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
-    var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2),
-    var(--p) calc(-2 * var(--s)) var(--r),
-    var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2),
-    var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
-    var(--g0) 0 calc(-1 * var(--r)), var(--g1) var(--s) calc(var(--r) / -2),
-    var(--g0) var(--s) calc(var(--r) / 2) #070211; /*color 2 again here (yes I got lazy defining a variable ) */
-  background-size: calc(4 * var(--s)) calc(6 * var(--r));
-  border-radius: 40px;
-  -webkit-animation: move1 4s linear infinite;
 }
 
 .hoverEffectArticle:hover .acticleProfileEditor {

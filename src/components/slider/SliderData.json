@@ -1,14 +1,72 @@
 [
   {
     "id": 1,
-    "videoPreviewAnime": "https://ik.imagekit.io/otakuri/dororo480bad.mp4?updatedAt=1720118494196",
-    "imagePreviewAnime": "https://i.ytimg.com/vi/FzWWpPMP-pk/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGHEgLyh_MA8=&rs=AOn4CLCYl3DyEmGupe7N83Y9yzU3C8mU8w",
-    "title": "Эпизод 1"
+    "videoPreviewAnime": "https://dl.dropboxusercontent.com/scl/fi/jyrbe7sjcth06gh3lec5c/Demon-Slayer.mp4?rlkey=85bn9y00zfiw9wpqoqv74ucdr&st=khqyt12m&dl=0",
+    "imagePreviewAnime": "https://animego.org/upload/anime/images/6646155076ba0758274644.jpg",
+    "title": "Клинок, рассекающий демонов: Тренировка столпов",
+    "rating": "9.5",
+    "yearOfRelease": "2024г.",
+    "yearOfIssue": "16+",
+    "format": "TV-сериал",
+    "AuthorSong": "CHASHKAKEFIRA, DJ PXRPLE",
+    "SongName": "COLLAR!",
+    "ImageSong": "https://i.scdn.co/image/ab67616d00001e02fc0a69d44eeda71d528c88cd",
+    "LinkOnSong": "https://youtu.be/WxJu4kRNK08?si=YUmpthzCjEIZqUn-"
   },
   {
     "id": 2,
-    "videoPreviewAnime": "https://ik.imagekit.io/otakuri/dororo480bad.mp4?updatedAt=1720118494196",
-    "imagePreviewAnime": "https://pic.rutubelist.ru/video/b8/ea/b8ea85eeb1f1b2675f54442f6ef049b1.jpg",
-    "title": "Эпизод 2"
+    "videoPreviewAnime": "https://dl.dropboxusercontent.com/scl/fi/j1ma2nkbcwreefmueny93/TokyoGhoul.mp4?rlkey=feygxshbdzwhhu9st53bag06a&st=s8hqtso3&dl=0",
+    "imagePreviewAnime": "https://colodu.club/uploads/posts/2022-10/1667227158_5-colodu-club-p-shakhmatnii-pol-tokiiskii-gul-vkontakte-5.jpg",
+    "title": "Токийский гуль",
+    "rating": "7.1",
+    "yearOfRelease": "2014г.",
+    "yearOfIssue": "18+",
+    "format": "TV-сериал",
+    "AuthorSong": "phonk",
+    "SongName": "Прекрасное далеко",
+    "ImageSong": "https://pictures.pibig.info/uploads/posts/2023-04/thumbs/1681470586_pictures-pibig-info-p-prekrasnoe-daleko-risunok-vkontakte-24.jpg",
+    "LinkOnSong": "https://youtu.be/xs8iqGwW_PA?si=AW_WlMqZEst4bwAC"
+  },
+  {
+    "id": 3,
+    "videoPreviewAnime": "https://dl.dropboxusercontent.com/scl/fi/1x2p7blbuh9igxsh9kixl/Kaiju-No.-8.mp4?rlkey=3ff8rvunmb820nyynj6emj4jw&st=c1bfgw7d&dl=0",
+    "imagePreviewAnime": "https://editors.dexerto.com/wp-content/uploads/2024/04/14/kaiju-no-8.jpg",
+    "title": "Кайдзю номер восемь",
+    "rating": "9.4",
+    "yearOfRelease": "2024г.",
+    "yearOfIssue": "16+",
+    "format": "TV-сериал",
+    "AuthorSong": "DR MØB",
+    "SongName": "VAAAI (Slowed)",
+    "ImageSong": "https://i.scdn.co/image/ab67616d00001e021df26b5480e7c0e7d3b5bced",
+    "LinkOnSong": "https://youtu.be/X_UWNJ71YSM?si=St5wzp0ir5lxnNc0"
+  },
+  {
+    "id": 4,
+    "videoPreviewAnime": "https://dl.dropboxusercontent.com/scl/fi/egubo8jcitueik0x4nvde/OnePiece.mp4?rlkey=3tucevunu4vf6pfoupyct7nd4&st=9s4yp82f&dl=0",
+    "imagePreviewAnime": "https://img10.reactor.cc/pics/post/full/One-Piece-Anime-Anime-Анонс-5041883.jpeg",
+    "title": "Ван пис",
+    "rating": "9.4",
+    "yearOfRelease": "1999г.",
+    "yearOfIssue": "18+",
+    "format": "TV-сериал",
+    "AuthorSong": "Jesse Eisenberg, Jamie Foxx, Anne Hathaway",
+    "SongName": "Real in Rio",
+    "ImageSong": "https://i.scdn.co/image/ab67616d00001e025f54a32a61b460747cd8d51a",
+    "LinkOnSong": "https://youtu.be/FRE-yvXslbU?si=mP9tNfkSVNaqXjeh"
+  },
+  {
+    "id": 5,
+    "videoPreviewAnime": "https://dl.dropboxusercontent.com/scl/fi/5o5g9vqrdjnretpcjkwch/Carried-away-by-ghosts.mp4?rlkey=happac3iu8jnxekil9c6tzv4v&st=v3obbqiy&dl=0",
+    "imagePreviewAnime": "https://life4health.ru/wp-content/uploads/2018/10/Unesennye-prizrakami_003.jpg",
+    "title": "Унесенные призраками",
+    "rating": "9.6",
+    "yearOfRelease": "2001г.",
+    "yearOfIssue": "12+",
+    "format": "TV-сериал",
+    "AuthorSong": "AIR",
+    "SongName": "Playground Love",
+    "ImageSong": "https://i.scdn.co/image/ab67616d00001e025e3c18f342d16b0b4df04df2",
+    "LinkOnSong": "https://youtu.be/hFuu5wPFv1M?si=4ChBEslg_Sq-Y45k"
   }
 ]
