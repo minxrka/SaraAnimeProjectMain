@@ -77,6 +77,9 @@ module.exports = {
         "spin-slow": "spin 3s linear infinite",
         "pulse-slow": "pulse 3s linear infinite",
       },
+      transitionProperty: {
+        'opacity-transform': 'opacity, transform',
+      },
     },
   },
   plugins: [],

@@ -64,7 +64,7 @@ const FAQLazy = React.lazy(() => import("./pages/FAQ/faq"));
 function App() {
   useEffect(() => {
     document.title =
-      "Anime with Sara - Смотри свои любимые аниме в хорошем качестве";
+      "Otakuri - Смотри свои любимые аниме в хорошем качестве";
   }, []);
   return (
     <div className="">

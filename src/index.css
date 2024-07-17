@@ -568,34 +568,31 @@ body {
 /* СТИЛИЗАЦИЯ СЛАЙДЕРА ГДЕ ПРОСМОТР АНИМЕ КАРТИНОК */
 .swiper-button-next,
 .swiper-button-prev {
-  background: #5662d58f !important;
-  padding-top: 16px !important;
-  padding-left: 16px !important;
-  padding-right: 16px !important;
-  padding-bottom: 16px !important;
+  background:#7559ffa1 !important;
+  padding: 16px !important;
   border-radius: 50% !important;
-  width: clamp(25px, 5vw, 50px) !important;
-  height: clamp(25px, 5vw, 50px) !important;
+  width: clamp(25px, 5vw, 40px) !important;
+  height: clamp(25px, 5vw, 40px) !important;
 }
 
 .swiper-button-prev:hover {
-  background: #5662d5c2 !important;
+  background: #7459ffde !important;
   transition: 0.2s ease-in-out;
 }
 
 .swiper-button-next:hover {
-  background: #5662d5c2 !important;
+  background: #7459ffde !important;
   transition: 0.2s ease-in-out;
 }
 .swiper-button-next::after {
   content: "";
-  color: white;
-  font-size: 15px !important;
+  color: #eee;
+  font-size: 14px !important;
 }
 .swiper-button-prev::after {
   content: "";
-  color: white;
-  font-size: 15px !important;
+  color: #eee;
+  font-size: 14px !important;
 }
 .swiper-button-disabled {
   visibility: hidden;

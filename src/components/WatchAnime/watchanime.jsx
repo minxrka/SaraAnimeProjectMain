@@ -329,6 +329,7 @@ function WatchAnime() {
               </section>
 
               <section className="">
+
                 <div className="mt-[40px] w-full h-[1px] bg-additionalColor200"></div>
                 <SliderAnimePreview />
                 <div className="w-full h-[1px] bg-additionalColor200"></div>
