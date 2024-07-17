@@ -136,7 +136,7 @@
 .header-linear-grd {
   background: linear-gradient(
     180deg,
-    rgba(30, 33, 66, 0.7) 0%,
-    rgba(30, 33, 66, 0) 95%
+    rgba(7, 2, 17, 0.7) 0%,
+    rgba(7, 2, 17, 0) 95%
   );
 }
