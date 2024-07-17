@@ -301,8 +301,7 @@ body {
   background-color: #070211;
 }
 ::selection {
-  color: #f5c6e1;
-  background: rgba(211, 179, 236, 0.14);
+  background: rgba(178, 120, 253, 0.25);
 }
 
 .content-container {
@@ -511,7 +510,7 @@ body {
 
 /* СТИЛИЗАЦИЯ СКРОЛБАРА */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -519,7 +518,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5662d5;
+  background: #8f88ff;
   border-radius: 20px;
 }
 /* СТИЛИЗАЦИЯ СКРОЛБАРА */

@@ -1,11 +1,10 @@
-import React from "react";
-import AnimePreview from "../../img/bg-anime-card/bleach.jpg";
-import { useRef, useState, useLayoutEffect, useEffect } from "react";
-import { useSpring, animated } from "react-spring";
-import BgMain from "../../img/other-content/BgCyberpunkMainPage.png";
-import InformationAnime from "./mainInfoAnimeRandom.json";
-import GeneralPerson from "./generalPersonRandom.json";
-import PlayerSeriaAnimeRandom from "./PlayerSeriaAnimeRandom.json";
+import React from 'react';
+import { useRef, useState, useLayoutEffect, useEffect } from 'react';
+import { useSpring, animated } from 'react-spring';
+import BgMain from '../../img/other-content/BgCyberpunkMainPage.png';
+import InformationAnime from './mainInfoAnimeRandom.json';
+import GeneralPerson from './generalPersonRandom.json';
+import PlayerSeriaAnimeRandom from './PlayerSeriaAnimeRandom.json';
 // Import Swiper React components
 import './RandomAnime.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -72,12 +71,6 @@ function RandomAnime() {
 			timeout: '10000',
 		});
 	};
-	/* Свич эпизодов */
-	const [currentEpisode, setCurrentEpisode] = useState(1);
-	const currentSerie = PlayerSeriaAnimeRandom.filter(
-		(result) => result.id === currentEpisode
-	)[0];
-	/* Свич эпизодов */
 
 	useEffect(() => {
 		const title = InformationAnime.map((anime) => anime.titleAnime).join(', ');
@@ -107,8 +100,7 @@ function RandomAnime() {
 				{/* Бекграунд береться из 1 картинки слайдера!!!!!!! */}
 
 				<main
-					className='relative z-2 content-container'
-					style={{ position: 'relative', zIndex: 2 }}
+					className='relative z-[2] content-container'
 				>
 					<section className='px-[300px] xl:px-[80px] big:px-[50px] sm:px-[25px] lg:px-[73px]'>
 						{/* огр.контента */}
@@ -118,9 +110,9 @@ function RandomAnime() {
 								<aside className='flex flex-col gap-4 max-w-[300px] h-auto mt-[80px] md:max-w-full md:h-full'>
 									<img
 										className='w-full object-cover rounded-[10px] h-[420px] md:h-[600px] sm:h-[500px]'
-										src={AnimePreview}
+										src='https://i.pinimg.com/736x/85/44/ff/8544ffe89a34c0555efb0cf7396c4bfc.jpg'
 									/>
-									<div className='flex justify-between items-center w-full '>
+									<div className='flex justify-between items-center w-full'>
 										<button
 											onClick={handleClick}
 											className='mybutton px-10 md:px-[84px] sm:px-0 rounded-[25px] md:rounded-[50px] h-11 md:h-20 sm:h-16 sm:w-full text-center flex justify-center items-center gap-1 md:gap-2 border border-transparent whitespace-nowrap text-[#eee]/90 font-GothamPro text-sm md:text-lg font-normal'

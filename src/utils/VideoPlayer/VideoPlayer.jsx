@@ -42,12 +42,17 @@ const VideoPlayer = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [settingsShown, setSettingsShown] = useState(false);
 	const [mode, setMode] = useState('default');
+	const [tooltipVisible, setTooltipVisible] = useState(false);
+	const [tooltipTime, setTooltipTime] = useState(0);
+	const [tooltipLeft, setTooltipLeft] = useState(0);
 
 	const videoRef = useRef(null);
 	const containerRef = useRef(null);
 	const timeoutRef = useRef(null);
 	const timelineRef = useRef(null);
 	const volumeRef = useRef(null);
+
+	let rect = null;
 
 	useEffect(() => {
 		const video = videoRef.current;
@@ -509,7 +514,7 @@ const VideoPlayer = () => {
 	return (
 		<>
 			<div
-				className={`relative w-full duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
+				className={`relative w-full h-full duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
 				ref={containerRef}
 				onMouseMove={handleMouseMove}
 				onMouseEnter={handleMouseEnter}
@@ -517,7 +522,6 @@ const VideoPlayer = () => {
 			>
 				<video
 					ref={videoRef}
-					width='100%'
 					preload='none'
 					playsInline
 					poster={
@@ -525,7 +529,7 @@ const VideoPlayer = () => {
 					}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
-					className='rounded-xl aspect-video bg-black'
+					className='rounded-xl w-full h-full aspect-video bg-black'
 				>
 					<source type='application/x-mpegURL' />
 				</video>
@@ -560,7 +564,7 @@ const VideoPlayer = () => {
 					</div>
 				</div>
 				<div
-					className={`absolute bottom-0 left-0 z-30 flex flex-col w-full px-4 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
+					className={`absolute bottom-0 left-0 z-30 flex flex-col w-full px-3 text-gray-50/80 text-base items-center transition-opacity-transform will-change-transform ${controlsVisible || !playing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}
 				>
 					<div className='flex w-full h-2 font-GothamPro text-center text-xs items-center select-none'>
 						<span className='w-12 drop-shadow-sm hidden md:block'>
@@ -574,16 +578,36 @@ const VideoPlayer = () => {
 							ref={timelineRef}
 							onChange={handleSeek}
 							onMouseUp={handleTimelineMouseUp}
+							onMouseMove={(e) => {
+								if (!rect) {
+									rect = timelineRef.current.getBoundingClientRect();
+								}
+								const x = e.clientX - rect.left;
+								const time = Math.max(
+									0,
+									(x / rect.width) * videoRef.current.duration
+								);
+								setTooltipTime(time);
+								setTooltipLeft(x);
+								setTooltipVisible(true);
+							}}
+							onMouseLeave={() => setTooltipVisible(false)}
 							className='w-full select-none cursor-pointer mx-2 my-1 h-1 hover:h-2 bg-white/50 rounded-full border-none outline-none appearance-none transition-all duration-200 [&::-webkit-slider-thumb]:opacity-0 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#ffb8de] [&::-webkit-slider-thumb]:transition-opacity-transform [&::-webkit-slider-thumb]:hover:opacity-100 [&::-webkit-slider-thumb]:duration-200 [&::-webkit-slider-thumb]:hover:scale-110 [&::-webkit-slider-thumb]:active:scale-[1.3]'
 						/>
 						<span className='w-12 drop-shadow-sm hidden md:block'>
 							{formatTime(duration)}
 						</span>
 					</div>
-					<div className='flex w-full justify-between items-center my-1'>
-						<div className='flex items-center justify-start w-[240px]'>
+					<div
+						className={`absolute flex justify-center select-none items-center text-center z-10 text-gray-50/80 text-xs font-GothamPro bg-white/30 rounded-full px-3 py-1 transition-opacity ${tooltipVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+						style={{ left: tooltipLeft, top: '-60%' }}
+					>
+						{formatTime(tooltipTime)}
+					</div>
+					<div className='flex w-full justify-between items-center my-1 px-1'>
+						<div className='flex items-center justify-start gap-1 w-[240px]'>
 							<button
-								className='flex w-10 h-10 sm:h-7 justify-center items-center'
+								className='flex w-9 h-9 sm:h-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
 								onClick={handlePlayPause}
 							>
 								{playing ? (
@@ -592,8 +616,12 @@ const VideoPlayer = () => {
 									<Play className='h-9 w-9 fill-gray-50/80 drop-shadow-md sm:h-7 sm:w-7' />
 								)}
 							</button>
-							<div className='flex justify-center items-center sm:ml-0 ml-2 group'>
-								<button onClick={handleMuteClick} className='ml-2'>
+							<div className='flex justify-center items-center sm:ml-0 group'>
+								<div className='flex justify-center items-center'></div>
+								<button
+									onClick={handleMuteClick}
+									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								>
 									{getVolumeIcon()}
 								</button>
 								<input
@@ -603,31 +631,30 @@ const VideoPlayer = () => {
 									value={muted ? 0 : volume * 100}
 									ref={volumeRef}
 									onChange={handleInputChange}
-									className='w-24 sm:hidden opacity-0 select-none cursor-pointer ml-2 h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#ffb8de] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
+									className='w-24 sm:hidden opacity-0 select-none cursor-pointer h-1 translate-x-0 will-change-transform transition-opacity-transform bg-white/50 rounded-full border-none outline-none appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#ffb8de] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-[1.05] [&::-webkit-slider-thumb]:active:scale-[1.15] group-hover:opacity-100 group-hover:translate-x-1 group-hover:[&::-webkit-slider-thumb]:translate-x-0 duration-200'
 								/>
 							</div>
 						</div>
-						<div className='select-none whitespace-nowrap font-GothamPro text-sm py-2 sm:py-1 sm:text-xs'>
+						<div className='select-none flex justify-center items-center gap-3 whitespace-nowrap font-GothamPro text-sm sm:text-xs'>
+							<button
+								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								onClick={handlePreviousEpisode}
+							>
+								<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
+							</button>
 							Эпизод {selectedEpisode}
+							<button
+								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								onClick={handleNextEpisode}
+							>
+								<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
+							</button>
 						</div>
 						<div className='flex w-[240px] justify-end items-center gap-5 sm:gap-1'>
-							<div className='flex justify-center items-center'>
+							<div className='flex justify-center items-center'></div>
+							<div className='flex justify-center items-center gap-1 sm:gap-1'>
 								<button
-									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
-									onClick={handlePreviousEpisode}
-								>
-									<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
-								</button>
-								<button
-									className='flex w-10 h-10 sm:h-7 sm:w-7 justify-center items-center'
-									onClick={handleNextEpisode}
-								>
-									<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
-								</button>
-							</div>
-							<div className='flex justify-center items-center gap-3 sm:gap-1'>
-								<button
-									className='flex justify-center items-center'
+									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
 									onClick={handleToggleSettings}
 								>
 									<Settings
@@ -648,7 +675,7 @@ const VideoPlayer = () => {
 									setMode={setMode}
 								/>
 								<button
-									className='flex w-10 sm:w-8 justify-center items-center'
+									className='flex w-9 h-9 sm:w-8 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
 									onClick={handleToggleFullscreen}
 								>
 									{fullscreen ? (
