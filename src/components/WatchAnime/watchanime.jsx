@@ -1,5 +1,4 @@
 import React from 'react';
-import AnimePerson from '../../img/trailer-photo/kensin/Himura_Kenshin_default.jpg';
 import { useRef, useState, useLayoutEffect, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import InformationAnime from './mainInfoAnime.json';
@@ -73,13 +72,6 @@ function WatchAnime() {
 		});
 	};
 	/* При клике скролится до плеера */
-
-	/* Свич эпизодов */
-	const [currentEpisode, setCurrentEpisode] = useState(1);
-	const currentSerie = PlayerSeriaAnime.filter(
-		(result) => result.id === currentEpisode
-	)[0];
-	/* Свич эпизодов */
 
 	useEffect(() => {
 		const title = InformationAnime.map((anime) => anime.titleAnime).join(', ');

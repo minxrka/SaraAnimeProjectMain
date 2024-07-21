@@ -1,19 +1,12 @@
 import React from "react";
-import "./loader.css";
+
 export const Loader = () => {
   return (
     <main className="flex justify-center items-center h-[100vh]">
-      {/* <div class="sharingon">
-        <div class="ring">
-          <div class="to"></div>
-          <div class="to"></div>
-          <div class="to"></div>
-          <div class="circle"></div>
+      <div className="absolute w-full h-full text-white z-50">
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="w-14 h-14 border-4 animate-spin border-solid border-transparent border-t-[#fecce7]/90 rounded-full"></div>
         </div>
-      </div> */}
-
-      <div class="progress-loader">
-        <div class="progress"></div>
       </div>
     </main>
   );

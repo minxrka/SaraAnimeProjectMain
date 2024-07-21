@@ -406,18 +406,20 @@ body {
 
 /* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
 .swiper-pagination-bullet {
-  background-color: #5662d5 !important;
+  display: none !important;
+  /*   background-color: #5662d5 !important;
   width: 20px !important;
-  height: 20px !important;
+  height: 20px !important; */
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .swiper-pagination-bullet {
     width: 15px !important;
     height: 15px !important;
   }
-}
+} */
 .swiper-pagination-bullet-active {
-  background-color: #5662d5 !important;
+  /*   background-color: #5662d5 !important; */
+  display: none !important;
 }
 /* СТИЛИЗАЦИЯ КНОПОК СЛАЙДЕРА */
 
@@ -482,23 +484,6 @@ body {
   opacity: 0.5;
 }
 /* СТИЛИЗАЦИЯ КНОПКИ FOLLOW FOOTER */
-
-/* СОЦИАЛЬНЫЕ СЕТИ ФУТЕРА */
-.social:hover .circlemain {
-  background-color: #d6fe50;
-}
-/* СОЦИАЛЬНЫЕ СЕТИ ФУТЕРА */
-
-/* ПРИ ОТКРЫТИЕ МОДАЛЬНОГО ОКНО НЕ БЫЛО СКРОЛА */
-.modalIsOpened {
-  height: 100vh;
-  overflow-y: hidden;
-}
-.modalIsOpened {
-  height: 100vh;
-  overflow-y: hidden;
-}
-/* ПРИ ОТКРЫТИЕ МОДАЛЬНОГО ОКНО НЕ БЫЛО СКРОЛА */
 
 /* ТЕСТ СКРЫТИЕ МОДАЛЬНОГО ОКНА */
 /* @media screen and (min-width: 1124px) {
