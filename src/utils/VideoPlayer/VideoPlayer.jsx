@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Hls from 'hls.js';
@@ -27,11 +27,9 @@ const VideoPlayer = () => {
 	const [timelineValue, setTimelineValue] = useState(0);
 	const [fullscreen, setFullscreen] = useState(false);
 	const [controlsVisible, setControlsVisible] = useState(true);
-	const [mouseOver, setMouseOver] = useState(false);
-	const [cursorVisible, setCursorVisible] = useState(false);
-	const [isSeeking, setIsSeeking] = useState(false);
 	const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 	const [selectedQuality, setSelectedQuality] = useState(null);
+	// eslint-disable-next-line no-unused-vars
 	const [animeName, setAnimeName] = useState(Object.keys(currentEpisode)[0]);
 	const [selectedSource, setSelectedSource] = useState(
 		Object.keys(currentEpisode[animeName].Dubs)[0]
@@ -53,6 +51,11 @@ const VideoPlayer = () => {
 	const volumeRef = useRef(null);
 
 	let rect = null;
+
+	const isMobile =
+	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+		navigator.userAgent
+	);
 
 	useEffect(() => {
 		const video = videoRef.current;
@@ -105,6 +108,7 @@ const VideoPlayer = () => {
 				setSelectedQuality(availableQualities[0].replace('video', ''));
 			}
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [videoRef, currentVideoIndex, selectedQuality, selectedSource]);
 
 	useEffect(() => {
@@ -140,11 +144,6 @@ const VideoPlayer = () => {
 			document.removeEventListener('click', handleOutsideClick);
 		};
 	}, []);
-
-	const isMobile =
-		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-			navigator.userAgent
-		);
 
 	const handleKeyPress = (event) => {
 		if (event.code === 'Space') {
@@ -225,12 +224,10 @@ const VideoPlayer = () => {
 		videoRef.current.currentTime = timelineValue;
 		setCurrentTime(timelineValue);
 		setTimelineValue(timelineValue);
-		setIsSeeking(true);
 		setIsLoading(true);
 	};
 
 	const handleTimelineMouseUp = () => {
-		setIsSeeking(false);
 		if (videoRef.current.readyState === 4) {
 			if (!playing) {
 				videoRef.current.play();
@@ -358,11 +355,9 @@ const VideoPlayer = () => {
 			setControlsVisible(true);
 		} else {
 			setControlsVisible(true);
-			setCursorVisible(true);
 			if (playing && !isMobile && !settingsShown) {
 				timeoutRef.current = setTimeout(() => {
 					setControlsVisible(false);
-					setCursorVisible(false);
 				}, 2500);
 			}
 		}
@@ -371,13 +366,10 @@ const VideoPlayer = () => {
 	const handleMouseEnter = () => {
 		if (!isMobile) {
 			clearTimeout(timeoutRef.current);
-			setMouseOver(true);
 			setControlsVisible(true);
-			setCursorVisible(true);
 			if (playing && !settingsShown) {
 				timeoutRef.current = setTimeout(() => {
 					setControlsVisible(false);
-					setCursorVisible(false);
 				}, 2500);
 			}
 		}
@@ -386,7 +378,6 @@ const VideoPlayer = () => {
 	const handleMouseLeave = () => {
 		if (!isMobile && playing && !settingsShown) {
 			setControlsVisible(false);
-			setCursorVisible(false);
 			clearTimeout(timeoutRef.current);
 		}
 	};
@@ -718,6 +709,7 @@ const VideoPlayer = () => {
 									value={index + 1}
 									className='rounded-3xl w-full h-full object-cover transition-[--tw-brightness] brightness-[.45] '
 									src={episode.poster}
+									alt='episode poster'
 								/>
 								<div className='absolute flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
 									{episode.episode}
