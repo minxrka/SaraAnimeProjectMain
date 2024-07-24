@@ -53,9 +53,9 @@ const VideoPlayer = () => {
 	let rect = null;
 
 	const isMobile =
-	/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-		navigator.userAgent
-	);
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		);
 
 	useEffect(() => {
 		const video = videoRef.current;
@@ -108,7 +108,7 @@ const VideoPlayer = () => {
 				setSelectedQuality(availableQualities[0].replace('video', ''));
 			}
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [videoRef, currentVideoIndex, selectedQuality, selectedSource]);
 
 	useEffect(() => {
@@ -505,7 +505,7 @@ const VideoPlayer = () => {
 	return (
 		<>
 			<div
-				className={`relative w-full h-full duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
+				className={`relative rounded-xl w-full h-[95dvh] overflow-hidden duration-300 ${controlsVisible ? '' : 'cursor-none'}`}
 				ref={containerRef}
 				onMouseMove={handleMouseMove}
 				onMouseEnter={handleMouseEnter}
@@ -520,7 +520,7 @@ const VideoPlayer = () => {
 					}
 					onEnded={handleVideoEnd}
 					onTimeUpdate={handleTimeUpdate}
-					className='rounded-xl w-full h-full aspect-video bg-black'
+					className='w-full h-full aspect-video bg-black'
 				>
 					<source type='application/x-mpegURL' />
 				</video>
@@ -595,10 +595,10 @@ const VideoPlayer = () => {
 					>
 						{formatTime(tooltipTime)}
 					</div>
-					<div className='flex w-full justify-between items-center my-1 px-1'>
+					<div className='flex w-full justify-between items-center my-2 px-1'>
 						<div className='flex items-center justify-start gap-1 w-[240px]'>
 							<button
-								className='flex w-9 h-9 sm:h-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								className='flex w-9 h-9 sm:h-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 								onClick={handlePlayPause}
 							>
 								{playing ? (
@@ -611,7 +611,7 @@ const VideoPlayer = () => {
 								<div className='flex justify-center items-center'></div>
 								<button
 									onClick={handleMuteClick}
-									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 								>
 									{getVolumeIcon()}
 								</button>
@@ -628,24 +628,23 @@ const VideoPlayer = () => {
 						</div>
 						<div className='select-none flex justify-center items-center gap-3 whitespace-nowrap font-GothamPro text-sm sm:text-xs'>
 							<button
-								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 								onClick={handlePreviousEpisode}
 							>
 								<PreviousEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
 							</button>
 							Эпизод {selectedEpisode}
 							<button
-								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+								className='flex w-9 h-9 sm:h-7 sm:w-7 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 								onClick={handleNextEpisode}
 							>
 								<NextEpisode className='h-7 w-7 fill-gray-50/80 drop-shadow-md select-none outline-none border-none sm:h-6 sm:w-6' />
 							</button>
 						</div>
 						<div className='flex w-[240px] justify-end items-center gap-5 sm:gap-1'>
-							<div className='flex justify-center items-center'></div>
 							<div className='flex justify-center items-center gap-1 sm:gap-1'>
 								<button
-									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+									className='flex w-9 h-9 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 									onClick={handleToggleSettings}
 								>
 									<Settings
@@ -666,7 +665,7 @@ const VideoPlayer = () => {
 									setMode={setMode}
 								/>
 								<button
-									className='flex w-9 h-9 sm:w-8 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/10'
+									className='flex w-9 h-9 sm:w-8 justify-center items-center transition-colors rounded-lg hover:bg-gray-50/20'
 									onClick={handleToggleFullscreen}
 								>
 									{fullscreen ? (
@@ -680,7 +679,15 @@ const VideoPlayer = () => {
 					</div>
 				</div>
 			</div>
-			<div>
+			<div className='py-6'>
+				<div className='flex gap-3 mx-6 mb-4'>
+					<div className='font-GothamPro text-lg bg-[#ff9fd2]/75 px-4 py-[2px] inline-block rounded-xl font-bold text-accent-100 cursor-pointer select-none'>
+						1 сезон
+					</div>
+					<div className='font-GothamPro text-lg bg-primary-500/0 px-4 py-[2px] inline-block rounded-xl font-bold text-white/90 cursor-pointer select-none'>
+						2 сезон
+					</div>
+				</div>
 				<Swiper
 					slidesPerView={5}
 					navigation={true}
@@ -700,18 +707,18 @@ const VideoPlayer = () => {
 							slidesPerView: 5,
 						},
 					}}
-					className='mySwiper mt-6 mb-10'
+					className='mySwiper'
 				>
 					{currentEpisode[animeName].Information.map((episode, index) => (
 						<SwiperSlide key={index} onClick={() => handleEpisodeSelect(index)}>
-							<div className='h-full relative aspect-video cursor-pointer [&>img]:hover:brightness-[0.75]'>
+							<div className='h-full relative aspect-video cursor-pointer transition-transform will-change-transform [&>img]:hover:brightness-[0.75] hover:-translate-y-1'>
 								<img
 									value={index + 1}
-									className='rounded-3xl w-full h-full object-cover transition-[--tw-brightness] brightness-[.45] '
+									className='rounded-3xl ml-6 my-1 w-full h-full object-cover transition-[--tw-brightness] brightness-[.45] '
 									src={episode.poster}
 									alt='episode poster'
 								/>
-								<div className='absolute flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
+								<div className='absolute ml-6 my-1 flex justify-center items-center w-full h-full top-0 left-0 text-white/90 z-50 font-GothamPro text-xl'>
 									{episode.episode}
 								</div>
 							</div>

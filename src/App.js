@@ -40,6 +40,12 @@ const WatchDefaultAnimeLazy = React.lazy(() =>
     return new Promise((resolve) => setTimeout(() => resolve(module), 1750));
   })
 );
+const PlayerLazy = React.lazy(() =>
+  import("./utils/VideoPlayer/VideoPlayer").then((module) => {
+    // Add a delay of 2 seconds (2000 milliseconds)
+    return new Promise((resolve) => setTimeout(() => resolve(module), 1750));
+  })
+);
 const LoginLazy = React.lazy(() =>
   import("./pages/Login/login").then((module) => {
     // Add a delay of 2 seconds (2000 milliseconds)
@@ -116,6 +122,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <WatchDefaultAnimeLazy />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/watch/player"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PlayerLazy />
               </Suspense>
             }
           />

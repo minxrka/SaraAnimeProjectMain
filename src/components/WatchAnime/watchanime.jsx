@@ -1,13 +1,11 @@
 import React from 'react';
-import { useRef, useState, useLayoutEffect, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import InformationAnime from './mainInfoAnime.json';
 import GeneralPerson from './generalPerson.json';
-import PlayerSeriaAnime from './PlayerSeriaAnime.json';
 // Import Swiper React components
 import './watchAnime.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import VideoPlayer from '../../utils/VideoPlayer/VideoPlayer.jsx';
 import { ReactComponent as Play } from '../../img/icons/play-small.svg';
 
 // Import Swiper styles
@@ -15,34 +13,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 // import required modules
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import { Footer } from '../footer/footer';
 
 import { Header } from '../header/header';
 import SliderAnimePreview from '../SliderAnimePreview/SliderAnimePreview';
-const useTruncatedElement = ({ ref }) => {
-	const [isTruncated, setIsTruncated] = useState(false);
-	const [isShowingMore, setIsShowingMore] = useState(false);
-
-	useLayoutEffect(() => {
-		const { offsetHeight, scrollHeight } = ref.current || {};
-
-		if (offsetHeight && scrollHeight && offsetHeight < scrollHeight) {
-			setIsTruncated(true);
-		} else {
-			setIsTruncated(false);
-		}
-	}, [ref]);
-
-	const toggleIsShowingMore = () => setIsShowingMore((prev) => !prev);
-
-	return {
-		isTruncated,
-		isShowingMore,
-		toggleIsShowingMore,
-	};
-};
-
 function WatchAnime() {
 	/*   Реф ссылка для описания */
 	const [activeTab, setActiveTab] = useState('Описание');
@@ -56,7 +31,6 @@ function WatchAnime() {
 			ref.current.style.height = '9.75rem'; // about 100px
 		}
 	}, [isShowingMore]);
-	const [arrowDirection, setArrowDirection] = useState('down');
 
 	function toggleIsShowingMore() {
 		setIsShowingMore(!isShowingMore);
@@ -64,19 +38,11 @@ function WatchAnime() {
 
 	/*   Реф ссылка для описания */
 	const myref = useRef(null);
-	/* При клике скролится до плеера */
-	const handleClick = () => {
-		myref.current?.scrollIntoView({
-			behavior: 'smooth',
-			timeout: '10000',
-		});
-	};
-	/* При клике скролится до плеера */
 
 	useEffect(() => {
 		const title = InformationAnime.map((anime) => anime.titleAnime).join(', ');
-		document.title = `Anime with Sara - ${title}`;
-	}, [InformationAnime]);
+		document.title = `${title} | Otakuri`;
+	}, []);
 
 	const handleTabChange = (tab) => {
 		setIsShowingMore(false);
@@ -120,6 +86,7 @@ function WatchAnime() {
 								<img
 									src='https://www.mirf.ru/wp-content/uploads/2023/05/310e42389a.png'
 									className='h-full w-full object-cover object-top pl-60'
+									alt=''
 								></img>
 							</div>
 						</section>
@@ -193,13 +160,13 @@ function WatchAnime() {
 											</div>
 										</section>
 										<div className='flex items-center gap-3 mt-10 select-none'>
-											<button
-												onClick={handleClick}
-												className='mainWatchButton px-12 rounded-[25px] h-12 text-center flex justify-center items-center gap-1 md:gap-2 border border-transparent whitespace-nowrap text-[#eee] font-GothamPro text-lg md:text-lg font-normal'
+											<a
+												href="/watch/player"
+												className='mainWatchButton px-12 rounded-[25px] h-12 text-center flex justify-center items-center gap-1 md:gap-2 whitespace-nowrap text-[#eee] font-GothamPro text-lg md:text-lg font-normal'
 											>
 												<Play className='h-7 w-7 fill-[#eee] drop-shadow-md' />
 												Смотреть
-											</button>
+											</a>
 											<button className='watchbutton px-10 rounded-[25px] h-12 text-center flex justify-center items-center gap-1 md:gap-2 border border-transparent whitespace-nowrap text-[#eee] font-GothamPro text-lg md:text-lg font-normal'>
 												Трейлер
 											</button>
@@ -301,6 +268,7 @@ function WatchAnime() {
 																			<img
 																				className='w-full object-cover rounded-[10px] h-[250px]'
 																				src={result.img}
+																				alt='character'
 																			/>
 																		</div>
 																		<div className='mt-[15px]'>
